@@ -5,10 +5,31 @@ using UnityEngine;
 
 public class Player : NetworkBehaviour
 {
-
+    public GameObject canva_mappa;
     //prova variabile sincronizzata
-    [SyncVar]
-    int asd = 0;
+    [SyncVar(hook = nameof(OnContatoreChange))]
+    int HolaCount = 0;
+
+
+    //float x = transform.position.x;
+    //[SyncVar]
+    //float posx = transform.position.x;
+    void Start()
+    {
+
+
+        if (isLocalPlayer)
+        {
+            if (isServer)
+            {
+                //GameObject.Find("Camera").gameObject.transform.parent = this.transform;
+            }
+            else
+            {
+                GameObject.Find("Camera").gameObject.transform.parent = this.transform;
+            }
+        }
+    }
 
     void HandleMovement()
     {
@@ -37,8 +58,11 @@ public class Player : NetworkBehaviour
     [Command]
     void Hola()
     {
+        HolaCount++;
         Debug.Log("ciao dal client");
     }
 
-    void OnContatoreChange(int old, int nuovo) { }
+    void OnContatoreChange(int old, int nuovo) {
+        Debug.Log($"avevamo{old}, adesso abbiamo {nuovo}");
+    }
 }
