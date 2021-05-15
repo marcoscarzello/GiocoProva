@@ -12,7 +12,7 @@ public class Player : NetworkBehaviour
 
 
     //float x = transform.position.x;
-    [SyncVar]
+    [SyncVar(hook =nameof(OnPosChange))]
     Vector3 syncPos;
 
     void Start()
@@ -49,7 +49,7 @@ public class Player : NetworkBehaviour
     {
         HandleMovement();
 
-        if (isLocalPlayer)
+        if (!isServer && isLocalPlayer )
         {
             PosToServer(transform.position);
         }
@@ -76,6 +76,10 @@ public class Player : NetworkBehaviour
     void PosToServer(Vector3 pos)
     {
         syncPos = pos;
-        Debug.Log($"posizione = {pos}");
+    }
+
+    void OnPosChange(Vector3 vecchiaPos, Vector3 nuovaPos)
+    {
+        Debug.Log($" vecchia posizione:{vecchiaPos}\n nuova posizione: {nuovaPos}");
     }
 }
