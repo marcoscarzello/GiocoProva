@@ -12,8 +12,9 @@ public class Player : NetworkBehaviour
 
 
     //float x = transform.position.x;
-    //[SyncVar]
-    //float posx = transform.position.x;
+    [SyncVar]
+    Vector3 syncPos;
+
     void Start()
     {
 
@@ -48,6 +49,11 @@ public class Player : NetworkBehaviour
     {
         HandleMovement();
 
+        if (isLocalPlayer)
+        {
+            PosToServer(transform.position);
+        }
+
         if (isLocalPlayer && Input.GetKeyDown(KeyCode.X))
         {
             Debug.Log("Salutando il server");
@@ -64,5 +70,12 @@ public class Player : NetworkBehaviour
 
     void OnContatoreChange(int old, int nuovo) {
         Debug.Log($"avevamo{old}, adesso abbiamo {nuovo}");
+    }
+
+    [Command]
+    void PosToServer(Vector3 pos)
+    {
+        syncPos = pos;
+        Debug.Log($"posizione = {pos}");
     }
 }
