@@ -6,6 +6,7 @@ using UnityEngine;
 public class Player : NetworkBehaviour
 {
     public GameObject canva_mappa;
+    public static Vector3 posizione;
     //prova variabile sincronizzata
     [SyncVar(hook = nameof(OnContatoreChange))]
     int HolaCount = 0;
@@ -80,6 +81,10 @@ public class Player : NetworkBehaviour
 
     void OnPosChange(Vector3 vecchiaPos, Vector3 nuovaPos)
     {
-        Debug.Log($" vecchia posizione:{vecchiaPos}\n nuova posizione: {nuovaPos}");
+        if (isServer)
+        {
+            Debug.Log($" vecchia posizione:{vecchiaPos}\n nuova posizione: {nuovaPos}");
+            posizione = nuovaPos;
+        }
     }
 }
