@@ -5,30 +5,91 @@ using UnityEngine;
 public class Mitra : MonoBehaviour
 {
 
-    public float damage = 10f;
-    public float range = 100f;
-    public float fireRate = 5f;
+    public float damage;
+    public float range;
+    public float fireRate;
+
+    //munizioni
+    public int maxAmmo;
+    public int totAmmo; //in realtà è la scorta (totale munizioni escluse quelle in canna)
+    private int currentAmmo;
+    public float reloadTime;
+    private bool isReloading = false;
 
     public Camera fpsCam;
     public ParticleSystem muzzleFlash = null;
     public GameObject impactEffect;
-    public float impactForce = 30f;
+    public float impactForce;
 
     private float nextTimeToFire = 0f;
 
+    public Animator animator;
+
+    void Start()
+    {
+        RicaricaAutomatica();
+    }
+
+    void RicaricaAutomatica()
+    {
+        if (totAmmo > maxAmmo)
+        {
+            currentAmmo = maxAmmo;
+        }
+        else
+            currentAmmo = totAmmo;
+
+        totAmmo -= maxAmmo;
+    }
+
+    //impedire che il cambio arma blocchi lo sparo
+    void OnEnable()
+    {
+        isReloading = false;
+        animator.SetBool("isReloading", false);
+    }
+
     void Update()
     {
+        if (isReloading) return;
+
+        if (currentAmmo <= 0 && totAmmo > 0)
+        {
+            StartCoroutine(Reload());
+            return;
+        }
+
         if (Input.GetButton("Fire1") && Time.time >= nextTimeToFire)
         {
             nextTimeToFire = Time.time + 1f / fireRate;
-            Shoot();
+
+            if (currentAmmo > 0) Shoot();
         }
     }
+
+    IEnumerator Reload()
+    {
+        isReloading = true;
+
+        animator.SetBool("isReloading", true);
+
+        yield return new WaitForSeconds(reloadTime);
+
+        RicaricaAutomatica();
+
+        isReloading = false;
+        animator.SetBool("isReloading", false);
+    }
+
 
     void Shoot()
     {
 
         muzzleFlash.Play();
+        animator.SetBool("isShooting", true);
+        animator.SetBool("isShooting", false);
+
+        currentAmmo--;
 
         RaycastHit hit; //grazie ad out hit, hit contiene tutte le info sul colpo
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range)) //ritorna true se colpisce 

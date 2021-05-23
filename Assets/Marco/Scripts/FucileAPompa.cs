@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 
-public class Gun : MonoBehaviour
+public class FucileAPompa : MonoBehaviour
 {
 
     public float damage;
@@ -26,7 +25,7 @@ public class Gun : MonoBehaviour
 
     public Animator animator;
 
-    void Start() 
+    void Start()
     {
         RicaricaAutomatica();
     }
@@ -44,7 +43,8 @@ public class Gun : MonoBehaviour
     }
 
     //impedire che il cambio arma blocchi lo sparo
-    void OnEnable() {
+    void OnEnable()
+    {
         isReloading = false;
         animator.SetBool("isReloading", false);
     }
@@ -53,7 +53,8 @@ public class Gun : MonoBehaviour
     {
         if (isReloading) return;
 
-        if (currentAmmo <= 0 && totAmmo > 0) {
+        if (currentAmmo <= 0 && totAmmo > 0)
+        {
             StartCoroutine(Reload());
             return;
         }
@@ -66,7 +67,7 @@ public class Gun : MonoBehaviour
         }
     }
 
-    IEnumerator Reload() 
+    IEnumerator Reload()
     {
         isReloading = true;
 
@@ -81,11 +82,12 @@ public class Gun : MonoBehaviour
     }
 
 
-    void Shoot() {
+    void Shoot()
+    {
 
         muzzleFlash.Play();
         animator.SetBool("isShooting", true);
-       // animator.SetBool("isShooting", false);
+        animator.SetBool("isShooting", false);
 
         currentAmmo--;
 
@@ -93,7 +95,7 @@ public class Gun : MonoBehaviour
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range)) //ritorna true se colpisce 
         {
             Nemico nemico = hit.transform.GetComponent<Nemico>();
-            if (nemico != null) 
+            if (nemico != null)
             {
                 nemico.TakeDamage(damage);
             }
