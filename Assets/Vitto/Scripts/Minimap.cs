@@ -12,7 +12,7 @@ public class Minimap : MonoBehaviour
     public GameObject m3 = null;
 
     private bool open = false;
-    public GameObject volpe;
+    public GameObject pg;
 
     //public Pause pause;
 
