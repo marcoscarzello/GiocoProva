@@ -1,15 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 using Random = System.Random;
 
-public class Codes_generator : MonoBehaviour
+public class DB_Generator : MonoBehaviour
 {
 
-    public int NumeroNemiciLV1 = 5;
-    public int NumeroNemiciLV2 = 3;
-    public int NumeroNemiciLV3 = 2;
+    public int DatabaseNemiciLv1 = 20;
+    public int DatabaseNemiciLv2 = 15;
+    public int DatabaseNemiciLv3 = 10;
 
     void Start()
     {
@@ -18,25 +19,51 @@ public class Codes_generator : MonoBehaviour
 
         Random rnd = new Random();
 
-        for ( int i = 0; i < NumeroNemiciLV1; i++ )
+        DataTable DataBase = new DataTable("DataBase");
+        DataBase.Clear();
+        DataBase.Columns.Add("Level", typeof(int));
+        DataBase.Columns.Add("EnemyCode", typeof(string));
+        DataBase.Columns.Add("EnemyDB", typeof(string));
+        DataBase.PrimaryKey = new DataColumn[] { DataBase.Columns["EnemyCode"] };
+
+        // Info per cercare nella DataTable
+        // Per trovare nemici da codice: DataBase.Rows.Find(enemycode)[index] dove index = 0, 1, 2
+        // Per numero di righe: DataBase.Rows.Count
+        // Per accedere ai campi DataBase.Rows[i][j]
+
+        for ( int i = 0; i < DatabaseNemiciLv1; i++ )
         {
             enemycode = EnemyCodeGenerator(rnd, 1);
             enemyDB = EnemyDBGenerator(rnd, 1);
-            Debug.Log("LV.1 -> enemycode: " + enemycode + ", enemyDB: " + enemyDB);
+            if (DataBase.Rows.Find(enemycode) == null)
+            {
+                DataBase.Rows.Add(1, enemycode, enemyDB);
+            }
         }
 
-        for (int i = 0; i < NumeroNemiciLV2; i++)
+        for (int i = 0; i < DatabaseNemiciLv2; i++)
         {
             enemycode = EnemyCodeGenerator(rnd, 2);
             enemyDB = EnemyDBGenerator(rnd, 2);
-            Debug.Log("LV.2 -> enemycode: " + enemycode + ", enemyDB: " + enemyDB);
+            if (DataBase.Rows.Find(enemycode) == null)
+            {
+                DataBase.Rows.Add(2, enemycode, enemyDB);
+            }
         }
 
-        for (int i = 0; i < NumeroNemiciLV3; i++)
+        for (int i = 0; i < DatabaseNemiciLv3; i++)
         {
             enemycode = EnemyCodeGenerator(rnd, 3);
             enemyDB = EnemyDBGenerator(rnd, 3);
-            Debug.Log("LV.3 -> enemycode: " + enemycode + ", enemyDB: " + enemyDB);
+            if (DataBase.Rows.Find(enemycode) == null)
+            {
+                DataBase.Rows.Add(3, enemycode, enemyDB);
+            }
+        }
+
+        for (int i =0; i< DataBase.Rows.Count; i++)
+        {
+            Debug.Log(DataBase.Rows[i][0] + " - " + DataBase.Rows[i][1] + " - " + DataBase.Rows[i][2]);
         }
     }
 
