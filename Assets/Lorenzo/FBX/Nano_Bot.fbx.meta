@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 05063f6c67f993f4cae41cd2b9c07375
+guid: 30d3b49d720866f488c41ded566874d4
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -28,7 +28,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Pinna
-    second: {fileID: 2100000, guid: ddd24974b1eb7684499703cade8e96c6, type: 2}
+    second: {fileID: 2100000, guid: b642d2cbbdbe80845a50816439a6ba0c, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule

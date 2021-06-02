@@ -9,10 +9,12 @@ public class GuardFSM : MonoBehaviour
 {
     //[SerializeField] private List<Hide> _hide;
     [SerializeField] private GameObject _target;
-    [SerializeField] private float _minChaseDistance = 3f;
-    [SerializeField] private float _minAttackDistance = 2f;
-    [SerializeField] private float _stoppingDistance = 1f;
+    [SerializeField] private float _minSightDistance = 3f;
     [SerializeField] private float _hidingDistance = 1f;
+    [SerializeField] private float _stoppingDistance = 5f;
+    [SerializeField] private Transform _gunPivot;
+    [SerializeField] private Bullet _bullet;
+    [SerializeField] private float _shootForce;
 
     [Range(0, 360)]
     [SerializeField] private float _viewAngle;
@@ -20,15 +22,20 @@ public class GuardFSM : MonoBehaviour
     [SerializeField] private Transform _rotatingBase;
     [SerializeField] private float _rotationSpeed;
     [SerializeField] private float _targetFoundRotationSpeed;
-
+    
+    //Attack Parameter
+    public bool alreadyAttacked;
+    public float timeBetweenAttacks;
 
     //Patroling
     public Vector3 walkPoint;
     bool walkPointSet;
     public float walkPointRange;
     [SerializeField] private LayerMask _visibilityRaLayerMask;
+   
+    
     bool goHideBool;
-
+    bool stopChaseBool;
 
     private FiniteStateMachine<GuardFSM> _stateMachine;
 
@@ -57,27 +64,26 @@ public class GuardFSM : MonoBehaviour
         State hideState = new HideState("Hide", this);
 
         //TRANSITIONS definite dai parametri da soddisfare
-        _stateMachine.AddTransition(patrolState, chaseState, () => IsTargetInSight()); 
-        _stateMachine.AddTransition(chaseState, patrolState, () => !IsTargetInSight());
-        _stateMachine.AddTransition(chaseState, stopState, () => DistanceFromTarget() <= _stoppingDistance);
-        _stateMachine.AddTransition(stopState, chaseState, () => DistanceFromTarget() > _stoppingDistance);
+        
+        _stateMachine.AddTransition(patrolState, stopState, () => DistanceFromTarget() <= _stoppingDistance);
+        _stateMachine.AddTransition(patrolState, chaseState, () => IsTargetInSight());
+
+        _stateMachine.AddTransition(chaseState, patrolState, () => stopChaseBool);
+        _stateMachine.AddTransition(chaseState, stopState, () => DistanceFromTarget() <= _stoppingDistance );
+
         _stateMachine.AddTransition(stopState, hideState, () => goHideBool==false);
-        _stateMachine.AddTransition(hideState, patrolState, () => ArrivedInHide() <= _hidingDistance );
+        _stateMachine.AddTransition(stopState, chaseState, () => DistanceFromTarget() > _stoppingDistance);
+
+        _stateMachine.AddTransition(hideState, chaseState, () => ArrivedInHide() <= _hidingDistance );
+       
+
         //START STATE
         _stateMachine.SetState(patrolState);
     }
 
     void Update() => _stateMachine.Tik();
     public void StopAgent(bool stop) => agent.isStopped = stop;
-    /*public void SetWayPointDestination()
-    {
-        if (agent.remainingDistance <= agent.stoppingDistance && agent.velocity.sqrMagnitude <= 0f)
-        {
-            _currentWayPointIndex = (_currentWayPointIndex + 1) % _waypoints.Count;
-            Vector3 nextWayPointPos = _waypoints[_currentWayPointIndex].position;
-            agent.SetDestination(new Vector3(nextWayPointPos.x, transform.position.y, nextWayPointPos.z));
-        }
-    }*/
+
 
     public void PointTarget()
     {
@@ -115,14 +121,13 @@ public class GuardFSM : MonoBehaviour
         if (Physics.Raycast(walkPoint, -transform.up, 2f, _visibilityRaLayerMask))
             walkPointSet = true;
     }
-
-    private bool IsTargetInSight()
+    public bool IsTargetInSight()
     {
 
         //CHECK IF IS WITHIN VIEW DISTANCE
         Vector3 directionToTarget = _target.transform.position - transform.position;
         float squareTargetDistance = (directionToTarget).sqrMagnitude;
-        if (squareTargetDistance <= _minChaseDistance * _minChaseDistance)
+        if (squareTargetDistance <= _minSightDistance * _minSightDistance)
         {
             //CHECK IF FALLS WITHIN VIEW ANGLE
             float angleToTarget = Vector3.Angle(transform.forward, directionToTarget.normalized);
@@ -131,9 +136,9 @@ public class GuardFSM : MonoBehaviour
                 //CHECK IF THERE ARE NO OBSTACLES
                 RaycastHit hitInfo;
                 Ray ray = new Ray(_rayOrigin.transform.position, (_target.transform.position - _rayOrigin.position).normalized);
-                Debug.DrawRay(_rayOrigin.position, (_target.transform.position - _rayOrigin.position).normalized * _minChaseDistance, Color.cyan);
+                Debug.DrawRay(_rayOrigin.position, (_target.transform.position - _rayOrigin.position).normalized * _minSightDistance, Color.cyan);
 
-                if (Physics.Raycast(ray, out hitInfo, _minChaseDistance, _visibilityRaLayerMask))
+                if (Physics.Raycast(ray, out hitInfo, _minSightDistance, _visibilityRaLayerMask))
                 {
                     Target target = hitInfo.transform.GetComponentInParent<Target>();
                     if (target)
@@ -168,6 +173,36 @@ public class GuardFSM : MonoBehaviour
         return closestHide;
     }
 
+    //Attack
+    public void AttackPlayer()
+    {
+        //Make sure enemy doesn't move
+        //agent.SetDestination(transform.position);
+
+        transform.LookAt(_target.transform.position);
+
+        if (!alreadyAttacked)
+        {
+           
+            Vector3 targetHead = _target.transform.position;
+            Vector3 shootingDirection = (targetHead - _gunPivot.position).normalized;
+            Bullet bullet = Instantiate(_bullet, _gunPivot.position, Quaternion.identity);
+            bullet.transform.up = shootingDirection;
+
+            Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
+            bulletRb.AddForce(shootingDirection * _shootForce, ForceMode.Impulse);
+            Debug.Log("Sparo");
+
+            alreadyAttacked = true;
+            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+        }
+    }
+    private void ResetAttack()
+    {
+        alreadyAttacked = false;
+    }
+
+    //Coroutines
     public IEnumerator goHide()
     {
         goHideBool = true;
@@ -175,11 +210,20 @@ public class GuardFSM : MonoBehaviour
         goHideBool = false;
 
     }
+   
+    public IEnumerator stopChase()
+    {
+        stopChaseBool = false;
+        yield return new WaitForSeconds(3);
+        stopChaseBool = true;
 
+    }
 
     //TRANSITION FUNCTIONS
     private float DistanceFromTarget() => Vector3.Distance(_target.transform.position, transform.position);
     private float ArrivedInHide() => Vector3.Distance(findClosestHide().transform.position, transform.position);
+
+
 
 }
 
@@ -196,7 +240,7 @@ public class PatrolState : State
     public override void Enter()
     {
         _guard.StopAgent(false);
-        _guard.Renderer.material.color = _guard.OriginalColor;
+        //_guard.Renderer.material.color = _guard.OriginalColor;
     }
 
     public override void Tik()
@@ -222,16 +266,22 @@ public class ChaseState : State
     {
         _guard.StopAgent(false);
         _guard.Renderer.material.color = Color.yellow;
+        _guard.StartCoroutine(_guard.stopChase());
     }
 
     public override void Tik()
     {
         _guard.PointTarget();
         _guard.FollowTarget();
+        if (_guard.IsTargetInSight())
+        {
+            _guard.AttackPlayer();
+        }
     }
 
     public override void Exit()
     {
+        _guard.StopAllCoroutines();
     }
 }
 
@@ -247,16 +297,19 @@ public class StopState : State
     {
         _guard.StartCoroutine(_guard.goHide());
         _guard.StopAgent(true);
-        _guard.Renderer.material.color = Color.red;
+
     }
 
     public override void Tik()
     {
         _guard.PointTarget();
+        _guard.AttackPlayer();
+
     }
 
     public override void Exit()
     {
+        _guard.StopAllCoroutines();
     }
 }
 
@@ -276,11 +329,17 @@ public class HideState : State
 
     public override void Tik()
     {
+        if (_guard.IsTargetInSight())
+        {
+            _guard.PointTarget();
+            _guard.AttackPlayer();
+        }
         _guard.findClosestHide();
     }
 
     public override void Exit()
     {
+
     }
 }
 
