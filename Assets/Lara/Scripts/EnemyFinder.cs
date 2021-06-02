@@ -69,6 +69,7 @@ public class EnemyFinder : MonoBehaviour
         if (statoRicerca == 3)
         {
             statoRicerca = 0;
+            codiceSoluzione = "";
             codiceNemico = "";
             sigla = "";
             colore = "";
@@ -80,12 +81,6 @@ public class EnemyFinder : MonoBehaviour
     public void VaiAllaSoluzione()
     {
         statoRicerca = 3;
-        CercaSoluzione();
-    }
-
-    void CercaSoluzione() {
-
-       
     }
 
 

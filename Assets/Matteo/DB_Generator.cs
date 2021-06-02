@@ -39,7 +39,7 @@ public class DB_Generator : MonoBehaviour
             if (DataBase.Rows.Find(enemycode) == null)
             {
                 DataBase.Rows.Add(1, enemycode, enemyDB);
-                CercaSoluzione(enemycode);
+                //CercaSoluzione(enemycode);
             }
         }
 
@@ -148,7 +148,10 @@ public class DB_Generator : MonoBehaviour
         return enemyDB;
     }
 
-    public String CercaSoluzione(string enemycode) {
-        return Convert.ToString(DataBase.Rows.Find(enemycode)[2]);
+    public void CercaSoluzione() {
+        if (DataBase.Rows.Find(EnemyFinder.codiceNemico)[2] != null)
+            EnemyFinder.codiceSoluzione = Convert.ToString(DataBase.Rows.Find(EnemyFinder.codiceNemico)[2]);
+        else
+            EnemyFinder.codiceSoluzione = "NoMatch";
     }
 }
