@@ -223,6 +223,7 @@ GameObject:
   - component: {fileID: 405175956}
   - component: {fileID: 405175957}
   - component: {fileID: 405175958}
+  - component: {fileID: 405175959}
   m_Layer: 0
   m_Name: WeaponHolder
   m_TagString: Untagged
@@ -279,6 +280,38 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &405175959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405175955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1094aa7a54a17e48bc341fda2a986e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoomSpeed: 20
+--- !u!1 &815030745 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: 5e9e851c0e142814dac026a256ba2ac0,
+    type: 3}
+  m_PrefabInstance: {fileID: 141593087}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &815030748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 815030745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1094aa7a54a17e48bc341fda2a986e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoomSpeed: 20
 --- !u!1 &869663875 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5148187487462526210, guid: 4b928af44d3abc8479de8d9fb2705eea,
