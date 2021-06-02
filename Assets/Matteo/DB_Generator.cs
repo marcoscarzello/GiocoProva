@@ -12,9 +12,7 @@ public class DB_Generator : MonoBehaviour
     public int DatabaseNemiciLv2 = 15;
     public int DatabaseNemiciLv3 = 10;
 
-    public DataTable DataBase;
-
-
+    public DataTable DataBase = new DataTable("DataBase");
 
     void Start()
     {
@@ -22,8 +20,6 @@ public class DB_Generator : MonoBehaviour
         string enemyDB;
 
         Random rnd = new Random();
-
-        DataTable DataBase = new DataTable("DataBase");
 
         DataBase.Clear();
         DataBase.Columns.Add("Level", typeof(int));
@@ -43,6 +39,7 @@ public class DB_Generator : MonoBehaviour
             if (DataBase.Rows.Find(enemycode) == null)
             {
                 DataBase.Rows.Add(1, enemycode, enemyDB);
+                CercaSoluzione(enemycode);
             }
         }
 
@@ -151,19 +148,7 @@ public class DB_Generator : MonoBehaviour
         return enemyDB;
     }
 
-    public void CercaSoluzione() {
-
-        /*for (int i = 0; i < DataBase.Rows.Count; i++)
-        {
-            if (DataBase.Rows[i][1] != null)
-            {
-                if (DataBase.Rows[i][1] == EnemyFinder.codiceNemico)
-                {
-                    EnemyFinder.codiceSoluzione = DataBase.Rows[i][2];
-                }
-            }
-        }*/
-       // if (DataBase.Rows.Find("asd")[2] != null)
-         //   Debug.Log(DataBase.Rows.Find("asd")[2]);
+    public String CercaSoluzione(string enemycode) {
+        return Convert.ToString(DataBase.Rows.Find(enemycode)[2]);
     }
 }

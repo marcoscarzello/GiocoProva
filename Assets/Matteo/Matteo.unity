@@ -245,9 +245,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1522962e7b400cf4189e690e53461c78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DatabaseNemiciLv1: 5
-  DatabaseNemiciLv2: 3
-  DatabaseNemiciLv3: 2
+  DatabaseNemiciLv1: 20
+  DatabaseNemiciLv2: 15
+  DatabaseNemiciLv3: 10
 --- !u!4 &1237153524
 Transform:
   m_ObjectHideFlags: 0
