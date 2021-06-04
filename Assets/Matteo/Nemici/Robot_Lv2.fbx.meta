@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cc8ba77dbdc485e48ba0279b672ac402
+guid: db275f1af1a24414f9904788a2609cb7
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -7,8 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Display
-    second: {fileID: 2100000, guid: 2bb92c292d51faa48a990383f172564b, type: 2}
+      name: CorpoMetalloNero
+    second: {fileID: 2100000, guid: 74854335df9d91f4ea1ed0b09bc9cfc6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Display.002
+    second: {fileID: 2100000, guid: cf7aec0ad99b6434fafe59d28d81c720, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -17,18 +22,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: MetalloMarrone.001
+      name: MetalloGrigioChiaro
+    second: {fileID: 2100000, guid: 241476fb32e7a554dada19e27009fa33, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MetalloMarrone
     second: {fileID: 2100000, guid: 4b323e58e0387fa4eb9db4f17514b1ca, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: MetalloRosso
-    second: {fileID: 2100000, guid: f491ebc12652f824abb480ba5f96d893, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: MetalloVerde
-    second: {fileID: 2100000, guid: b642d2cbbdbe80845a50816439a6ba0c, type: 2}
+      name: MetalloRosa
+    second: {fileID: 2100000, guid: 71f4dcfc8e83e424a9b4c758c9b2e9b8, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule

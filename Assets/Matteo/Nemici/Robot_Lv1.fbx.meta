@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cc8ba77dbdc485e48ba0279b672ac402
+guid: 290c71a718fbe494ca5a07d2e5fb2294
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
@@ -7,33 +7,48 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Display
-    second: {fileID: 2100000, guid: 2bb92c292d51faa48a990383f172564b, type: 2}
+      name: Display.001
+    second: {fileID: 2100000, guid: b2372330aff56514083cdcab092016d4, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Metallo
-    second: {fileID: 2100000, guid: 6dcf36998352c944b9da7adcfafced61, type: 2}
+      name: MetalloGrigio.001
+    second: {fileID: 2100000, guid: b296de086dd82db4cb61737278007602, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: MetalloMarrone.001
-    second: {fileID: 2100000, guid: 4b323e58e0387fa4eb9db4f17514b1ca, type: 2}
+      name: MetalloGrigio.002
+    second: {fileID: 2100000, guid: b296de086dd82db4cb61737278007602, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: MetalloRosso
+      name: MetalloRosso.001
     second: {fileID: 2100000, guid: f491ebc12652f824abb480ba5f96d893, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: MetalloVerde
-    second: {fileID: 2100000, guid: b642d2cbbdbe80845a50816439a6ba0c, type: 2}
+      name: MetalloRosso.002
+    second: {fileID: 2100000, guid: f491ebc12652f824abb480ba5f96d893, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Propulsore
-    second: {fileID: 2100000, guid: 5be86ddb405d67345b1cb4ae1fad0f5d, type: 2}
+    second: {fileID: 2100000, guid: f14ef164d9450204fb564408c42c3a4c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rame.001
+    second: {fileID: 2100000, guid: f15ff4e995e16a642b284b0228f1010a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rame.002
+    second: {fileID: 2100000, guid: f15ff4e995e16a642b284b0228f1010a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bot_worker_A_glass.bmp.002
+    second: {fileID: 2100000, guid: ee3510aaa5021ef408a76ade36bafd7d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
