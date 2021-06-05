@@ -10,7 +10,7 @@ public class EnemyFinder : MonoBehaviour
     public static string codiceNemico;
     public static string codiceSoluzione;
 
-    static int statoRicerca;
+    public static int statoRicerca;
 
     public GameObject inputField;
 
@@ -92,6 +92,15 @@ public class EnemyFinder : MonoBehaviour
                 transform.GetChild(1).gameObject.SetActive(true);
                 transform.GetChild(2).gameObject.SetActive(false);
                 transform.GetChild(3).gameObject.SetActive(false);
+                transform.GetChild(4).transform.GetChild(3).GetChild(0).gameObject.SetActive(false);
+                transform.GetChild(4).transform.GetChild(3).GetChild(1).gameObject.SetActive(false);
+                transform.GetChild(4).transform.GetChild(3).GetChild(2).gameObject.SetActive(false);
+                transform.GetChild(4).transform.GetChild(3).GetChild(3).gameObject.SetActive(false);
+                transform.GetChild(4).transform.GetChild(3).GetChild(4).gameObject.SetActive(false);
+                transform.GetChild(4).transform.GetChild(3).GetChild(5).gameObject.SetActive(false);
+                transform.GetChild(4).transform.GetChild(3).GetChild(6).gameObject.SetActive(false);
+                transform.GetChild(4).transform.GetChild(3).GetChild(7).gameObject.SetActive(false);
+                transform.GetChild(4).transform.GetChild(3).GetChild(8).gameObject.SetActive(false);
                 transform.GetChild(4).gameObject.SetActive(false);
 
                 break;

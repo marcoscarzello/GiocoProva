@@ -64,9 +64,9 @@ public class DB_Generator : MonoBehaviour
         }
 
 //Debug
-        //for (int i =0; i< DataBase.Rows.Count; i++)
+        for (int i =0; i< DataBase.Rows.Count; i++)
         //{
-        //    Debug.Log(DataBase.Rows[i][0] + " - " + DataBase.Rows[i][1] + " - " + DataBase.Rows[i][2]);
+            Debug.Log(DataBase.Rows[i][0] + " - " + DataBase.Rows[i][1] + " - " + DataBase.Rows[i][2]);
         //}
     }
 
@@ -149,10 +149,28 @@ public class DB_Generator : MonoBehaviour
         return enemyDB;
     }
 
-    public void CercaSoluzione() {
-        if (DataBase.Rows.Find(EnemyFinder.codiceNemico)[2] != null)
-            EnemyFinder.codiceSoluzione = Convert.ToString(DataBase.Rows.Find(EnemyFinder.codiceNemico)[2]);
-        else
-            EnemyFinder.codiceSoluzione = "NoMatch";
+    public void CercaSoluzione()
+    {
+        //if (!DataBase.Rows.Find(EnemyFinder.codiceNemico).IsNull(2))
+
+        //{
+        //if (DataBase.Rows.Find(EnemyFinder.codiceNemico)[2] != null)
+        //EnemyFinder.codiceSoluzione = Convert.ToString(DataBase.Rows.Find(EnemyFinder.codiceNemico)[2]);
+        //else
+        //EnemyFinder.codiceSoluzione = "NoMatch";
+        //}
+        //else
+        // EnemyFinder.codiceSoluzione = "NoMatch";
+
+        EnemyFinder.codiceSoluzione = "No Match";
+        for (int a = 0; a < DataBase.Rows.Count; a++)
+        {
+
+            if (Convert.ToString(DataBase.Rows[a][1]) == EnemyFinder.codiceNemico)
+            {
+                EnemyFinder.codiceSoluzione = Convert.ToString(DataBase.Rows[a][2]);
+            }
+        }
+
     }
 }
