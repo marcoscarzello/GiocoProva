@@ -2147,7 +2147,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0.5294118, g: 0.6431373, b: 0.7137255, a: 1}
     m_HighlightedColor: {r: 0.24705884, g: 0.3803922, b: 0.44705886, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.5294118, g: 0.6431373, b: 0.7137255, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -7089,7 +7089,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.3018868, g: 0.3018868, b: 0.3018868, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -7503,6 +7503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   testo: {fileID: 1884389125}
+  tmp: 
   red1: {fileID: 1511764483}
   red2: {fileID: 1912629123}
   red3: {fileID: 491164152}
@@ -7567,7 +7568,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 4
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 1024
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -7764,7 +7765,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1907550140
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8489,7 +8490,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0.5294118, g: 0.6392157, b: 0.7058824, a: 1}
     m_HighlightedColor: {r: 0.27058825, g: 0.3921569, b: 0.45098042, a: 1}
     m_PressedColor: {r: 0.49803925, g: 0.49803925, b: 0.49803925, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.5294118, g: 0.6392157, b: 0.7058824, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -8536,6 +8537,30 @@ MonoBehaviour:
       - m_Target: {fileID: 1907550144}
         m_TargetAssemblyTypeName: DB_Generator, Assembly-CSharp
         m_MethodName: CercaSoluzione
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1884389124}
+        m_TargetAssemblyTypeName: TestoSolutionCode, Assembly-CSharp
+        m_MethodName: ScriviSoluzione
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1907550143}
+        m_TargetAssemblyTypeName: EnemyFinder, Assembly-CSharp
+        m_MethodName: azzeraSigla
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -40,7 +40,13 @@ public class EnemyFinder : MonoBehaviour
 
     public void impostaSigla() {
         sigla = inputField.GetComponent<TMP_InputField>().text;
+
         Debug.Log(sigla);
+    }
+
+    public void azzeraSigla() {
+        inputField.GetComponent<TMP_InputField>().text = "";
+
     }
 
     public void impostaLinea(string line)
