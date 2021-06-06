@@ -41,6 +41,37 @@ public class EnemyFinder : MonoBehaviour
     public void impostaSigla() {
         sigla = inputField.GetComponent<TMP_InputField>().text;
 
+        switch (sigla) {
+
+            case "EK-2":
+                sigla = "a";
+                break;
+            case "FR-8":
+                sigla = "b";
+                break;
+            case "PN-3":
+                sigla = "c";
+                break;
+            case "KZ-1":
+                sigla = "d";
+                break;
+            case "NN-9":
+                sigla = "e";
+                break;
+            case "CP-3":
+                sigla = "f";
+                break;
+            case "SM-1":
+                sigla = "g";
+                break;
+            case "LS-2":
+                sigla = "h";
+                break;
+            default:
+                sigla = "0";    //nada ma importante avere 1 char sempre
+                break;
+        }
+
         Debug.Log(sigla);
     }
 
