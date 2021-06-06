@@ -34,14 +34,17 @@ public class VirusFSM : MonoBehaviour
 
     private NavMeshAgent agent;
 
+    private Animator _animator;
     private Renderer _renderer;
     private Color _originalColor;
     public Renderer Renderer => _renderer;
     public Color OriginalColor => _originalColor;
+    public Animator Animator => _animator;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        _animator = GetComponent<Animator>();
         _renderer = GetComponent<Renderer>();
         _rotatingBase.Rotate(Vector3.up, UnityEngine.Random.Range(0f, 355f));
         _originalColor = _renderer.material.color;
@@ -188,6 +191,8 @@ public class PatrolVirusState : State
     public override void Enter()
     {
         _virus.StopAgent(false);
+        _virus.Animator.SetBool("patrol", true);
+
 
     }
 
@@ -215,6 +220,7 @@ public class StopVirusState : State
     {
         _virus.StartCoroutine(_virus.goAttackHacker());
         _virus.StopAgent(true);
+        _virus.Animator.SetBool("patrol", false);
 
     }
 
@@ -240,6 +246,8 @@ public class AttackHackerState: State
     public override void Enter()
     {
         _virus.StopAgent(false);
+        _virus.Animator.SetBool("patrol", false);
+
 
     }
 
