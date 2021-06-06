@@ -11,16 +11,16 @@ public class LV1_Enemy_Generator : MonoBehaviour
     public GameObject DBScriptStarter;
     public Material[] M1 = new Material[8];
     public Material[] MColors = new Material[3];
-
+    
     static string EnemyCode;
 
-    void Start()
+    void OnEnable()
     {
         var DataBase = DBScriptStarter.GetComponent<DB_Generator>().DataBase;
+        var rnd = DBScriptStarter.GetComponent<DB_Generator>().rnd;
 
         DataRow[] result = DataBase.Select("Level = 1");
 
-        Random rnd = new Random();
         int dbnumber = rnd.Next(result.Length);
         EnemyCode = Convert.ToString(result[dbnumber][1]);
 
@@ -38,12 +38,12 @@ public class LV1_Enemy_Generator : MonoBehaviour
         materials2[2] = MColors[enemycolor];
         rend2.materials = materials2;
 
-        var rend3 = this.gameObject.transform.Find("BraccioDestro").gameObject.GetComponent<Renderer>();
+        var rend3 = this.gameObject.transform.Find("PistolaDestra").gameObject.GetComponent<Renderer>();
         var materials3 = rend3.materials;
         materials3[1] = MColors[enemycolor];
         rend3.materials = materials3;
 
-        var rend4 = this.gameObject.transform.Find("BraccioSinistro").gameObject.GetComponent<Renderer>();
+        var rend4 = this.gameObject.transform.Find("PistolaSinistra").gameObject.GetComponent<Renderer>();
         var materials4 = rend4.materials;
         materials4[1] = MColors[enemycolor];
         rend4.materials = materials4;
