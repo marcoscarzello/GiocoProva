@@ -39,7 +39,6 @@ public class DB_Generator : MonoBehaviour
             if (DataBase.Rows.Find(enemycode) == null)
             {
                 DataBase.Rows.Add(1, enemycode, enemyDB);
-                //CercaSoluzione(enemycode);
             }
         }
 
@@ -65,9 +64,9 @@ public class DB_Generator : MonoBehaviour
 
 //Debug
         for (int i =0; i< DataBase.Rows.Count; i++)
-        //{
+        {
             Debug.Log(DataBase.Rows[i][0] + " - " + DataBase.Rows[i][1] + " - " + DataBase.Rows[i][2]);
-        //}
+        }
     }
 
     String EnemyCodeGenerator(Random rnd, int livello)
