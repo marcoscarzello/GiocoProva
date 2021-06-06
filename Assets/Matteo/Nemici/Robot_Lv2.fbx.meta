@@ -6,7 +6,32 @@ ModelImporter:
   - first:
       74: 4350447497638871503
     second: Armature|Idle_Lv2
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CorpoMetalloNero
+    second: {fileID: 2100000, guid: 74854335df9d91f4ea1ed0b09bc9cfc6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metallo
+    second: {fileID: 2100000, guid: d8dab18839916674bb92c54359253eb6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MetalloGrigioChiaro
+    second: {fileID: 2100000, guid: 241476fb32e7a554dada19e27009fa33, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MetalloMarrone
+    second: {fileID: 2100000, guid: 4b323e58e0387fa4eb9db4f17514b1ca, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MetalloRosa
+    second: {fileID: 2100000, guid: 71f4dcfc8e83e424a9b4c758c9b2e9b8, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
