@@ -7,7 +7,7 @@ using Random = System.Random;
 public class MovimentoSferetta : MonoBehaviour
 {
     //Variables
-    public float speed = 0.02f;
+    public float speed;
 
     public float xpos;
     public float zpos;
@@ -33,4 +33,16 @@ public class MovimentoSferetta : MonoBehaviour
         gameObject.transform.position = new Vector3(transform.position.x - (h * speed), transform.position.y,
            transform.position.z - (v * speed));
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name == "Core")
+        {
+            Debug.Log("arrivato al core");
+            Timer.reached = true;
+        }
+
+    }
+
+
 }

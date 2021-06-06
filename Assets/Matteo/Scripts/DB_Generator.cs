@@ -14,12 +14,12 @@ public class DB_Generator : MonoBehaviour
 
     public DataTable DataBase = new DataTable("DataBase");
 
+    public Random rnd = new Random();
+
     void Start()
     {
         string enemycode;
         string enemyDB;
-
-        Random rnd = new Random();
 
         DataBase.Clear();
         DataBase.Columns.Add("Level", typeof(int));

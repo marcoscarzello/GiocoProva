@@ -67,6 +67,7 @@ public class TestoSolutionCode : MonoBehaviour
 
         else if (sol[0] == 'z')
             blue1.SetActive(true);
+
     }
     public void Second()
     {
