@@ -55,6 +55,7 @@ public class Weapons_Generator : MonoBehaviour
         {
             int tipo = Convert.ToInt32(DataBaseArmi.Rows[i][1]);
             GameObject weapon = (GameObject)Instantiate(Prefabs[tipo], new Vector3(rnd.Next(10, 46), 1.3F, rnd.Next(-18, 18)), Quaternion.identity);
+            weapon.transform.parent = this.gameObject.transform.Find("WeaponsContainer").transform;
 
             int materialindex = 1;
             if (tipo == 2) //se assalto
