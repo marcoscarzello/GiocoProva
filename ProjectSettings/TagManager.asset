@@ -8,7 +8,8 @@ TagManager:
   - ArmaRossa
   - ArmaVerde
   - ArmaBlu
-  - Schermo
+  - Schermo1
+  - Schermo2
   layers:
   - Default
   - TransparentFX

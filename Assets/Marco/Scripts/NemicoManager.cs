@@ -29,7 +29,7 @@ public class NemicoManager : MonoBehaviour
 
         //prendo soluzione
         soluzione = Convert.ToString(DataBase.Rows.Find(enemycode)[2]);
-        Debug.Log(soluzione);
+        Debug.Log("Soluzione nemico livello 1 : "  + soluzione);
 
     }
 
