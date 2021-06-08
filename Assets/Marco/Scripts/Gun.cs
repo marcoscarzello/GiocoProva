@@ -12,13 +12,12 @@ public class Gun : MonoBehaviour
 
     //munizioni
     public int maxAmmo;
-    public int totAmmo; //in realtà è la scorta (totale munizioni escluse quelle in canna)
     private int currentAmmo;
     public float reloadTime;
     private bool isReloading = false;
 
     public Camera fpsCam;
-    public ParticleSystem muzzleFlash = null;
+    private ParticleSystem muzzleFlash;
     public GameObject impactEffect;
     public float impactForce;
 
@@ -28,19 +27,20 @@ public class Gun : MonoBehaviour
 
     void Start() 
     {
-        RicaricaAutomatica();
+        currentAmmo = 0;
+        muzzleFlash = GetComponent<ParticleSystem>();
     }
 
     void RicaricaAutomatica()
     {
-        if (totAmmo > maxAmmo)
+        if (MunizioniManager.scortaPistola > maxAmmo)
         {
             currentAmmo = maxAmmo;
         }
         else
-            currentAmmo = totAmmo;
+            currentAmmo = MunizioniManager.scortaPistola;
 
-        totAmmo -= maxAmmo;
+        MunizioniManager.scortaPistola -= maxAmmo;
     }
 
     //impedire che il cambio arma blocchi lo sparo
@@ -53,17 +53,25 @@ public class Gun : MonoBehaviour
     {
         if (isReloading) return;
 
-        if (currentAmmo <= 0 && totAmmo > 0) {
-            StartCoroutine(Reload());
-            return;
-        }
+        
+        if (transform.parent.name == "WeaponHolder" && gameObject.activeSelf)
+            {
 
-        if (Input.GetButtonDown("Fire1") && Time.time >= nextTimeToFire)
-        {
-            nextTimeToFire = Time.time + 1f / fireRate;         //inutile per la pistola
+            if (currentAmmo <= 0 && MunizioniManager.scortaPistola > 0)
+            {
+                Debug.Log("Ricarica");
+                StartCoroutine(Reload());
+                return;
+            }
 
-            if (currentAmmo > 0) Shoot();
-        }
+            if (Input.GetButtonDown("Fire1") && Time.time >= nextTimeToFire)
+                        {
+                            
+                            nextTimeToFire = Time.time + 1f / fireRate;         //inutile per la pistola
+
+                            if (currentAmmo > 0) Shoot();
+                        }
+            }
     }
 
     IEnumerator Reload() 
@@ -82,6 +90,26 @@ public class Gun : MonoBehaviour
 
 
     void Shoot() {
+
+        ParticleSystem.MainModule main = muzzleFlash.main;
+        
+        //setto il colore dei muzzleflah in base al colore dell'arma
+        switch (tag) {
+
+            case "ArmaVerde":
+                main.startColor = new Color(0f, 1f, 0f, 1f);
+                break;
+            case "ArmaRossa":
+                main.startColor = new Color(1f, 0f, 0f, 1f);
+                break;
+            case "ArmaBlu":
+                main.startColor = new Color(0f, 0f, 1f, 1f);
+                break;
+            default:
+                break;
+        }
+
+
 
         muzzleFlash.Play();
         animator.SetBool("isShooting", true);
