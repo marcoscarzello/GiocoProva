@@ -118,10 +118,12 @@ public class Mitra : MonoBehaviour
         RaycastHit hit; //grazie ad out hit, hit contiene tutte le info sul colpo
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range)) //ritorna true se colpisce 
         {
-            Nemico nemico = hit.transform.GetComponent<Nemico>();
+            //se il nemico è un nemico grosso di LV1
+            NemicoManager nemico = hit.transform.GetComponent<NemicoManager>();
             if (nemico != null)
             {
-                nemico.TakeDamage(damage);
+                nemico.Colpito(damage, tag); //invio danno e colore arma
+                                             //Debug.Log(hit.collider.gameObject.tag);             
             }
 
             if (hit.rigidbody != null)

@@ -802,7 +802,7 @@ ParticleSystem:
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 0.44
     donutRadius: 0.2
-    m_Position: {x: -0.25, y: 0, z: 0}
+    m_Position: {x: -0.15, y: 0, z: 0}
     m_Rotation: {x: 0, y: -90, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
@@ -5805,7 +5805,7 @@ ParticleSystem:
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 0.44
     donutRadius: 0.2
-    m_Position: {x: -0.25, y: 0, z: 0}
+    m_Position: {x: -0.15, y: 0, z: 0}
     m_Rotation: {x: 0, y: -90, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
@@ -10017,7 +10017,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7
+      value: 5.77
       objectReference: {fileID: 0}
     - target: {fileID: 2000000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
       propertyPath: near clip plane
@@ -10041,6 +10041,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e9e851c0e142814dac026a256ba2ac0, type: 3}
+--- !u!1 &579279571 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6571237404412088691, guid: 66b70750411fd594b9c52f3ffff6c600,
+    type: 3}
+  m_PrefabInstance: {fileID: 5927038511110945631}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &579279573
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 579279571}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.3234092
+  m_Height: 4.04755
+  m_Direction: 1
+  m_Center: {x: -0.0000002932937, y: 2.6300497, z: -0.11600197}
 --- !u!1 &589393257 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8142879445435268383, guid: 93d48474ca0dc6f4dadd4f27abc258db,
@@ -10217,7 +10237,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &973805409
 Transform:
   m_ObjectHideFlags: 0
@@ -10374,7 +10394,7 @@ MonoBehaviour:
   Enemy_LV1: {fileID: 388879248}
   Enemy_LV2: {fileID: 1919613236}
   Enemy_LV3: {fileID: 2064281098}
-  UnlockLV1: 0
+  UnlockLV1: 1
   UnlockLV2: 0
   UnlockLV3: 0
 --- !u!114 &1237153526
@@ -15381,6 +15401,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1734364658 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4931612827609018884, guid: 66b70750411fd594b9c52f3ffff6c600,
+    type: 3}
+  m_PrefabInstance: {fileID: 5927038511110945631}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1734364661
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734364658}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0027408793, y: 0.00948535, z: 0.006216169}
+  m_Center: {x: -0.0126818335, y: 0.0000026572636, z: 0.026288407}
+--- !u!114 &1734364662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734364658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbef2361e290fe945a4aa2921103bdf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vitaModuloSigla: 0
+  DBScriptStarter: {fileID: 1237153522}
 --- !u!1 &1752468840
 GameObject:
   m_ObjectHideFlags: 0
@@ -16369,7 +16422,7 @@ ParticleSystem:
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 0.44
     donutRadius: 0.2
-    m_Position: {x: -0.25, y: 0, z: 0}
+    m_Position: {x: -0.15, y: 0, z: 0}
     m_Rotation: {x: 0, y: -90, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
@@ -20718,6 +20771,11 @@ PrefabInstance:
       propertyPath: DBScriptStarter
       value: 
       objectReference: {fileID: 1237153522}
+    - target: {fileID: 4931612827609018884, guid: 66b70750411fd594b9c52f3ffff6c600,
+        type: 3}
+      propertyPath: m_TagString
+      value: Schermo
+      objectReference: {fileID: 0}
     - target: {fileID: 5799063154634673097, guid: 66b70750411fd594b9c52f3ffff6c600,
         type: 3}
       propertyPath: m_RootOrder
@@ -20806,6 +20864,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Robot_Lv2_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8142879445435268383, guid: 93d48474ca0dc6f4dadd4f27abc258db,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8811997573386594213, guid: 93d48474ca0dc6f4dadd4f27abc258db,
         type: 3}
