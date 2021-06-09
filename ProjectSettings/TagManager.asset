@@ -10,6 +10,8 @@ TagManager:
   - ArmaBlu
   - Schermo1
   - Schermo2
+  - Schermo
+  - Schermo3
   layers:
   - Default
   - TransparentFX

@@ -10,6 +10,7 @@ public class NemicoManagerLV2 : MonoBehaviour
 {
     public float vitaModuloSigla;
     public float vitaModuloLinea;
+    private bool primoSchermoDistrutto;
 
     private string soluzione;
     private string enemycode;
@@ -21,7 +22,7 @@ public class NemicoManagerLV2 : MonoBehaviour
     {
         vitaModuloSigla = 40f;
         vitaModuloLinea = 40f;
-
+        primoSchermoDistrutto = false;
         //prendo database
         var DataBase = DBScriptStarter.GetComponent<DB_Generator>().DataBase;
 
@@ -65,15 +66,34 @@ public class NemicoManagerLV2 : MonoBehaviour
                 break;
         }
         
-        //manca ancora il controllo dell'ordine di esecuzione
 
         if (soluzione.Substring(1, 1) == schermoColpito)
         {
             if (tagArma == soluzione.Substring(0, 1))
             {
-                if (schermoColpito == "1") vitaModuloSigla -= damage;
-                else vitaModuloLinea -= damage;
+                if (schermoColpito == "1")
+                {
+                    if (vitaModuloSigla > 0)
+                    vitaModuloSigla -= damage;
+                }
+                else
+                {
+                    if (vitaModuloLinea > 0)
+                    vitaModuloLinea -= damage;
+                }
 
+
+                if (vitaModuloLinea <= 0)
+                {
+                    primoSchermoDistrutto = true;
+                    gameObject.GetComponent<LV2_Enemy_Generator>().DistruttoModulo(schermoColpito);
+                }
+                if (vitaModuloSigla <= 0)
+                {
+                    primoSchermoDistrutto = true;
+                    gameObject.GetComponent<LV2_Enemy_Generator>().DistruttoModulo(schermoColpito);
+
+                }
             }
             else
             {
@@ -83,17 +103,30 @@ public class NemicoManagerLV2 : MonoBehaviour
 
         if (soluzione.Substring(3, 1) == schermoColpito)
         {
-            if (tagArma == soluzione.Substring(2, 1))
+            if (tagArma == soluzione.Substring(2, 1) && primoSchermoDistrutto)
             {
-                if (schermoColpito == "1") vitaModuloSigla -= damage;
-                else vitaModuloLinea -= damage;
+
+                if (schermoColpito == "1")
+                {
+                    if (vitaModuloSigla > 0)
+                        vitaModuloSigla -= damage;
+                }
+                else if (schermoColpito == "2")
+                {
+                    if (vitaModuloLinea > 0)
+                        vitaModuloLinea -= damage;
+                }
+
+                if (vitaModuloLinea <= 0 && vitaModuloSigla <= 0)
+                {
+                    gameObject.GetComponent<LV2_Enemy_Generator>().DistruttoModulo(schermoColpito); //distrutto anche l'altro
+                }
             }
             else
             {
                 //penalità per lo shooter
             }
         }
-
 
 
         //muore

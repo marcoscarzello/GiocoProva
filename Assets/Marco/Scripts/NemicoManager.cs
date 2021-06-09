@@ -63,6 +63,7 @@ public class NemicoManager : MonoBehaviour
         //muore il modulo se arriva a zero
         if (vitaModuloSigla <= 0f)
         {
+            transform.parent.gameObject.GetComponent<LV1_Enemy_Generator>().Distrutto();
             Die();
         }
 
