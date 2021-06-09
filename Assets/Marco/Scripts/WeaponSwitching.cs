@@ -4,6 +4,8 @@ public class WeaponSwitching : MonoBehaviour
 {
     public int selectedWeapon = 0; 
 
+    private int previousChildCount = 0;
+
     void Start()
     {
         SelectWeapon();
@@ -11,8 +13,16 @@ public class WeaponSwitching : MonoBehaviour
 
     void Update()
     {
-
         int previousSW = selectedWeapon;
+
+        //fix bug
+
+        if (transform.childCount != previousChildCount)
+        {
+            selectedWeapon = transform.childCount - 1;
+        }
+
+        previousChildCount = transform.childCount;
 
         //cambio arma con rotellina
 
