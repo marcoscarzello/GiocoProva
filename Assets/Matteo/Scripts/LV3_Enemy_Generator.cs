@@ -137,4 +137,11 @@ public class LV3_Enemy_Generator : MonoBehaviour
     {
         return EnemyCode;
     }
+
+    public void DistruttoModulo(string schermo)
+    { //schermo = 1, 2, 3
+
+
+        Debug.Log(schermo + " distrutto");
+    }
 }

@@ -127,6 +127,50 @@ public class FucileAPompa : MonoBehaviour
                                              //Debug.Log(hit.collider.gameObject.tag);             
             }
 
+
+
+            //se il nemico è un nemico grosso di LV2
+
+            if (hit.collider != null)
+            {
+                if (hit.collider.transform != null)
+                {
+                    if (hit.collider.transform.parent != null)
+                    {
+
+                        NemicoManagerLV2 nemicoLV2 = hit.collider.transform.parent.gameObject.GetComponent<NemicoManagerLV2>();
+                        if (nemicoLV2 != null)
+                        {
+                            Debug.Log(hit.transform.gameObject.tag);
+                            nemicoLV2.Colpito(damage, tag, hit.transform.gameObject.tag); //invio danno e colore arma
+                        }
+                    }
+                }
+            }
+
+
+            //se il nemico è un nemico grosso di LV3
+
+            if (hit.collider != null)
+            {
+                if (hit.collider.transform != null)
+                {
+                    if (hit.collider.transform.parent != null)
+                    {
+
+                        NemicoManagerLV3 nemicoLV3 = hit.collider.transform.parent.gameObject.GetComponent<NemicoManagerLV3>();
+                        if (nemicoLV3 != null)
+                        {
+                            Debug.Log(hit.transform.gameObject.tag);
+                            nemicoLV3.Colpito(damage, tag, hit.transform.gameObject.tag);
+                        }
+                    }
+                }
+            }
+
+
+
+
             if (hit.rigidbody != null)
             {
                 hit.rigidbody.AddForce(-hit.normal * impactForce);

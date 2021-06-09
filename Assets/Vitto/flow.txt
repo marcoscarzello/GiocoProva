@@ -1,0 +1,6 @@
+1- db
+2- mappa armi e nemico lv1
+3- lv2
+4- lv3
+5- timer torna all'ascensore (cambia colore)
+Posizione approssimata
