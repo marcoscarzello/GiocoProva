@@ -13,6 +13,7 @@ public class GuardFSM : MonoBehaviour
     [SerializeField] private float _hidingDistance = 1f;
     [SerializeField] private float _stoppingDistance = 5f;
     [SerializeField] private Transform _gunPivot;
+    [SerializeField] private Transform _gunPivot2;
     [SerializeField] private Bullet _bullet;
     [SerializeField] private float _shootForce;
 
@@ -24,8 +25,8 @@ public class GuardFSM : MonoBehaviour
     [SerializeField] private float _targetFoundRotationSpeed;
     
     //Attack Parameter
-    public bool alreadyAttacked;
-    public float timeBetweenAttacks;
+    //public bool alreadyAttacked;
+    //public float timeBetweenAttacks;
 
     //Patroling
     public Vector3 walkPoint;
@@ -36,20 +37,24 @@ public class GuardFSM : MonoBehaviour
     
     bool goHideBool;
     bool stopChaseBool;
-
+  
+   
     private FiniteStateMachine<GuardFSM> _stateMachine;
 
     private NavMeshAgent agent;
     private int _currentWayPointIndex = 0;
 
+    private Animator _animator;
     private Renderer _renderer;
     private Color _originalColor;
     public Renderer Renderer => _renderer;
     public Color OriginalColor => _originalColor;
+    public Animator Animator => _animator;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        _animator = GetComponent<Animator>();
         _renderer = GetComponent<Renderer>();
         _rotatingBase.Rotate(Vector3.up, UnityEngine.Random.Range(0f, 355f));
         _originalColor = _renderer.material.color;
@@ -96,7 +101,7 @@ public class GuardFSM : MonoBehaviour
     }
     public void FollowTarget() => agent.SetDestination(_target.transform.position);
 
-    //FUNCTION FOR MOVING
+    //FUNZIONI PER IL MOVIMENTO 
     public void Patroling()
     {
         if (!walkPointSet) SearchWalkPoint();
@@ -151,7 +156,7 @@ public class GuardFSM : MonoBehaviour
         return false;
     }
 
-    //Nascondiglio Enemy
+    //NASCONDIGLI
     
     public Hide findClosestHide()
     {
@@ -173,33 +178,51 @@ public class GuardFSM : MonoBehaviour
         return closestHide;
     }
 
-    //Attack
-    public void AttackPlayer()
+    //ATTACCO
+    /*public void AttackPlayer()
     {
         //Make sure enemy doesn't move
-        //agent.SetDestination(transform.position);
+        
 
-        transform.LookAt(_target.transform.position);
+        Vector3 directionToTarget = _target.transform.position - transform.position;
+        directionToTarget.y = 0f;
+        directionToTarget.Normalize();
 
-        if (!alreadyAttacked)
-        {
-           
-            Vector3 targetHead = _target.transform.position;
-            Vector3 shootingDirection = (targetHead - _gunPivot.position).normalized;
-            Bullet bullet = Instantiate(_bullet, _gunPivot.position, Quaternion.identity);
-            bullet.transform.up = shootingDirection;
+        Vector3 newDir = Vector3.RotateTowards(_rotatingBase.forward, directionToTarget, _targetFoundRotationSpeed * Time.deltaTime, 0f);
+        _rotatingBase.rotation = Quaternion.LookRotation(newDir);
 
-            Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
-            bulletRb.AddForce(shootingDirection * _shootForce, ForceMode.Impulse);
-            Debug.Log("Sparo");
-
-            alreadyAttacked = true;
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
-        }
     }
+
     private void ResetAttack()
     {
+        firstShoot = false;
+        secondShoot = false;
         alreadyAttacked = false;
+    }*/
+    private void FirstShoot()
+    {
+        Vector3 targetHead = _target.transform.position;
+        Vector3 shootingDirection = (targetHead - _gunPivot2.position).normalized;
+        Bullet bullet = Instantiate(_bullet, _gunPivot2.position, Quaternion.identity);
+        bullet.transform.up = shootingDirection;
+
+
+        Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
+        bulletRb.AddForce(shootingDirection * _shootForce, ForceMode.Impulse);
+
+        Debug.Log("Sparo1");
+    }
+    private void SecondShoot()
+    {
+        Vector3 targetShoot = _target.transform.position;
+        Vector3 secondShootingDirection = (targetShoot - _gunPivot.position).normalized;
+        Bullet bullet2 = Instantiate(_bullet, _gunPivot.position, Quaternion.identity);
+        bullet2.transform.up = secondShootingDirection;
+
+        Rigidbody bulletRb2 = bullet2.GetComponent<Rigidbody>();
+        bulletRb2.AddForce(secondShootingDirection * _shootForce, ForceMode.Impulse);
+
+        Debug.Log("Sparo2");
     }
 
     //Coroutines
@@ -210,7 +233,8 @@ public class GuardFSM : MonoBehaviour
         goHideBool = false;
 
     }
-   
+  
+
     public IEnumerator stopChase()
     {
         stopChaseBool = false;
@@ -240,6 +264,7 @@ public class PatrolState : State
     public override void Enter()
     {
         _guard.StopAgent(false);
+        _guard.Animator.SetBool("Attack", false);
         //_guard.Renderer.material.color = _guard.OriginalColor;
     }
 
@@ -267,6 +292,7 @@ public class ChaseState : State
         _guard.StopAgent(false);
         _guard.Renderer.material.color = Color.yellow;
         _guard.StartCoroutine(_guard.stopChase());
+        _guard.Animator.SetBool("Attack", false);
     }
 
     public override void Tik()
@@ -275,12 +301,15 @@ public class ChaseState : State
         _guard.FollowTarget();
         if (_guard.IsTargetInSight())
         {
-            _guard.AttackPlayer();
+            _guard.Animator.SetBool("Attack", true);
+            //_guard.AttackPlayer();
         }
+      
     }
 
     public override void Exit()
     {
+        _guard.Animator.SetBool("Attack", true);
         _guard.StopAllCoroutines();
     }
 }
@@ -303,7 +332,11 @@ public class StopState : State
     public override void Tik()
     {
         _guard.PointTarget();
-        _guard.AttackPlayer();
+        if (_guard.IsTargetInSight())
+        {
+            _guard.Animator.SetBool("Attack", true);
+            //_guard.AttackPlayer();
+        }
 
     }
 
@@ -325,6 +358,7 @@ public class HideState : State
     {
         _guard.StopAgent(false);
         _guard.Renderer.material.color = Color.red;
+        _guard.Animator.SetBool("Attack", true);
     }
 
     public override void Tik()
@@ -332,7 +366,12 @@ public class HideState : State
         if (_guard.IsTargetInSight())
         {
             _guard.PointTarget();
-            _guard.AttackPlayer();
+            _guard.Animator.SetBool("Attack", true);
+            //_guard.AttackPlayer();
+        }
+        else
+        {
+            _guard.Animator.SetBool("Attack", false);
         }
         _guard.findClosestHide();
     }
