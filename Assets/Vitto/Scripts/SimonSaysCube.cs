@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SimonSaysCube : MonoBehaviour
 {
     private SimonSaysGameBoard simonGameBoard;
 
-    private MeshRenderer meshRenderer;
+    private RawImage Raw;
     public Material InactiveMaterial;
     public Material ActiveMaterial;
 
@@ -17,9 +18,9 @@ public class SimonSaysCube : MonoBehaviour
 
     private void Awake()
     {
-        meshRenderer = GetComponent<MeshRenderer>();
+        Raw = GetComponent<RawImage>();
 
-        meshRenderer.material = InactiveMaterial;
+        Raw.color = InactiveMaterial.color;
 
         simonGameBoard = GetComponentInParent<SimonSaysGameBoard>();
     }
@@ -31,29 +32,29 @@ public class SimonSaysCube : MonoBehaviour
 
     public IEnumerator SetActiveRoutine()
     {
-        meshRenderer.material = ActiveMaterial;
+        Raw.color = ActiveMaterial.color;
 
         yield return new WaitForSeconds(ActiveDurationSeconds);
 
-        meshRenderer.material = InactiveMaterial;
+        Raw.color = InactiveMaterial.color;
 
         yield return new WaitForSeconds(CooldownDurationSeconds);
     }
 
     public IEnumerator SetActiveRoutine(float activeDuration, float cooldownDuration)
     {
-        meshRenderer.material = ActiveMaterial;
+        Raw.color = ActiveMaterial.color;
 
         yield return new WaitForSeconds(activeDuration);
 
-        meshRenderer.material = InactiveMaterial;
+        Raw.color = InactiveMaterial.color;
 
         yield return new WaitForSeconds(cooldownDuration);
     }
 
     private void SetInactive()
     {
-        meshRenderer.material = InactiveMaterial;
+        Raw.color = InactiveMaterial.color;
     }
 
     public void PlayerSelect()

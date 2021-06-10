@@ -33,8 +33,8 @@ public class SimonSaysGameBoard : MonoBehaviour
 
         playerInputController = GetComponent<PlayerInputHandler>();
         
-        playerInputController.SetCanClick(false);
-        playerInputController.SetCanType(true);
+        playerInputController.setCanClick(false);
+        playerInputController.setCanType(true);
     }
 
     private void SetupGameBoard()
@@ -94,8 +94,8 @@ public class SimonSaysGameBoard : MonoBehaviour
         StartScreenGO.SetActive(false);
         GameOverScreenGO.SetActive(false);
 
-        playerInputController.SetCanClick(false);
-        playerInputController.SetCanType(false);
+        playerInputController.setCanClick(false);
+        playerInputController.setCanType(false);
 
         StartCoroutine(PlaySequenceRoutine());
     }
@@ -114,7 +114,7 @@ public class SimonSaysGameBoard : MonoBehaviour
     {
         yield return new WaitForSeconds(delayBeforeNewSequencePlays);
 
-        playerInputController.SetCanClick(false);
+        playerInputController.setCanClick(false);
         GenerateSequence();
 
         for (int i = 0; i < currentSequenceLength; ++i)
@@ -131,7 +131,7 @@ public class SimonSaysGameBoard : MonoBehaviour
     {
         nextIndexToCheck = 0;
         numberOfPlayerInputsReceived = 0;
-        playerInputController.SetCanClick(true);
+        playerInputController.setCanClick(true);
 
         while (numberOfPlayerInputsReceived < currentSequenceLength)
         {
@@ -139,7 +139,7 @@ public class SimonSaysGameBoard : MonoBehaviour
         }
 
         //Player finished sequence -- advance
-        playerInputController.SetCanClick(false);
+        playerInputController.setCanClick(false);
         ++playerScore;
         UpdateScoreText();
         currentSequenceLength++;
@@ -161,8 +161,8 @@ public class SimonSaysGameBoard : MonoBehaviour
             StopAllCoroutines();
             ScoreText.gameObject.SetActive(false);
             GameOverScreenGO.SetActive(true);
-            playerInputController.SetCanClick(false);
-            playerInputController.SetCanType(true);
+            playerInputController.setCanClick(false);
+            playerInputController.setCanType(true);
         }
     }
 
