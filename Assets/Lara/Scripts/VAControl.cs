@@ -1,39 +1,53 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class VAControl : MonoBehaviour
 {
-    Rigidbody2D rb;
-    float moveSpeed;
     public GameObject explosion;
-    Vector2 direction;
+    RectTransform virusPanel;
+    RectTransform rt;
+    Color startColor = new Color(0.02352941f, 1f, 0.7254902f);
+    Color endColor = new Color(0.9254902f, 0.1647059f, 0.4156863f);
+    Color lerpedColor;
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        moveSpeed = Random.Range(1f, 3f);
+        rt = gameObject.GetComponent<RectTransform>();
+
+        InvokeRepeating(nameof(NewPos), Random.Range(1, 2), 1f);
+        lerpedColor = startColor;
+        gameObject.GetComponent<Image>().color = lerpedColor;
+
+        StartCoroutine(ChangeColour());
     }
 
     void Update()
     {
-        MoveVirus();
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit2D hit = Physics2D.GetRayIntersection(ray, Mathf.Infinity);
-
-            if (hit.collider != null)
-            {
-                Destroy(gameObject);
-            }
-        }
     }
 
 
-    void MoveVirus()
+    void NewPos()
     {
-        direction = new Vector2 (0f,0f);
-        rb.velocity = new Vector2(direction.x * moveSpeed, direction.y * moveSpeed);
+        float xPos = Random.Range(0, 1920);
+        float yPos = Random.Range(0, 1080);
+        Vector3 newPos = new Vector3(xPos, yPos, 0f);
+        rt.anchoredPosition = newPos;
+    }
+
+    public void Distruggiti()
+    {
+        Destroy(gameObject);
+    }
+
+    private IEnumerator ChangeColour()
+    {
+        float tick = 0f;
+        while (gameObject.GetComponent<Image>().color != endColor)
+        {
+            tick += Time.deltaTime * 0.05f;
+            gameObject.GetComponent<Image>().color = Color.Lerp(startColor, endColor, tick);
+            yield return null;
+        }
     }
 }
