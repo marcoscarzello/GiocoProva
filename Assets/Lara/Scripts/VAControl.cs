@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class VAControl : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class VAControl : MonoBehaviour
     {
         rt = gameObject.GetComponent<RectTransform>();
 
-        InvokeRepeating(nameof(NewPos), Random.Range(1, 2), 1f);
+        InvokeRepeating(nameof(NewPos), 0f, Random.Range(1f, 5f));
         lerpedColor = startColor;
         gameObject.GetComponent<Image>().color = lerpedColor;
 
@@ -29,10 +30,16 @@ public class VAControl : MonoBehaviour
 
     void NewPos()
     {
-        float xPos = Random.Range(0, 1920);
-        float yPos = Random.Range(0, 1080);
+        float xPos = Random.Range(0, Screen.width);
+        float yPos = Random.Range(0, Screen.height);
+
+        //float xPos = Random.Range(0, 1920);
+        //float yPos = Random.Range(0, 1080);
         Vector3 newPos = new Vector3(xPos, yPos, 0f);
-        rt.anchoredPosition = newPos;
+
+        transform.DOMove(newPos, 5);
+
+        //rt.anchoredPosition = newPos;
     }
 
     public void Distruggiti()
@@ -45,7 +52,7 @@ public class VAControl : MonoBehaviour
         float tick = 0f;
         while (gameObject.GetComponent<Image>().color != endColor)
         {
-            tick += Time.deltaTime * 0.05f;
+            tick += Time.deltaTime * 0.14f;
             gameObject.GetComponent<Image>().color = Color.Lerp(startColor, endColor, tick);
             yield return null;
         }
