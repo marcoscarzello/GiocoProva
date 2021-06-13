@@ -7,6 +7,9 @@ using System;
 public class PlayerInputHandler : MonoBehaviour
 {
     const int ncubes = 4;
+    public int cube = -1;
+    public GameObject press = null;
+    private SimonSaysCube[] children;
 
     private bool canType=true;
     private bool canClick=true;
@@ -18,21 +21,19 @@ public class PlayerInputHandler : MonoBehaviour
 
     private SimonSaysGameBoard simonGameBoard;
     private SimonSaysCube lastSimonCubeHit;
-
-    public int cube = -1;
-    public GameObject press=null;
-    private GameObject[] children;
     public LayerMask CollisionMask;
     
     private void Awake()
     {
-        children = new GameObject[ncubes];
+        //children = new GameObject[ncubes];
         mainCamera = Camera.main;
         simonGameBoard = GetComponent<SimonSaysGameBoard>();
         
-        if (String.Equals(gameObject.name, "Press"))
-            for (int i=0; i<ncubes; i++)
-                children[i]=press.transform.GetChild(i).gameObject;
+        //if (String.Equals(gameObject.name, "Press"))
+        //    for (int i=0; i<ncubes; i++)
+        //        children[i]=press.transform.GetChild(i).gameObject;
+        children=GetComponentsInChildren<SimonSaysCube>();
+        Debug.Log("children[cube]", children[0]);
     }
 
     private void Update()
@@ -43,7 +44,9 @@ public class PlayerInputHandler : MonoBehaviour
 
             //if (Physics.Raycast(raycast, out raycastHit, 10f, CollisionMask.value, QueryTriggerInteraction.Collide))
             {
-                lastSimonCubeHit = raycastHit.collider.GetComponent<SimonSaysCube>();
+
+                //lastSimonCubeHit = children[cube].GetComponent<SimonSaysCube>();
+                lastSimonCubeHit = children[cube];
 
                 if (lastSimonCubeHit != null)
                 {
