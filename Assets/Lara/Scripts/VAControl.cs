@@ -12,10 +12,17 @@ public class VAControl : MonoBehaviour
     Color startColor = new Color(0.02352941f, 1f, 0.7254902f);
     Color endColor = new Color(0.9254902f, 0.1647059f, 0.4156863f);
     Color lerpedColor;
+
+    [SerializeField] private VirusCounter _counter;
+    [SerializeField] private UIntegrityBar _uibar;
+
+
     void Start()
     {
-        rt = gameObject.GetComponent<RectTransform>();
+        _counter = GameObject.Find("counter").GetComponent<VirusCounter>();
+        _uibar = GameObject.Find("UIntegrity bar").GetComponent<UIntegrityBar>();
 
+        rt = gameObject.GetComponent<RectTransform>();
         InvokeRepeating(nameof(NewPos), 0f, Random.Range(1f, 5f));
         lerpedColor = startColor;
         gameObject.GetComponent<Image>().color = lerpedColor;
@@ -25,6 +32,12 @@ public class VAControl : MonoBehaviour
 
     void Update()
     {
+        if(gameObject.GetComponent<Image>().color == endColor)  //se un virus diventa rosso 
+        {
+            
+            _uibar.SetDamage(10); //danno di -10% alla integrity bar
+            Destroy(gameObject); // si autodistrugge
+        }
     }
 
 
@@ -44,6 +57,15 @@ public class VAControl : MonoBehaviour
 
     public void Distruggiti()
     {
+        if (_counter.GetKilledNum() != 30)
+            _counter.OneMoreKilled();
+        else
+        {
+            VirusAttack.spawnAllowed = false;
+            _counter.ResetKilledCounter();
+            Destroy(gameObject);
+        }
+
         Destroy(gameObject);
     }
 

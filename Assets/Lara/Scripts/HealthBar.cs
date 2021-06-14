@@ -23,4 +23,12 @@ public class HealthBar : MonoBehaviour
         SetMaxHealth(100);
         SetHealth(100);
     }
+
+    private void Update()
+    {
+        if (slider.value == 0)
+        {
+            Debug.Log("GameOver");
+        }
+    }
 }

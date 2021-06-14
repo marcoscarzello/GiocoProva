@@ -11,13 +11,12 @@ public class VirusAttack : MonoBehaviour
 
     void Start()
     {
-        spawnAllowed = true;
+        spawnAllowed = false;
 
 
         for (int i = 0; i < 3; i++) {
 
             SpawnVirus();
-
         }
 
 
