@@ -27,7 +27,7 @@ public class VAControl : MonoBehaviour
         lerpedColor = startColor;
         gameObject.GetComponent<Image>().color = lerpedColor;
 
-        StartCoroutine(ChangeColour());
+        StartCoroutine(ChangeColour());     //pian piano diventa da verde a rosso (quando sarà rosso esploderà- devi ucciderlo prima che accada) 
     }
 
     void Update()
@@ -36,7 +36,8 @@ public class VAControl : MonoBehaviour
         {
             
             _uibar.SetDamage(10); //danno di -10% alla integrity bar
-            Destroy(gameObject); // si autodistrugge
+            Destroy(gameObject); //si autodistrugge
+                                  //QUI dovrà anche attivarsi l'esplosione
         }
     }
 
@@ -46,8 +47,6 @@ public class VAControl : MonoBehaviour
         float xPos = Random.Range(0, Screen.width);
         float yPos = Random.Range(0, Screen.height);
 
-        //float xPos = Random.Range(0, 1920);
-        //float yPos = Random.Range(0, 1080);
         Vector3 newPos = new Vector3(xPos, yPos, 0f);
 
         transform.DOMove(newPos, 5);
@@ -57,13 +56,14 @@ public class VAControl : MonoBehaviour
 
     public void Distruggiti()
     {
-        if (_counter.GetKilledNum() != 30)
+        if (_counter.GetKilledNum() != 30)  //se non ne ha ancora uccisi 30 allora aggiorna il counter 
             _counter.OneMoreKilled();
         else
-        {
-            VirusAttack.spawnAllowed = false;
-            _counter.ResetKilledCounter();
-            Destroy(gameObject);
+        {   //arrivi qui se ne hai uccisi quanti dovevi (30)
+
+            VirusAttack.spawnAllowed = false;   //smette di spawnare 
+            _counter.ResetKilledCounter();      //resetta il counter 
+            Destroy(gameObject);                //cancella i viruss
         }
 
         Destroy(gameObject);
