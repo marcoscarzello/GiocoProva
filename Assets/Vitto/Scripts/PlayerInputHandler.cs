@@ -8,7 +8,13 @@ public class PlayerInputHandler : MonoBehaviour
 {
     const int ncubes = 4;
     public int cube = -1;
-    public GameObject press = null;
+    public bool beg = false;
+    public bool clicked = false;
+    public bool repeat = false;
+    public GameObject buttons = null;
+
+    //public GameObject press = null;
+    //public GameObject rep = null;
     private SimonSaysCube[] children;
 
     private bool canType=true;
@@ -38,24 +44,33 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void Update()
     {
-        if (canClick && Input.GetMouseButtonDown(0))
-        {
-            //raycast = mainCamera.ScreenPointToRay(Input.mousePosition);
-
-            //if (Physics.Raycast(raycast, out raycastHit, 10f, CollisionMask.value, QueryTriggerInteraction.Collide))
+        if (canClick)
+            if (clicked/*Input.GetMouseButtonDown(0)*/)
             {
+                clicked = false;
+                //raycast = mainCamera.ScreenPointToRay(Input.mousePosition);
 
-                //lastSimonCubeHit = children[cube].GetComponent<SimonSaysCube>();
-                lastSimonCubeHit = children[cube];
-
-                if (lastSimonCubeHit != null)
+                //if (Physics.Raycast(raycast, out raycastHit, 10f, CollisionMask.value, QueryTriggerInteraction.Collide))
                 {
-                    lastSimonCubeHit.PlayerSelect();
+
+                    //lastSimonCubeHit = children[cube].GetComponent<SimonSaysCube>();
+                    lastSimonCubeHit = children[cube];
+
+                    if (lastSimonCubeHit != null)
+                    {
+                        lastSimonCubeHit.PlayerSelect();
+                    }
                 }
             }
-        }
+            else if (repeat)
+            {
+                Debug.Log("ripetiiii");
+                canClick = false;
+                simonGameBoard.setGenerate(false);
+            }
 
-        if (canType && Input.GetKeyDown(KeyCode.Space))
+        //if (canType && Input.GetKeyDown(KeyCode.Space))
+        if (beg && canType)
         {
             simonGameBoard.StartNewGame();
         }
@@ -63,7 +78,19 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void setCube(int c) { cube = c; }
 
-    public void setCanClick(bool setting){canClick = setting;}
+    public void setClicked(bool c) { if(canClick) clicked = c; }
 
-    public void setCanType(bool setting){canType = setting;}
+    public void setBeg(bool s) { beg = s; }
+
+    public void setCanClick(bool c) { canClick = c; }
+
+    public void setRepeat(bool r) { repeat = r; }
+    //public void enRepeat() { rep.SetActive(true); }
+    public bool getRepeat() { return repeat; }
+
+    public void setCanType(bool setting) { canType = setting; }
+
+    public bool getCanclick() { return canClick; }
+
+    public void end() { buttons.SetActive(false); }
 }

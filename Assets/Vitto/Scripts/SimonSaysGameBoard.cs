@@ -5,6 +5,11 @@ using UnityEngine.UI;
 
 public class SimonSaysGameBoard : MonoBehaviour
 {
+    public GameObject rep=null;
+    private Button repeat = null;
+    private bool generate = true;
+    private int durata=6;
+
     private PlayerInputHandler playerInputController;
     private bool hasFailed;
 
@@ -32,7 +37,8 @@ public class SimonSaysGameBoard : MonoBehaviour
         SetupGameBoard();
 
         playerInputController = GetComponent<PlayerInputHandler>();
-        
+        repeat = rep.GetComponent<Button>();
+
         playerInputController.setCanClick(false);
         playerInputController.setCanType(true);
     }
@@ -98,10 +104,12 @@ public class SimonSaysGameBoard : MonoBehaviour
         playerInputController.setCanType(false);
 
         StartCoroutine(PlaySequenceRoutine());
+
     }
 
     private void GenerateSequence()
     {
+        Debug.Log("GenerateSequence");
         currentSequence = new int[currentSequenceLength];
 
         for (int i = 0; i < currentSequenceLength; ++i)
@@ -112,10 +120,16 @@ public class SimonSaysGameBoard : MonoBehaviour
 
     private IEnumerator PlaySequenceRoutine()
     {
+        Debug.Log("PlaySequenceRoutine");
+        repeat.enabled = false;
         yield return new WaitForSeconds(delayBeforeNewSequencePlays);
 
         playerInputController.setCanClick(false);
-        GenerateSequence();
+
+        if (generate)
+            GenerateSequence();
+        else
+            generate = true;
 
         for (int i = 0; i < currentSequenceLength; ++i)
         {
@@ -123,12 +137,21 @@ public class SimonSaysGameBoard : MonoBehaviour
 
             yield return StartCoroutine(nextCube.SetActiveRoutine());
         }
-
+        repeat.enabled = true;
         StartCoroutine(WaitForAnswerRoutine());
     }
 
     private IEnumerator WaitForAnswerRoutine()
     {
+        Debug.Log("WaitForAnswerRoutine");
+        //if (playerInputController.getRepeat())
+        //{
+        //    Debug.Log("WaitForAnswerRoutine    repeat");
+        //    yield return null;
+        //    generate = false;
+        //    playerInputController.setRepeat(false);
+        //    StartCoroutine(PlaySequenceRoutine());
+        //}
         nextIndexToCheck = 0;
         numberOfPlayerInputsReceived = 0;
         playerInputController.setCanClick(true);
@@ -140,10 +163,34 @@ public class SimonSaysGameBoard : MonoBehaviour
 
         //Player finished sequence -- advance
         playerInputController.setCanClick(false);
-        ++playerScore;
-        UpdateScoreText();
         currentSequenceLength++;
-        StartCoroutine(PlaySequenceRoutine());
+        playerScore = currentSequenceLength-2;
+        UpdateScoreText();
+        if (currentSequenceLength < durata)
+            StartCoroutine(PlaySequenceRoutine());
+        else if(currentSequenceLength==durata)
+        {
+            StopAllCoroutines();
+            GameOverScreenGO.SetActive(true);
+            playerInputController.end();
+        }
+        else
+        {
+            //incorrect -- game over
+            //StopAllCoroutines();
+            if (currentSequenceLength > 2)
+            {
+                currentSequenceLength--;
+                playerScore = currentSequenceLength - 2;
+                UpdateScoreText();
+            }
+            StartCoroutine(PlaySequenceRoutine());
+            //ScoreText.gameObject.SetActive(false);
+            //GameOverScreenGO.SetActive(true);
+            //playerInputController.setCanClick(false);
+            //playerInputController.setCanType(true);
+        }
+        //StartCoroutine(PlaySequenceRoutine());
     }
 
     public void RegisterInput(int cubeIndex)
@@ -158,17 +205,36 @@ public class SimonSaysGameBoard : MonoBehaviour
         else
         {
             //incorrect -- game over
-            StopAllCoroutines();
-            ScoreText.gameObject.SetActive(false);
-            GameOverScreenGO.SetActive(true);
-            playerInputController.setCanClick(false);
-            playerInputController.setCanType(true);
+            //StopAllCoroutines();
+            if (currentSequenceLength > 2)
+            {
+                currentSequenceLength--;
+                playerScore = currentSequenceLength - 2;
+                UpdateScoreText();
+            }
+            StartCoroutine(PlaySequenceRoutine());
+            //ScoreText.gameObject.SetActive(false);
+            //GameOverScreenGO.SetActive(true);
+            //playerInputController.setCanClick(false);
+            //playerInputController.setCanType(true);
         }
     }
 
     private void UpdateScoreText()
     {
         ScoreText.text = scoreTextBase + playerScore;
-        GameOverScoreText.text = scoreTextBase + playerScore;
+        //GameOverScoreText.text = scoreTextBase + playerScore;
+    }
+
+    public void setGenerate(bool g)
+    {
+        generate = g;
+        if (!generate)
+        {
+            playerInputController.setRepeat(false);
+            playerInputController.setCanClick(false);
+            playerInputController.setCanType(false);
+            StartCoroutine(PlaySequenceRoutine());
+        }            
     }
 }

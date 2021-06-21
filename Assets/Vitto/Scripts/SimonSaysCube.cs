@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SimonSaysCube : MonoBehaviour
 {
     private SimonSaysGameBoard simonGameBoard;
+    //private PlayerInputHandler playerinputhandler;
 
     private RawImage Raw;
     public Material InactiveMaterial;
@@ -23,8 +24,15 @@ public class SimonSaysCube : MonoBehaviour
         Raw.color = InactiveMaterial.color;
 
         simonGameBoard = GetComponentInParent<SimonSaysGameBoard>();
+        //playerinputhandler = GetComponentInParent<PlayerInputHandler>();
     }
 
+    //private void Update()
+    //{
+    //    if(playerinputhandler.getCanclick()
+
+    //}
+    
     public void SetActiveForPlayerSequence()
     {
         StartCoroutine(SetActiveRoutine(ActiveDurationSeconds / 3f, CooldownDurationSeconds / 3f));
