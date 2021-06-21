@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 8475479244074246669}
   - component: {fileID: 4769638435418992040}
   - component: {fileID: 7338017093404727650}
+  - component: {fileID: 3977883577975119948}
+  - component: {fileID: 6144408462293660419}
   m_Layer: 0
   m_Name: block5
   m_TagString: Untagged
@@ -81,3 +83,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &3977883577975119948
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9139250443238357175}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.050443, y: 3, z: 1.0504241}
+  m_Center: {x: 0.47474808, y: -0.000000059604645, z: 0.47478798}
+--- !u!114 &6144408462293660419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9139250443238357175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 051f4cf57ff61417f9c111c9d5efd447, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
