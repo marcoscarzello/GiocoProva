@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Minimap : MonoBehaviour
 {
+    private int state=0; /*1- db     2- mappa armi e nemico lv1      3- lv2      4- lv3     5- timer torna all'ascensore */
+    private int power = 0; //stati powerup
+
     private Animator animator = null;
     private GameObject minimapborder = null;
     private GameObject footprint = null;
@@ -16,6 +19,7 @@ public class Minimap : MonoBehaviour
     public GameObject z4 = null;
     public GameObject db = null;
     public GameObject gun = null;
+    public GameObject countdown = null;
 
     private GameManager gm = null;
 
@@ -36,21 +40,33 @@ public class Minimap : MonoBehaviour
 
     void Update()
     {
-
-        /*if (Input.GetKeyDown(KeyCode.M) && FindObjectOfType<DialogueManager>().ended && !volpe.GetComponent<MovementController>().blocca)
-        {
-            if (!open)
-                keyM();
-            else
-                keyEscape();
-        }
-
-        //if (Input.GetKeyDown(KeyCode.M) && open)
-        //{
-        //    keyEscape();
-        //}*/
+        if (state == 0)
+            icons(gm.getState());
     }
 
+    private void icons(int state)
+    {
+        switch (state)
+        {
+            case 1:
+                db.SetActive(true);
+                break;
+            case 2:
+                gun.SetActive(true);
+                lv1.SetActive(true);
+                break;
+            case 3:
+                lv2.SetActive(true);
+                break;
+            case 4:
+                lv3.SetActive(true);
+                break;
+            case 5:
+                countdown.SetActive(true);
+                break;
+                //default: break;
+        }
+    }
 
     void setTime(int time)
     {
