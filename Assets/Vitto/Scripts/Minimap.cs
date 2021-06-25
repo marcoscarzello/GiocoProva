@@ -56,9 +56,11 @@ public class Minimap : MonoBehaviour
                 lv1.SetActive(true);
                 break;
             case 3:
+                lv1.SetActive(false);
                 lv2.SetActive(true);
                 break;
             case 4:
+                lv2.SetActive(false);
                 lv3.SetActive(true);
                 break;
             case 5:

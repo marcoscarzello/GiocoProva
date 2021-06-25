@@ -6,7 +6,7 @@ public class SR_RenderCamera : MonoBehaviour
 
     public int FileCounter = 0;
 
-    private void LateUpdate()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.F9))
         {
