@@ -51,8 +51,16 @@ public class GuardFSM : MonoBehaviour
     public Color OriginalColor => _originalColor;
     public Animator Animator => _animator;
 
+    //Var Nuovo Movimento
+    public float wanderRadius;
+    public float wanderTimer;
+    private float timer;
+
+
+
     void Start()
     {
+        timer = wanderTimer;
         agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
         _renderer = GetComponent<Renderer>();
@@ -80,13 +88,29 @@ public class GuardFSM : MonoBehaviour
         _stateMachine.AddTransition(stopState, chaseState, () => DistanceFromTarget() > _stoppingDistance);
 
         _stateMachine.AddTransition(hideState, chaseState, () => ArrivedInHide() <= _hidingDistance );
-       
+
 
         //START STATE
+        Vector3 walkpoint = RandomNavSphere(transform.position, wanderRadius, -1);
         _stateMachine.SetState(patrolState);
     }
 
-    void Update() => _stateMachine.Tik();
+    void Update() { 
+        _stateMachine.Tik();
+
+        //NuovoMovimento
+        timer += Time.deltaTime;
+
+        if (timer >= wanderTimer || agent.remainingDistance <= 10.0f || agent.velocity.sqrMagnitude == 0f)
+        {
+            Debug.Log("ARRIVATO IN POS");
+            Vector3 walkpoint = RandomNavSphere(transform.position, wanderRadius, -1);
+            agent.SetDestination(walkpoint);
+            timer = 0;
+        }
+
+        //NuovoMovimento
+    }
     public void StopAgent(bool stop) => agent.isStopped = stop;
 
 
@@ -98,25 +122,47 @@ public class GuardFSM : MonoBehaviour
 
         Vector3 newDir = Vector3.RotateTowards(_rotatingBase.forward, directionToTarget, _targetFoundRotationSpeed * Time.deltaTime, 0f);
         _rotatingBase.rotation = Quaternion.LookRotation(newDir);
+       
+
     }
     public void FollowTarget() => agent.SetDestination(_target.transform.position);
 
-    //FUNZIONI PER IL MOVIMENTO 
-    public void Patroling()
+    //NuovoMovimento
+    public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
+    {
+        Vector3 randDirection = UnityEngine.Random.insideUnitSphere * dist;
+
+        randDirection += origin;
+
+        NavMeshHit navHit;
+
+        NavMesh.SamplePosition(randDirection, out navHit, dist, layermask);
+
+        return navHit.position;
+    }
+    //NuovoMovimento
+
+
+    //FUNZIONI PER IL MOVIMENTO
+    /*    public void Patroling()
     {
         if (!walkPointSet) SearchWalkPoint();
 
         if (walkPointSet)
             agent.SetDestination(walkPoint);
 
+
+
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
+
         //Walkpoint reached
-        if (distanceToWalkPoint.magnitude < 1f)
+        if (distanceToWalkPoint.magnitude < 10f)
             walkPointSet = false;
     }
     private void SearchWalkPoint()
     {
+
         //Calculate random point in range
         float randomZ = UnityEngine.Random.Range(-walkPointRange, walkPointRange);
         float randomX = UnityEngine.Random.Range(-walkPointRange, walkPointRange);
@@ -125,7 +171,9 @@ public class GuardFSM : MonoBehaviour
 
         if (Physics.Raycast(walkPoint, -transform.up, 2f, _visibilityRaLayerMask))
             walkPointSet = true;
-    }
+    }*/
+
+
     public bool IsTargetInSight()
     {
 
@@ -270,7 +318,8 @@ public class PatrolState : State
 
     public override void Tik()
     {
-        _guard.Patroling();
+        // _guard.Patroling();
+        
     }
 
     public override void Exit()

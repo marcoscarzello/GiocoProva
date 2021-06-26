@@ -12,11 +12,12 @@ TagManager:
   - Schermo2
   - Schermo
   - Schermo3
+  - Bullet
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Wall
   - Water
   - UI
   - 
