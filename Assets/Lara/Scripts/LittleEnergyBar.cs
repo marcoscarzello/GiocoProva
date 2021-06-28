@@ -13,13 +13,16 @@ public class LittleEnergyBar : MonoBehaviour
         switch (name)
         {
             case "EnergyBarHealth":
-                SetMaxEnergy(35);
+                SetMaxEnergy(30);
                 break;
             case "EnergyBarAmmos":
                 SetMaxEnergy(100);
                 break;
             case "EnergyBarFire":
                 SetMaxEnergy(60);
+                break;
+            case "EnergyBarPosition":
+                SetMaxEnergy(40);
                 break;
             default:
                 break;
