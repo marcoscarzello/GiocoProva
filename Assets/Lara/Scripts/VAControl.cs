@@ -15,11 +15,12 @@ public class VAControl : MonoBehaviour
 
     [SerializeField] private VirusCounter _counter;
     [SerializeField] private UIntegrityBar _uibar;
-
+     
 
     void Start()
     {
         _counter = GameObject.Find("counter").GetComponent<VirusCounter>();
+
         _uibar = GameObject.Find("UIntegrity bar").GetComponent<UIntegrityBar>();
 
         rt = gameObject.GetComponent<RectTransform>();
@@ -57,7 +58,9 @@ public class VAControl : MonoBehaviour
     public void Distruggiti()
     {
         if (_counter.GetKilledNum() != 30)  //se non ne ha ancora uccisi 30 allora aggiorna il counter 
+        {
             _counter.OneMoreKilled();
+        }
         else
         {   //arrivi qui se ne hai uccisi quanti dovevi (30)
 

@@ -9,17 +9,20 @@ public class VirusCounter : MonoBehaviour
     private int killed; 
     private void Start()
     {
-        testo.text =(30 - killed).ToString(); 
+        //testo.text =(30 - killed).ToString(); 
     }
 
-    private void Update()
-    {
-        testo.text =(30- killed).ToString(); 
-    }
+     void Update()
+     {
+        testo.text =(30 - killed).ToString();
+        Debug.Log("Update");
+     }
 
     public void OneMoreKilled()
     {
         killed += 1;
+        Debug.Log(killed);
+
     }
 
     public void ResetKilledCounter()
