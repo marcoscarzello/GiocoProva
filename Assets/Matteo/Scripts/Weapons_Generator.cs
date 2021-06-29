@@ -70,7 +70,7 @@ public class Weapons_Generator : MonoBehaviour
         for (int i = 0; i < (NumeroArmiPerColore*3); i++)
         {
             int tipo = Convert.ToInt32(DataBaseArmi.Rows[i][1]);
-            int pW = rnd.Next(0, positionWeapons.Count);
+            int pW = rnd.Next(positionWeapons.Count);
             GameObject weapon = (GameObject)Instantiate(Prefabs[tipo], positionWeapons[pW], Quaternion.identity);
             positionWeapons.RemoveAt(pW);
             weapon.transform.parent = this.gameObject.transform.Find("WeaponsContainer").transform;
