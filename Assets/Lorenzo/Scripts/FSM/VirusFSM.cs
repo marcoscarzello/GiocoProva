@@ -41,6 +41,12 @@ public class VirusFSM : MonoBehaviour
     public Color OriginalColor => _originalColor;
     public Animator Animator => _animator;
 
+
+    //Var Nuovo Movimento
+    public float wanderRadius;
+    public float wanderTimer;
+    private float timer;
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -67,10 +73,27 @@ public class VirusFSM : MonoBehaviour
 
 
         //START STATE
+        Vector3 walkpoint = RandomNavSphere(transform.position, wanderRadius, -1);
         _stateMachine.SetState(patrolState);
     }
 
-    void Update() => _stateMachine.Tik();
+    void Update()
+    {
+        _stateMachine.Tik();
+
+        //NuovoMovimento
+        timer += Time.deltaTime;
+
+        if (timer >= wanderTimer || agent.remainingDistance <= 10.0f || agent.velocity.sqrMagnitude == 0f)
+        {
+            Debug.Log("ARRIVATO IN POS");
+            Vector3 walkpoint = RandomNavSphere(transform.position, wanderRadius, -1);
+            agent.SetDestination(walkpoint);
+            timer = 0;
+        }
+
+        //NuovoMovimento
+    }
     public void StopAgent(bool stop) => agent.isStopped = stop;
 
 
@@ -86,6 +109,20 @@ public class VirusFSM : MonoBehaviour
     public void FollowTarget() => agent.SetDestination(_target.transform.position);
 
     //FUNCTION FOR MOVING
+    public static Vector3 RandomNavSphere(Vector3 origin, float dist, int layermask)
+    {
+        Vector3 randDirection = UnityEngine.Random.insideUnitSphere * dist;
+
+        randDirection += origin;
+
+        NavMeshHit navHit;
+
+        NavMesh.SamplePosition(randDirection, out navHit, dist, layermask);
+
+        return navHit.position;
+    }
+
+    /*
     public void Patroling()
     {
         if (!walkPointSet) SearchWalkPoint();
@@ -109,7 +146,9 @@ public class VirusFSM : MonoBehaviour
 
         if (Physics.Raycast(walkPoint, -transform.up, 2f, _visibilityRaLayerMask))
             walkPointSet = true;
-    }
+    }*/
+
+
     public bool IsTargetInSight()
     {
 
@@ -198,7 +237,7 @@ public class PatrolVirusState : State
 
     public override void Tik()
     {
-        _virus.Patroling();
+        //_virus.Patroling();
     }
 
     public override void Exit()
