@@ -87,4 +87,5 @@ public class Weapons_Trigger : MonoBehaviour
         yield return new WaitForSeconds(1);
         w.GetComponent<BoxCollider>().enabled = true;
     }
+
 }

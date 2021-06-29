@@ -34,6 +34,8 @@ public class Weapons_Generator : MonoBehaviour
         new Vector3(-148.160004F,altezzaArmi,9.36999989F),
     };
 
+    public List<Vector3> spawnedPosition = new List<Vector3>();
+
     void Start()
     {
         DataBaseArmi.Clear();
@@ -72,6 +74,7 @@ public class Weapons_Generator : MonoBehaviour
             int tipo = Convert.ToInt32(DataBaseArmi.Rows[i][1]);
             int pW = rnd.Next(positionWeapons.Count);
             GameObject weapon = (GameObject)Instantiate(Prefabs[tipo], positionWeapons[pW], Quaternion.identity);
+            spawnedPosition.Add(positionWeapons[pW]);
             positionWeapons.RemoveAt(pW);
             weapon.transform.parent = this.gameObject.transform.Find("WeaponsContainer").transform;
 
@@ -109,5 +112,11 @@ public class Weapons_Generator : MonoBehaviour
         {
             Debug.Log(DataBaseArmi.Rows[i][0] + " - " + DataBaseArmi.Rows[i][1] + " - " + DataBaseArmi.Rows[i][2]);
         }
+        Debug.Log(spawnedPosition[0]);
+    }
+
+    public List<Vector3> WeaponPositions()
+    {
+        return spawnedPosition;
     }
 }
