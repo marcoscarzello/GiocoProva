@@ -10,6 +10,7 @@ public class Minimap : MonoBehaviour
     private Animator animator = null;
     private GameObject minimapborder = null;
     private GameObject footprint = null;
+    public GameObject doors = null;
     public GameObject lv1 = null;
     public GameObject lv2 = null;
     public GameObject lv3 = null;
@@ -56,6 +57,7 @@ public class Minimap : MonoBehaviour
                 break;
             case 2:
                 db.SetActive(false);
+                doors.SetActive(true);
                 lv1.SetActive(true);
                 break;
             case 3:
