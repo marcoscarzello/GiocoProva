@@ -8,7 +8,7 @@ public class ElevatorManager : MonoBehaviour
     [SerializeField] private float _velocity = 2f;
     [SerializeField] private int _timer = 10;
    
-    private float _opened = 8f;
+    private float _opened = 9f;
     private float _closed = 0f;
 
     private bool _toOpen = false;
