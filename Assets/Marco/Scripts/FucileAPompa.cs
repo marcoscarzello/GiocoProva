@@ -119,6 +119,13 @@ public class FucileAPompa : MonoBehaviour
         RaycastHit hit; //grazie ad out hit, hit contiene tutte le info sul colpo
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range)) //ritorna true se colpisce 
         {
+
+            //se il nemico è normale
+            NemicoNoModule nemico = hit.transform.GetComponent<NemicoNoModule>();
+            if (nemico != null)
+                nemico.Colpito(damage);
+
+
             //se il nemico è un nemico grosso di LV1
             NemicoManager nemico = hit.transform.GetComponent<NemicoManager>();
             if (nemico != null)
