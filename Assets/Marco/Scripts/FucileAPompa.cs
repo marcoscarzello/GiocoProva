@@ -121,9 +121,9 @@ public class FucileAPompa : MonoBehaviour
         {
 
             //se il nemico è normale
-            NemicoNoModule nemico = hit.transform.GetComponent<NemicoNoModule>();
-            if (nemico != null)
-                nemico.Colpito(damage);
+            NemicoNoModule nemicoNormale = hit.transform.GetComponent<NemicoNoModule>();
+            if (nemicoNormale != null)
+                nemicoNormale.Colpito(damage);
 
 
             //se il nemico è un nemico grosso di LV1
