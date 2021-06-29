@@ -493,7 +493,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
   _minSightDistance: 30
-  _hidingDistance: 1.5
   _stoppingDistance: 15
   _gunPivot: {fileID: 6788540999929447360}
   _gunPivot2: {fileID: 6788540998825206601}
@@ -504,13 +503,11 @@ MonoBehaviour:
   _rotatingBase: {fileID: 6466895763295008900}
   _rotationSpeed: 15
   _targetFoundRotationSpeed: 20
-  alreadyAttacked: 0
-  timeBetweenAttacks: 1
-  walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 20
   _visibilityRaLayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 55
+  RaggioMovimento: 0
+  TempoAlProssimoPunto: 0
 --- !u!195 &6788540999609197351
 NavMeshAgent:
   m_ObjectHideFlags: 0

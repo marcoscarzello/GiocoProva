@@ -22,9 +22,9 @@ public class VirusFSM : MonoBehaviour
     [SerializeField] private float _targetFoundRotationSpeed;
 
     //Patroling
-    public Vector3 walkPoint;
-    bool walkPointSet;
-    public float walkPointRange;
+    //public Vector3 walkPoint;
+    //bool walkPointSet;
+    //public float walkPointRange;
     [SerializeField] private LayerMask _visibilityRaLayerMask;
 
 

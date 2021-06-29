@@ -8,9 +8,10 @@ using UnityEngine.AI;
 public class GuardFSM : MonoBehaviour
 {
     //[SerializeField] private List<Hide> _hide;
+    //[SerializeField] private float _hidingDistance = 1f;
+
     [SerializeField] private GameObject _target;
     [SerializeField] private float _minSightDistance = 3f;
-    [SerializeField] private float _hidingDistance = 1f;
     [SerializeField] private float _stoppingDistance = 5f;
     [SerializeField] private Transform _gunPivot;
     [SerializeField] private Transform _gunPivot2;
@@ -29,9 +30,9 @@ public class GuardFSM : MonoBehaviour
     //public float timeBetweenAttacks;
 
     //Patroling
-    public Vector3 walkPoint;
-    bool walkPointSet;
-    public float walkPointRange;
+    //public Vector3 walkPoint;
+    //bool walkPointSet;
+    //public float walkPointRange;
     [SerializeField] private LayerMask _visibilityRaLayerMask;
    
     
@@ -52,15 +53,15 @@ public class GuardFSM : MonoBehaviour
     public Animator Animator => _animator;
 
     //Var Nuovo Movimento
-    public float wanderRadius;
-    public float wanderTimer;
+    public float RaggioMovimento;
+    public float TempoAlProssimoPunto;
     private float timer;
 
 
 
     void Start()
     {
-        timer = wanderTimer;
+        timer = TempoAlProssimoPunto;
         agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
         _renderer = GetComponent<Renderer>();
@@ -74,7 +75,7 @@ public class GuardFSM : MonoBehaviour
         State patrolState = new PatrolState("Patrol", this);
         State chaseState = new ChaseState("Chase", this);
         State stopState = new StopState("Stop", this);
-        State hideState = new HideState("Hide", this);
+        //State hideState = new HideState("Hide", this);
 
         //TRANSITIONS definite dai parametri da soddisfare
         
@@ -84,14 +85,14 @@ public class GuardFSM : MonoBehaviour
         _stateMachine.AddTransition(chaseState, patrolState, () => stopChaseBool);
         _stateMachine.AddTransition(chaseState, stopState, () => DistanceFromTarget() <= _stoppingDistance );
 
-        _stateMachine.AddTransition(stopState, hideState, () => goHideBool==false);
+        //_stateMachine.AddTransition(stopState, hideState, () => goHideBool==false);
         _stateMachine.AddTransition(stopState, chaseState, () => DistanceFromTarget() > _stoppingDistance);
 
-        _stateMachine.AddTransition(hideState, chaseState, () => ArrivedInHide() <= _hidingDistance );
+        //_stateMachine.AddTransition(hideState, chaseState, () => ArrivedInHide() <= _hidingDistance );
 
 
         //START STATE
-        Vector3 walkpoint = RandomNavSphere(transform.position, wanderRadius, -1);
+        Vector3 walkpoint = RandomNavSphere(transform.position, RaggioMovimento, -1);
         _stateMachine.SetState(patrolState);
     }
 
@@ -101,14 +102,13 @@ public class GuardFSM : MonoBehaviour
         //NuovoMovimento
         timer += Time.deltaTime;
 
-        if (timer >= wanderTimer || agent.remainingDistance <= 10.0f || agent.velocity.sqrMagnitude == 0f)
+        if (timer >= RaggioMovimento || agent.remainingDistance <= 10.0f || agent.velocity.sqrMagnitude == 0f)
         {
             Debug.Log("ARRIVATO IN POS");
-            Vector3 walkpoint = RandomNavSphere(transform.position, wanderRadius, -1);
+            Vector3 walkpoint = RandomNavSphere(transform.position, RaggioMovimento, -1);
             agent.SetDestination(walkpoint);
             timer = 0;
         }
-
         //NuovoMovimento
     }
     public void StopAgent(bool stop) => agent.isStopped = stop;
@@ -140,10 +140,9 @@ public class GuardFSM : MonoBehaviour
 
         return navHit.position;
     }
-    //NuovoMovimento
 
 
-    //FUNZIONI PER IL MOVIMENTO
+    //FUNZIONI PER IL MOVIMENTO VECCHIA
     /*    public void Patroling()
     {
         if (!walkPointSet) SearchWalkPoint();
@@ -172,7 +171,6 @@ public class GuardFSM : MonoBehaviour
         if (Physics.Raycast(walkPoint, -transform.up, 2f, _visibilityRaLayerMask))
             walkPointSet = true;
     }*/
-
 
     public bool IsTargetInSight()
     {
@@ -205,7 +203,7 @@ public class GuardFSM : MonoBehaviour
     }
 
     //NASCONDIGLI
-    
+    /*
     public Hide findClosestHide()
     {
         float distanceToClosestHide = Mathf.Infinity;
@@ -224,7 +222,7 @@ public class GuardFSM : MonoBehaviour
             }
         }
         return closestHide;
-    }
+    }*/
 
     //ATTACCO
     /*public void AttackPlayer()
@@ -247,6 +245,7 @@ public class GuardFSM : MonoBehaviour
         secondShoot = false;
         alreadyAttacked = false;
     }*/
+
     private void FirstShoot()
     {
         Vector3 targetHead = _target.transform.position;
@@ -293,7 +292,9 @@ public class GuardFSM : MonoBehaviour
 
     //TRANSITION FUNCTIONS
     private float DistanceFromTarget() => Vector3.Distance(_target.transform.position, transform.position);
-    private float ArrivedInHide() => Vector3.Distance(findClosestHide().transform.position, transform.position);
+    
+    //FUNCTION NASCONDIGLIO
+    //private float ArrivedInHide() => Vector3.Distance(findClosestHide().transform.position, transform.position);
 
 
 
@@ -395,7 +396,9 @@ public class StopState : State
     }
 }
 
-public class HideState : State
+
+//STATO NASCONDIGLIO
+/*public class HideState : State
 {
     private GuardFSM _guard;
     public HideState(string name, GuardFSM guard) : base(name)
@@ -429,5 +432,5 @@ public class HideState : State
     {
 
     }
-}
+}*/
 
