@@ -18,6 +18,22 @@ public class Weapons_Generator : MonoBehaviour
 
     public Random rnd = new Random();
 
+    private static float altezzaArmi = -5.66F;
+    private List<Vector3> positionWeapons = new List<Vector3> {
+        new Vector3(-103.919998F,altezzaArmi,186.449997F),
+        new Vector3(-195.889999F,altezzaArmi,45.8400002F),
+        new Vector3(-195.139999F,altezzaArmi,-147.300003F),
+        new Vector3(-88.0699997F,altezzaArmi,-94.2600021F),
+        new Vector3(-65.8499985F,altezzaArmi,-162.899994F),
+        new Vector3(35.5999985F,altezzaArmi,-140.889999F),
+        new Vector3(112.410004F,altezzaArmi,-134.429993F),
+        new Vector3(157.710007F,altezzaArmi,-107.699997F),
+        new Vector3(195.100006F,altezzaArmi,-31.5F),
+        new Vector3(141.259995F,altezzaArmi,164.699997F),
+        new Vector3(-17.1100006F,altezzaArmi,83.1299973F),
+        new Vector3(-148.160004F,altezzaArmi,9.36999989F),
+    };
+
     void Start()
     {
         DataBaseArmi.Clear();
@@ -54,7 +70,9 @@ public class Weapons_Generator : MonoBehaviour
         for (int i = 0; i < (NumeroArmiPerColore*3); i++)
         {
             int tipo = Convert.ToInt32(DataBaseArmi.Rows[i][1]);
-            GameObject weapon = (GameObject)Instantiate(Prefabs[tipo], new Vector3(rnd.Next(10, 46), 1.3F, rnd.Next(-18, 18)), Quaternion.identity);
+            int pW = rnd.Next(0, positionWeapons.Count);
+            GameObject weapon = (GameObject)Instantiate(Prefabs[tipo], positionWeapons[pW], Quaternion.identity);
+            positionWeapons.RemoveAt(pW);
             weapon.transform.parent = this.gameObject.transform.Find("WeaponsContainer").transform;
 
             int materialindex = 1;
