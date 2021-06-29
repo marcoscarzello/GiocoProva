@@ -4,3 +4,6 @@
 4- lv3
 5- timer torna all'ascensore (cambia colore)
 Posizione approssimata
+
+need
+posizione armi

@@ -146,3 +146,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 0}
+  _counter: {fileID: 0}
+  _uibar: {fileID: 0}

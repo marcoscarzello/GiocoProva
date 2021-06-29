@@ -11,7 +11,7 @@ public class VirusAttack : MonoBehaviour
 
     void Start()
     {
-        spawnAllowed = false;   //da settare a TRUE nel momento in cui si è attaccati dal virus 
+        spawnAllowed = true;   //da settare a TRUE nel momento in cui si è attaccati dal virus 
 
 
         for (int i = 0; i < 3; i++) {
