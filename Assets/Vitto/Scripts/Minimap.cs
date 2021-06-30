@@ -5,111 +5,132 @@ using UnityEngine;
 public class Minimap : MonoBehaviour
 {
     private int state=0; /*1- db     2- mappa armi e nemico lv1      3- lv2 , lv3      4- lv3     5- timer torna all'ascensore */
-    private int power = 0; //stati powerup
 
     private Animator animator = null;
     private GameObject minimapborder = null;
     private GameObject footprint = null;
-    public GameObject doors = null;
     public GameObject lv1 = null;
-    public GameObject lv2 = null;
-    public GameObject lv3 = null;
+    public GameObject lv2_3 = null;
+    //public GameObject lv2 = null;
+    //public GameObject lv3 = null;
     public GameObject z1 = null;
     public GameObject z2 = null;
     public GameObject z3 = null;
     public GameObject z4 = null;
     public GameObject db = null;
-    public GameObject gun = null;
+
+    public GameObject doors = null;
+    private Transform[] door = null;
+    private Vector3[] doors_positions = null;
+    public GameObject guns = null;
+    private Transform[] gun = null;
+    private Vector3[] guns_positions = null;
     public GameObject countdown = null;
 
-    private GameManager gm = null;
+    private CanvaManager cm = null;
 
     private bool open = false;
     public GameObject pg;
 
-    //public Pause pause;
+    private float timer = 0f;
+    private float waitingTime = 5.0f; //tempo di refresh mappa
+    private Vector3 random;
+    const uint randomRange = 30; //di quanto si sposta
 
     private void Start()
     {
-        //animator = GetComponent<Animator>();
-        gm = FindObjectOfType<GameManager>();
-        //m1 = GameObject.Find("marker_hs");
-        //m2 = GameObject.Find("marker_gara");
-        //m3 = GameObject.Find("marker_mom");
-        //volpe = GameObject.Find("Volpe");
+        cm = FindObjectOfType<CanvaManager>();
+        guns_positions = cm.getGunsPosition(); //array guns positions da mirror
+        doors_positions = cm.getDoorsPosition();
+        random = new Vector3(0f, 0f, 0f);
     }
 
     void Update()
     {
-        if (state == 0)
-            icons(gm.getState());
+        if(state!= cm.getState()) //così icons lavora una volta sola per stato, nel default fa in modo di non essere richiamato
+            icons(cm.getState());
+        timer += Time.deltaTime;
+        if (timer > waitingTime)
+        {
+            timer = 0f;
+            random.x = Random.Range(-randomRange, randomRange);
+            random.y = Random.Range(-randomRange, randomRange);
+            pg.transform.position = cm.getPgPosition() + random; //posizione shooter randomica
+        }
     }
 
-    private void icons(int state)
+
+
+    private void icons(int cmstate)
     {
-        switch (state)
+        switch (cmstate)
         {
             case 1:
                 db.SetActive(true);
-                gun.SetActive(true);
                 //gun2.SetActive(true);
-                gunsIcons(-1);
+                //gunsIcons(-1);
                 break;
+
             case 2:
                 db.SetActive(false);
-                doors.SetActive(true);
                 lv1.SetActive(true);
+
+                gun = guns.GetComponentsInChildren<Transform>();
+                foreach (Transform g in gun)
+                {
+                    g.gameObject.SetActive(true);
+                }
+                gunsIcons(-1); //place guns
                 break;
+
             case 3:
                 lv1.SetActive(false);
-                lv2.SetActive(true);
-                lv3.SetActive(true);
+                lv2_3.SetActive(true);
+                //lv3.SetActive(true);
+
+                door = doors.GetComponentsInChildren<Transform>();
+                foreach (Transform d in door)
+                {
+                    d.gameObject.SetActive(true);
+                }
+                doorsIcons(-1); //place doors
                 break;
+
             case 4:
-                lv2.SetActive(false);
-                lv3.SetActive(true);
+                countdown.SetActive(true); //torna all'ascensore
                 break;
-            case 5:
-                countdown.SetActive(true);
+
+            default:
+                state = cmstate;
                 break;
-                //default: break;
         }
     }
 
-    private void gunsIcons(int i)
+    private void gunsIcons(int i) //place and destroy
     {
-        //Transform t = getGunsTransform();
-        if(i>-1)
-            switch (i)
-            {
-                case 1:
-                    gun.SetActive(false);
-                    break;
-                case 2:
-                    //gun2.SetActive(false);
-                    break;
-                case 3:
-                    //gun3.SetActive(false);
-                    break;
-                case 4:
-                    //gun4.SetActive(false);
-                    break;
-            }
+        if (i > -1)
+            Destroy(gun[i].gameObject, .5f);
         else
         {
-            //gun1.transform.position = t.position;
-            //gun2.transform.position = t.position;
-            //gun3.transform.position = t.position;
-            //gun4.transform.position = t.position;
+            int j = 0;
+            foreach (Transform g in gun)
+            {
+                g.position = guns_positions[j++];
+            }
         }
     }
 
-    private void setTime(int time)
+    private void doorsIcons(int i) //place and destroy
     {
-        Time.timeScale = time;
-        /*if (time == 0)
-            GameObject.Find("volpe").GetComponent<MovementController>().enabled = false;
+        if (i > -1)
+            Destroy(door[i].gameObject, .5f);
         else
-            GameObject.Find("volpe").GetComponent<MovementController>().enabled = true;*/
+        {
+            int j = 0;
+            foreach (Transform d in door)
+            {
+                d.position = doors_positions[j++];
+            }
+        }
     }
 }
