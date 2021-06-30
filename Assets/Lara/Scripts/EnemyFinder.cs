@@ -21,6 +21,10 @@ public class EnemyFinder : MonoBehaviour
     string linea;
     string faccia;
 
+    public Button ciano;        //ricorda di assegnare i pulsanti nel gameobj EnemyFinder
+    public Button magenta;
+    public Button giallo; 
+
     void Start()
     {
         codiceNemico = "";
@@ -31,15 +35,18 @@ public class EnemyFinder : MonoBehaviour
 
         statoRicerca = 0;
         sigla = inputField.GetComponent<TMP_InputField>().text;
+
+        
     }
 
     public void impostaColore(string color) {
         colore = color;
         Debug.Log(colore);
+
     }
 
     public void impostaSigla() {
-        sigla = inputField.GetComponent<TMP_InputField>().text;
+        sigla = inputField.GetComponent<TMP_InputField>().text.ToUpper();
 
         switch (sigla) {
 
@@ -115,6 +122,23 @@ public class EnemyFinder : MonoBehaviour
         }
     }
 
+    public void GoBack()
+    {
+        if (statoRicerca > 0 && statoRicerca < 3)
+            statoRicerca--;
+
+        if (statoRicerca == 3)
+        {
+            statoRicerca = 0;
+            codiceSoluzione = "";
+            codiceNemico = "";
+            sigla = "";
+            colore = "";
+            linea = "";
+            faccia = "";
+        }
+    }
+
     public void VaiAllaSoluzione()
     {
         statoRicerca = 3;
@@ -167,6 +191,40 @@ public class EnemyFinder : MonoBehaviour
                 break;
             default:
                 Debug.Log("errore");
+                break;
+        }
+
+        switch (colore)
+        {
+            case "":
+                //change l'alpha di tutti e tre a 0.5
+                ciano.image.color = new Color(ciano.image.color.r, ciano.image.color.g, ciano.image.color.b, 0.5f);
+                magenta.image.color = new Color(magenta.image.color.r, magenta.image.color.g, magenta.image.color.b, 0.5f);
+                giallo.image.color = new Color(giallo.image.color.r, giallo.image.color.g, giallo.image.color.b, 0.5f);
+                break;
+
+            case "1": //si è cliccato ciano
+                ciano.image.color = new Color(ciano.image.color.r, ciano.image.color.g, ciano.image.color.b, 1f);   //change alpha del ciano a 1
+
+                //change alpha di giallo e magenta a 0.5
+                magenta.image.color = new Color(magenta.image.color.r, magenta.image.color.g, magenta.image.color.b, 0.5f);
+                giallo.image.color = new Color(giallo.image.color.r, giallo.image.color.g, giallo.image.color.b, 0.5f);
+                break;
+
+            case "2"://si è cliccato magenta
+                magenta.image.color = new Color(magenta.image.color.r, magenta.image.color.g, magenta.image.color.b, 1f);   //change alpha del magenta a 1
+
+                //change alpha di giallo e ciano a 0.5
+                ciano.image.color = new Color(ciano.image.color.r, ciano.image.color.g, ciano.image.color.b, 0.5f);
+                giallo.image.color = new Color(giallo.image.color.r, giallo.image.color.g, giallo.image.color.b, 0.5f);
+                break;
+
+            case "3"://si è cliccato gialllo
+                giallo.image.color = new Color(giallo.image.color.r, giallo.image.color.g, giallo.image.color.b, 1f); //change alpha del giallo a 1
+
+                //change alpha di ciano e magenta a 0.5
+                ciano.image.color = new Color(ciano.image.color.r, ciano.image.color.g, ciano.image.color.b, 0.5f);
+                magenta.image.color = new Color(magenta.image.color.r, magenta.image.color.g, magenta.image.color.b, 0.5f);
                 break;
         }
     }
