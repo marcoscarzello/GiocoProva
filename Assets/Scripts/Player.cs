@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
+using UnityEngine.Events;
+
 
 public class Player : NetworkBehaviour
 {
@@ -26,6 +28,18 @@ public class Player : NetworkBehaviour
 
     }
 
+    void OnEnable() {
+
+        //Iscrizione di un metodo di prova ad un evento del cavolo
+        if (!isServer)
+        GestioneEventoDaServer.PremutoSpazio += MandaPressioneTastoAlClient;
+    }
+
+    void OnDisable()
+    {
+        if (!isServer)
+            GestioneEventoDaServer.PremutoSpazio -= MandaPressioneTastoAlClient;
+    }
 
     void Update()
     {
@@ -126,6 +140,15 @@ public class Player : NetworkBehaviour
     {
         if (!isServer)
         GameObject.Find("oggettoProvaClient").GetComponent<scriptProva1>().valoreProva = valoreProva;
+    }
+
+    //Funzione di prova che si manda quando si ascolta un evento e si passa un parametro
+    [ClientRpc]
+    public void MandaPressioneTastoAlClient(int a) {
+
+        if (!isServer)
+            GameObject.Find("OggettoProvaRiceveEventoDaClient").GetComponent<RicezioneEventoDaClient>().stampa(a);
+
     }
 
 
