@@ -1,90 +1,132 @@
 ﻿using Mirror;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using UnityEngine;
 
 public class Player : NetworkBehaviour
 {
-    public GameObject canva_mappa;
-    public static Vector3 posizione;
-    //prova variabile sincronizzata
-    [SyncVar(hook = nameof(OnContatoreChange))]
-    int HolaCount = 0;
+    public Vector3 posizioneShooter;
 
+    public Vector3 posizionelv1;
+    public Vector3 posizionelv2_1;
+    public Vector3 posizionelv2_2;
+    public Vector3 posizionelv3;
 
-    //float x = transform.position.x;
-    [SyncVar(hook =nameof(OnPosChange))]
-    Vector3 syncPos;
+    public List<Vector3> posizioniArmi;
+
+    public float salute;
+    public float energia;
+
+    public int valoreProva;
 
     void Start()
     {
+        
 
-
-        if (isLocalPlayer)
-        {
-            if (isServer)
-            {
-                //GameObject.Find("Camera").gameObject.transform.parent = this.transform;
-            }
-            else
-            {
-                GameObject.Find("Camera").gameObject.transform.parent = this.transform;
-            }
-        }
     }
 
-    void HandleMovement()
-    {
-        if (isLocalPlayer)
-        {
-            float moveHorizontal = Input.GetAxis("Horizontal");
-            float moveVertical = Input.GetAxis("Vertical");
-            Vector3 movement = new Vector3(moveHorizontal * 0.1f, moveVertical * 0.1f, 0);
-
-            transform.position = transform.position + movement;
-
-        }
-    }
 
     void Update()
     {
-        HandleMovement();
-
-        if (!isServer && isLocalPlayer )
+        //Cose che deve fare il player se è il client
+        if (isLocalPlayer && !isServer)
         {
-            PosToServer(transform.position);
+
+            //cosa di prova
+            //valoreProva = GameObject.Find("oggettoProvaClient").GetComponent<scriptProva1>().valoreProva;
+            //AggiornaServerProva(valoreProva);
+
+            //inviare al server i parametri dello shooter
+            posizioneShooter = GameObject.Find("Shooter").gameObject.transform.position;
+            AggiornaServerSuParamsShooter(posizioneShooter, salute, energia);
+
+            //inviare al server posizioni dei robot nemici
+            if (GameObject.Find("Robot_Lv1") != null)
+                posizionelv1 = GameObject.Find("Robot_Lv1").gameObject.transform.position;
+            if (GameObject.Find("Robot_Lv2_1") != null)
+                posizionelv2_1 = GameObject.Find("Robot_Lv2_1").gameObject.transform.position;
+            if (GameObject.Find("Robot_Lv2_2") != null)
+                posizionelv2_2 = GameObject.Find("Robot_Lv2_2").gameObject.transform.position;
+            if (GameObject.Find("Robot_Lv3") != null)
+                posizionelv3 = GameObject.Find("Robot_Lv3").gameObject.transform.position;
+            AggiornaServerSuPosizioneNemici(posizionelv1, posizionelv2_1, posizionelv2_2, posizionelv3);
+
+            //inviare al server posizione armi
+            if (GameObject.Find("Script_Starter") != null)
+                posizioniArmi = GameObject.Find("Script_Starter").GetComponent<Weapons_Generator>().WeaponPositions();
+            AggiornaServerSuPosizioneArmi(posizioniArmi);
         }
 
-        if (isLocalPlayer && Input.GetKeyDown(KeyCode.X))
-        {
-            Debug.Log("Salutando il server");
-            Hola();
+        //Cose che deve fare il player se è il server
+        if (isLocalPlayer && isServer) {
+
+            //cosa di prova
+            //valoreProva = GameObject.Find("oggettoProvaServer").GetComponent<scriptProva2>().valoreProva;
+            //AggiornaClientProva(valoreProva);
         }
+
+
 
     }
+
+    //Funzione di aggiornamento client -> server di posizione, vita, energia
     [Command]
-    void Hola()
-    {
-        HolaCount++;
-        Debug.Log("ciao dal client");
+    public void AggiornaServerSuParamsShooter(Vector3 posizioneShooter, float salute, float energia) {
+
+        //prova da cancellare
+        GameObject.Find("Canvas_map").gameObject.GetComponent<ProvaPosizioneCanvaeccecc>().posizionePG = posizioneShooter;
+
+
+        if (GameObject.Find("GestoreParamsInRete") != null)
+        {
+            GestioneParamsInRete MyScriptReference = GameObject.Find("GestoreParamsInRete").GetComponent<GestioneParamsInRete>();
+            MyScriptReference.posizioneShooter = posizioneShooter;
+            MyScriptReference.salute = salute;
+            MyScriptReference.energia = energia;
+            MyScriptReference.posizionelv3 = posizionelv3;
+
+        }
+
     }
 
-    void OnContatoreChange(int old, int nuovo) {
-        Debug.Log($"avevamo{old}, adesso abbiamo {nuovo}");
+    //Funzione aggiornamento posizione nemici client -> server
+    [Command]
+    public void AggiornaServerSuPosizioneNemici(Vector3 posizionelv1, Vector3 posizionelv2_1, Vector3 posizionelv2_2, Vector3 posizionelv3)
+    {
+        if (GameObject.Find("GestoreParamsInRete") != null)
+        {
+            GestioneParamsInRete MyScriptReference = GameObject.Find("GestoreParamsInRete").GetComponent<GestioneParamsInRete>();
+            MyScriptReference.posizionelv1 = posizionelv1;
+            MyScriptReference.posizionelv2_1 = posizionelv2_1;
+            MyScriptReference.posizionelv2_2 = posizionelv2_2;
+            MyScriptReference.posizionelv3 = posizionelv3;
+
+        }
     }
 
     [Command]
-    void PosToServer(Vector3 pos)
-    {
-        syncPos = pos;
-    }
-
-    void OnPosChange(Vector3 vecchiaPos, Vector3 nuovaPos)
-    {
-        if (isServer)
+    public void AggiornaServerSuPosizioneArmi(List<Vector3> posizioniArmi) {
+        if (GameObject.Find("GestoreParamsInRete") != null)
         {
-            Debug.Log($" vecchia posizione:{vecchiaPos}\n nuova posizione: {nuovaPos}");
-            posizione = nuovaPos;
+            GestioneParamsInRete MyScriptReference = GameObject.Find("GestoreParamsInRete").GetComponent<GestioneParamsInRete>();
+            MyScriptReference.posizioniArmi = posizioniArmi;
+
         }
     }
+
+    [Command]
+    public void AggiornaServerProva(int valoreProva)
+    {
+        GameObject.Find("oggettoProvaServer").GetComponent<scriptProva2>().valoreProva = valoreProva;
+    }
+
+    [ClientRpc]
+    public void AggiornaClientProva(int valoreProva)
+    {
+        if (!isServer)
+        GameObject.Find("oggettoProvaClient").GetComponent<scriptProva1>().valoreProva = valoreProva;
+    }
+
+
 }
