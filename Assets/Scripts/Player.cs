@@ -13,6 +13,8 @@ public class Player : NetworkBehaviour
     //Eventi TODO: interrogazione database. IDEA: il server inerroga il client con un evento, e il client invia continuamente l'ultima soluzione con una Command
     //TODO: apertura porte, ricarica munizinoi, power up potenza, ricarica salute
 
+    //ATTENZIONE: gli eventi per qualche motivo vengono chiamati due volte (nel caso di pressione del tasto spazio), potrebbe essere necessario dimezzare le variabili
+
     public Vector3 posizioneShooter;
 
     public Vector3 posizionelv1;
@@ -42,13 +44,30 @@ public class Player : NetworkBehaviour
         //Iscrizione di un metodo di prova ad un evento del cavolo
         if (!isServer)
         GestioneEventoDaServer.PremutoSpazio += MandaPressioneTastoAlClient;
+
+        //iscrizione a evento di ricarica Salute. Viene mandato dal server, quindi mi iscrivo se non sono il server
+        if (!isServer)
+            GestioneParamsInRete.SaluteRicaricata += MandaAlClientCura;
+
+        //iscrizione evento potenza
+        if (!isServer)
+            GestioneParamsInRete.PotenzaAumentata += MandaAlClientForza;
+
+        //iscrizione evento munizioni
+        if (!isServer)
+            GestioneParamsInRete.MunizioniRicaricate += MandaAlClientAmmos;
     }
 
+    //disiscrizioni dagli eventi
     void OnDisable()
     {
         if (!isServer)
             GestioneEventoDaServer.PremutoSpazio -= MandaPressioneTastoAlClient;
+
+        if (!isServer)
+            GestioneParamsInRete.SaluteRicaricata -= MandaAlClientCura;
     }
+
 
     void Update()
     {
@@ -107,7 +126,6 @@ public class Player : NetworkBehaviour
             //cosa di prova
             //valoreProva = GameObject.Find("oggettoProvaServer").GetComponent<scriptProva2>().valoreProva;
             //AggiornaClientProva(valoreProva);
-
 
         }
 
@@ -194,6 +212,7 @@ public class Player : NetworkBehaviour
         }
     }
 
+
     //Funzione di prova che si manda quando si ascolta un evento e si passa un parametro
     [ClientRpc]
     public void MandaPressioneTastoAlClient(int a) {
@@ -205,6 +224,36 @@ public class Player : NetworkBehaviour
         }
 
     }
+
+    [ClientRpc]
+    public void MandaAlClientCura() {
+        if (!isServer)
+        {
+            if (GameObject.Find("Shooter") != null)
+                GameObject.Find("Shooter").GetComponent<VitaEnergia>().Curato();
+        }
+    }
+
+    [ClientRpc]
+    public void MandaAlClientForza()
+    {
+        if (!isServer)
+        {
+            //richiamare una funzione che aumenti la potenza delle armi al client abbassando l'energia e facendo partire una coroutine che dopo un po' torni al danno normale
+        }
+    }
+
+
+    [ClientRpc]
+    public void MandaAlClientAmmos()
+    {
+        if (!isServer)
+        {
+            if (GameObject.Find("WeaponHolder") != null)
+                GameObject.Find("WeaponHolder").GetComponent<MunizioniManager>().PiuMunizioniGrazie();
+        }
+    }
+
 
 
 }

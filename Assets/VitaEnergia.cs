@@ -9,11 +9,19 @@ public class VitaEnergia : MonoBehaviour
 
     void Start()
     {
-        
+        salute = 100f;
+        energia = 10f;
     }
 
     void Update()
     {
         
+    }
+
+    public void Curato() {
+
+        salute = 100;
+        energia -= 30;
+        Debug.Log("Sono il client. Salute ricaricata! Grazie");
     }
 }

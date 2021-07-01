@@ -449,6 +449,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponHolder: {fileID: 795298501}
   WeaponsContainer: {fileID: 0}
+--- !u!114 &771671013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771671011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d47222497e59c284db69ee0cc13332e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  salute: 0
+  energia: 0
 --- !u!1 &795298501
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,6 +494,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ed4b7b301c9c4345881ff972c582306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scortaPistola: 0
+  scortaAssalto: 0
+  scortaPompa: 0
 --- !u!95 &795298503
 Animator:
   serializedVersion: 3
