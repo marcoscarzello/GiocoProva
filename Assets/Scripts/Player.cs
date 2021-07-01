@@ -8,12 +8,20 @@ using UnityEngine.Events;
 
 public class Player : NetworkBehaviour
 {
+
+    //TODO: posizione database da mandare client -> server
+    //Eventi TODO: interrogazione database
+
     public Vector3 posizioneShooter;
 
     public Vector3 posizionelv1;
     public Vector3 posizionelv2_1;
     public Vector3 posizionelv2_2;
     public Vector3 posizionelv3;
+
+    public int munizioniPistola, munizioniPompa, munizioniMitra;
+
+    //public DataTable DataBase;
 
     public List<Vector3> posizioniArmi;
 
@@ -51,7 +59,7 @@ public class Player : NetworkBehaviour
             //valoreProva = GameObject.Find("oggettoProvaClient").GetComponent<scriptProva1>().valoreProva;
             //AggiornaServerProva(valoreProva);
 
-            //inviare al server i parametri dello shooter
+            //inviare al server i parametri dello shooter. Mancano ancora salute e energia da creare in uno script dello shooter
             posizioneShooter = GameObject.Find("Shooter").gameObject.transform.position;
             AggiornaServerSuParamsShooter(posizioneShooter, salute, energia);
 
@@ -70,7 +78,22 @@ public class Player : NetworkBehaviour
             if (GameObject.Find("Script_Starter") != null)
                 posizioniArmi = GameObject.Find("Script_Starter").GetComponent<Weapons_Generator>().WeaponPositions();
             AggiornaServerSuPosizioneArmi(posizioniArmi);
+
+            //inviare al server il database: non funziona
+            //if (GameObject.Find("DBGeneratorProva") != null)
+            //        DataBase = GameObject.Find("DBGeneratorProva").GetComponent<DB_Generator>().DataBase;
+            //AggiornaServerSuDatabase(DataBase);
+
+            //inviare munizioni al server
+            if (GameObject.Find("WeaponHolder") != null)
+            {
+                munizioniPistola = GameObject.Find("WeaponHolder").GetComponent<MunizioniManager>().scortaPistola;
+                munizioniMitra = GameObject.Find("WeaponHolder").GetComponent<MunizioniManager>().scortaAssalto;
+                munizioniPompa = GameObject.Find("WeaponHolder").GetComponent<MunizioniManager>().scortaPompa;
+            }
+            AggiornaServerSuMunizioni(munizioniPistola, munizioniPompa, munizioniMitra);
         }
+
 
         //Cose che deve fare il player se è il server
         if (isLocalPlayer && isServer) {
@@ -78,6 +101,10 @@ public class Player : NetworkBehaviour
             //cosa di prova
             //valoreProva = GameObject.Find("oggettoProvaServer").GetComponent<scriptProva2>().valoreProva;
             //AggiornaClientProva(valoreProva);
+
+            //mandare salute al client
+            //Ancora da creare la salute nel maledetto client
+
         }
 
 
@@ -98,8 +125,6 @@ public class Player : NetworkBehaviour
             MyScriptReference.posizioneShooter = posizioneShooter;
             MyScriptReference.salute = salute;
             MyScriptReference.energia = energia;
-            MyScriptReference.posizionelv3 = posizionelv3;
-
         }
 
     }
@@ -132,14 +157,37 @@ public class Player : NetworkBehaviour
     [Command]
     public void AggiornaServerProva(int valoreProva)
     {
-        GameObject.Find("oggettoProvaServer").GetComponent<scriptProva2>().valoreProva = valoreProva;
+        if (GameObject.Find("oggettoProvaServer") != null)
+            GameObject.Find("oggettoProvaServer").GetComponent<scriptProva2>().valoreProva = valoreProva;
+    }
+
+    //[Command]
+    //public void AggiornaServerSuDatabase(DataTable DataBase)
+    //{
+    //    if (GameObject.Find("DBReceiver") != null)
+    //    GameObject.Find("DBReceiver").GetComponent<ScriptDBReceiver>().DataBase = DataBase;
+    //}
+
+    [Command]
+    public void AggiornaServerSuMunizioni(int pis, int pom, int mit) {
+
+        if (GameObject.Find("GestoreParamsInRete") != null)
+        {
+            GameObject.Find("GestoreParamsInRete").GetComponent<GestioneParamsInRete>().munizioniPistola = pis;
+            GameObject.Find("GestoreParamsInRete").GetComponent<GestioneParamsInRete>().munizioniPompa = pom;
+            GameObject.Find("GestoreParamsInRete").GetComponent<GestioneParamsInRete>().munizioniMitra = mit;
+
+        }
     }
 
     [ClientRpc]
     public void AggiornaClientProva(int valoreProva)
     {
         if (!isServer)
-        GameObject.Find("oggettoProvaClient").GetComponent<scriptProva1>().valoreProva = valoreProva;
+        {
+            if (GameObject.Find("oggettoProvaClient") != null)
+                GameObject.Find("oggettoProvaClient").GetComponent<scriptProva1>().valoreProva = valoreProva;
+        }
     }
 
     //Funzione di prova che si manda quando si ascolta un evento e si passa un parametro
@@ -147,7 +195,10 @@ public class Player : NetworkBehaviour
     public void MandaPressioneTastoAlClient(int a) {
 
         if (!isServer)
+        {
+            if (GameObject.Find("OggettoProvaRiceveEventoDaClient") != null)
             GameObject.Find("OggettoProvaRiceveEventoDaClient").GetComponent<RicezioneEventoDaClient>().stampa(a);
+        }
 
     }
 

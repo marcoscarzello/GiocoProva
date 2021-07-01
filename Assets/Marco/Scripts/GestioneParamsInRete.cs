@@ -15,6 +15,10 @@ public class GestioneParamsInRete : MonoBehaviour
     public Vector3 posizionelv2_2;
     public Vector3 posizionelv3;
 
+    public int munizioniPistola;
+    public int munizioniPompa;
+    public int munizioniMitra;
+
     public List<Vector3> posizioniArmi;
 
     public float salute;

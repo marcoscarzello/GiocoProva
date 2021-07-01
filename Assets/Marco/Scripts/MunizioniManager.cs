@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class MunizioniManager : MonoBehaviour
 {
-    public static int scortaPistola;
-    public static int scortaAssalto;
-    public static int scortaPompa;
+    public int scortaPistola;
+    public int scortaAssalto;
+    public int scortaPompa;
 
     // Start is called before the first frame update
     void Start()

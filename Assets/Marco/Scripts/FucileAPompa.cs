@@ -22,25 +22,29 @@ public class FucileAPompa : MonoBehaviour
 
     private float nextTimeToFire = 0f;
 
+    MunizioniManager myscriptreference;
+
+
     public Animator animator;
 
     void Start()
     {
         currentAmmo = 0;
         muzzleFlash = GetComponent<ParticleSystem>();
+        myscriptreference = GameObject.Find("WeaponHolder").GetComponent<MunizioniManager>();
 
     }
 
     void RicaricaAutomatica()
     {
-        if (MunizioniManager.scortaPompa > maxAmmo)
+        if (myscriptreference.scortaPompa > maxAmmo)
         {
             currentAmmo = maxAmmo;
         }
         else
-            currentAmmo = MunizioniManager.scortaPompa;
+            currentAmmo = myscriptreference.scortaPompa;
 
-        MunizioniManager.scortaPompa -= maxAmmo;
+        myscriptreference.scortaPompa -= maxAmmo;
     }
 
     //impedire che il cambio arma blocchi lo sparo
@@ -59,7 +63,7 @@ public class FucileAPompa : MonoBehaviour
         if (transform.parent.name == "WeaponHolder" && gameObject.activeSelf)
         {
 
-            if (currentAmmo <= 0 && MunizioniManager.scortaPompa > 0)
+            if (currentAmmo <= 0 && myscriptreference.scortaPompa > 0)
             {
                 StartCoroutine(Reload());
                 return;

@@ -22,25 +22,30 @@ public class Mitra : MonoBehaviour
 
     private float nextTimeToFire = 0f;
 
+    MunizioniManager myscriptreference;
+
+
     public Animator animator;
 
     void Start()
     {
         currentAmmo = 0;
         muzzleFlash = GetComponent<ParticleSystem>();
+        myscriptreference = GameObject.Find("WeaponHolder").GetComponent<MunizioniManager>();
+
 
     }
 
     void RicaricaAutomatica()
     {
-        if (MunizioniManager.scortaAssalto > maxAmmo)
+        if (myscriptreference.scortaAssalto > maxAmmo)
         {
             currentAmmo = maxAmmo;
         }
         else
-            currentAmmo = MunizioniManager.scortaAssalto;
+            currentAmmo = myscriptreference.scortaAssalto;
 
-        MunizioniManager.scortaAssalto -= maxAmmo;
+        myscriptreference.scortaAssalto -= maxAmmo;
     }
 
     //impedire che il cambio arma blocchi lo sparo
@@ -58,7 +63,7 @@ public class Mitra : MonoBehaviour
         if (transform.parent.name == "WeaponHolder" && gameObject.activeSelf)
         {
 
-            if (currentAmmo <= 0 && MunizioniManager.scortaAssalto > 0)
+            if (currentAmmo <= 0 && myscriptreference.scortaAssalto > 0)
             {
                 StartCoroutine(Reload());
                 return;
