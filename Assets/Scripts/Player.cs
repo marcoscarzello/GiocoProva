@@ -10,7 +10,8 @@ public class Player : NetworkBehaviour
 {
 
     //TODO: posizione database da mandare client -> server
-    //Eventi TODO: interrogazione database
+    //Eventi TODO: interrogazione database. IDEA: il server inerroga il client con un evento, e il client invia continuamente l'ultima soluzione con una Command
+    //TODO: apertura porte, ricarica munizinoi, power up potenza, ricarica salute
 
     public Vector3 posizioneShooter;
 
@@ -60,7 +61,12 @@ public class Player : NetworkBehaviour
             //AggiornaServerProva(valoreProva);
 
             //inviare al server i parametri dello shooter. Mancano ancora salute e energia da creare in uno script dello shooter
-            posizioneShooter = GameObject.Find("Shooter").gameObject.transform.position;
+            if (GameObject.Find("Shooter") != null) {
+                posizioneShooter = GameObject.Find("Shooter").gameObject.transform.position;
+                salute = GameObject.Find("Shooter").GetComponent<VitaEnergia>().salute;
+                energia = GameObject.Find("Shooter").GetComponent<VitaEnergia>().energia;
+
+            }
             AggiornaServerSuParamsShooter(posizioneShooter, salute, energia);
 
             //inviare al server posizioni dei robot nemici
@@ -102,8 +108,6 @@ public class Player : NetworkBehaviour
             //valoreProva = GameObject.Find("oggettoProvaServer").GetComponent<scriptProva2>().valoreProva;
             //AggiornaClientProva(valoreProva);
 
-            //mandare salute al client
-            //Ancora da creare la salute nel maledetto client
 
         }
 
