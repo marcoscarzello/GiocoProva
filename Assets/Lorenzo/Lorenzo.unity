@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.41020504, g: 0.4343655, b: 0.442828, a: 1}
+  m_IndirectSpecularColor: {r: 0.41018933, g: 0.4343417, b: 0.4427897, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -130,6 +130,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6683567592681862031, guid: 48d40b0137ffcc64ea2de1063bcccd77,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6936568177164230956, guid: 48d40b0137ffcc64ea2de1063bcccd77,
         type: 3}
       propertyPath: m_Name
@@ -5319,6 +5324,7 @@ MonoBehaviour:
   salute: 0
   energia: 0
   _perHitLossBulletBlu: 0
+  weaponHolder: {fileID: 1314333658}
 --- !u!114 &440716720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5818,6 +5824,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6683567592681862031, guid: 48d40b0137ffcc64ea2de1063bcccd77,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6936568177164230956, guid: 48d40b0137ffcc64ea2de1063bcccd77,
         type: 3}
       propertyPath: m_Name
@@ -6857,6 +6868,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6683567592681862031, guid: 48d40b0137ffcc64ea2de1063bcccd77,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6936568177164230956, guid: 48d40b0137ffcc64ea2de1063bcccd77,
         type: 3}
       propertyPath: m_Name

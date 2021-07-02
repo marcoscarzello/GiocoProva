@@ -7,6 +7,7 @@ public class VitaEnergia : MonoBehaviour
     public float salute;
     public float energia;
     public float _perHitLossBulletBlu;
+    public GameObject weaponHolder;
 
     void Start()
     {
@@ -22,12 +23,24 @@ public class VitaEnergia : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        
         if (collision.gameObject.GetComponent<Bullet>() != null)
         {
             salute -= _perHitLossBulletBlu;//gameObject.GetComponent<Bullet>()._perHitLoss;
             Debug.Log("Health: " + salute);
         }
             
+
+    }
+
+    void OnTriggerEnter(Collider collisionAmmo)
+    {
+        Debug.Log("Collisione con ammo");
+        if (collisionAmmo.gameObject.GetComponent<Munizioni>() != null)
+        {
+            weaponHolder.GetComponent<MunizioniManager>().raccoltaMunizioni();
+            Destroy(collisionAmmo.gameObject);
+        }
     }
 
     public void Curato() {
