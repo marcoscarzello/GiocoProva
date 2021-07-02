@@ -14,15 +14,7 @@ public class MovimentoSferetta : MonoBehaviour
 
     void Start()            //non sarà la start ma la startMinigameX
     {
-        Random rnd = new Random();
-        xpos = rnd.Next(40);
-        xpos /= 10f;
-        zpos = rnd.Next(40);
-        zpos /= 10f;
-
-        Debug.Log(zpos + ", " + xpos);
-
-        gameObject.transform.position = new Vector3(transform.position.x + xpos, transform.position.y, transform.position.z + zpos);
+        spawn();
     }
 
     void Update()
@@ -43,6 +35,22 @@ public class MovimentoSferetta : MonoBehaviour
         }
 
     }
+
+    public void spawn() {
+
+        Random rnd = new Random();
+        xpos = rnd.Next(40);
+        xpos /= 10f;
+        zpos = rnd.Next(40);
+        zpos /= 10f;
+
+        Debug.Log(zpos + ", " + xpos);
+
+        gameObject.transform.position = new Vector3(transform.position.x + xpos, transform.position.y, transform.position.z + zpos);
+
+    }
+
+
 
 
 }

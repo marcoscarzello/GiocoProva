@@ -5,6 +5,12 @@ using UnityEngine.UI;
 
 public class SimonSaysGameBoard : MonoBehaviour
 {
+
+    //marco
+    public GameObject padrePorte;
+    public GameObject padreSimon;
+
+
     public GameObject rep=null;
     private Button repeat = null;
     private bool generate = true;
@@ -173,6 +179,11 @@ public class SimonSaysGameBoard : MonoBehaviour
             StopAllCoroutines();
             GameOverScreenGO.SetActive(true);
             playerInputController.end();
+
+            //marco
+            padrePorte.GetComponent<GestionePorte>().apriPortaDaSimon();
+            padreSimon.GetComponent<GestioneMinigameSimon>().FineSimon();
+
         }
         else
         {
