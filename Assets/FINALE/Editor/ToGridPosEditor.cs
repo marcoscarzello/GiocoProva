@@ -13,10 +13,6 @@ public class ToGridPosEditor : Editor
 
         ToGridPos myToGridPos = (ToGridPos)target;
 
-        //for (int i = 0; i < targets.Length; i++)
-        //{
-        //    (target as ToGridPos).gameObject.GetComponent<ToGridPos>().AdjustPosition();
-        //}
 
         if (GUILayout.Button("Adjust Position"))
         {

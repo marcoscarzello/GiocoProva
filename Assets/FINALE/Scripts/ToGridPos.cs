@@ -7,6 +7,7 @@ public class ToGridPos : MonoBehaviour
 
     public void AdjustPosition()
     {
+
         var position = new Vector3(
             Mathf.RoundToInt(this.transform.position.x),
             Mathf.RoundToInt(this.transform.position.y),
@@ -20,5 +21,6 @@ public class ToGridPos : MonoBehaviour
     {
         AdjustPosition();
     }
+
 
 }

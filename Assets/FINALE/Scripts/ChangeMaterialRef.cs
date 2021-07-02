@@ -50,8 +50,8 @@ public class ChangeMaterialRef : MonoBehaviour
                 this.GetComponent<Renderer>().material = NewMatRef;
 
 
-        if (Mathf.RoundToInt(Time.time) == 10)
-            _prepareToChange = true;
+        //if (Mathf.RoundToInt(Time.time) == 10)
+        //    _prepareToChange = true;
 
     }
 }
