@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Minimap : MonoBehaviour
 {
-    private int state=0; /*1- db     2- mappa armi e nemico lv1      3- lv2 , lv3      4- lv3     5- timer torna all'ascensore */
+    private int state=0; /*1- db     2- mappa armi e nemico lv1      3- lv2 , lv3      4 timer torna all'ascensore */
 
     private Animator animator = null;
     private GameObject minimapborder = null;
     private GameObject footprint = null;
     public GameObject lv1 = null;
-    public GameObject lv2_3 = null;
+    public GameObject lv2_1 = null;
+    public GameObject lv2_2 = null;
     //public GameObject lv2 = null;
-    //public GameObject lv3 = null;
+    public GameObject lv3 = null;
     public GameObject z1 = null;
     public GameObject z2 = null;
     public GameObject z3 = null;
@@ -21,10 +22,10 @@ public class Minimap : MonoBehaviour
 
     public GameObject doors = null;
     private Transform[] door = null;
-    private Vector3[] doors_positions = null;
+    //private Vector3[] doors_positions = null;
     public GameObject guns = null;
     private Transform[] gun = null;
-    private Vector3[] guns_positions = null;
+    //private Vector3[] guns_positions = null;
     public GameObject countdown = null;
 
     private CanvaManager cm = null;
@@ -37,11 +38,14 @@ public class Minimap : MonoBehaviour
     private Vector3 random;
     const uint randomRange = 30; //di quanto si sposta
 
+    private GestioneParamsInRete mirror =null;
+
     private void Start()
     {
         cm = FindObjectOfType<CanvaManager>();
-        guns_positions = cm.getGunsPosition(); //array guns positions da mirror
-        doors_positions = cm.getDoorsPosition();
+        mirror = FindObjectOfType<GestioneParamsInRete>().GetComponent<GestioneParamsInRete>(); 
+        //guns_positions = cm.getGunsPosition(); //array guns positions da mirror
+        //doors_positions = cm.getDoorsPosition();
         random = new Vector3(0f, 0f, 0f);
     }
 
@@ -49,17 +53,32 @@ public class Minimap : MonoBehaviour
     {
         if(state!= cm.getState()) //così icons lavora una volta sola per stato, nel default fa in modo di non essere richiamato
             icons(cm.getState());
-        timer += Time.deltaTime;
-        if (timer > waitingTime)
-        {
-            timer = 0f;
-            random.x = Random.Range(-randomRange, randomRange);
-            random.y = Random.Range(-randomRange, randomRange);
-            pg.transform.position = cm.getPgPosition() + random; //posizione shooter randomica
-        }
+        Invoke("refreshMap", waitingTime);
+        //timer += Time.deltaTime;
+        //if (timer > waitingTime)
+        //{
+        //    timer = 0f;
+        //    refreshMap();
+        //}
     }
 
-
+    private void refreshMap()
+    {
+        random.x = Random.Range(-randomRange, randomRange);
+        random.y = Random.Range(-randomRange, randomRange);
+        pg.transform.position = mirror.posizioneShooter + random; //posizione shooter randomica
+        switch (state)
+        {
+            case 2:
+                lv1.transform.position = mirror.posizionelv1;
+                break;
+            case 3:
+                lv2_1.transform.position = mirror.posizionelv2_1;
+                lv2_2.transform.position = mirror.posizionelv2_2;
+                lv3.transform.position = mirror.posizionelv3;
+                break;
+        }
+    }
 
     private void icons(int cmstate)
     {
@@ -85,8 +104,9 @@ public class Minimap : MonoBehaviour
 
             case 3:
                 lv1.SetActive(false);
-                lv2_3.SetActive(true);
-                //lv3.SetActive(true);
+                lv2_1.SetActive(true);
+                lv2_2.SetActive(true);
+                lv3.SetActive(true);
 
                 door = doors.GetComponentsInChildren<Transform>();
                 foreach (Transform d in door)
@@ -101,9 +121,9 @@ public class Minimap : MonoBehaviour
                 break;
 
             default:
-                state = cmstate;
                 break;
         }
+        state = cmstate;
     }
 
     private void gunsIcons(int i) //place and destroy
@@ -115,22 +135,23 @@ public class Minimap : MonoBehaviour
             int j = 0;
             foreach (Transform g in gun)
             {
-                g.position = guns_positions[j++];
+                g.position = mirror.posizioniArmi[j++];
             }
         }
     }
 
     private void doorsIcons(int i) //place and destroy
     {
-        if (i > -1)
-            Destroy(door[i].gameObject, .5f);
-        else
-        {
-            int j = 0;
-            foreach (Transform d in door)
-            {
-                d.position = doors_positions[j++];
-            }
-        }
+        Destroy(door[i].gameObject, .5f);
+        //if (i > -1)
+        //    Destroy(door[i].gameObject, .5f);
+        //else
+        //{
+        //    int j = 0;
+        //    foreach (Transform d in door)
+        //    {
+        //        d.position = mirror.posizioniArmi[j++];
+        //    }
+        //}
     }
 }
