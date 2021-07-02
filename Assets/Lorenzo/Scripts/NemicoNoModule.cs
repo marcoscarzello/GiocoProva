@@ -6,7 +6,7 @@ public class NemicoNoModule : MonoBehaviour
 {
 
     public float vitaEnemy;
-    [SerializeField] private GameObject ammo;
+    [SerializeField] private Munizioni ammo;
     [SerializeField] private Transform spawnPos;
 
 

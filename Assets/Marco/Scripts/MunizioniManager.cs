@@ -22,6 +22,34 @@ public class MunizioniManager : MonoBehaviour
     {
         
     }
+    void OnTriggerEnter(Collider collisionAmmo)
+    {
+        Debug.Log("Collisione");
+        if (collisionAmmo.gameObject.GetComponent<Munizioni>() != null)
+        {
+            int rnd = Random.Range(0, 99);
+            if (rnd <= 32)
+            {
+                scortaPistola += 20;
+                Debug.Log("Ricarica MunizPistola" + scortaPistola);
+                Destroy(gameObject);
+            }
+
+            if (rnd >= 66)
+            {
+                scortaAssalto += 50;
+                Debug.Log("Ricarica MunizAssalto" + scortaAssalto);
+                Destroy(gameObject);
+            }
+
+            if (rnd >= 33 && rnd <= 65)
+            {
+                scortaPompa += 10;
+                Debug.Log("Ricarica MunizPompa" + scortaPompa);
+                Destroy(gameObject);
+            }
+        }
+    }
 
     public void PiuMunizioniGrazie() {
 
