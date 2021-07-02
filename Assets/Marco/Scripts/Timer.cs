@@ -12,8 +12,20 @@ public class Timer : MonoBehaviour
     public float totSeconds;
     public static bool reached; //controlla se la pallina è arrivata al centro
 
+    public GameObject emptydoor;
+    public GameObject emptylab;
+
+    GestionePorte myscript;
+    GestioneMinigameLabirinto myscript2;
+
+
+    public float mytimetime;
+
     void Start()
     {
+        myscript = emptydoor.GetComponent<GestionePorte>();
+        myscript2 = emptylab.GetComponent<GestioneMinigameLabirinto>();
+
         timeOut = false;
         reached = false;
         totSeconds = 20f;
@@ -21,7 +33,8 @@ public class Timer : MonoBehaviour
     }
     void Update()
     {
-        seconds = totSeconds - (int)(Time.time % 60f);
+
+        seconds = totSeconds - (int)((Time.time - mytimetime) % 60f);
         if (seconds >= 0 && reached == false)
             testo.text = seconds.ToString("00");
 
@@ -29,10 +42,24 @@ public class Timer : MonoBehaviour
         {
             timeOut = true;
             testo.text = "TIMEOUT";
+            myscript2.FineLabirinto();
+
 
         }
 
         if (seconds > 0 && reached && !timeOut)
+        {
+            reached = false;
             testo.text = "DONE";
+            myscript.apriPortaDaLabirinto();
+            myscript2.FineLabirinto();
+        }
+
+
+    }
+
+    public void resetTimer() {
+        mytimetime = Time.time;
+        timeOut = false;
     }
 }
