@@ -181,10 +181,10 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.9027963
   m_Speed: 20
-  m_Acceleration: 8
+  m_Acceleration: 10
   avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_AngularSpeed: 130
+  m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -207,7 +207,7 @@ MonoBehaviour:
   _target: {fileID: 0}
   _minSightDistance: 30
   _portalDistance: 1
-  _stoppingDistance: 5
+  _stoppingDistance: 1
   _viewAngle: 180
   _rayOrigin: {fileID: 876010319512116517}
   _rotatingBase: {fileID: 876010319512116517}
@@ -216,6 +216,8 @@ MonoBehaviour:
   _visibilityRaLayerMask:
     serializedVersion: 2
     m_Bits: 55
+  ElectricParticle: {fileID: 8313743595527057561, guid: 9ce4142b18056ab4b813713b878856ca,
+    type: 3}
   wanderRadius: 0
   wanderTimer: 0
 --- !u!114 &7619604643026248491
@@ -232,7 +234,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vitaEnemy: 0
   ammo: {fileID: 5006606518159426686, guid: 48d40b0137ffcc64ea2de1063bcccd77, type: 3}
-  spawnPos: {fileID: 876010319512116517}
   ExplosionParticle: {fileID: 3863740036971351737, guid: c7898e7d8bb63524c86ef4bf00d4dcfc,
     type: 3}
 --- !u!1 &1754255967554080125

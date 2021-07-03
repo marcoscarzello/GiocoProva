@@ -9,7 +9,7 @@ public class VirusFSM : MonoBehaviour
 {
     [SerializeField] private GameObject _target;
     [SerializeField] private float _minSightDistance = 3f;
-    [SerializeField] private float _portalDistance = 1f;
+    [SerializeField] private float _portalDistance = 5f;
     [SerializeField] private float _stoppingDistance = 5f;
     
 
@@ -26,9 +26,11 @@ public class VirusFSM : MonoBehaviour
     //bool walkPointSet;
     //public float walkPointRange;
     [SerializeField] private LayerMask _visibilityRaLayerMask;
+    [SerializeField] private Particle ElectricParticle;
 
 
     bool goPortalBool;
+    bool attackingHacker;
 
     private FiniteStateMachine<VirusFSM> _stateMachine;
 
@@ -55,13 +57,14 @@ public class VirusFSM : MonoBehaviour
         _rotatingBase.Rotate(Vector3.up, UnityEngine.Random.Range(0f, 355f));
         _originalColor = _renderer.material.color;
         _stateMachine = new FiniteStateMachine<VirusFSM>(this); //instanzia una macchina a stati finiti
-
-
+        attackingHacker = false;
+        goPortalBool = true;
 
         //STATES
         State patrolState = new PatrolVirusState("PatrolVirus", this);
         State stopState = new StopVirusState("StopVirus", this);
         State attackHackerState = new AttackHackerState("AttackVirus", this);
+
 
         //TRANSITIONS definite dai parametri da soddisfare
 
@@ -69,7 +72,8 @@ public class VirusFSM : MonoBehaviour
 
         _stateMachine.AddTransition(stopState, attackHackerState, () => goPortalBool == false);
 
-        _stateMachine.AddTransition(attackHackerState, stopState, () => ArrivedInPortal() <= _portalDistance);
+        _stateMachine.AddTransition(attackHackerState, stopState, () => ArrivedInPortal()<= _stoppingDistance);
+
 
 
         //START STATE
@@ -83,15 +87,15 @@ public class VirusFSM : MonoBehaviour
 
         //NuovoMovimento
         timer += Time.deltaTime;
-
-        if (timer >= wanderTimer || agent.remainingDistance <= 10.0f || agent.velocity.sqrMagnitude == 0f)
-        {
-            Debug.Log("ARRIVATO IN POS");
-            Vector3 walkpoint = RandomNavSphere(transform.position, wanderRadius, -1);
-            agent.SetDestination(walkpoint);
-            timer = 0;
+        if(goPortalBool == true) {
+            if (timer >= wanderTimer || agent.remainingDistance <= 10.0f || agent.velocity.sqrMagnitude == 0f  )
+            {
+                Debug.Log("ARRIVATO IN POS");
+                Vector3 walkpoint = RandomNavSphere(transform.position, wanderRadius, -1);
+                agent.SetDestination(walkpoint);
+                timer = 0;
+            }
         }
-
         //NuovoMovimento
     }
     public void StopAgent(bool stop) => agent.isStopped = stop;
@@ -194,13 +198,26 @@ public class VirusFSM : MonoBehaviour
                 distanceToClosestPortal = distanceToAttackPortal;
                 closestAttackablePortal = currentPortal;
                 agent.SetDestination(closestAttackablePortal.transform.position);
-
+                
             }
         }
+        
         return closestAttackablePortal;
     }
 
+    public void ArrivedInAttackPosition()
+    {
+        if (agent.remainingDistance <= agent.stoppingDistance)
+        {
+            StopAgent(true);
+            Debug.Log("ARRIVATO ATTACCO");
+            Instantiate(ElectricParticle, transform.position /*new Vector3(spawnPos.position.x, 0.0f, spawnPos.position.y)*/, Quaternion.identity);
+            Destroy(gameObject);
+        }
 
+    }
+
+    
     //Coroutines
     public IEnumerator goAttackHacker()
     {
@@ -260,7 +277,7 @@ public class StopVirusState : State
         _virus.StartCoroutine(_virus.goAttackHacker());
         _virus.StopAgent(true);
         _virus.Animator.SetBool("patrol", false);
-
+     
     }
 
     public override void Tik()
@@ -286,14 +303,13 @@ public class AttackHackerState: State
     {
         _virus.StopAgent(false);
         _virus.Animator.SetBool("patrol", false);
-
-
+        _virus.findClosestAttackPortal();
+        
     }
 
     public override void Tik()
     {
-        
-        _virus.findClosestAttackPortal();
+        _virus.ArrivedInAttackPosition();
     }
 
     public override void Exit()
@@ -301,4 +317,5 @@ public class AttackHackerState: State
 
     }
 }
+
 
