@@ -29,19 +29,19 @@ public class MunizioniManager : MonoBehaviour
         if (rnd <= 32)
         {
             scortaPistola += 20;
-            Debug.Log("Ricarica MunizPistola" + scortaPistola);
+            Debug.Log("Ricarica MunizPistola: " + scortaPistola);
         }
 
         if (rnd >= 66)
         {
             scortaAssalto += 50;
-            Debug.Log("Ricarica MunizAssalto" + scortaAssalto);
+            Debug.Log("Ricarica MunizAssalto: " + scortaAssalto);
         }
 
         if (rnd >= 33 && rnd <= 65)
         {
             scortaPompa += 10;
-            Debug.Log("Ricarica MunizPompa" + scortaPompa);
+            Debug.Log("Ricarica MunizPompa: " + scortaPompa);
         }
     }
 

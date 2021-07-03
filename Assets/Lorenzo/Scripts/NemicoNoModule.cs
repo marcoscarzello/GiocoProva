@@ -7,7 +7,8 @@ public class NemicoNoModule : MonoBehaviour
 
     public float vitaEnemy;
     [SerializeField] private Munizioni ammo;
-    [SerializeField] private Transform spawnPos;
+    //[SerializeField] private Transform spawnPos;
+    [SerializeField] private Particle ExplosionParticle;
 
 
 
@@ -31,16 +32,20 @@ public class NemicoNoModule : MonoBehaviour
     void Die()
     {
         SpawnAmmo();
+        Vector3 temp = transform.position;
+        temp.y = 0.7f;
+        transform.position = temp;
+        Instantiate(ExplosionParticle, transform.position /*new Vector3(spawnPos.position.x, 0.0f, spawnPos.position.y)*/, Quaternion.identity);
         Destroy(gameObject);
     }
 
     public void SpawnAmmo()
     {
         int rnd = Random.Range(0, 99);
-        if (rnd <= 40)
+        if (rnd <= 45)
         {
             Debug.Log("Spawna");
-            Instantiate(ammo, new Vector3(spawnPos.position.x, 0, spawnPos.position.y ), Quaternion.identity);
+            Instantiate(ammo, transform.position/*new Vector3(spawnPos.position.x, -1.3f , spawnPos.position.y )*/, Quaternion.Euler(-90.0f, 0.0f, 0.0f));
         }
         else Debug.Log("NonSpawna");
     }
