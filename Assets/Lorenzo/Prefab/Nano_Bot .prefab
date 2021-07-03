@@ -554,6 +554,7 @@ GameObject:
   - component: {fileID: 6987766580097250823}
   - component: {fileID: 6987766580097250821}
   - component: {fileID: 6987766580097250820}
+  - component: {fileID: 5230423855916155052}
   m_Layer: 0
   m_Name: 'Nano_Bot '
   m_TagString: Untagged
@@ -704,3 +705,20 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &5230423855916155052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7798230690983274821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60e9782b380f30c49837235d88cf5200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vitaEnemy: 0
+  ammo: {fileID: 5006606518159426686, guid: 48d40b0137ffcc64ea2de1063bcccd77, type: 3}
+  spawnPos: {fileID: 7454356593726665727}
+  ExplosionParticle: {fileID: 3863740036971351737, guid: c7898e7d8bb63524c86ef4bf00d4dcfc,
+    type: 3}
