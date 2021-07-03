@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Mitra : MonoBehaviour
 {
@@ -73,7 +74,11 @@ public class Mitra : MonoBehaviour
             {
                 nextTimeToFire = Time.time + 1f / fireRate;
 
-                if (currentAmmo > 0) Shoot();
+                if (currentAmmo > 0) { Shoot();
+
+                    gameObject.transform.DOLocalMoveZ(-15f, 0.5f);
+                    gameObject.transform.DOLocalMoveZ(2.46539f, 0.5f);
+                }
             }
         }
     }

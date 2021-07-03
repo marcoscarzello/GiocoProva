@@ -1,4 +1,5 @@
 using UnityEngine;
+using DG.Tweening;
 
 public class WeaponSwitching : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class WeaponSwitching : MonoBehaviour
 
     void Update()
     {
+      
+
         int previousSW = selectedWeapon;
 
         //fix bug
