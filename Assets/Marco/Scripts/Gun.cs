@@ -57,9 +57,9 @@ public class Gun : MonoBehaviour
     {
         if (isReloading) return;
 
-        
+
         if (transform.parent.name == "WeaponHolder" && gameObject.activeSelf)
-            {
+        {
 
             if (currentAmmo <= 0 && myscriptreference.scortaPistola > 0)
             {
@@ -69,13 +69,19 @@ public class Gun : MonoBehaviour
             }
 
             if (Input.GetButtonDown("Fire1") && Time.time >= nextTimeToFire)
-                        {
-                            
-                            nextTimeToFire = Time.time + 1f / fireRate;         //inutile per la pistola
+            {
 
-                            if (currentAmmo > 0) Shoot();
-                        }
+                nextTimeToFire = Time.time + 1f / fireRate;         //inutile per la pistola
+
+                if (currentAmmo > 0)
+                {
+
+                    Shoot();
+                    gameObject.transform.DOLocalMoveZ(-15f, 0.5f);
+                    gameObject.transform.DOLocalMoveZ(1.263f, 0.5f);
+                }
             }
+        }
     }
 
     IEnumerator Reload() 

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
+
 
 public class FucileAPompa : MonoBehaviour
 {
@@ -73,7 +75,12 @@ public class FucileAPompa : MonoBehaviour
             {
                 nextTimeToFire = Time.time + 1f / fireRate;         //inutile per la pistola
 
-                if (currentAmmo > 0) Shoot();
+                if (currentAmmo > 0)
+                {
+                    Shoot();
+                    gameObject.transform.DOLocalMoveZ(-30f, 0.5f);
+                    gameObject.transform.DOLocalMoveZ(0.743f, 0.5f);
+                }
             }
         }
     }

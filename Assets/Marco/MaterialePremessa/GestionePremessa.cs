@@ -47,6 +47,7 @@ public class GestionePremessa : MonoBehaviour
             else if (bloccoIstruzioni.active)
             {
                 //cambioscena
+                gameObject.GetComponent<MainMenu>().ToMenu(); 
             }
 
         }
