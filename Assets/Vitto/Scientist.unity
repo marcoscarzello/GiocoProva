@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -668,6 +668,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a639985fbe66ae489c8c6847b0e78fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 0
 --- !u!114 &108180952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3109,6 +3110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a639985fbe66ae489c8c6847b0e78fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 0
 --- !u!114 &325591056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8812,7 +8814,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &845502742
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10440,6 +10442,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a639985fbe66ae489c8c6847b0e78fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 0
 --- !u!114 &1034782137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11910,6 +11913,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a639985fbe66ae489c8c6847b0e78fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 0
 --- !u!114 &1237595260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12272,6 +12276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a639985fbe66ae489c8c6847b0e78fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 0
 --- !u!114 &1328965377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14310,7 +14315,6 @@ GameObject:
   - component: {fileID: 1556187455}
   - component: {fileID: 1556187454}
   - component: {fileID: 1556187453}
-  - component: {fileID: 1556187452}
   - component: {fileID: 1556187451}
   m_Layer: 5
   m_Name: Console_Button
@@ -14351,19 +14355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a639985fbe66ae489c8c6847b0e78fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1556187452
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1556187449}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b218afe3dfb4f61418f9f3f7aeab252d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  panel: {fileID: 2140017998}
+  isActive: 0
 --- !u!114 &1556187453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14639,6 +14631,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a639985fbe66ae489c8c6847b0e78fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 0
 --- !u!114 &1567637419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18172,6 +18165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a639985fbe66ae489c8c6847b0e78fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isActive: 0
 --- !u!114 &1788290908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18300,7 +18294,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -20353,7 +20347,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -21, y: -0.000028947665}
-  m_SizeDelta: {x: 635.222, y: 0}
+  m_SizeDelta: {x: 635.222, y: 371.26}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2054864332
 MonoBehaviour:

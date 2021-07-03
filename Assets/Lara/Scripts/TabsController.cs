@@ -20,6 +20,8 @@ public class TabsController : MonoBehaviour
     private List<TabsButton> buttons = new List<TabsButton>();
     private List<Transform> panels = new List<Transform>();
 
+  
+
     public void Start()
     {
         for (int i=0; i<buttonsPanel.transform.childCount; i++)
@@ -35,6 +37,9 @@ public class TabsController : MonoBehaviour
         {
             panels.Add(item);
         }
+
+        buttons[3].isActive = false;
+        ButtonMouseClick(3); //attiva console come primo tab 
     }
 
     public void ButtonMouseClick(int _id)

@@ -9,7 +9,7 @@ public class TabsButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
 
     private TabsController controller;
 
-    private bool isActive = false;
+    public bool isActive = false;
 
     private void Awake()
     {
@@ -47,9 +47,11 @@ public class TabsButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHand
         controller.ButtonMouseExit(tabindex);
     }
 
+    private bool flag = false; 
     public void ToggleActive()
     {
-        isActive = !isActive;
+            isActive = !isActive;
+
         if (isActive)
         {
             image.color = controller.mouseClickColor;
