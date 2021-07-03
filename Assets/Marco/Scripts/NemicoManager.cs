@@ -10,6 +10,8 @@ public class NemicoManager : MonoBehaviour
 {
     public float vitaModuloSigla;
 
+    public Material[] M1Distrutto = new Material[8];
+
     private string soluzione;
     private string enemycode;
 
@@ -64,6 +66,7 @@ public class NemicoManager : MonoBehaviour
         if (vitaModuloSigla <= 0f)
         {
             transform.parent.gameObject.GetComponent<LV1_Enemy_Generator>().Distrutto();
+
             Die();
         }
 
