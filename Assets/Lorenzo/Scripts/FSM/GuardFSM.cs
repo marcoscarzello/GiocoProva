@@ -10,7 +10,7 @@ public class GuardFSM : MonoBehaviour
     //[SerializeField] private List<Hide> _hide;
     //[SerializeField] private float _hidingDistance = 1f;
 
-    [SerializeField] private GameObject _target;
+    [SerializeField] private Target _target;
     [SerializeField] private float _minSightDistance = 3f;
     [SerializeField] private float _stoppingDistance = 5f;
     [SerializeField] private Transform _gunPivot;
