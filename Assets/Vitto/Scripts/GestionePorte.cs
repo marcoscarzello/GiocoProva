@@ -10,12 +10,20 @@ public class GestionePorte : MonoBehaviour
 
     public TMP_InputField inputField;
 
+    public GameObject console;
+
     //metodo chiamato dal clic su porta
     public void setUltimaPorta(int n)
     {
         ultimaPortaSelezionata = n;
     }
 
+    public void apriPorta() {
+
+        Debug.Log("Aperta la " + ultimaPortaSelezionata);
+        console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> <color=yellow>Door " + ultimaPortaSelezionata + " opened!</color>");
+
+    }
 
     public void setPassword(string pw)
     {
@@ -25,13 +33,13 @@ public class GestionePorte : MonoBehaviour
 
     public void apriPortaDaLabirinto() {
 
-        Debug.Log("Aperta la " + ultimaPortaSelezionata);
+        apriPorta();
     }
 
     public void apriPortaDaSimon()
     {
 
-        Debug.Log("Aperta la " + ultimaPortaSelezionata);
+        apriPorta();
     }
 
     public void checkPw() {
@@ -43,53 +51,71 @@ public class GestionePorte : MonoBehaviour
             case 1:
                 if (password == "muffin")
                 {
-                    Debug.Log("aperta la " + ultimaPortaSelezionata);
+                    apriPorta();
                 }
+                else console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> <color=red>Wrong password.</color>");
+
                 break;
             case 2:
                 if (password == "password")
                 {
-                    Debug.Log("aperta la " + ultimaPortaSelezionata);
+                    apriPorta();
                 }
+                else console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> <color=red>Wrong password.</color>");
+
                 break;
             case 4:
                 if (password == "capibara")
                 {
-                    Debug.Log("aperta la " + ultimaPortaSelezionata);
+                    apriPorta();
                 }
+                else console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> <color=red>Wrong password.</color>");
+
                 break;
             case 5:
                 if (password == "yolo")
                 {
-                    Debug.Log("aperta la " + ultimaPortaSelezionata);
+                    apriPorta();
                 }
+                else console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> <color=red>Wrong password.</color>");
+
                 break;
             case 7:
                 if (password == "open")
                 {
-                    Debug.Log("aperta la " + ultimaPortaSelezionata);
+                    apriPorta();
                 }
+                else console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> <color=red>Wrong password.</color>");
+
                 break;
             case 8:
                 if (password == "please")
                 {
-                    Debug.Log("aperta la " + ultimaPortaSelezionata);
+                    apriPorta();
                 }
+                else console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> <color=red>Wrong password.</color>");
+
                 break;
             case 9:
                 if (password == "knock")
                 {
-                    Debug.Log("aperta la " + ultimaPortaSelezionata);
+                    apriPorta();
                 }
+                else console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> <color=red>Wrong password.</color>");
+
                 break;
             case 11:
                 if (password == "close")
                 {
-                    Debug.Log("aperta la " + ultimaPortaSelezionata);
+                    apriPorta();
                 }
+                else console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> <color=red>Wrong password.</color>");
+
                 break;
             default:
-                Debug.Log("nessuna porta seleionata");
+                Debug.Log("nessuna porta selezionata");
+                console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> You must first select a door.");
+
                 break;
 
         }

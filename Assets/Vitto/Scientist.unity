@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1349,7 +1349,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 376, y: -415}
+  m_AnchoredPosition: {x: 376, y: -443}
   m_SizeDelta: {x: 146.951, y: 58.833}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &184320345
@@ -1400,8 +1400,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 94.46
-  m_fontSizeBase: 94.46
+  m_fontSize: 70
+  m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4940,7 +4940,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 213, y: -415}
+  m_AnchoredPosition: {x: 213, y: -443}
   m_SizeDelta: {x: 146.951, y: 58.833}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &570023362
@@ -4991,8 +4991,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 94.46
-  m_fontSizeBase: 94.46
+  m_fontSize: 70
+  m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5104,6 +5104,7 @@ MonoBehaviour:
   ultimaPortaSelezionata: 0
   password: 
   inputField: {fileID: 1965644281}
+  console: {fileID: 2054864330}
 --- !u!1 &575471761
 GameObject:
   m_ObjectHideFlags: 0
@@ -8507,6 +8508,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 802195520}
+  - component: {fileID: 802195521}
   m_Layer: 5
   m_Name: Munizioni
   m_TagString: Untagged
@@ -8539,6 +8541,22 @@ RectTransform:
   m_AnchoredPosition: {x: -31, y: 3}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &802195521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802195519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f26f18bd91f3bf4ab4d2686a50541c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gestore: {fileID: 1418301147}
+  testoPistola: {fileID: 570023362}
+  testoPompa: {fileID: 1393465966}
+  testoMitra: {fileID: 184320345}
 --- !u!1001 &822191389
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8794,7 +8812,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &845502742
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12881,7 +12899,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 539, y: -415}
+  m_AnchoredPosition: {x: 539, y: -443}
   m_SizeDelta: {x: 146.951, y: 58.833}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1393465966
@@ -12932,8 +12950,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 94.46
-  m_fontSizeBase: 94.46
+  m_fontSize: 70
+  m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -13228,6 +13246,7 @@ MonoBehaviour:
   munizioniPompa: 0
   munizioniMitra: 0
   posizioniArmi: []
+  console: {fileID: 2054864330}
   salute: 0
   energia: 0
 --- !u!4 &1418301149
@@ -18281,7 +18300,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -20334,7 +20353,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -21, y: -0.000028947665}
-  m_SizeDelta: {x: 635.222, y: 371.26}
+  m_SizeDelta: {x: 635.222, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2054864332
 MonoBehaviour:
@@ -20457,7 +20476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a7095f8c30b14b42ab243896ab02576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testoConsole: {fileID: 0}
+  pannelli: {fileID: 100834449}
 --- !u!114 &2054864335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21069,7 +21088,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2140017999
 RectTransform:
   m_ObjectHideFlags: 0

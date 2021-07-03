@@ -34,13 +34,20 @@ public class GestioneParamsInRete : MonoBehaviour
 
     public List<Vector3> posizioniArmi;
 
+    public GameObject console;
+
     //parametri aggiornati continuamente dal client
     public float salute;
     public float energia;
     
     void Start()
     {
-        
+        salute = 100f;
+        energia = 10f;
+
+        munizioniMitra = 0;
+        munizioniPistola = 0;
+        munizioniPompa = 0;
     }
 
     void Update()
@@ -60,8 +67,12 @@ public class GestioneParamsInRete : MonoBehaviour
             if (SaluteRicaricata != null)
             {
                 SaluteRicaricata();
+
+                //aggiornamento console:
+                console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> <color=yellow>Health charged.</color>");
             }
         }
+        else console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> <color=red>You don't have enough energy to restore health.</color>");
 
 
     }
@@ -74,6 +85,7 @@ public class GestioneParamsInRete : MonoBehaviour
             if (PotenzaAumentata != null)
             {
                 PotenzaAumentata();
+
             }
         }
     }
@@ -87,7 +99,11 @@ public class GestioneParamsInRete : MonoBehaviour
             if (MunizioniRicaricate != null)
             {
                 MunizioniRicaricate();
+
+                console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> <color=yellow>Ammo charged.</color>");
             }
         }
+        else console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> <color=red>You don't have enough energy to charge ammos.</color>");
+
     }
 }
