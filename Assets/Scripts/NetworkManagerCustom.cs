@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Mirror;
+using TMPro;
 
 public class NetworkManagerCustom : NetworkManager
 {
     // Called by UI element NetworkAddressInput.OnValueChanged
-    public void SetHostname(string hostname)
+    public void SetHostname(TextMeshProUGUI text)
     {
-        networkAddress = hostname;
+        networkAddress = text.text;
     }
 
 
