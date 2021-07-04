@@ -47,8 +47,8 @@ public class MunizioniManager : MonoBehaviour
 
     public void PiuMunizioniGrazie() {
 
-        scortaPistola = 40;
-        scortaAssalto = 100;
-        scortaPompa = 20;
+        scortaPistola += 40;
+        scortaAssalto += 100;
+        scortaPompa += 20;
     }
 }

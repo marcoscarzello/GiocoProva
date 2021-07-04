@@ -12,8 +12,13 @@ public class OpenDoor : MonoBehaviour
     private bool _open = false;
 
 
+    
+
+
     public void OpenDoorNumber(int x)
     {
+        Debug.Log("Sono il client. Apro porta " + x);
+
         string opening_door = $"door {x}";
 
         if (this.name == opening_door)

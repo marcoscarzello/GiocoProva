@@ -9,8 +9,8 @@ using UnityEngine.Events;
 public class Player : NetworkBehaviour
 {
 
-    //TODO: posizione database da mandare client -> server
-    //Eventi TODO: interrogazione database. IDEA: il server inerroga il client con un evento, e il client invia continuamente l'ultima soluzione con una Command
+    //
+    //Eventi TODO: database trovato, interrogazione database. IDEA: il server inerroga il client con un evento, e il client invia continuamente l'ultima soluzione con una Command
     //TODO: apertura porte, ricarica munizinoi, power up potenza, ricarica salute
 
     //ATTENZIONE: gli eventi per qualche motivo vengono chiamati due volte (nel caso di pressione del tasto spazio), potrebbe essere necessario dimezzare le variabili
@@ -56,6 +56,14 @@ public class Player : NetworkBehaviour
         //iscrizione evento munizioni
         if (!isServer)
             GestioneParamsInRete.MunizioniRicaricate += MandaAlClientAmmos;
+
+        //iscrizione evento porte
+        if (!isServer)
+            GestionePorte.ApertaPorta += MandaAlClientPorta;
+
+        //iscrizione evento attaccovirus: solo se sono il server
+        if (isServer)
+            VirusFSM.PartitoAttacco += MandaAlServerAttaccoVirus;
     }
 
     //disiscrizioni dagli eventi
@@ -66,6 +74,18 @@ public class Player : NetworkBehaviour
 
         if (!isServer)
             GestioneParamsInRete.SaluteRicaricata -= MandaAlClientCura;
+
+        if (!isServer)
+            GestioneParamsInRete.PotenzaAumentata -= MandaAlClientForza;
+
+        if (!isServer)
+            GestioneParamsInRete.MunizioniRicaricate -= MandaAlClientAmmos;
+
+        if (!isServer)
+            GestionePorte.ApertaPorta -= MandaAlClientPorta;
+
+        if (isServer)
+            VirusFSM.PartitoAttacco -= MandaAlServerAttaccoVirus;
     }
 
 
@@ -251,6 +271,80 @@ public class Player : NetworkBehaviour
         {
             if (GameObject.Find("WeaponHolder") != null)
                 GameObject.Find("WeaponHolder").GetComponent<MunizioniManager>().PiuMunizioniGrazie();
+        }
+    }
+
+    [ClientRpc]
+    public void MandaAlClientPorta(int porta)
+    {
+
+        if (!isServer)
+        {
+            Debug.Log("Player: apertura porta inviata al client");
+            if (GameObject.Find("door 1") != null)
+            {
+                GameObject.Find("door 1").GetComponent<OpenDoor>().OpenDoorNumber(porta);
+            }
+            if (GameObject.Find("door 2") != null)
+            {
+                GameObject.Find("door 2").GetComponent<OpenDoor>().OpenDoorNumber(porta);
+            }
+            if (GameObject.Find("door 3") != null)
+            {
+                GameObject.Find("door 3").GetComponent<OpenDoor>().OpenDoorNumber(porta);
+            }
+            if (GameObject.Find("door 4") != null)
+            {
+                GameObject.Find("door 4").GetComponent<OpenDoor>().OpenDoorNumber(porta);
+            }
+            if (GameObject.Find("door 5") != null)
+            {
+                GameObject.Find("door 5").GetComponent<OpenDoor>().OpenDoorNumber(porta);
+            }
+            if (GameObject.Find("door 6") != null)
+            {
+                GameObject.Find("door 6").GetComponent<OpenDoor>().OpenDoorNumber(porta);
+            }
+            if (GameObject.Find("door 7") != null)
+            {
+                GameObject.Find("door 7").GetComponent<OpenDoor>().OpenDoorNumber(porta);
+            }
+            if (GameObject.Find("door 8") != null)
+            {
+                GameObject.Find("door 8").GetComponent<OpenDoor>().OpenDoorNumber(porta);
+            }
+            if (GameObject.Find("door 9") != null)
+            {
+                GameObject.Find("door 9").GetComponent<OpenDoor>().OpenDoorNumber(porta);
+            }
+            if (GameObject.Find("door 10") != null)
+            {
+                GameObject.Find("door 10").GetComponent<OpenDoor>().OpenDoorNumber(porta);
+            }
+            if (GameObject.Find("door 11") != null)
+            {
+                GameObject.Find("door 11").GetComponent<OpenDoor>().OpenDoorNumber(porta);
+            }
+            if (GameObject.Find("door 12") != null)
+            {
+                GameObject.Find("door 12").GetComponent<OpenDoor>().OpenDoorNumber(porta);
+            }
+        }
+
+    }
+
+
+    //eventi client to server: attacco virus
+    [Command]
+    public void MandaAlServerAttaccoVirus()
+    {
+        if (isServer)
+        {
+            if (GameObject.Find("VirusAttack") != null)
+            {
+                GameObject.Find("VirusAttack").GetComponent<VirusAttack>().AttaccoVirus(true);
+                Debug.Log("Player: attacco virus inoltrato al server");
+            }
         }
     }
 

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Events;
+
 
 public class GestionePorte : MonoBehaviour
 {
@@ -11,6 +13,11 @@ public class GestionePorte : MonoBehaviour
     public TMP_InputField inputField;
 
     public GameObject console;
+
+
+    //evento porta
+    public delegate void AperturaPorta(int a);
+    public static event AperturaPorta ApertaPorta;
 
     //metodo chiamato dal clic su porta
     public void setUltimaPorta(int n)
@@ -23,6 +30,13 @@ public class GestionePorte : MonoBehaviour
         Debug.Log("Aperta la " + ultimaPortaSelezionata);
         console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> <color=yellow>Door " + ultimaPortaSelezionata + " opened!</color>");
 
+        //lancio evento
+        if (ApertaPorta != null)
+        {
+            ApertaPorta(ultimaPortaSelezionata);
+            Debug.Log("Evento porta lanciato da server");
+        }
+        
     }
 
     public void setPassword(string pw)

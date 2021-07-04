@@ -11,8 +11,10 @@ public class VirusFSM : MonoBehaviour
     [SerializeField] private float _minSightDistance = 3f;
     [SerializeField] private float _portalDistance = 5f;
     [SerializeField] private float _stoppingDistance = 5f;
-    
 
+    //evento partito attacco
+    public delegate void AttaccoVirus();
+    public static event AttaccoVirus PartitoAttacco;
 
     [Range(0, 360)]
     [SerializeField] private float _viewAngle;
@@ -212,6 +214,14 @@ public class VirusFSM : MonoBehaviour
             StopAgent(true);
             Debug.Log("ARRIVATO ATTACCO");
             Instantiate(ElectricParticle, transform.position /*new Vector3(spawnPos.position.x, 0.0f, spawnPos.position.y)*/, Quaternion.identity);
+
+            //invocazione evento di partito attacco virus
+            if (PartitoAttacco != null)
+            {
+                PartitoAttacco();
+                Debug.Log("Evento partito attacco virus inviato dal client");
+            }
+
             Destroy(gameObject);
         }
 
