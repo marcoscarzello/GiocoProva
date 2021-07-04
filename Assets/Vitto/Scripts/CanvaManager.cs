@@ -19,6 +19,7 @@ public class CanvaManager : MonoBehaviour
     //public GameObject barE = null;
     private Slider health = null;
     private Slider energy = null;
+    private Slider integrity = null;
     private Color fill;
     //private GameObject sun;
     //private Animator sunAnimator;
@@ -30,6 +31,7 @@ public class CanvaManager : MonoBehaviour
         mirror = FindObjectOfType<GestioneParamsInRete>().GetComponent<GestioneParamsInRete>();
         health = FindObjectOfType<HealthBar>().GetComponent<Slider>();
         energy = FindObjectOfType<EnergyBar>().GetComponent<Slider>();
+        integrity = FindObjectOfType< UIntegrityBar> ().GetComponent<Slider>();
         Cursor.visible = true;
         health.value = mirror.salute;
         energy.value = mirror.energia;
@@ -37,6 +39,8 @@ public class CanvaManager : MonoBehaviour
 
     public void Update()
     {
+        if (integrity.value <= 0 || health.value <= 0)
+            EndGame();
         timer += Time.deltaTime;
         if (timer > waitingTime)
         {
@@ -50,6 +54,7 @@ public class CanvaManager : MonoBehaviour
     {
         health.value= mirror.salute;
         energy.value = mirror.energia;
+
         //fill = health.color;
         //fill.a += mirror.salute;
         //health.color = fill;
