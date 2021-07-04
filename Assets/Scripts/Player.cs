@@ -122,12 +122,16 @@ public class Player : NetworkBehaviour
             //inviare al server posizioni dei robot nemici
             if (GameObject.Find("Robot_Lv1") != null)
                 posizionelv1 = GameObject.Find("Robot_Lv1").gameObject.transform.position;
+            else posizionelv1 = new Vector3(-255f, 0, 0);
             if (GameObject.Find("Robot_Lv2_1") != null)
                 posizionelv2_1 = GameObject.Find("Robot_Lv2_1").gameObject.transform.position;
+            else posizionelv2_1 = new Vector3(-255f, 0f, 0f);
             if (GameObject.Find("Robot_Lv2_2") != null)
                 posizionelv2_2 = GameObject.Find("Robot_Lv2_2").gameObject.transform.position;
+            else posizionelv2_2 = new Vector3(-255f, 0f, 0f);
             if (GameObject.Find("Robot_Lv3") != null)
                 posizionelv3 = GameObject.Find("Robot_Lv3").gameObject.transform.position;
+            else posizionelv3 = new Vector3(-255f, 0f, 0f);
             AggiornaServerSuPosizioneNemici(posizionelv1, posizionelv2_1, posizionelv2_2, posizionelv3);
 
             //inviare al server posizione armi
