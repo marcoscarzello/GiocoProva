@@ -6,21 +6,22 @@ using UnityEngine.SceneManagement;
 
 public class CanvaManager : MonoBehaviour
 {
-    bool gameHasEnded = false;
+    private bool gameHasEnded = false;
     public bool flag = false;
     public float restartDelay = 1f;
-    public int state = 0; /*1- db     2- mappa armi e nemico lv1      3- lv2      4- lv3     5- timer torna all'ascensore */
+    public int state = 0; /*1- db     2- mappa armi e nemico lv1      3- lv2 , lv3      4 timer torna all'ascensore */
 
-    //const int n_guns = 
     private float timer = 0f;
     private float waitingTime = 5.0f;
     public GameObject completeLevelUI;
-    //public GameObject barH = null;
-    //public GameObject barE = null;
+    public GameObject gameOverUI;
     private Slider health = null;
     private Slider energy = null;
     private Slider integrity = null;
-    private Color fill;
+
+    //public GameObject barH = null;
+    //public GameObject barE = null;
+    //private Color fill;
     //private GameObject sun;
     //private Animator sunAnimator;
 
@@ -28,11 +29,13 @@ public class CanvaManager : MonoBehaviour
 
     public void Start()
     {
+        gameHasEnded = false;
+        Cursor.visible = true;
+
         mirror = FindObjectOfType<GestioneParamsInRete>().GetComponent<GestioneParamsInRete>();
         health = FindObjectOfType<HealthBar>().GetComponent<Slider>();
         energy = FindObjectOfType<EnergyBar>().GetComponent<Slider>();
         integrity = FindObjectOfType< UIntegrityBar> ().GetComponent<Slider>();
-        Cursor.visible = true;
         health.value = mirror.salute;
         energy.value = mirror.energia;
     }
@@ -66,6 +69,7 @@ public class CanvaManager : MonoBehaviour
     public void CompleteLevel()
     {
         completeLevelUI.SetActive(true);
+        //Invoke("nextScene", restartDelay); //fine livello torna al menu o schermata finale
     }
 
     public void EndGame ()
@@ -86,17 +90,15 @@ public class CanvaManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    public Vector3[] getGunsPosition()
-    {
-        Vector3[] v = new Vector3[2];
-        return v;
-    }
-
-    public Vector3[] getDoorsPosition()
-    {
-        Vector3[] v = new Vector3[2];
-        return v;
-    }
-
-    public Vector3 getPgPosition() { return mirror.posizioneShooter; }
+    //public Vector3[] getGunsPosition()
+    //{
+    //    Vector3[] v = new Vector3[2];
+    //    return v;
+    //}
+    //public Vector3[] getDoorsPosition()
+    //{
+    //    Vector3[] v = new Vector3[2];
+    //    return v;
+    //}
+    //public Vector3 getPgPosition() { return mirror.posizioneShooter; }
 }

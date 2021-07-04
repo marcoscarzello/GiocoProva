@@ -50,6 +50,14 @@ public class VirusAttack : MonoBehaviour
     {
             gameObject.SetActive(attacco);
             spawnAllowed = attacco;
-
     }
+
+
+    public void MarcoAttaccoVirus()
+    {
+        bool attacco = true;
+        gameObject.SetActive(attacco);
+        spawnAllowed = attacco;
+    }
+
 }
