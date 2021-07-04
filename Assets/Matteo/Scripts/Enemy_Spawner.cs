@@ -20,7 +20,7 @@ public class Enemy_Spawner : MonoBehaviour
     private bool control1 = true;
     private bool control2 = true;
 
-    private bool allDefeated = false;
+    public bool allDefeated = false;
     private int countDefeated = 0;
 
     public Random rnd = new Random();
