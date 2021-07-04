@@ -33,8 +33,8 @@ public class FucileAPompa : MonoBehaviour
     {
         currentAmmo = 0;
         muzzleFlash = GetComponent<ParticleSystem>();
-        myscriptreference = GameObject.Find("WeaponHolder").GetComponent<MunizioniManager>();
-
+        if (GameObject.Find("WeaponHolder") != null)
+            myscriptreference = GameObject.Find("WeaponHolder").GetComponent<MunizioniManager>();
     }
 
     void RicaricaAutomatica()
@@ -60,7 +60,8 @@ public class FucileAPompa : MonoBehaviour
     {
         if (isReloading) return;
 
-        
+        if (GameObject.Find("WeaponHolder") != null)
+            myscriptreference = GameObject.Find("WeaponHolder").GetComponent<MunizioniManager>();
 
         if (transform.parent.name == "WeaponHolder" && gameObject.activeSelf)
         {

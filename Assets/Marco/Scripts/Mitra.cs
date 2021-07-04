@@ -32,6 +32,8 @@ public class Mitra : MonoBehaviour
     {
         currentAmmo = 0;
         muzzleFlash = GetComponent<ParticleSystem>();
+
+        if (GameObject.Find("WeaponHolder") != null)
         myscriptreference = GameObject.Find("WeaponHolder").GetComponent<MunizioniManager>();
 
 
@@ -60,7 +62,9 @@ public class Mitra : MonoBehaviour
     {
         if (isReloading) return;
 
-        
+        if (GameObject.Find("WeaponHolder") != null)
+            myscriptreference = GameObject.Find("WeaponHolder").GetComponent<MunizioniManager>();
+
         if (transform.parent.name == "WeaponHolder" && gameObject.activeSelf)
         {
 

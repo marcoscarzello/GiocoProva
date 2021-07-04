@@ -18,8 +18,8 @@ public class ValoriMunizioni : MonoBehaviour
 
     void Update()
     {
-        testoPompa.text = gestore.GetComponent<GestioneParamsInRete>().munizioniPistola.ToString();
-        testoPistola.text = gestore.GetComponent<GestioneParamsInRete>().munizioniPompa.ToString();
+        testoPompa.text = gestore.GetComponent<GestioneParamsInRete>().munizioniPompa.ToString();
+        testoPistola.text = gestore.GetComponent<GestioneParamsInRete>().munizioniPistola.ToString();
 
         testoMitra.text = gestore.GetComponent<GestioneParamsInRete>().munizioniMitra.ToString();
 

@@ -42,6 +42,8 @@ public class CanvaManager : MonoBehaviour
 
     public void Update()
     {
+        Cursor.visible = true;
+
         if (integrity.value <= 0 || health.value <= 0)
             EndGame();
         timer += Time.deltaTime;

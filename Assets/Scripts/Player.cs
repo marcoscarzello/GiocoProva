@@ -11,7 +11,7 @@ public class Player : NetworkBehaviour
 
     //
     //TODO: database trovato
-    //TODO: 
+    //TODO: non si può usare .Find su oggetti non attivi. 
 
     //ATTENZIONE: gli eventi per qualche motivo vengono chiamati due volte (nel caso di pressione del tasto spazio), potrebbe essere necessario dimezzare le variabili
 
@@ -37,7 +37,10 @@ public class Player : NetworkBehaviour
 
     void Start()
     {
-        
+        posizioneShooter = new Vector3(0f, 0f, 0f);
+        salute = 0f;
+        energia = 0f;
+        //solo il client attiva lo shooter, che parte disattivo 
 
     }
 
@@ -109,6 +112,10 @@ public class Player : NetworkBehaviour
 
     void Update()
     {
+
+        Debug.Log("va");
+
+        
         //Cose che deve fare il player se è il client
         if (isLocalPlayer && !isServer)
         {
@@ -186,10 +193,6 @@ public class Player : NetworkBehaviour
     //Funzione di aggiornamento client -> server di posizione, vita, energia
     [Command]
     public void AggiornaServerSuParamsShooter(Vector3 posizioneShooter, float salute, float energia) {
-
-        //prova da cancellare
-        GameObject.Find("Canvas_map").gameObject.GetComponent<ProvaPosizioneCanvaeccecc>().posizionePG = posizioneShooter;
-
 
         if (GameObject.Find("GestoreParamsInRete") != null)
         {
