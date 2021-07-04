@@ -154,11 +154,18 @@ public class Mitra : MonoBehaviour
                     if (hit.collider.transform.parent != null)
                     {
 
-                        NemicoManagerLV2 nemicoLV2 = hit.collider.transform.parent.gameObject.GetComponent<NemicoManagerLV2>();
-                        if (nemicoLV2 != null)
+                        NemicoManagerLV2a nemicoLV2a = hit.collider.transform.parent.gameObject.GetComponent<NemicoManagerLV2a>();
+                        if (nemicoLV2a != null)
                         {
                             Debug.Log(hit.transform.gameObject.tag);
-                            nemicoLV2.Colpito(damage * myscriptreference.moltiplicatore, tag, hit.transform.gameObject.tag); //invio danno e colore arma
+                            nemicoLV2a.Colpito(damage * myscriptreference.moltiplicatore, tag, hit.transform.gameObject.tag); //invio danno e colore arma e tag schermo
+                        }
+
+                        NemicoManagerLV2b nemicoLV2b = hit.collider.transform.parent.gameObject.GetComponent<NemicoManagerLV2b>();
+                        if (nemicoLV2b != null)
+                        {
+                            Debug.Log(hit.transform.gameObject.tag);
+                            nemicoLV2b.Colpito(damage * myscriptreference.moltiplicatore, tag, hit.transform.gameObject.tag); //invio danno e colore arma e tag schermo
                         }
                     }
                 }

@@ -82,10 +82,4 @@ public class LV1_Enemy_Generator : MonoBehaviour
     {
         return EnemyCode;
     }
-
-    public void Distrutto()
-    { 
-
-        Debug.Log("distrutto");
-    }
 }

@@ -8,6 +8,8 @@ using UnityEngine;
 
 public class NemicoManager : MonoBehaviour
 {
+    public GameObject Robot_LV1;
+
     public float vitaModuloSigla;
 
     public Material[] M1Distrutto = new Material[8];
@@ -32,7 +34,7 @@ public class NemicoManager : MonoBehaviour
 
         //prendo soluzione
         soluzione = Convert.ToString(DataBase.Rows.Find(enemycode)[2]);
-        Debug.Log("Soluzione nemico livello 1 : "  + soluzione);
+        Debug.Log("Soluzione nemico livello 1 "  + soluzione);
 
     }
 
@@ -63,11 +65,10 @@ public class NemicoManager : MonoBehaviour
             //penalità per lo shooter
         }
 
-        //muore il modulo se arriva a zero
+        //muore se arriva a zero
         if (vitaModuloSigla <= 0f)
         {
-            transform.parent.gameObject.GetComponent<LV1_Enemy_Generator>().Distrutto();
-
+            //AAA muore
             Die();
         }
 
@@ -92,11 +93,6 @@ public class NemicoManager : MonoBehaviour
         temp.y = 0.7f;
         transform.position = temp;
         Instantiate(ExplosionParticle, transform.position /*new Vector3(spawnPos.position.x, 0.0f, spawnPos.position.y)*/, Quaternion.identity);
-        Destroy(gameObject);
-    }
-
-    void Update()
-    {
-      
+        Destroy(Robot_LV1);
     }
 }

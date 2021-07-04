@@ -22,6 +22,10 @@ public class NemicoManagerLV3 : MonoBehaviour
     [SerializeField] private Munizioni ammo;
     [SerializeField] private Particle ExplosionParticle;
 
+    public Material[] M1Distrutti = new Material[8];
+    public Material[] M2Distrutti = new Material[6];
+    public Material[] M3Distrutti = new Material[4];
+
     void Start()
     {
         vitaModuloSigla = 40f;
@@ -96,25 +100,48 @@ public class NemicoManagerLV3 : MonoBehaviour
                     if (vitaModuloFaccia > 0)
                         vitaModuloFaccia -= damage;
                 }
-
-                if (vitaModuloLinea <= 0)
-                {
-                    primoSchermoDistrutto = true;
-                    qualeIlPrimoDistrutto = "1";
-                    gameObject.GetComponent<LV3_Enemy_Generator>().DistruttoModulo(schermoColpito);
-                }
                 if (vitaModuloSigla <= 0)
                 {
                     primoSchermoDistrutto = true;
-                    qualeIlPrimoDistrutto = "2";
-                    gameObject.GetComponent<LV3_Enemy_Generator>().DistruttoModulo(schermoColpito);
+                    qualeIlPrimoDistrutto = "1";
+                    Debug.Log("LV3 - schermo 1 - distrutto");
 
+                    char[] moduli = enemycode.ToCharArray();
+                    int materialmodulo1 = gameObject.GetComponent<LV3_Enemy_Generator>().DecodeM1(Convert.ToString(moduli[1]));
+                    var rend1 = this.gameObject.transform.Find("SchermoSinistro").gameObject.GetComponent<Renderer>();
+                    var materials1 = rend1.materials;
+                    materials1[1] = M1Distrutti[materialmodulo1];
+                    rend1.materials = materials1;
+                    //distrutto schermo sinistro
+
+                }
+                if (vitaModuloLinea <= 0)
+                {
+                    primoSchermoDistrutto = true;
+                    qualeIlPrimoDistrutto = "2";
+                    Debug.Log("LV3 - schermo 1 - distrutto");
+
+                    char[] moduli = enemycode.ToCharArray();
+                    int materialmodulo2 = gameObject.GetComponent<LV3_Enemy_Generator>().DecodeM2(Convert.ToString(moduli[2]));
+                    var rend5 = this.gameObject.transform.Find("SchermoDestra").gameObject.GetComponent<Renderer>();
+                    var materials5 = rend5.materials;
+                    materials5[1] = M2Distrutti[materialmodulo2];
+                    rend5.materials = materials5;
+                    //distrutto schermo destra
                 }
                 if (vitaModuloFaccia <= 0)
                 {
                     primoSchermoDistrutto = true;
                     qualeIlPrimoDistrutto = "3";
-                    gameObject.GetComponent<LV3_Enemy_Generator>().DistruttoModulo(schermoColpito);
+                    Debug.Log("LV3 - schermo 1 - distrutto");
+
+                    char[] moduli = enemycode.ToCharArray();
+                    int materialmodulo3 = gameObject.GetComponent<LV3_Enemy_Generator>().DecodeM3(Convert.ToString(moduli[3]));
+                    var rend6 = this.gameObject.transform.Find("Corpo").gameObject.transform.Find("SchermoCentrale").gameObject.GetComponent<Renderer>();
+                    var materials6 = rend6.materials;
+                    materials6[1] = M3Distrutti[materialmodulo3];
+                    rend6.materials = materials6;
+                    //distrutto schermo centrale
 
                 }
             }
@@ -150,18 +177,42 @@ public class NemicoManagerLV3 : MonoBehaviour
                 if (vitaModuloLinea <= 0 && qualeIlPrimoDistrutto != "1")
                 {
                     secondoSchermoDistrutto = true;
-                    gameObject.GetComponent<LV3_Enemy_Generator>().DistruttoModulo(schermoColpito);
+                    Debug.Log("LV3 - schermo 2 - distrutto");
+
+                    char[] moduli = enemycode.ToCharArray();
+                    int materialmodulo1 = gameObject.GetComponent<LV3_Enemy_Generator>().DecodeM1(Convert.ToString(moduli[1]));
+                    var rend1 = this.gameObject.transform.Find("SchermoSinistro").gameObject.GetComponent<Renderer>();
+                    var materials1 = rend1.materials;
+                    materials1[1] = M1Distrutti[materialmodulo1];
+                    rend1.materials = materials1;
+                    //distrutto schermo sinistro
                 }
                 if (vitaModuloSigla <= 0 && qualeIlPrimoDistrutto != "2")
                 {
                     secondoSchermoDistrutto = true;
-                    gameObject.GetComponent<LV3_Enemy_Generator>().DistruttoModulo(schermoColpito);
+                    Debug.Log("LV3 - schermo 2 - distrutto");
+
+                    char[] moduli = enemycode.ToCharArray();
+                    int materialmodulo2 = gameObject.GetComponent<LV3_Enemy_Generator>().DecodeM2(Convert.ToString(moduli[2]));
+                    var rend5 = this.gameObject.transform.Find("SchermoDestra").gameObject.GetComponent<Renderer>();
+                    var materials5 = rend5.materials;
+                    materials5[1] = M2Distrutti[materialmodulo2];
+                    rend5.materials = materials5;
+                    //distrutto schermo destra
 
                 }
                 if (vitaModuloFaccia <= 0 && qualeIlPrimoDistrutto != "3")
                 {
                     secondoSchermoDistrutto = true;
-                    gameObject.GetComponent<LV3_Enemy_Generator>().DistruttoModulo(schermoColpito);
+                    Debug.Log("LV3 - schermo 2 - distrutto");
+
+                    char[] moduli = enemycode.ToCharArray();
+                    int materialmodulo3 = gameObject.GetComponent<LV3_Enemy_Generator>().DecodeM3(Convert.ToString(moduli[3]));
+                    var rend6 = this.gameObject.transform.Find("Corpo").gameObject.transform.Find("SchermoCentrale").gameObject.GetComponent<Renderer>();
+                    var materials6 = rend6.materials;
+                    materials6[1] = M3Distrutti[materialmodulo3];
+                    rend6.materials = materials6;
+                    //distrutto schermo centrale
 
                 }
             }
@@ -191,11 +242,6 @@ public class NemicoManagerLV3 : MonoBehaviour
                 {
                     if (vitaModuloFaccia > 0)
                         vitaModuloFaccia -= damage;
-                }
-
-                if (vitaModuloLinea <= 0 && vitaModuloSigla <= 0 && vitaModuloFaccia <= 0)
-                {
-                    gameObject.GetComponent<LV3_Enemy_Generator>().DistruttoModulo(schermoColpito); 
                 }
             }
             else
@@ -231,10 +277,5 @@ public class NemicoManagerLV3 : MonoBehaviour
         transform.position = temp;
         Instantiate(ExplosionParticle, transform.position /*new Vector3(spawnPos.position.x, 0.0f, spawnPos.position.y)*/, Quaternion.identity);
         Destroy(gameObject);
-    }
-
-    void Update()
-    {
-
     }
 }

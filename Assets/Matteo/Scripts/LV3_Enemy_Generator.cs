@@ -67,7 +67,7 @@ public class LV3_Enemy_Generator : MonoBehaviour
         //Debug.Log("Spawnato EnemyCode LV.2 - " + EnemyCode);
     }
 
-    int DecodeM1(string letter)
+    public int DecodeM1(string letter)
     {
         switch (letter)
         {
@@ -93,7 +93,7 @@ public class LV3_Enemy_Generator : MonoBehaviour
         }
     }
 
-    int DecodeM2(string letter)
+    public int DecodeM2(string letter)
     {
         switch (letter)
         {
@@ -115,7 +115,7 @@ public class LV3_Enemy_Generator : MonoBehaviour
         }
     }
 
-    int DecodeM3(string letter)
+    public int DecodeM3(string letter)
     {
         switch (letter)
         {
@@ -136,12 +136,5 @@ public class LV3_Enemy_Generator : MonoBehaviour
     public String GetEnemyCode()
     {
         return EnemyCode;
-    }
-
-    public void DistruttoModulo(string schermo)
-    { //schermo = 1, 2, 3
-
-
-        Debug.Log(schermo + " distrutto");
     }
 }
