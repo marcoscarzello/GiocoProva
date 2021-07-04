@@ -7,7 +7,7 @@ using UnityEngine.AI;
 
 public class VirusFSM : MonoBehaviour
 {
-    [SerializeField] private GameObject _target;
+    [SerializeField] private Target _target;
     [SerializeField] private float _minSightDistance = 3f;
     [SerializeField] private float _portalDistance = 5f;
     [SerializeField] private float _stoppingDistance = 5f;

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45141804, g: 0.5005821, b: 0.5705891, a: 1}
+  m_IndirectSpecularColor: {r: 0.45141828, g: 0.5005826, b: 0.57058966, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5303,6 +5303,9 @@ MonoBehaviour:
   vitaModuloSigla: 0
   vitaModuloLinea: 0
   DBScriptStarter: {fileID: 1237153522}
+  ammo: {fileID: 5006606518159426686, guid: 48d40b0137ffcc64ea2de1063bcccd77, type: 3}
+  ExplosionParticle: {fileID: 3863740036971351737, guid: c7898e7d8bb63524c86ef4bf00d4dcfc,
+    type: 3}
 --- !u!114 &488884943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30321,6 +30324,9 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 8081a63a956afa241810346976bb3b4d, type: 2}
   - {fileID: 2100000, guid: 28daa7a7724d0e4409156121cc0ebc21, type: 2}
   DBScriptStarter: {fileID: 1237153522}
+  ammo: {fileID: 5006606518159426686, guid: 48d40b0137ffcc64ea2de1063bcccd77, type: 3}
+  ExplosionParticle: {fileID: 3863740036971351737, guid: c7898e7d8bb63524c86ef4bf00d4dcfc,
+    type: 3}
 --- !u!1 &1752468840
 GameObject:
   m_ObjectHideFlags: 0
@@ -35545,6 +35551,9 @@ MonoBehaviour:
   vitaModuloSigla: 0
   vitaModuloLinea: 0
   DBScriptStarter: {fileID: 1237153522}
+  ammo: {fileID: 5006606518159426686, guid: 48d40b0137ffcc64ea2de1063bcccd77, type: 3}
+  ExplosionParticle: {fileID: 3863740036971351737, guid: c7898e7d8bb63524c86ef4bf00d4dcfc,
+    type: 3}
 --- !u!1001 &5927038511110945631
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35803,6 +35812,9 @@ MonoBehaviour:
   vitaModuloLinea: 0
   vitaModuloFaccia: 0
   DBScriptStarter: {fileID: 1237153522}
+  ammo: {fileID: 5006606518159426686, guid: 48d40b0137ffcc64ea2de1063bcccd77, type: 3}
+  ExplosionParticle: {fileID: 3863740036971351737, guid: c7898e7d8bb63524c86ef4bf00d4dcfc,
+    type: 3}
 --- !u!4 &8855968367200400628 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7540687468596791962, guid: e9e4962210f5bb94a8701cb36fa2418b,

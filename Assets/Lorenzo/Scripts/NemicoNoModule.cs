@@ -52,10 +52,12 @@ public class NemicoNoModule : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        //SOLO PER I TEST ANDRA' ELIMINATO
         if (Input.GetKeyDown(KeyCode.E))
         {
             Colpito(10f);
         }
-
+        //
     }
 }
