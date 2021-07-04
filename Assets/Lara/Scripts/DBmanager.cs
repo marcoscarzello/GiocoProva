@@ -23,6 +23,7 @@ public class DBmanager : MonoBehaviour
 
     public void Trovato()
     {
+        DBtrovato = true;
         waitingText.SetActive(false);
         DBpanel.SetActive(true);
 

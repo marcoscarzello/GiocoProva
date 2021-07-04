@@ -71,6 +71,10 @@ public class Player : NetworkBehaviour
         if (!isServer)
             EnemyFinder.NuovaSoluzione += MandaAlClientNuovoCodiceNemico;
 
+        //iscrizione evento DBTrovato
+        if (isServer)
+            DB_Trigger.DBTrovato += MandaAlServerDBTrovato;
+
     }
 
     //disiscrizioni dagli eventi
@@ -96,6 +100,9 @@ public class Player : NetworkBehaviour
 
         if (!isServer)
             EnemyFinder.NuovaSoluzione -= MandaAlClientNuovoCodiceNemico;
+
+        if (isServer)
+            DB_Trigger.DBTrovato -= MandaAlServerDBTrovato;
     }
 
 
@@ -399,6 +406,19 @@ public class Player : NetworkBehaviour
             {
                 GameObject.Find("VirusAttack").GetComponent<VirusAttack>().AttaccoVirus(true);
                 Debug.Log("Player: attacco virus inoltrato al server");
+            }
+        }
+    }
+
+    [Command]
+    public void MandaAlServerDBTrovato()
+    {
+        if (isServer)
+        {
+            if (GameObject.Find("DB_Tab") != null)
+            {
+                GameObject.Find("DB_Tab").GetComponent<DBmanager>().Trovato();
+                Debug.Log("Player: sentito evnto db trovato, mando al server");
             }
         }
     }

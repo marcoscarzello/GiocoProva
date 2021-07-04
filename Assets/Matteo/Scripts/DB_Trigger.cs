@@ -8,14 +8,23 @@ public class DB_Trigger : MonoBehaviour
     private Collider other;
     private bool trigger = false;
 
+
+    //evento trovato DB
+    public delegate void TrovareDB();
+    public static event TrovareDB DBTrovato;
+
     void Update()
     {
         if (trigger)
         {
             if (Input.GetKey(KeyCode.E) && !ScriptStarter.GetComponent<Enemy_Spawner>().collectedDB && other.tag == "DataBase")
             {
-                Debug.Log("DataBase raccolto");
+                Debug.Log("DataBase raccolto. Invio evento.");
                 ScriptStarter.GetComponent<Enemy_Spawner>().collectedDB = true;
+
+                //lancio evento
+                if (DBTrovato != null)
+                    DBTrovato();
             }
         }
     }
