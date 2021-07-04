@@ -758,7 +758,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4029f5ab69df264783e5ce08eb08012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 0}
+  _target: {fileID: -1456346740865104609, guid: 35a487772540ee4409256f64d924d074,
+    type: 3}
   _minSightDistance: 30
   _stoppingDistance: 15
   _gunPivot: {fileID: 3319729055857320838}
