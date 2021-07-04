@@ -67,6 +67,7 @@ public class VAControl : MonoBehaviour
             VirusAttack.spawnAllowed = false;   //smette di spawnare 
             _counter.ResetKilledCounter();      //resetta il counter 
             Destroy(gameObject);                //cancella i viruss
+            
         }
 
         Destroy(gameObject);

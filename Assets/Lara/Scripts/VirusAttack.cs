@@ -11,7 +11,7 @@ public class VirusAttack : MonoBehaviour
 
     void Start()
     {
-        spawnAllowed = true;   //da settare a TRUE nel momento in cui si è attaccati dal virus 
+        AttaccoVirus(false);
 
 
         for (int i = 0; i < 3; i++) {
@@ -26,6 +26,8 @@ public class VirusAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!spawnAllowed)
+            gameObject.SetActive(false);
     }
 
     void SpawnVirus()
@@ -44,5 +46,10 @@ public class VirusAttack : MonoBehaviour
         }
     }
 
+    public void AttaccoVirus(bool attacco)
+    {
+            gameObject.SetActive(attacco);
+            spawnAllowed = attacco;
 
+    }
 }
