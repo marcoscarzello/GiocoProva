@@ -53,13 +53,13 @@ public class Minimap : MonoBehaviour
     {
         if(state!= cm.getState()) //così icons lavora una volta sola per stato, nel default fa in modo di non essere richiamato
             icons(cm.getState());
-        Invoke("refreshMap", waitingTime);
-        //timer += Time.deltaTime;
-        //if (timer > waitingTime)
-        //{
-        //    timer = 0f;
-        //    refreshMap();
-        //}
+        //Invoke("refreshMap", waitingTime);
+        timer += Time.deltaTime;
+        if (timer > waitingTime)
+        {
+            timer = 0f;
+            refreshMap();
+        }
     }
 
     private void refreshMap()

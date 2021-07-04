@@ -48,6 +48,7 @@ public class GestioneParamsInRete : MonoBehaviour
         munizioniMitra = 0;
         munizioniPistola = 0;
         munizioniPompa = 0;
+        posizioneShooter = new Vector3(250f, 250f, 250f);
     }
 
     void Update()

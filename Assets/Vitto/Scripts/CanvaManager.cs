@@ -30,24 +30,26 @@ public class CanvaManager : MonoBehaviour
         mirror = FindObjectOfType<GestioneParamsInRete>().GetComponent<GestioneParamsInRete>();
         health = FindObjectOfType<HealthBar>().GetComponent<Slider>();
         energy = FindObjectOfType<EnergyBar>().GetComponent<Slider>();
-        Cursor.visible = false;
+        Cursor.visible = true;
+        health.value = mirror.salute;
+        energy.value = mirror.energia;
     }
 
     public void Update()
     {
-        //timer += Time.deltaTime;
-        //if (timer > waitingTime)
-        //{
-        //    timer = 0f;
-        //    bars();
-        //}
-        Invoke("barsFill", waitingTime);
+        timer += Time.deltaTime;
+        if (timer > waitingTime)
+        {
+            timer = 0f;
+            barsFill();
+        }
+        //Invoke("barsFill", waitingTime);
     }
 
     private void barsFill()
     {
-        health.value+= mirror.salute;
-        energy.value += mirror.energia;
+        health.value= mirror.salute;
+        energy.value = mirror.energia;
         //fill = health.color;
         //fill.a += mirror.salute;
         //health.color = fill;
@@ -71,9 +73,7 @@ public class CanvaManager : MonoBehaviour
         }
     }
     public void setState(int s) { state = s; }
-
     public void accState() { state++; }
-
     public int getState() { return state; }
 
     public void Restart()
@@ -93,5 +93,5 @@ public class CanvaManager : MonoBehaviour
         return v;
     }
 
-    public Vector3 getPgPosition() { return new Vector3(0f, 0f, 0f); }
+    public Vector3 getPgPosition() { return mirror.posizioneShooter; }
 }
