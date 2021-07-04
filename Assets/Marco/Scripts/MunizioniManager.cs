@@ -8,13 +8,16 @@ public class MunizioniManager : MonoBehaviour
     public int scortaAssalto;
     public int scortaPompa;
 
+    public float moltiplicatore;
+
     // Start is called before the first frame update
     void Start()
     {
         scortaPistola = 20;
         scortaAssalto = 40;
         scortaPompa = 10;
-        
+        moltiplicatore = 1f;
+
     }
 
     // Update is called once per frame
@@ -50,5 +53,20 @@ public class MunizioniManager : MonoBehaviour
         scortaPistola += 40;
         scortaAssalto += 100;
         scortaPompa += 20;
+    }
+
+    public void PowerUpPotenza()
+    {
+        //l'energia viene tolta in vitaenergia
+        moltiplicatore = 3f;
+        Debug.Log("Sono il client, potenza aumentata. Inizio coroutine");
+        StartCoroutine(coroutinePotenza());
+        Debug.Log("Fine Coroutine potenza. moltiplicatore riportato a 1");
+        moltiplicatore = 1f;
+
+    }
+
+    IEnumerator coroutinePotenza() {
+        yield return new WaitForSeconds(120);
     }
 }

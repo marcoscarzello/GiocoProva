@@ -12,6 +12,8 @@ public class DB_Generator : MonoBehaviour
     public int DatabaseNemiciLv2 = 15;
     public int DatabaseNemiciLv3 = 10;
 
+    public string lastSolution;
+
     public DataTable DataBase = new DataTable("DataBase");
 
     public Random rnd = new Random();
@@ -148,7 +150,7 @@ public class DB_Generator : MonoBehaviour
         return enemyDB;
     }
 
-    public void CercaSoluzione()
+    public void CercaSoluzione(string nemCode)
     {
         //if (!DataBase.Rows.Find(EnemyFinder.codiceNemico).IsNull(2))
 
@@ -161,15 +163,36 @@ public class DB_Generator : MonoBehaviour
         //else
         // EnemyFinder.codiceSoluzione = "NoMatch";
 
-        EnemyFinder.codiceSoluzione = "No Match";
+
+
+
+
+        //soluzione "all in one" deprecata:
+
+        //EnemyFinder.codiceSoluzione = "No Match";
+        //for (int a = 0; a < DataBase.Rows.Count; a++)
+        //{
+
+        //  if (Convert.ToString(DataBase.Rows[a][1]) == EnemyFinder.codiceNemico)
+        //{
+        //  EnemyFinder.codiceSoluzione = Convert.ToString(DataBase.Rows[a][2]);
+        //}
+        //}
+
+        Debug.Log("Sono il DB_Generator: ricerco nuova soluzione per " + nemCode);
+
+        lastSolution = "No Match";
         for (int a = 0; a < DataBase.Rows.Count; a++)
         {
 
-            if (Convert.ToString(DataBase.Rows[a][1]) == EnemyFinder.codiceNemico)
-            {
-                EnemyFinder.codiceSoluzione = Convert.ToString(DataBase.Rows[a][2]);
-            }
+          if (Convert.ToString(DataBase.Rows[a][1]) == nemCode)
+             {
+                lastSolution = Convert.ToString(DataBase.Rows[a][2]);
+             }
         }
+
+
+
 
     }
 }

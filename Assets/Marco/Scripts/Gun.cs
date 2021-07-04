@@ -134,14 +134,14 @@ public class Gun : MonoBehaviour
             //se il nemico è normale
             NemicoNoModule nemicoNormale = hit.transform.GetComponent<NemicoNoModule>();
             if (nemicoNormale != null)
-                nemicoNormale.Colpito(damage);
+                nemicoNormale.Colpito(damage * myscriptreference.moltiplicatore);
 
 
             //se il nemico è un nemico grosso di LV1
             NemicoManager nemico = hit.transform.GetComponent<NemicoManager>();
                 if (nemico != null)
                 {
-                         nemico.Colpito(damage, tag); //invio danno e colore arma
+                         nemico.Colpito(damage * myscriptreference.moltiplicatore, tag); //invio danno e colore arma
                                                         //Debug.Log(hit.collider.gameObject.tag);             
                 }
 
@@ -155,7 +155,7 @@ public class Gun : MonoBehaviour
                         if (nemicoLV2 != null)
                         {
                             Debug.Log(hit.transform.gameObject.tag);
-                            nemicoLV2.Colpito(damage, tag, hit.transform.gameObject.tag); //invio danno e colore arma e tag schermo
+                            nemicoLV2.Colpito(damage * myscriptreference.moltiplicatore, tag, hit.transform.gameObject.tag); //invio danno e colore arma e tag schermo
                         }
                     }
                 }
@@ -175,7 +175,7 @@ public class Gun : MonoBehaviour
                         if (nemicoLV3 != null)
                         {
                             Debug.Log(hit.transform.gameObject.tag);
-                            nemicoLV3.Colpito(damage, tag, hit.transform.gameObject.tag);
+                            nemicoLV3.Colpito(damage * myscriptreference.moltiplicatore, tag, hit.transform.gameObject.tag);
                         }
                     }
                 }

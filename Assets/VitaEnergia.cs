@@ -45,8 +45,21 @@ public class VitaEnergia : MonoBehaviour
 
     public void Curato() {
 
-        salute = 100;
-        energia -= 30;
+        salute = 100f;
+        energia -= 30f;
         Debug.Log("Sono il client. Salute ricaricata! Grazie");
+    }
+
+    public void Potenza()
+    {
+        Debug.Log("energia tolta per power up potenza");
+        //questo toglie solo l'energia. Il power up scatta in munizionimanager
+        energia -= 60f;
+    }
+    public void Munizze()
+    {
+        Debug.Log("energia tolta per power up munizze");
+        //questo toglie solo l'energia. Il power up scatta in munizionimanager
+        energia = 0f;
     }
 }

@@ -10,8 +10,8 @@ public class Player : NetworkBehaviour
 {
 
     //
-    //Eventi TODO: database trovato, interrogazione database. IDEA: il server inerroga il client con un evento, e il client invia continuamente l'ultima soluzione con una Command
-    //TODO: apertura porte, ricarica munizinoi, power up potenza, ricarica salute
+    //TODO: database trovato
+    //TODO: 
 
     //ATTENZIONE: gli eventi per qualche motivo vengono chiamati due volte (nel caso di pressione del tasto spazio), potrebbe essere necessario dimezzare le variabili
 
@@ -23,6 +23,8 @@ public class Player : NetworkBehaviour
     public Vector3 posizionelv3;
 
     public int munizioniPistola, munizioniPompa, munizioniMitra;
+
+    public string ultimaSoluzione;
 
     //public DataTable DataBase;
 
@@ -64,6 +66,11 @@ public class Player : NetworkBehaviour
         //iscrizione evento attaccovirus: solo se sono il server
         if (isServer)
             VirusFSM.PartitoAttacco += MandaAlServerAttaccoVirus;
+
+        //iscrizione evento ricerca nuova soluzione
+        if (!isServer)
+            EnemyFinder.NuovaSoluzione += MandaAlClientNuovoCodiceNemico;
+
     }
 
     //disiscrizioni dagli eventi
@@ -86,7 +93,11 @@ public class Player : NetworkBehaviour
 
         if (isServer)
             VirusFSM.PartitoAttacco -= MandaAlServerAttaccoVirus;
+
+        if (!isServer)
+            EnemyFinder.NuovaSoluzione -= MandaAlClientNuovoCodiceNemico;
     }
+
 
 
     void Update()
@@ -137,6 +148,14 @@ public class Player : NetworkBehaviour
                 munizioniPompa = GameObject.Find("WeaponHolder").GetComponent<MunizioniManager>().scortaPompa;
             }
             AggiornaServerSuMunizioni(munizioniPistola, munizioniPompa, munizioniMitra);
+
+
+            //inviare lastSolution al server
+            if (GameObject.Find("Script_Starter") != null)
+            {
+                ultimaSoluzione = GameObject.Find("Script_Starter").GetComponent<DB_Generator>().lastSolution;
+            }
+            AggiornaServerSuUltimaSoluzione(ultimaSoluzione);
         }
 
 
@@ -222,6 +241,18 @@ public class Player : NetworkBehaviour
         }
     }
 
+    [Command]
+    public void AggiornaServerSuUltimaSoluzione(string ultSol)
+    {
+
+        if (GameObject.Find("Enemy_finder") != null)
+        {
+            GameObject.Find("Enemy_finder").GetComponent<EnemyFinder>().ultimoCodiceSoluzione = ultSol;
+
+        }
+    }
+
+
     [ClientRpc]
     public void AggiornaClientProva(int valoreProva)
     {
@@ -259,7 +290,12 @@ public class Player : NetworkBehaviour
     {
         if (!isServer)
         {
-            //richiamare una funzione che aumenti la potenza delle armi al client abbassando l'energia e facendo partire una coroutine che dopo un po' torni al danno normale
+            Debug.Log("Player: mando al client forza");
+            //a munizionimanager aumento il moltiplicatore, a vitaenergia tolgo l'energia usata
+            if (GameObject.Find("WeaponHolder") != null)
+                GameObject.Find("WeaponHolder").GetComponent<MunizioniManager>().PowerUpPotenza();
+            if (GameObject.Find("Shooter") != null)
+                GameObject.Find("Shooter").GetComponent<VitaEnergia>().Potenza();
         }
     }
 
@@ -271,6 +307,8 @@ public class Player : NetworkBehaviour
         {
             if (GameObject.Find("WeaponHolder") != null)
                 GameObject.Find("WeaponHolder").GetComponent<MunizioniManager>().PiuMunizioniGrazie();
+            if (GameObject.Find("Shooter") != null)
+                GameObject.Find("Shooter").GetComponent<VitaEnergia>().Munizze();
         }
     }
 
@@ -331,6 +369,19 @@ public class Player : NetworkBehaviour
             }
         }
 
+    }
+
+    [ClientRpc]
+    public void MandaAlClientNuovoCodiceNemico(string stringaNemico) {
+
+        if (!isServer)
+        {
+            if (GameObject.Find("Script_Starter") != null)
+            {
+                GameObject.Find("Script_Starter").GetComponent<DB_Generator>().CercaSoluzione(stringaNemico);
+                Debug.Log("sono il Player del client: ricevuto evento ricerca nuova soluzione. Invocata funzione su DB_generator.");
+            }
+        }
     }
 
 

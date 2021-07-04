@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.Events;
+
 
 
 public class EnemyFinder : MonoBehaviour
@@ -10,11 +12,19 @@ public class EnemyFinder : MonoBehaviour
     public static string codiceNemico;
     public static string codiceSoluzione;
 
+    public string ultimoCodiceNemico;
+    public string ultimoCodiceSoluzione;
+
+
     public static int statoRicerca;
 
     public GameObject inputField;
 
-    
+
+    //evento di ricerca nuova soluzione: fa cambiare la soluzione ripetutamente inviata dal client (dBgenerator)
+    public delegate void RicercaSoluzione(string stringa);
+    public static event RicercaSoluzione NuovaSoluzione;
+
 
     string sigla;
     string colore;
@@ -31,6 +41,8 @@ public class EnemyFinder : MonoBehaviour
     void Start()
     {
         codiceNemico = "";
+        codiceSoluzione = "";
+
         sigla = "";
         colore = "";
         linea = "";
@@ -46,6 +58,13 @@ public class EnemyFinder : MonoBehaviour
         colore = color;
         Debug.Log(colore);
 
+    }
+
+    //funzione di lancio evento ricerca soluzione, chiamata dalla pressione sul bottone "generate solution"
+    public void eventoSoluzione()
+    {
+        if (NuovaSoluzione != null)
+            NuovaSoluzione(ultimoCodiceNemico);
     }
 
     public void impostaSigla() {
@@ -149,6 +168,10 @@ public class EnemyFinder : MonoBehaviour
 
 
     void Update() {
+
+        ultimoCodiceNemico = codiceNemico;
+        codiceSoluzione = ultimoCodiceSoluzione;
+
         switch (statoRicerca)
         {
             case 0: //ricerca colori e sigla
