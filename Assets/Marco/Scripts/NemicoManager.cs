@@ -12,8 +12,6 @@ public class NemicoManager : MonoBehaviour
 
     public float vitaModuloSigla;
 
-    public Material[] M1Distrutto = new Material[8];
-
     private string soluzione;
     private string enemycode;
 
@@ -88,6 +86,7 @@ public class NemicoManager : MonoBehaviour
 
     void Die()
     {
+        DBScriptStarter.GetComponent<Enemy_Spawner>().defeatedLV1 = true;
         SpawnAmmo();
         Vector3 temp = transform.position;
         temp.y = 0.7f;

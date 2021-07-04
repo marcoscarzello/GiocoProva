@@ -271,6 +271,7 @@ public class NemicoManagerLV3 : MonoBehaviour
 
     void Die()
     {
+        DBScriptStarter.GetComponent<Enemy_Spawner>().defeatedLV2_LV3 = true;
         SpawnAmmo();
         Vector3 temp = transform.position;
         temp.y = 0.7f;

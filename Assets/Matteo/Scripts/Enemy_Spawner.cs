@@ -9,34 +9,49 @@ public class Enemy_Spawner : MonoBehaviour
 
     public GameObject NanoBot;
     public GameObject Enemy_LV1;
-    public GameObject Enemy_LV2_1;
-    public GameObject Enemy_LV2_2;
+    public GameObject Enemy_LV2a;
+    public GameObject Enemy_LV2b;
     public GameObject Enemy_LV3;
 
     public bool collectedDB = false;
     public bool defeatedLV1 = false;
     public bool defeatedLV2_LV3 = false;
 
+    private bool control1 = true;
+    private bool control2 = true;
+
+    private bool allDefeated = false;
+    private int countDefeated = 0;
+
     public Random rnd = new Random();
 
     void Update()
     {
-        if (collectedDB)
+        if (collectedDB && control1)
         {
             Enemy_LV1.SetActive(true);
+            control1 = false;
         }
 
-        if (defeatedLV1)
+        if (defeatedLV1 && control2)
         {
-            Enemy_LV2_1.SetActive(true);
-            Enemy_LV2_2.SetActive(true);
+            Enemy_LV2a.SetActive(true);
+            Enemy_LV2b.SetActive(true);
             Enemy_LV3.SetActive(true);
+            control2 = false;
+            countDefeated++;
         }
 
         if (defeatedLV2_LV3)
         {
             SpawnNanoBots(WhichQuadrant());
             defeatedLV2_LV3 = false;
+            countDefeated++;
+        }
+
+        if (countDefeated == 4)
+        {
+            allDefeated = true;
         }
     }
 
