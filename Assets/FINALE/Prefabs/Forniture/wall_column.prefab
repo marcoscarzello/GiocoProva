@@ -11,6 +11,10 @@ GameObject:
   - component: {fileID: 1988356227154808227}
   - component: {fileID: 3186249325972849158}
   - component: {fileID: 852063961151993548}
+  - component: {fileID: 5879494081523939948}
+  - component: {fileID: 8095302719520408442}
+  - component: {fileID: 5737105641746435847}
+  - component: {fileID: 8841757218969315191}
   m_Layer: 0
   m_Name: wall_column
   m_TagString: Untagged
@@ -81,3 +85,58 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &5879494081523939948
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212558846532245273}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0067599276, y: 0.005365941, z: 0.0005625877}
+  m_Center: {x: 0, y: 0.00038071498, z: 0.00027073646}
+--- !u!65 &8095302719520408442
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212558846532245273}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0067599276, y: 0.003992413, z: 0.0039603934}
+  m_Center: {x: 0, y: 0.0007794847, z: 0.0019696313}
+--- !u!65 &5737105641746435847
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212558846532245273}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.0067599276, y: 0.0031948762, z: 0.010682662}
+  m_Center: {x: 0, y: 0.0015991738, z: 0.0092076585}
+--- !u!208 &8841757218969315191
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212558846532245273}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.003, y: 0.003, z: 0.007}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.001, z: 0.007}
+  m_TimeToStationary: 0.5
