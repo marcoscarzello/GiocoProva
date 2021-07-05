@@ -4,6 +4,12 @@ using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityStandardAssets.CrossPlatformInput;
+using UnityStandardAssets.Utility;
+using UnityStandardAssets.Characters.FirstPerson;
+using System;
+using Random = UnityEngine.Random;
+
 
 
 public class Player : NetworkBehaviour
@@ -40,8 +46,26 @@ public class Player : NetworkBehaviour
         posizioneShooter = new Vector3(0f, 0f, 0f);
         salute = 100f;
         energia = 10f;
+
+
         //solo il client attiva lo shooter, che parte disattivo 
 
+
+        if (isServer)
+            if (GameObject.Find("Shooter") != null)
+            {
+                GameObject.Find("Shooter").SetActive(false);
+
+            }
+
+        if (!isServer) {
+            if (GameObject.Find("Shooter") != null)
+            {
+                GameObject.Find("Shooter").GetComponent<FirstPersonController>().enabled = true;
+
+            }
+
+        }
     }
 
     void OnEnable() {

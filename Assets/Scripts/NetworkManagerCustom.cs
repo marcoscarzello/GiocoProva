@@ -43,14 +43,22 @@ public class NetworkManagerCustom : NetworkManager
         GameObject.Find("HostButton").GetComponent<Button>().onClick.RemoveAllListeners();
         GameObject.Find("HostButton").GetComponent<Button>().onClick.AddListener(StartHost);
 
+
+
         GameObject.Find("ClientButton").GetComponent<Button>().onClick.RemoveAllListeners();
         GameObject.Find("ClientButton").GetComponent<Button>().onClick.AddListener(StartHost);
     }
 
     void SetupOtherSceneButtons()
     {
-        GameObject.Find("DisconnectButton").GetComponent<Button>().onClick.RemoveAllListeners();
-        GameObject.Find("DisconnectButton").GetComponent<Button>().onClick.AddListener(StopHost);
+        //GameObject.Find("DisconnectButton").GetComponent<Button>().onClick.RemoveAllListeners();
+        //GameObject.Find("DisconnectButton").GetComponent<Button>().onClick.AddListener(StopHost);
+
+    }
+
+    public void addPlayer() {
+
+        NetworkClient.AddPlayer();
 
     }
 }

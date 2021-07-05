@@ -26,7 +26,7 @@ public class DBmanager : MonoBehaviour
     {
         DBtrovato = true;
         waitingText.SetActive(false);
-        DBtab.SetActive(true);
+        //DBtab.SetActive(true);
 
         DBpanel.SetActive(true);
 
