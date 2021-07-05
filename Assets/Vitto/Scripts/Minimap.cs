@@ -69,7 +69,7 @@ public class Minimap : MonoBehaviour
     {
         random.x = Random.Range(-randomRange, randomRange);
         random.y = Random.Range(-randomRange, randomRange);
-        pg.transform.position = mirror.posizioneShooter + random; //posizione shooter randomica
+        pg.transform.position = inverti(mirror.posizioneShooter) + random; //posizione shooter randomica
         switch (state)
         {
             case 2:
