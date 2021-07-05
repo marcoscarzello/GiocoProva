@@ -42,6 +42,7 @@ public class Minimap : MonoBehaviour
     //private bool[] uccisi= { false, false, false, false };
 
     private GestioneParamsInRete mirror =null;
+    private DBmanager dbm = null;
 
     private void Start()
     {
@@ -51,7 +52,7 @@ public class Minimap : MonoBehaviour
         //doors_positions = cm.getDoorsPosition();
         random = new Vector3(0f, 0f, 0f);
         inv = new Vector3(0f, 0f, 0f);
-
+        dbm = GameObject.Find("Panels").GetComponent<DBmanager>();
     }
 
     void Update()
@@ -78,6 +79,10 @@ public class Minimap : MonoBehaviour
         }
         switch (state)
         {
+            case 1:
+                if (dbm.DBtrovato)
+                    cm.setState(2);
+                break;
             case 2:
                 lv1.transform.position = inverti(mirror.posizionelv1);
                 if (lv1.transform.position.x < -900f)
