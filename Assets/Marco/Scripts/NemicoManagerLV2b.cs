@@ -18,7 +18,8 @@ public class NemicoManagerLV2b : MonoBehaviour
     public GameObject DBScriptStarter;
     [SerializeField] private Munizioni ammo;
     [SerializeField] private Particle ExplosionParticle;
-
+    [SerializeField] private VitaEnergia aggiungi;
+ 
     public Material[] M1Distrutti = new Material[8];
     public Material[] M2Distrutti = new Material[6];
 
@@ -165,6 +166,7 @@ public class NemicoManagerLV2b : MonoBehaviour
 
     void Die()
     {
+        aggiungi.energia += 20;
         DBScriptStarter.GetComponent<Enemy_Spawner>().defeatedLV2_LV3 = true;
         SpawnAmmo();
         Vector3 temp = transform.position;

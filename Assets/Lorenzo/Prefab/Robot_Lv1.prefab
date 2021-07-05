@@ -659,7 +659,7 @@ Transform:
   m_GameObject: {fileID: 2509457364914661105}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.573185, y: -1.3773212, z: -2.4166489}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 6136268648540695765}
   - {fileID: 2044750460649515165}
@@ -746,8 +746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4029f5ab69df264783e5ce08eb08012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: -1456346740865104609, guid: 35a487772540ee4409256f64d924d074,
-    type: 3}
+  _target: {fileID: 0}
   _minSightDistance: 30
   _stoppingDistance: 15
   _gunPivot: {fileID: 3319729055857320838}
@@ -1160,6 +1159,7 @@ MonoBehaviour:
   ammo: {fileID: 5006606518159426686, guid: 48d40b0137ffcc64ea2de1063bcccd77, type: 3}
   ExplosionParticle: {fileID: 3863740036971351737, guid: c7898e7d8bb63524c86ef4bf00d4dcfc,
     type: 3}
+  aggiungi: {fileID: 0}
 --- !u!1 &4730735574469022324
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,7 +17,8 @@ public class NemicoManager : MonoBehaviour
     public GameObject DBScriptStarter;
     [SerializeField] private Munizioni ammo;
     [SerializeField] private Particle ExplosionParticle;
-
+    [SerializeField] private VitaEnergia aggiungi;
+ 
     void Start()
     {
         vitaModuloSigla = 40f;
@@ -32,6 +33,15 @@ public class NemicoManager : MonoBehaviour
         //prendo soluzione
         soluzione = Convert.ToString(DataBase.Rows.Find(enemycode)[2]);
         Debug.Log("Soluzione nemico livello 1 "  + soluzione);
+
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Die();
+        }
 
     }
 
@@ -85,6 +95,7 @@ public class NemicoManager : MonoBehaviour
 
     void Die()
     {
+        aggiungi.energia += 20;
         DBScriptStarter.GetComponent<Enemy_Spawner>().defeatedLV1 = true;
         SpawnAmmo();
         Vector3 temp = transform.position;

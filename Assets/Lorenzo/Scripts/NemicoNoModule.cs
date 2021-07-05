@@ -9,7 +9,7 @@ public class NemicoNoModule : MonoBehaviour
     [SerializeField] private Munizioni ammo;
     //[SerializeField] private Transform spawnPos;
     [SerializeField] private Particle ExplosionParticle;
-
+    [SerializeField] private VitaEnergia aggiungi;
 
 
     // Start is called before the first frame update
@@ -31,6 +31,7 @@ public class NemicoNoModule : MonoBehaviour
 
     void Die()
     {
+        aggiungi.energia += 10;
         SpawnAmmo();
         Vector3 temp = transform.position;
         temp.y = 0.7f;

@@ -393,7 +393,7 @@ GameObject:
   - component: {fileID: 6732872039829218358}
   - component: {fileID: 6732872039829218353}
   - component: {fileID: 1613566521107424012}
-  - component: {fileID: 4692084927495120131}
+  - component: {fileID: 9159575758762794758}
   m_Layer: 0
   m_Name: Robot_Lv2B
   m_TagString: Untagged
@@ -507,8 +507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4029f5ab69df264783e5ce08eb08012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: -1456346740865104609, guid: 35a487772540ee4409256f64d924d074,
-    type: 3}
+  _target: {fileID: 0}
   _minSightDistance: 30
   _stoppingDistance: 15
   _gunPivot: {fileID: 6732872040148616406}
@@ -566,6 +565,7 @@ MonoBehaviour:
   ammo: {fileID: 5006606518159426686, guid: 48d40b0137ffcc64ea2de1063bcccd77, type: 3}
   ExplosionParticle: {fileID: 3863740036971351737, guid: c7898e7d8bb63524c86ef4bf00d4dcfc,
     type: 3}
+  aggiungi: {fileID: 0}
   M1Distrutti:
   - {fileID: 2100000, guid: 613a12066e21dcc45bcc8cb3a14a1cd9, type: 2}
   - {fileID: 2100000, guid: 2ab056f95d937cb408a24f55d4862288, type: 2}
@@ -582,7 +582,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 1c38e6da126f304448b10c3ef00123bc, type: 2}
   - {fileID: 2100000, guid: 76f884f8efcc0a94782d59fa4c31dee8, type: 2}
   - {fileID: 2100000, guid: 14e20de21315cd34f82d6f1cee1d0482, type: 2}
---- !u!114 &4692084927495120131
+--- !u!114 &9159575758762794758
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -591,32 +591,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 5885816187493983528}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc3cf953572d00a4f9f0a49264017b01, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e49464d5808af040aee843774abf608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vitaModuloSigla: 0
-  vitaModuloLinea: 0
-  DBScriptStarter: {fileID: 3404900047813439703, guid: 54275bc6633565b44b835e6f7a76c5d7,
-    type: 3}
-  ammo: {fileID: 5006606518159426686, guid: 48d40b0137ffcc64ea2de1063bcccd77, type: 3}
-  ExplosionParticle: {fileID: 3863740036971351737, guid: c7898e7d8bb63524c86ef4bf00d4dcfc,
-    type: 3}
-  M1Distrutti:
-  - {fileID: 2100000, guid: 613a12066e21dcc45bcc8cb3a14a1cd9, type: 2}
-  - {fileID: 2100000, guid: 2ab056f95d937cb408a24f55d4862288, type: 2}
-  - {fileID: 2100000, guid: f9169fcabb5d17c49bc3feb0acfd6508, type: 2}
-  - {fileID: 2100000, guid: ec8bbeb570c6e904ebb55f1e1d259360, type: 2}
-  - {fileID: 2100000, guid: 7083701162dc73340b051984f0ae3a6e, type: 2}
-  - {fileID: 2100000, guid: 97262f784b6de6d438489d5f0606749a, type: 2}
-  - {fileID: 2100000, guid: 82c223f87df11ea4bbf763b8faf910aa, type: 2}
-  - {fileID: 2100000, guid: bf95fbc10eab2fc43a08aa1fd4d4ef36, type: 2}
-  M2Distrutti:
-  - {fileID: 2100000, guid: 09f7428d11051464bad3958aee0e1df9, type: 2}
-  - {fileID: 2100000, guid: 59a1fef1a8fce834b993cf8e48b3a40a, type: 2}
-  - {fileID: 2100000, guid: 09ddfd6e340a216468f7bbfc8c3a905e, type: 2}
-  - {fileID: 2100000, guid: 1c38e6da126f304448b10c3ef00123bc, type: 2}
-  - {fileID: 2100000, guid: 76f884f8efcc0a94782d59fa4c31dee8, type: 2}
-  - {fileID: 2100000, guid: 14e20de21315cd34f82d6f1cee1d0482, type: 2}
+  DBScriptStarter: {fileID: 0}
+  M1:
+  - {fileID: 2100000, guid: a2428042cebbd854f8ba78659a846214, type: 2}
+  - {fileID: 2100000, guid: a374cedcdece6d34fabab33b39d98393, type: 2}
+  - {fileID: 2100000, guid: 9e9c08a947b34c9478f2aad68807b6d3, type: 2}
+  - {fileID: 2100000, guid: 518afb606dd8921459344fc9f184a432, type: 2}
+  - {fileID: 2100000, guid: 50965a51bb2822042bd91be9f4606a8c, type: 2}
+  - {fileID: 2100000, guid: 11b701dd044903e40bff1751a601a638, type: 2}
+  - {fileID: 2100000, guid: 1aff679bc88577c4badd73e9c33b64e1, type: 2}
+  - {fileID: 2100000, guid: 5e49133a539f1fc4db039663f6371fc6, type: 2}
+  M2:
+  - {fileID: 2100000, guid: 42faee8484b3eae41880038e1c0280af, type: 2}
+  - {fileID: 2100000, guid: 309c406731f1ce841af47d9b9d061540, type: 2}
+  - {fileID: 2100000, guid: 85c9d605b07a2004f8acb5c953ef0fc7, type: 2}
+  - {fileID: 2100000, guid: 86e93dff148e07b448071c22fc6d5a96, type: 2}
+  - {fileID: 2100000, guid: f11323eb437c87a49a9981b51a523b8a, type: 2}
+  - {fileID: 2100000, guid: d7e7480a9ab937f42be89e9c84f7c9a3, type: 2}
+  MColors:
+  - {fileID: 2100000, guid: 66b4abbd403129f4798162cb75939275, type: 2}
+  - {fileID: 2100000, guid: f13fd9e77f3d4ca49b1d4aab75e7c4c0, type: 2}
+  - {fileID: 2100000, guid: 694774c4eb77148469d9671325207a12, type: 2}
 --- !u!1 &6408111802229012337
 GameObject:
   m_ObjectHideFlags: 0
