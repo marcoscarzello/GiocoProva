@@ -5,25 +5,28 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/FINALE/Scenes/Premessa.unity
     guid: e2ea5f801bf16034cbc02283ab26619d
-  - enabled: 1
+  - enabled: 0
     path: Assets/FINALE/Scenes/Menu.unity
     guid: 1c77c97202b428f418d30ddc70d19dcf
-  - enabled: 1
+  - enabled: 0
     path: Assets/FINALE/Scenes/Credits.unity
     guid: cae9a167f4ff3204bb3a69e4dec57ae3
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ScenaProva.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/Lara/ProvaMain.unity
     guid: c7f09fe3ceb0a5a41bcec0d056e2a92b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Lara/ProvaHUD.unity
     guid: c38e52b40981e084bb2190224ae479f2
-  - enabled: 1
+  - enabled: 0
     path: Assets/Marco/FINALEMARCOPROVA.unity
     guid: 3599eb56bf1020242ac0210d8a74ead9
+  - enabled: 1
+    path: Assets/FINALE/Scenes/Do You Copy.unity
+    guid: 373a1fdd4a6c34a0e85f02d235a270ef
   m_configObjects: {}
