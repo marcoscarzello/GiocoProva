@@ -36,17 +36,20 @@ public class Minimap : MonoBehaviour
     private float timer = 0f;
     private float waitingTime = 5.0f; //tempo di refresh mappa
     private Vector3 random;
+    private Vector3 inv; //vettore con y e z invertiti
     const uint randomRange = 30; //di quanto si sposta
+    private int kill = 1;
 
     private GestioneParamsInRete mirror =null;
 
     private void Start()
     {
         cm = FindObjectOfType<CanvaManager>();
-        mirror = FindObjectOfType<GestioneParamsInRete>().GetComponent<GestioneParamsInRete>(); 
+        mirror = FindObjectOfType<GestioneParamsInRete>().GetComponent<GestioneParamsInRete>();
         //guns_positions = cm.getGunsPosition(); //array guns positions da mirror
         //doors_positions = cm.getDoorsPosition();
         random = new Vector3(0f, 0f, 0f);
+        inv = new Vector3(0f, 0f, 0f);
     }
 
     void Update()
@@ -70,12 +73,33 @@ public class Minimap : MonoBehaviour
         switch (state)
         {
             case 2:
-                lv1.transform.position = mirror.posizionelv1;
+                lv1.transform.position = inverti(mirror.posizionelv1);
+                if (lv1.transform.position.x < -900f)
+                {
+                    state++;
+                    lv1.SetActive(false);
+                }
                 break;
             case 3:
-                lv2_1.transform.position = mirror.posizionelv2_1;
-                lv2_2.transform.position = mirror.posizionelv2_2;
-                lv3.transform.position = mirror.posizionelv3;
+                lv2_1.transform.position = inverti(mirror.posizionelv2_1);
+                lv2_2.transform.position = inverti(mirror.posizionelv2_2);
+                lv3.transform.position = inverti(mirror.posizionelv3);
+                if (lv2_1.transform.position.x < -900f)
+                {
+                    kill++;
+                    lv2_1.SetActive(false);
+                }
+                if (lv2_2.transform.position.x < -900f)
+                {
+                    kill++;
+                    lv2_2.SetActive(false);
+                }
+                if (lv3.transform.position.x < -900f)
+                {
+                    kill++;
+                    lv3.SetActive(false);
+                }
+                break;
                 break;
         }
     }
@@ -135,9 +159,16 @@ public class Minimap : MonoBehaviour
             int j = 0;
             foreach (Transform g in gun)
             {
-                g.position = mirror.posizioniArmi[j++];
+                g.position = inverti(mirror.posizioniArmi[j++]);
             }
         }
+    }
+
+    private Vector3 inverti(Vector3 vec)
+    {
+        inv.x=vec.x;
+        inv.y = vec.z;
+        return inv;
     }
 
     private void doorsIcons(int i) //place and destroy
