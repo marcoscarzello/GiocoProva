@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Events;
 
 
 
@@ -63,8 +60,7 @@ public class EnemyFinder : MonoBehaviour
     //funzione di lancio evento ricerca soluzione, chiamata dalla pressione sul bottone "generate solution"
     public void eventoSoluzione()
     {
-        if (NuovaSoluzione != null)
-            NuovaSoluzione(ultimoCodiceNemico);
+        
     }
 
     public void impostaSigla() {
@@ -124,7 +120,7 @@ public class EnemyFinder : MonoBehaviour
     public void CalcolaSoluzione() {
 
         Debug.Log("Calcolo");
-        codiceNemico = colore + sigla + linea + faccia;
+        
     }
 
     public void GoOn() {
@@ -164,6 +160,17 @@ public class EnemyFinder : MonoBehaviour
     public void VaiAllaSoluzione()
     {
         statoRicerca = 3;
+        //calcola soluzione (in realtà enemiycode
+        codiceNemico = colore + sigla + linea + faccia;
+
+        ultimoCodiceNemico = codiceNemico;
+
+        //evento soluzione
+        if (NuovaSoluzione != null)
+        {
+            NuovaSoluzione(ultimoCodiceNemico);
+            
+        }
     }
 
 

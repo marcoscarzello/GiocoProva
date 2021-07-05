@@ -26,11 +26,20 @@ public class TestoSolutionCode : MonoBehaviour
         DisattivaSol();
     }
 
+    void Update() {
+        sol = EnemyFinder.codiceSoluzione;
+
+        ScriviSoluzione();
+    }
+
+
     public void ScriviSoluzione()
     {
+
+        DisattivaSol();
+
         tmp = "";
         //testo.text = EnemyFinder.codiceSoluzione;
-        sol = EnemyFinder.codiceSoluzione;
 
         if (sol == null || sol.Length == 0 || sol == "No Match")
         {
