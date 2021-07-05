@@ -89,10 +89,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Shooter: {fileID: 5925058588837210345, guid: 35a487772540ee4409256f64d924d074, type: 3}
   NanoBot: {fileID: 4861710506960582393}
-  Enemy_LV1: {fileID: 0}
-  Enemy_LV2a: {fileID: 0}
-  Enemy_LV2b: {fileID: 0}
-  Enemy_LV3: {fileID: 0}
+  Enemy_LV1: {fileID: 2509457364914661105, guid: 0e3a2e07a3d4bf641a6f88a219dc67d5,
+    type: 3}
+  Enemy_LV2a: {fileID: 5977639840498131518, guid: 938f21b20b5da7f4c9c99858a94f8e43,
+    type: 3}
+  Enemy_LV2b: {fileID: 5885816187493983528, guid: 089a14bbd16bb74478fdc5c27eecbf15,
+    type: 3}
+  Enemy_LV3: {fileID: 7243107881736759008, guid: 9285b2e544ea1ef4eb8103f6618ffc15,
+    type: 3}
   collectedDB: 0
   defeatedLV1: 0
   defeatedLV2_LV3: 0

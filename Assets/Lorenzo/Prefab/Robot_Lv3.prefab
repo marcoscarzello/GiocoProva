@@ -260,6 +260,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5682751714997196055}
   - component: {fileID: 3329275659867124783}
+  - component: {fileID: 7771978594478078398}
   m_Layer: 0
   m_Name: SchermoSinistro
   m_TagString: Untagged
@@ -342,6 +343,19 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.024639439, y: 0.052246414, z: -0.020884264}
     m_Extent: {x: 0.01329508, y: 0.013000166, z: 0.0046851765}
   m_DirtyAABB: 0
+--- !u!65 &7771978594478078398
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3382119484918434980}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.026590157, y: 0.009370355, z: 0.026000328}
+  m_Center: {x: -0.024639454, y: 0.020884247, z: 0.050091654}
 --- !u!1 &4162920725151763563
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,6 +427,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7676853155817956994}
   - component: {fileID: 2905077423640682144}
+  - component: {fileID: 5195930846658483612}
   m_Layer: 0
   m_Name: SchermoDestra
   m_TagString: Untagged
@@ -495,6 +510,19 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.024835765, y: 0.052246466, z: -0.020883566}
     m_Extent: {x: 0.0132950805, y: 0.013000116, z: 0.0046844706}
   m_DirtyAABB: 0
+--- !u!65 &5195930846658483612
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4201489860914552819}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.026590161, y: 0.009368943, z: 0.026000228}
+  m_Center: {x: 0.024835747, y: 0.020883555, z: 0.050091706}
 --- !u!1 &5480021664924591652
 GameObject:
   m_ObjectHideFlags: 0
@@ -969,6 +997,8 @@ GameObject:
   - component: {fileID: 7513651176797577938}
   - component: {fileID: 7513651176797577939}
   - component: {fileID: 7513651176797577941}
+  - component: {fileID: 431100308091919043}
+  - component: {fileID: 6076284691382945790}
   m_Layer: 0
   m_Name: Robot_Lv3
   m_TagString: Untagged
@@ -1122,6 +1152,86 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &431100308091919043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7243107881736759008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ab6c2752889b9f4c95a97c5735e6850, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DBScriptStarter: {fileID: 3404900047813439703, guid: 54275bc6633565b44b835e6f7a76c5d7,
+    type: 3}
+  M1:
+  - {fileID: 2100000, guid: 731d2cd5e0dcfa94b8c91cbd09c69266, type: 2}
+  - {fileID: 2100000, guid: 74a27b7a3db36e04f9a217e9d280c937, type: 2}
+  - {fileID: 2100000, guid: 2207d60d2743fc0429d630748abc115b, type: 2}
+  - {fileID: 2100000, guid: 0d17b5e21809af748b38eee7c494a530, type: 2}
+  - {fileID: 2100000, guid: e25d0a06ec57da9458ab7d9640187a7f, type: 2}
+  - {fileID: 2100000, guid: 2b00815994dd0954a9f60e8985c21ca5, type: 2}
+  - {fileID: 2100000, guid: f33e83bb5ad6a484facb403afee2a9e6, type: 2}
+  - {fileID: 2100000, guid: 31c4ea0ead4ae404f9b5ddf6263763a5, type: 2}
+  M2:
+  - {fileID: 2100000, guid: 7212a61e6e0b06443a69f92c0a80b8da, type: 2}
+  - {fileID: 2100000, guid: 4c84c8e1eea028b4d9467b871d0937ff, type: 2}
+  - {fileID: 2100000, guid: e2c3bacf232398b409ec1735d9308ebd, type: 2}
+  - {fileID: 2100000, guid: af9bf729de706e347880a7b2f191f4d2, type: 2}
+  - {fileID: 2100000, guid: 0587e31f1f4e04a4a874c80e2cc9d616, type: 2}
+  - {fileID: 2100000, guid: 563982e9bfca3f6439891aada5f1738a, type: 2}
+  M3:
+  - {fileID: 2100000, guid: e115f2d5a4ce8eb45aef793c06f7643a, type: 2}
+  - {fileID: 2100000, guid: 8fd56210291e04d4fa0bde0b1ba4b8c0, type: 2}
+  - {fileID: 2100000, guid: 634db4c0b45272c4684e83d724016413, type: 2}
+  - {fileID: 2100000, guid: becd8dce037453c478afbc7fda7ace3b, type: 2}
+  MColors:
+  - {fileID: 2100000, guid: 66b4abbd403129f4798162cb75939275, type: 2}
+  - {fileID: 2100000, guid: f13fd9e77f3d4ca49b1d4aab75e7c4c0, type: 2}
+  - {fileID: 2100000, guid: 694774c4eb77148469d9671325207a12, type: 2}
+--- !u!114 &6076284691382945790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7243107881736759008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4989f6347a1289649a181d198039c8a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vitaModuloSigla: 0
+  vitaModuloLinea: 0
+  vitaModuloFaccia: 0
+  DBScriptStarter: {fileID: 3404900047813439703, guid: 54275bc6633565b44b835e6f7a76c5d7,
+    type: 3}
+  ammo: {fileID: 5006606518159426686, guid: 48d40b0137ffcc64ea2de1063bcccd77, type: 3}
+  ExplosionParticle: {fileID: 3863740036971351737, guid: c7898e7d8bb63524c86ef4bf00d4dcfc,
+    type: 3}
+  M1Distrutti:
+  - {fileID: 2100000, guid: f8e10129799d90f4b932c251995bf2e1, type: 2}
+  - {fileID: 2100000, guid: 3d0939e3a10bff6478f022e53d427a98, type: 2}
+  - {fileID: 2100000, guid: 7c56251b8806a3f49a6340b2ba6210b8, type: 2}
+  - {fileID: 2100000, guid: 482162fc5bdcbea4c800f25e38934aa3, type: 2}
+  - {fileID: 2100000, guid: 13e3ba7d67dc5e84eb97746c41d65909, type: 2}
+  - {fileID: 2100000, guid: bfe9862f8c6e71342825f1f2beb32dd5, type: 2}
+  - {fileID: 2100000, guid: 1ca8b6173857a4e4a85e6faf47d0efad, type: 2}
+  - {fileID: 2100000, guid: 427ad431b73bbb14d80e36a823c583fd, type: 2}
+  M2Distrutti:
+  - {fileID: 2100000, guid: 6d5aae0bc58c199468098501e5d7b26b, type: 2}
+  - {fileID: 2100000, guid: 5cbd473f1c4e8f445ab641927d9e4f00, type: 2}
+  - {fileID: 2100000, guid: 236be976580a49448903067e14b9d3b1, type: 2}
+  - {fileID: 2100000, guid: 33f3e5c0ce7352844a6a3cf702d6d904, type: 2}
+  - {fileID: 2100000, guid: 27940bde5174e584783400861b008bcf, type: 2}
+  - {fileID: 2100000, guid: d150d3f47f40c33499690d0700400496, type: 2}
+  M3Distrutti:
+  - {fileID: 2100000, guid: 42546299d23d19d429eb80a0b1b73a74, type: 2}
+  - {fileID: 2100000, guid: 19712c48768cfd643acd5b5ba9cad81f, type: 2}
+  - {fileID: 2100000, guid: 861eb2cc1daa59447a1d3e9c38287737, type: 2}
+  - {fileID: 2100000, guid: ae5c889bf68458249b56d745de04657d, type: 2}
 --- !u!1 &7513651176331732877
 GameObject:
   m_ObjectHideFlags: 0
