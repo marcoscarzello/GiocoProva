@@ -21,6 +21,7 @@ public class UIntegrityBar : MonoBehaviour
 
     private void Start()
     {
+        slider.value = 100;
         SetMaxIntegrity(100);
         SetDamage(0);
     }

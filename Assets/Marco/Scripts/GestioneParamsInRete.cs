@@ -37,8 +37,8 @@ public class GestioneParamsInRete : MonoBehaviour
     public GameObject console;
 
     //parametri aggiornati continuamente dal client
-    public float salute;
-    public float energia;
+    public float salute=100f;
+    public float energia=10f;
     
     void Start()
     {
