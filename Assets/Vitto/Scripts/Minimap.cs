@@ -39,6 +39,7 @@ public class Minimap : MonoBehaviour
     private Vector3 inv; //vettore con y e z invertiti
     const uint randomRange = 30; //di quanto si sposta
     private int kill = 1;
+    private bool[] uccisi= { false, false, false, false };
 
     private GestioneParamsInRete mirror =null;
 
@@ -50,6 +51,7 @@ public class Minimap : MonoBehaviour
         //doors_positions = cm.getDoorsPosition();
         random = new Vector3(0f, 0f, 0f);
         inv = new Vector3(0f, 0f, 0f);
+
     }
 
     void Update()
@@ -76,6 +78,7 @@ public class Minimap : MonoBehaviour
                 lv1.transform.position = inverti(mirror.posizionelv1);
                 if (lv1.transform.position.x < -900f)
                 {
+                    uccisi[0] = true;
                     state++;
                     lv1.SetActive(false);
                 }
@@ -84,22 +87,26 @@ public class Minimap : MonoBehaviour
                 lv2_1.transform.position = inverti(mirror.posizionelv2_1);
                 lv2_2.transform.position = inverti(mirror.posizionelv2_2);
                 lv3.transform.position = inverti(mirror.posizionelv3);
-                if (lv2_1.transform.position.x < -900f)
+                if (!uccisi[1] && lv2_1.transform.position.x < -900f)
                 {
+                    uccisi[1] = true;
                     kill++;
                     lv2_1.SetActive(false);
                 }
-                if (lv2_2.transform.position.x < -900f)
+                if (!uccisi[2] && lv2_2.transform.position.x < -900f)
                 {
+                    uccisi[2] = true;
                     kill++;
                     lv2_2.SetActive(false);
                 }
-                if (lv3.transform.position.x < -900f)
+                if (!uccisi[3] && lv3.transform.position.x < -900f)
                 {
+                    uccisi[3] = true;
                     kill++;
                     lv3.SetActive(false);
                 }
-                break;
+                if (kill == 4)
+                    state++;
                 break;
         }
     }
