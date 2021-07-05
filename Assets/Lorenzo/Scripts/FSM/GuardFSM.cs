@@ -10,7 +10,7 @@ public class GuardFSM : MonoBehaviour
     //[SerializeField] private List<Hide> _hide;
     //[SerializeField] private float _hidingDistance = 1f;
 
-    [SerializeField] private Target _target;
+    [SerializeField] private GameObject _target;
     [SerializeField] private float _minSightDistance = 3f;
     [SerializeField] private float _stoppingDistance = 5f;
     [SerializeField] private Transform _gunPivot;
@@ -68,7 +68,11 @@ public class GuardFSM : MonoBehaviour
         _rotatingBase.Rotate(Vector3.up, UnityEngine.Random.Range(0f, 355f));
         _originalColor = _renderer.material.color;
         _stateMachine = new FiniteStateMachine<GuardFSM>(this); //instanzia una macchina a stati finiti
-
+        
+        if(GameObject.Find("Shooter") != null)
+        {
+            _target = GameObject.Find("Shooter");
+        }
 
 
         //STATES

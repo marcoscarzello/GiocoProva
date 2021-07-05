@@ -9,7 +9,6 @@ using UnityEngine;
 public class NemicoManager : MonoBehaviour
 {
     public GameObject Robot_LV1;
-
     public float vitaModuloSigla;
 
     private string soluzione;
