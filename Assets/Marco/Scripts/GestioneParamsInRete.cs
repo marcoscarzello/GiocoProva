@@ -42,8 +42,8 @@ public class GestioneParamsInRete : MonoBehaviour
     
     void Start()
     {
-        salute = 100f;
-        energia = 10f;
+        //salute = 100f;
+        //energia = 10f;
 
         munizioniMitra = 0;
         munizioniPistola = 0;
