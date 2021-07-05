@@ -39,7 +39,7 @@ public class Minimap : MonoBehaviour
     private Vector3 inv; //vettore con y e z invertiti
     const uint randomRange = 30; //di quanto si sposta
     private int kill = 1;
-    private bool[] uccisi= { false, false, false, false };
+    //private bool[] uccisi= { false, false, false, false };
 
     private GestioneParamsInRete mirror =null;
 
@@ -72,13 +72,17 @@ public class Minimap : MonoBehaviour
         random.x = Random.Range(-randomRange, randomRange);
         random.y = Random.Range(-randomRange, randomRange);
         pg.transform.position = inverti(mirror.posizioneShooter) + random; //posizione shooter randomica
+        if (state > 1)
+        {
+            gunsIcons(-1);
+        }
         switch (state)
         {
             case 2:
                 lv1.transform.position = inverti(mirror.posizionelv1);
                 if (lv1.transform.position.x < -900f)
                 {
-                    uccisi[0] = true;
+                    //uccisi[0] = true;
                     state++;
                     lv1.SetActive(false);
                 }
@@ -87,26 +91,26 @@ public class Minimap : MonoBehaviour
                 lv2_1.transform.position = inverti(mirror.posizionelv2_1);
                 lv2_2.transform.position = inverti(mirror.posizionelv2_2);
                 lv3.transform.position = inverti(mirror.posizionelv3);
-                if (!uccisi[1] && lv2_1.transform.position.x < -900f)
+                if (lv2_1.active && lv2_1.transform.position.x < -900f)
                 {
-                    uccisi[1] = true;
+                    //uccisi[1] = true;
                     kill++;
                     lv2_1.SetActive(false);
                 }
-                if (!uccisi[2] && lv2_2.transform.position.x < -900f)
+                if (lv2_2.active && lv2_2.transform.position.x < -900f)
                 {
-                    uccisi[2] = true;
+                    //uccisi[2] = true;
                     kill++;
                     lv2_2.SetActive(false);
                 }
-                if (!uccisi[3] && lv3.transform.position.x < -900f)
+                if (lv3.active && lv3.transform.position.x < -900f)
                 {
-                    uccisi[3] = true;
+                    //uccisi[3] = true;
                     kill++;
                     lv3.SetActive(false);
                 }
                 if (kill == 4)
-                    state++;
+                    cm.setState(4);
                 break;
         }
     }
@@ -159,16 +163,22 @@ public class Minimap : MonoBehaviour
 
     private void gunsIcons(int i) //place and destroy
     {
-        if (i > -1)
-            Destroy(gun[i].gameObject, .5f);
-        else
+        //if (i > -1)
+        //    Destroy(gun[i].gameObject, .5f);
+        //else
+        //{
+        int j = 0;
+        foreach (Transform g in gun)
         {
-            int j = 0;
-            foreach (Transform g in gun)
+            if (g.gameObject.active)
             {
-                g.position = inverti(mirror.posizioniArmi[j++]);
+                if (mirror.posizioniArmi[j].y > -5F)
+                    g.gameObject.SetActive(false);
+                else
+                    g.position = inverti(mirror.posizioniArmi[j++]);
             }
         }
+        //}
     }
 
     private Vector3 inverti(Vector3 vec)
