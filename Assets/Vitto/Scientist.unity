@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -766,6 +766,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1652457901 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6110555840381763600, guid: f9e3f13b5a6fdc743a905dcd1f376eca,
+    type: 3}
+  m_PrefabInstance: {fileID: 6110555839810030816}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1680207239
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1800,6 +1806,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4137020872410447685, guid: f9e3f13b5a6fdc743a905dcd1f376eca,
+        type: 3}
+      propertyPath: padrePorte
+      value: 
+      objectReference: {fileID: 1652457901}
     - target: {fileID: 5328463301306971222, guid: f9e3f13b5a6fdc743a905dcd1f376eca,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
@@ -2006,3 +2017,4 @@ MonoBehaviour:
   DBtrovato: 0
   waitingText: {fileID: 6110555839810030819}
   DBpanel: {fileID: 6110555839810030818}
+  DBtab: {fileID: 0}

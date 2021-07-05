@@ -13,11 +13,16 @@ public class GestionePorte : MonoBehaviour
     public TMP_InputField inputField;
 
     public GameObject console;
-
+    private Transform[] doors = null;
 
     //evento porta
     public delegate void AperturaPorta(int a);
     public static event AperturaPorta ApertaPorta;
+
+    private void Start()
+    {
+        doors = GetComponentsInChildren<Transform>();
+    }
 
     //metodo chiamato dal clic su porta
     public void setUltimaPorta(int n)
@@ -29,7 +34,7 @@ public class GestionePorte : MonoBehaviour
 
         Debug.Log("Aperta la " + ultimaPortaSelezionata);
         console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> <color=yellow>Door " + ultimaPortaSelezionata + " opened!</color>");
-
+        doors[ultimaPortaSelezionata].gameObject.SetActive(false);
         //lancio evento
         if (ApertaPorta != null)
         {
