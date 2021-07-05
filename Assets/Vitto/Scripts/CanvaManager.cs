@@ -80,7 +80,7 @@ public class CanvaManager : MonoBehaviour
         {
             gameHasEnded = true;
             Debug.Log("GAME OVER");
-            Invoke("Restart",restartDelay);
+            //Invoke("Restart",restartDelay);
         }
     }
     public void setState(int s) { state = s; }

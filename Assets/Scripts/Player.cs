@@ -418,9 +418,9 @@ public class Player : NetworkBehaviour
     {
         if (isServer)
         {
-            if (GameObject.Find("DB_Tab") != null)
+            if (GameObject.Find("Panels") != null)
             {
-                GameObject.Find("DB_Tab").GetComponent<DBmanager>().Trovato();
+                GameObject.Find("Panels").GetComponent<DBmanager>().Trovato();
                 Debug.Log("Player: sentito evnto db trovato, mando al server");
             }
         }
