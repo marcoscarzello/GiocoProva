@@ -95,7 +95,7 @@ public class Player : NetworkBehaviour
             VirusFSM.PartitoAttacco += MandaAlServerAttaccoVirus;
 
         //iscrizione evento ricerca nuova soluzione
-        if (!isServer)
+        //if (!isServer)
             EnemyFinder.NuovaSoluzione += MandaAlClientNuovoCodiceNemico;
 
         //iscrizione evento DBTrovato
@@ -196,6 +196,8 @@ public class Player : NetworkBehaviour
             if (GameObject.Find("Script_Starter") != null)
             {
                 ultimaSoluzione = GameObject.Find("Script_Starter").GetComponent<DB_Generator>().lastSolution;
+
+                Debug.Log("sono il client. invio ultima soluzione");
             }
             AggiornaServerSuUltimaSoluzione(ultimaSoluzione);
         }
