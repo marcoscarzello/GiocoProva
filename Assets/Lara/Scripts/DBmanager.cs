@@ -7,6 +7,7 @@ public class DBmanager : MonoBehaviour
     public bool DBtrovato;
     public GameObject waitingText;
     public GameObject DBpanel;
+    public GameObject DBtab;
 
 
     void Start()
@@ -25,7 +26,10 @@ public class DBmanager : MonoBehaviour
     {
         DBtrovato = true;
         waitingText.SetActive(false);
+        DBtab.SetActive(true);
+
         DBpanel.SetActive(true);
+
 
     }
 

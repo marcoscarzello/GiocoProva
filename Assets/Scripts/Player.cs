@@ -38,8 +38,8 @@ public class Player : NetworkBehaviour
     void Start()
     {
         posizioneShooter = new Vector3(0f, 0f, 0f);
-        salute = 0f;
-        energia = 0f;
+        salute = 100f;
+        energia = 10f;
         //solo il client attiva lo shooter, che parte disattivo 
 
     }
@@ -75,7 +75,7 @@ public class Player : NetworkBehaviour
             EnemyFinder.NuovaSoluzione += MandaAlClientNuovoCodiceNemico;
 
         //iscrizione evento DBTrovato
-        if (isServer)
+        //if (isServer)
             DB_Trigger.DBTrovato += MandaAlServerDBTrovato;
 
     }
@@ -416,12 +416,13 @@ public class Player : NetworkBehaviour
     [Command]
     public void MandaAlServerDBTrovato()
     {
+        Debug.Log("qua entra");
         if (isServer)
         {
             if (GameObject.Find("Panels") != null)
             {
                 GameObject.Find("Panels").GetComponent<DBmanager>().Trovato();
-                Debug.Log("Player: sentito evnto db trovato, mando al server");
+                Debug.Log("Player: sentito eEvnto db trovato, mando al server");
             }
         }
     }
