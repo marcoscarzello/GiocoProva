@@ -24,14 +24,14 @@ public class Minimap : MonoBehaviour
     private Transform[] door = null;
     //private Vector3[] doors_positions = null;
     public GameObject guns = null;
-    private Transform[] gun = null;
+    private RectTransform[] gun = null;
     //private Vector3[] guns_positions = null;
     public GameObject countdown = null;
 
     private CanvaManager cm = null;
 
     private bool open = false;
-    public GameObject pg;
+    private RectTransform pg;
 
     private float timer = 0f;
     private float waitingTime = 5.0f; //tempo di refresh mappa
@@ -53,6 +53,7 @@ public class Minimap : MonoBehaviour
         random = new Vector3(0f, 0f, 0f);
         inv = new Vector3(0f, 0f, 0f);
         dbm = GameObject.Find("Panels").GetComponent<DBmanager>();
+        pg = GameObject.Find("Pg").GetComponent<RectTransform>();
     }
 
     void Update()
@@ -66,13 +67,14 @@ public class Minimap : MonoBehaviour
             timer = 0f;
             refreshMap();
         }
+        //Debug.Log(pg.rectra);
     }
 
     private void refreshMap()
     {
         random.x = Random.Range(-randomRange, randomRange);
         random.y = Random.Range(-randomRange, randomRange);
-        pg.transform.position = inverti(mirror.posizioneShooter) + random; //posizione shooter randomica
+        pg.anchoredPosition = inverti(mirror.posizioneShooter) + random; //posizione shooter randomica
         if (state > 1)
         {
             gunsIcons(-1);
@@ -134,8 +136,8 @@ public class Minimap : MonoBehaviour
                 db.SetActive(false);
                 lv1.SetActive(true);
 
-                gun = guns.GetComponentsInChildren<Transform>();
-                foreach (Transform g in gun)
+                gun = guns.GetComponentsInChildren<RectTransform>();
+                foreach (RectTransform g in gun)
                 {
                     g.gameObject.SetActive(true);
                 }
@@ -173,14 +175,14 @@ public class Minimap : MonoBehaviour
         //else
         //{
         int j = 0;
-        foreach (Transform g in gun)
+        foreach (RectTransform g in gun)
         {
             if (g.gameObject.active)
             {
                 if (mirror.posizioniArmi[j].y > -5F)
                     g.gameObject.SetActive(false);
                 else
-                    g.position = inverti(mirror.posizioniArmi[j++]);
+                    g.anchoredPosition = inverti(mirror.posizioniArmi[j++]);
             }
         }
         //}
