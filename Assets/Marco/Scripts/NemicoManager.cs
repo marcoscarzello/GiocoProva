@@ -99,7 +99,7 @@ public class NemicoManager : MonoBehaviour
         DBScriptStarter.GetComponent<Enemy_Spawner>().defeatedLV1 = true;
         SpawnAmmo();
         Vector3 temp = transform.position;
-        temp.y = 0.7f;
+        temp.y = 0.0f;
         transform.position = temp;
         Instantiate(ExplosionParticle, transform.position /*new Vector3(spawnPos.position.x, 0.0f, spawnPos.position.y)*/, Quaternion.identity);
         Destroy(Robot_LV1);
