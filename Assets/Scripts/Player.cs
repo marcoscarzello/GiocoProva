@@ -224,6 +224,8 @@ public class Player : NetworkBehaviour
         {
             GestioneParamsInRete MyScriptReference = GameObject.Find("GestoreParamsInRete").GetComponent<GestioneParamsInRete>();
             MyScriptReference.posizioneShooter = posizioneShooter;
+
+            Debug.Log("posizione shooter = " + posizioneShooter);
             MyScriptReference.salute = salute;
             MyScriptReference.energia = energia;
         }
