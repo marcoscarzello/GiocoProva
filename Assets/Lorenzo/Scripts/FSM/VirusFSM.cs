@@ -263,13 +263,14 @@ public class VirusFSM : MonoBehaviour
                 PartitoAttacco();
                 Debug.Log("Evento partito attacco virus inviato dal client");
                 Instantiate(ElectricParticle, transform.position /*new Vector3(spawnPos.position.x, 0.0f, spawnPos.position.y)*/, Quaternion.identity);
-                Destroy(gameObject);
+                Destroy(gameObject, 2);
             }
-            
+
 
         }
 
     }
+
 
     
     //Coroutines

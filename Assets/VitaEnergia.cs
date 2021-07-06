@@ -50,6 +50,7 @@ public class VitaEnergia : MonoBehaviour
         {
             salute -= _perHitLossBulletBlu;//gameObject.GetComponent<Bullet>()._perHitLoss;
             //Debug.Log("Health: " + salute);
+            glitch();
         }
 
 
