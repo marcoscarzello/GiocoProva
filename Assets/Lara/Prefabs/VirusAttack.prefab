@@ -302,7 +302,7 @@ GameObject:
   - component: {fileID: 4361758762904396578}
   - component: {fileID: 4361758762904396581}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: VirusPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
