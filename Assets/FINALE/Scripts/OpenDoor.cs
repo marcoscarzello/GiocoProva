@@ -7,12 +7,15 @@ public class OpenDoor : MonoBehaviour
 
     [SerializeField] private float _velocity = 2f;
     [SerializeField] private float _end = 8f;
-
+    private BoxCollider colliderPorta;
 
     private bool _open = false;
 
 
-    
+    private void Start()
+    {
+        colliderPorta = GetComponent<BoxCollider>();
+    }
 
 
     public void OpenDoorNumber(int x)
@@ -29,7 +32,7 @@ public class OpenDoor : MonoBehaviour
     void Update()
     {
 
-        if(_open)
+        if (_open)
         {
             var _endPos = new Vector3(
                         transform.position.x,
@@ -41,9 +44,10 @@ public class OpenDoor : MonoBehaviour
 
 
             transform.position = Vector3.MoveTowards(transform.position, _endPos, _velocity * Time.deltaTime);
+            colliderPorta.enabled = false;
         }
 
-  
+
     }
 
 }
