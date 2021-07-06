@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b301159afe0fd942ad3e6525a389fbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 0}
+  explosion: {fileID: 8163967957765631902, guid: d5329f26e29076349a82ccc6cd69cfe4,
+    type: 3}
   _counter: {fileID: 0}
   _uibar: {fileID: 0}
