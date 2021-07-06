@@ -441,7 +441,7 @@ public class Player : NetworkBehaviour
     {
         if (isServer)
         {
-            if (GameObject.Find("VirusAttack") != null)
+            if (GameObject.Find("Canvas") != null)
             {
                 GameObject.Find("Canvas").GetComponent<virusHelper>().startVirusAttack();
                 Debug.Log("Player: attacco virus inoltrato al server");
