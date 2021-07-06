@@ -40,7 +40,7 @@ public class NemicoManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.M))
         {
             Die();
         }
