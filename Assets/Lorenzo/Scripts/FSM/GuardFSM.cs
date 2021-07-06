@@ -56,7 +56,7 @@ public class GuardFSM : MonoBehaviour
     public float RaggioMovimento;
     public float TempoAlProssimoPunto;
     private float timer;
-    private int rayLengthMeters = 3;
+    private int rayLengthMeters = 1;
     private Vector3 rayDirection;
 
     void Start()
@@ -305,7 +305,7 @@ public class GuardFSM : MonoBehaviour
     public IEnumerator stopChase()
     {
         stopChaseBool = false;
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(6);
         stopChaseBool = true;
 
     }

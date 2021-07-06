@@ -7,7 +7,7 @@ using UnityEngine.AI;
 
 public class VirusFSM : MonoBehaviour
 {
-    [SerializeField] private Target _target;
+    [SerializeField] private GameObject _target;
     [SerializeField] private float _minSightDistance = 3f;
     [SerializeField] private float _portalDistance = 5f;
     [SerializeField] private float _stoppingDistance = 5f;
@@ -50,6 +50,8 @@ public class VirusFSM : MonoBehaviour
     public float wanderRadius;
     public float wanderTimer;
     private float timer;
+    private int rayLengthMeters = 1;
+    private Vector3 rayDirection;
 
     void Start()
     {
@@ -61,6 +63,11 @@ public class VirusFSM : MonoBehaviour
         _stateMachine = new FiniteStateMachine<VirusFSM>(this); //instanzia una macchina a stati finiti
         attackingHacker = false;
         goPortalBool = true;
+
+        if (GameObject.Find("Shooter") != null)
+        {
+            _target = GameObject.Find("Shooter");
+        }
 
         //STATES
         State patrolState = new PatrolVirusState("PatrolVirus", this);
@@ -89,19 +96,38 @@ public class VirusFSM : MonoBehaviour
 
         //NuovoMovimento
         timer += Time.deltaTime;
-        if(goPortalBool == true) {
+        rayDirection = transform.forward;
+        RaycastHit hitInfo;
+
+        if (goPortalBool == true) {
+
+            if (Physics.Raycast(_rayOrigin.transform.position, rayDirection, out hitInfo, rayLengthMeters))
+            {
+                if (hitInfo.collider.gameObject.tag == "Wall")
+                {
+                    Debug.Log("Founded Wall");
+                    nextPosition();
+                }
+            }
+
             if (timer >= wanderTimer || agent.remainingDistance <= 10.0f || agent.velocity.sqrMagnitude == 0f  )
             {
-                Debug.Log("ARRIVATO IN POS");
-                Vector3 walkpoint = RandomNavSphere(transform.position, wanderRadius, -1);
-                agent.SetDestination(walkpoint);
-                timer = 0;
+                nextPosition();
             }
+
+
         }
         //NuovoMovimento
     }
     public void StopAgent(bool stop) => agent.isStopped = stop;
 
+    public void nextPosition()
+    {
+        Debug.Log("ARRIVATO IN POS");
+        Vector3 walkpoint = RandomNavSphere(transform.position, wanderRadius, -1);
+        agent.SetDestination(walkpoint);
+        timer = 0;
+    }
 
     public void PointTarget()
     {

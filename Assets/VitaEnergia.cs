@@ -16,8 +16,8 @@ public class VitaEnergia : MonoBehaviour
     void Start()
     {
         salute = 100f;
-        energia = 40f;
-        _perHitLossBulletBlu = 10f;
+        energia = 50f;
+        _perHitLossBulletBlu = 5f;
 
 
         waitingTime = 2f;
@@ -39,7 +39,7 @@ public class VitaEnergia : MonoBehaviour
 
 
 
-        Debug.Log("Health: " + salute);
+        //Debug.Log("Health: " + salute);
     }
 
     void OnCollisionEnter(Collision collision)
@@ -48,7 +48,7 @@ public class VitaEnergia : MonoBehaviour
         if (collision.gameObject.GetComponent<Bullet>() != null)
         {
             salute -= _perHitLossBulletBlu;//gameObject.GetComponent<Bullet>()._perHitLoss;
-            Debug.Log("Health: " + salute);
+            //Debug.Log("Health: " + salute);
         }
             
 
