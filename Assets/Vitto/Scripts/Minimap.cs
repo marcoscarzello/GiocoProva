@@ -34,6 +34,7 @@ public class Minimap : MonoBehaviour
     private RectTransform pg;
 
     private float timer = 0f;
+    private float timer2 = 0f;
     private float waitingTime = 5.0f; //tempo di refresh mappa
     private Vector3 random;
     private Vector3 inv; //vettore con y e z invertiti
@@ -84,8 +85,12 @@ public class Minimap : MonoBehaviour
             case 1:
                 if (dbm.DBtrovato)
                 {
-                    cm.setState(2);
-                    db.SetActive(false);
+                    timer2 += Time.deltaTime;
+                    if (timer2 > waitingTime)
+                    {
+                        cm.setState(2);
+                        db.SetActive(false);
+                    }
                 }
                 break;
             case 2:
@@ -93,8 +98,13 @@ public class Minimap : MonoBehaviour
                 if (lv1.transform.position.x < -900f)
                 {
                     //uccisi[0] = true;
-                    state++;
-                    lv1.SetActive(false);
+
+                    timer2 += Time.deltaTime;
+                    if (timer2 > waitingTime)
+                    {
+                        cm.setState(3);
+                        lv1.SetActive(false);
+                    }
                 }
                 break;
             case 3:
