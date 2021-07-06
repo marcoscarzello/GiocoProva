@@ -128,7 +128,7 @@ public class GuardFSM : MonoBehaviour
 
     public void nextPosition()
     {
-        Debug.Log("ARRIVATO IN POS");
+        //Debug.Log("ARRIVATO IN POS");
         Vector3 walkpoint = RandomNavSphere(transform.position, RaggioMovimento, -1);
         agent.SetDestination(walkpoint);
         timer = 0;

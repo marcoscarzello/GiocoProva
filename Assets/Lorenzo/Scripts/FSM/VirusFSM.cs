@@ -237,18 +237,16 @@ public class VirusFSM : MonoBehaviour
     {
         if (agent.remainingDistance <= agent.stoppingDistance)
         {
-            StopAgent(true);
-            Debug.Log("ARRIVATO ATTACCO");
-            Instantiate(ElectricParticle, transform.position /*new Vector3(spawnPos.position.x, 0.0f, spawnPos.position.y)*/, Quaternion.identity);
 
             //invocazione evento di partito attacco virus
             if (PartitoAttacco != null)
             {
                 PartitoAttacco();
                 Debug.Log("Evento partito attacco virus inviato dal client");
+                Instantiate(ElectricParticle, transform.position /*new Vector3(spawnPos.position.x, 0.0f, spawnPos.position.y)*/, Quaternion.identity);
+                Destroy(gameObject);
             }
 
-            Destroy(gameObject);
         }
 
     }
