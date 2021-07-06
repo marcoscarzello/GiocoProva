@@ -1809,7 +1809,7 @@ PrefabInstance:
     - target: {fileID: 2687088074771936783, guid: f9e3f13b5a6fdc743a905dcd1f376eca,
         type: 3}
       propertyPath: state
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4137020872410447685, guid: f9e3f13b5a6fdc743a905dcd1f376eca,
         type: 3}
@@ -2023,3 +2023,5 @@ MonoBehaviour:
   waitingText: {fileID: 6110555839810030819}
   DBpanel: {fileID: 6110555839810030818}
   DBtab: {fileID: 0}
+  flag: 0
+  console: {fileID: 0}
