@@ -35,6 +35,7 @@ public class Enemy_Spawner : MonoBehaviour
 
         if (defeatedLV1 && control2)
         {
+            SpawnNanoBots(WhichQuadrant());
             Enemy_LV2a.SetActive(true);
             Enemy_LV2b.SetActive(true);
             Enemy_LV3.SetActive(true);
