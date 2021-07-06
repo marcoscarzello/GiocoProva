@@ -219,8 +219,8 @@ MonoBehaviour:
     m_Bits: 55
   ElectricParticle: {fileID: 8313743595527057561, guid: 9ce4142b18056ab4b813713b878856ca,
     type: 3}
-  wanderRadius: 0
-  wanderTimer: 0
+  wanderRadius: 100
+  wanderTimer: 5
 --- !u!114 &7619604643026248491
 MonoBehaviour:
   m_ObjectHideFlags: 0

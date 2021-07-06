@@ -571,7 +571,7 @@ Transform:
   m_GameObject: {fileID: 7798230690983274821}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 23.91, y: -1.35, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 2000693903400952673}
   - {fileID: 8914224898204563197}
@@ -666,8 +666,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4029f5ab69df264783e5ce08eb08012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: -1456346740865104609, guid: 35a487772540ee4409256f64d924d074,
-    type: 3}
+  _target: {fileID: 0}
   _minSightDistance: 30
   _stoppingDistance: 15
   _gunPivot: {fileID: 6987766579923077302}
@@ -682,8 +681,8 @@ MonoBehaviour:
   _visibilityRaLayerMask:
     serializedVersion: 2
     m_Bits: 55
-  RaggioMovimento: 0
-  TempoAlProssimoPunto: 0
+  RaggioMovimento: 100
+  TempoAlProssimoPunto: 5
 --- !u!195 &6987766580097250820
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -703,7 +702,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1.5
-  m_BaseOffset: 0
+  m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &5230423855916155052
@@ -722,3 +721,4 @@ MonoBehaviour:
   ammo: {fileID: 5006606518159426686, guid: 48d40b0137ffcc64ea2de1063bcccd77, type: 3}
   ExplosionParticle: {fileID: 3863740036971351737, guid: c7898e7d8bb63524c86ef4bf00d4dcfc,
     type: 3}
+  aggiungi: {fileID: 0}

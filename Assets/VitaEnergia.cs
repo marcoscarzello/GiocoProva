@@ -16,7 +16,7 @@ public class VitaEnergia : MonoBehaviour
     void Start()
     {
         salute = 100f;
-        energia = 90f;
+        energia = 40f;
         _perHitLossBulletBlu = 10f;
 
 

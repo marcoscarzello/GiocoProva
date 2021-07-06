@@ -22,7 +22,7 @@ public class NemicoManagerLV2a : MonoBehaviour
     public Material[] M1Distrutti = new Material[8];
     public Material[] M2Distrutti = new Material[6];
     [SerializeField] private VitaEnergia aggiungi;
-
+    private float energiaVal;
     void Start()
     {
         vitaModuloSigla = 40f;
@@ -164,9 +164,20 @@ public class NemicoManagerLV2a : MonoBehaviour
         else Debug.Log("NonSpawna");
     }
 
+    public void updateEnergy()
+    {
+        energiaVal = 20;
+        if (energiaVal + aggiungi.energia > 100)
+        {
+            aggiungi.energia = 100;
+        }
+        else aggiungi.energia = aggiungi.energia + energiaVal;
+    }
+
     void Die()
     {
-        aggiungi.energia += 20;
+        updateEnergy();
+        Debug.Log("ENERGIA: " + aggiungi.energia);
         DBScriptStarter.GetComponent<Enemy_Spawner>().defeatedLV2_LV3 = true;
         SpawnAmmo();
         Vector3 temp = transform.position;

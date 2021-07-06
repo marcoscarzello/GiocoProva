@@ -108,7 +108,7 @@ public class GuardFSM : MonoBehaviour
         rayDirection = transform.forward;
         RaycastHit hitInfo;
 
-        if (Physics.Raycast(transform.position, rayDirection, out hitInfo, rayLengthMeters))
+        if (Physics.Raycast(_rayOrigin.transform.position, rayDirection, out hitInfo, rayLengthMeters))
         {
             if (hitInfo.collider.gameObject.tag == "Wall")
             {

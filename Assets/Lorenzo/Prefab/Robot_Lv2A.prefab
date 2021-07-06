@@ -507,8 +507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4029f5ab69df264783e5ce08eb08012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: -1456346740865104609, guid: 35a487772540ee4409256f64d924d074,
-    type: 3}
+  _target: {fileID: 0}
   _minSightDistance: 30
   _stoppingDistance: 15
   _gunPivot: {fileID: 6788540999929447360}
@@ -523,8 +522,8 @@ MonoBehaviour:
   _visibilityRaLayerMask:
     serializedVersion: 2
     m_Bits: 55
-  RaggioMovimento: 0
-  TempoAlProssimoPunto: 0
+  RaggioMovimento: 50
+  TempoAlProssimoPunto: 5
 --- !u!195 &6788540999609197351
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -582,6 +581,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 1c38e6da126f304448b10c3ef00123bc, type: 2}
   - {fileID: 2100000, guid: 76f884f8efcc0a94782d59fa4c31dee8, type: 2}
   - {fileID: 2100000, guid: 14e20de21315cd34f82d6f1cee1d0482, type: 2}
+  aggiungi: {fileID: 0}
 --- !u!114 &1905290239665544131
 MonoBehaviour:
   m_ObjectHideFlags: 0

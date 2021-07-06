@@ -522,8 +522,8 @@ MonoBehaviour:
   _visibilityRaLayerMask:
     serializedVersion: 2
     m_Bits: 55
-  RaggioMovimento: 0
-  TempoAlProssimoPunto: 0
+  RaggioMovimento: 50
+  TempoAlProssimoPunto: 5
 --- !u!195 &6732872039829218353
 NavMeshAgent:
   m_ObjectHideFlags: 0

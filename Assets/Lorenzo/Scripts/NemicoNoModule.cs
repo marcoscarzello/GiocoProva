@@ -10,6 +10,7 @@ public class NemicoNoModule : MonoBehaviour
     //[SerializeField] private Transform spawnPos;
     [SerializeField] private Particle ExplosionParticle;
     [SerializeField] private VitaEnergia aggiungi;
+    private float energiaVal;
 
 
     // Start is called before the first frame update
@@ -29,16 +30,17 @@ public class NemicoNoModule : MonoBehaviour
 
     }
 
-    void Die()
+    public void updateEnergy()
     {
-        aggiungi.energia += 10;
-        SpawnAmmo();
-        Vector3 temp = transform.position;
-        temp.y = 0.7f;
-        transform.position = temp;
-        Instantiate(ExplosionParticle, transform.position /*new Vector3(spawnPos.position.x, 0.0f, spawnPos.position.y)*/, Quaternion.identity);
-        Destroy(gameObject);
+        energiaVal = 10;
+        if (energiaVal + aggiungi.energia > 100)
+        {
+            aggiungi.energia = 100;
+        }
+        else aggiungi.energia = aggiungi.energia + energiaVal;
     }
+
+
 
     public void SpawnAmmo()
     {
@@ -49,6 +51,19 @@ public class NemicoNoModule : MonoBehaviour
             Instantiate(ammo, transform.position/*new Vector3(spawnPos.position.x, -1.3f , spawnPos.position.y )*/, Quaternion.Euler(-90.0f, 0.0f, 0.0f));
         }
         else Debug.Log("NonSpawna");
+    }
+    
+    void Die()
+    {
+        updateEnergy();
+        Debug.Log("ENERGIA: " + aggiungi.energia);
+
+        SpawnAmmo();
+        Vector3 temp = transform.position;
+        temp.y = -0.7f;
+        transform.position = temp;
+        Instantiate(ExplosionParticle, transform.position /*new Vector3(spawnPos.position.x, 0.0f, spawnPos.position.y)*/, Quaternion.identity);
+        Destroy(gameObject);
     }
     // Update is called once per frame
     void Update()

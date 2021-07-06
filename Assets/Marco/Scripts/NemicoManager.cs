@@ -14,6 +14,8 @@ public class NemicoManager : MonoBehaviour
     private string soluzione;
     private string enemycode;
 
+    private float energiaVal;
+
     public GameObject DBScriptStarter;
     [SerializeField] private Munizioni ammo;
     [SerializeField] private Particle ExplosionParticle;
@@ -93,9 +95,20 @@ public class NemicoManager : MonoBehaviour
         else Debug.Log("NonSpawna");
     }
 
+    public void updateEnergy()
+    {
+        energiaVal = 20;
+        if (energiaVal + aggiungi.energia > 100)
+        {
+            aggiungi.energia = 100;
+        }
+        else aggiungi.energia = aggiungi.energia + energiaVal;
+    }
+
     void Die()
     {
-        aggiungi.energia += 20;
+        updateEnergy();
+        Debug.Log("ENERGIA: " + aggiungi.energia);
         DBScriptStarter.GetComponent<Enemy_Spawner>().defeatedLV1 = true;
         SpawnAmmo();
         Vector3 temp = transform.position;
