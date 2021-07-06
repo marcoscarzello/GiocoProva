@@ -12,12 +12,15 @@ public class Minimap : MonoBehaviour
     public GameObject lv1 = null;
     public GameObject lv2_1 = null;
     public GameObject lv2_2 = null;
-    //public GameObject lv2 = null;
     public GameObject lv3 = null;
-    public GameObject z1 = null;
-    public GameObject z2 = null;
-    public GameObject z3 = null;
-    public GameObject z4 = null;
+    private RectTransform r1 = null;
+    private RectTransform r2_1 = null;
+    private RectTransform r2_2 = null;
+    private RectTransform r3 = null;
+    //public GameObject z1 = null;
+    //public GameObject z2 = null;
+    //public GameObject z3 = null;
+    //public GameObject z4 = null;
     public GameObject db = null;
 
     public GameObject doors = null;
@@ -55,6 +58,10 @@ public class Minimap : MonoBehaviour
         inv = new Vector3(0f, 0f, 0f);
         dbm = GameObject.Find("Panels").GetComponent<DBmanager>();
         pg = GameObject.Find("Pg").GetComponent<RectTransform>();
+        r1 = lv1.GetComponent<RectTransform>();
+        r2_1 = lv2_1.GetComponent<RectTransform>();
+        r2_2 = lv2_2.GetComponent<RectTransform>();
+        r3 = lv3.GetComponent<RectTransform>();
     }
 
     void Update()
@@ -94,8 +101,8 @@ public class Minimap : MonoBehaviour
                 }
                 break;
             case 2:
-                lv1.transform.position = inverti(mirror.posizionelv1);
-                if (lv1.transform.position.x < -900f)
+                r1.anchoredPosition = inverti(mirror.posizionelv1);
+                if (r1.anchoredPosition.x < -900f)
                 {
                     //uccisi[0] = true;
 
@@ -108,22 +115,22 @@ public class Minimap : MonoBehaviour
                 }
                 break;
             case 3:
-                lv2_1.transform.position = inverti(mirror.posizionelv2_1);
-                lv2_2.transform.position = inverti(mirror.posizionelv2_2);
-                lv3.transform.position = inverti(mirror.posizionelv3);
-                if (lv2_1.active && lv2_1.transform.position.x < -900f)
+                r2_1.anchoredPosition = inverti(mirror.posizionelv2_1);
+                r2_2.anchoredPosition = inverti(mirror.posizionelv2_2);
+                r3.anchoredPosition = inverti(mirror.posizionelv3);
+                if (lv2_1.active && r2_1.anchoredPosition.x < -900f)
                 {
                     //uccisi[1] = true;
                     kill++;
                     lv2_1.SetActive(false);
                 }
-                if (lv2_2.active && lv2_2.transform.position.x < -900f)
+                if (lv2_2.active && r2_2.anchoredPosition.x < -900f)
                 {
                     //uccisi[2] = true;
                     kill++;
                     lv2_2.SetActive(false);
                 }
-                if (lv3.active && lv3.transform.position.x < -900f)
+                if (lv3.active && r3.anchoredPosition.x < -900f)
                 {
                     //uccisi[3] = true;
                     kill++;
