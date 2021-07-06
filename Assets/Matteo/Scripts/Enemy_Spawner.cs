@@ -37,6 +37,7 @@ public class Enemy_Spawner : MonoBehaviour
         if (defeatedLV1 && control2)
         {
             SpawnNanoBots(WhichQuadrant());
+            SpawnVirusBots(WhichQuadrant());
             Enemy_LV2a.SetActive(true);
             Enemy_LV2b.SetActive(true);
             Enemy_LV3.SetActive(true);
@@ -47,6 +48,7 @@ public class Enemy_Spawner : MonoBehaviour
         if (defeatedLV2_LV3)
         {
             SpawnNanoBots(WhichQuadrant());
+            SpawnVirusBots(WhichQuadrant());
             defeatedLV2_LV3 = false;
             countDefeated++;
         }
@@ -177,56 +179,56 @@ public class Enemy_Spawner : MonoBehaviour
             new Vector3(-173.929993F,-5.72100019F,181.779999F),
             new Vector3(-130.380005F,-5.72100019F,45.3699989F) };
 
-        if (this.gameObject.transform.Find("ViBotContainer").transform.childCount > 12 || quadrant == 0) return;
-        int toSpawn = 12 - this.gameObject.transform.Find("NanoBotContainer").transform.childCount;
+        if (this.gameObject.transform.Find("VirusBotContainer").transform.childCount > 4 || quadrant == 0) return;
+        int toSpawn = 4 - this.gameObject.transform.Find("VirusBotContainer").transform.childCount;
         int spawned = 0;
 
         Debug.Log("Quadrante Shooter: " + quadrant);
 
-        for (int i = 0; i < 12; i++)
+        for (int i = 0; i < 4; i++)
         {
             if (quadrant != 1 && spawned < toSpawn)
             {
                 int s = rnd.Next(spawn1.Count);
-                GameObject nanobot = (GameObject)Instantiate(NanoBot, spawn1[s], Quaternion.identity);
-                nanobot.transform.parent = this.gameObject.transform.Find("NanoBotContainer").transform;
+                GameObject virusbot = (GameObject)Instantiate(VirusBot, spawn1[s], Quaternion.identity);
+                virusbot.transform.parent = this.gameObject.transform.Find("VirusBotContainer").transform;
                 spawn1.RemoveAt(s);
-                nanobot.SetActive(true);
+                virusbot.SetActive(true);
                 spawned++;
-                Debug.Log("NanoBot spawnato da 1");
+                Debug.Log("VirusBot spawnato da 1");
             }
 
             if (quadrant != 2 && spawned < toSpawn)
             {
                 int s = rnd.Next(spawn2.Count);
-                GameObject nanobot = (GameObject)Instantiate(NanoBot, spawn2[s], Quaternion.identity);
-                nanobot.transform.parent = this.gameObject.transform.Find("NanoBotContainer").transform;
+                GameObject virusbot = (GameObject)Instantiate(VirusBot, spawn2[s], Quaternion.identity);
+                virusbot.transform.parent = this.gameObject.transform.Find("VirusBotContainer").transform;
                 spawn2.RemoveAt(s);
-                nanobot.SetActive(true);
+                virusbot.SetActive(true);
                 spawned++;
-                Debug.Log("NanoBot spawnato da 2");
+                Debug.Log("VirusBot spawnato da 2");
             }
 
             if (quadrant != 3 && spawned < toSpawn)
             {
                 int s = rnd.Next(spawn3.Count);
-                GameObject nanobot = (GameObject)Instantiate(NanoBot, spawn3[s], Quaternion.identity);
-                nanobot.transform.parent = this.gameObject.transform.Find("NanoBotContainer").transform;
+                GameObject virusbot = (GameObject)Instantiate(VirusBot, spawn3[s], Quaternion.identity);
+                virusbot.transform.parent = this.gameObject.transform.Find("VirusBotContainer").transform;
                 spawn3.RemoveAt(s);
-                nanobot.SetActive(true);
+                virusbot.SetActive(true);
                 spawned++;
-                Debug.Log("NanoBot spawnato da 3");
+                Debug.Log("VirusBot spawnato da 3");
             }
 
             if (quadrant != 4 && spawned < toSpawn)
             {
                 int s = rnd.Next(spawn4.Count);
-                GameObject nanobot = (GameObject)Instantiate(NanoBot, spawn4[s], Quaternion.identity);
-                nanobot.transform.parent = this.gameObject.transform.Find("NanoBotContainer").transform;
+                GameObject virusbot = (GameObject)Instantiate(VirusBot, spawn4[s], Quaternion.identity);
+                virusbot.transform.parent = this.gameObject.transform.Find("VirusBotContainer").transform;
                 spawn4.RemoveAt(s);
-                nanobot.SetActive(true);
+                virusbot.SetActive(true);
                 spawned++;
-                Debug.Log("NanoBot spawnato da 4");
+                Debug.Log("VirusBot spawnato da 4");
             }
         }
     }
