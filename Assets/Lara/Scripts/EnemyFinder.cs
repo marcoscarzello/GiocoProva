@@ -261,66 +261,66 @@ public class EnemyFinder : MonoBehaviour
         {
             case "":
                 //change l'alpha di tutti e 4 a 0.5
-                l.transform.GetChild(1).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                l.transform.GetChild(2).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                l.transform.GetChild(3).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                l.transform.GetChild(4).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                l.transform.GetChild(5).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                l.transform.GetChild(6).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
+                l.transform.GetChild(1).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                l.transform.GetChild(2).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                l.transform.GetChild(3).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                l.transform.GetChild(4).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                l.transform.GetChild(5).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                l.transform.GetChild(6).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
                 break;
 
             case "i": //si è cliccato linea i 
-                l.transform.GetChild(1).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 1f);
-                l.transform.GetChild(2).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                l.transform.GetChild(3).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                l.transform.GetChild(4).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                l.transform.GetChild(5).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                l.transform.GetChild(6).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
+                l.transform.GetChild(1).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 1f);
+                l.transform.GetChild(2).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                l.transform.GetChild(3).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                l.transform.GetChild(4).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                l.transform.GetChild(5).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                l.transform.GetChild(6).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
                 break;
 
             case "l"://si è cliccato linea l 
-                l.transform.GetChild(1).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                l.transform.GetChild(2).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 1f);
-                l.transform.GetChild(3).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                l.transform.GetChild(4).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                l.transform.GetChild(5).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                l.transform.GetChild(6).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
+                l.transform.GetChild(1).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                l.transform.GetChild(2).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 1f);
+                l.transform.GetChild(3).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                l.transform.GetChild(4).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                l.transform.GetChild(5).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                l.transform.GetChild(6).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
                 break;
 
             case "m"://si è cliccato linea m
-                l.transform.GetChild(1).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                l.transform.GetChild(2).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                l.transform.GetChild(3).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 1f);
-                l.transform.GetChild(4).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                l.transform.GetChild(5).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                l.transform.GetChild(6).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
+                l.transform.GetChild(1).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                l.transform.GetChild(2).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                l.transform.GetChild(3).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 1f);
+                l.transform.GetChild(4).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                l.transform.GetChild(5).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                l.transform.GetChild(6).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
                 break;
 
             case "n"://si è cliccato linea n 
-                l.transform.GetChild(1).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                l.transform.GetChild(2).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                l.transform.GetChild(3).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                l.transform.GetChild(4).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 1f);
-                l.transform.GetChild(5).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                l.transform.GetChild(6).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
+                l.transform.GetChild(1).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                l.transform.GetChild(2).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                l.transform.GetChild(3).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                l.transform.GetChild(4).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 1f);
+                l.transform.GetChild(5).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                l.transform.GetChild(6).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
                 break;
 
             case "o"://si è cliccato linea o 
-                l.transform.GetChild(1).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                l.transform.GetChild(2).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                l.transform.GetChild(3).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                l.transform.GetChild(4).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                l.transform.GetChild(5).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 1f);
-                l.transform.GetChild(6).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
+                l.transform.GetChild(1).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                l.transform.GetChild(2).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                l.transform.GetChild(3).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                l.transform.GetChild(4).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                l.transform.GetChild(5).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 1f);
+                l.transform.GetChild(6).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
                 break;
 
             case "p"://si è cliccato linea p
-                l.transform.GetChild(1).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                l.transform.GetChild(2).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                l.transform.GetChild(3).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                l.transform.GetChild(4).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                l.transform.GetChild(5).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                l.transform.GetChild(6).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 1f);
+                l.transform.GetChild(1).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                l.transform.GetChild(2).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                l.transform.GetChild(3).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                l.transform.GetChild(4).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                l.transform.GetChild(5).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                l.transform.GetChild(6).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 1f);
                 break;
         }
 
@@ -328,38 +328,38 @@ public class EnemyFinder : MonoBehaviour
         {
             case "":
                 //change l'alpha di tutti e 4 a 0.5
-                f.transform.GetChild(1).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                f.transform.GetChild(2).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                f.transform.GetChild(3).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                f.transform.GetChild(4).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
+                f.transform.GetChild(1).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                f.transform.GetChild(2).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                f.transform.GetChild(3).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                f.transform.GetChild(4).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
                 break;
 
             case "q": //si è cliccato faccia q
-                f.transform.GetChild(1).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 1f);
-                f.transform.GetChild(2).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                f.transform.GetChild(3).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                f.transform.GetChild(4).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
+                f.transform.GetChild(1).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 1f);
+                f.transform.GetChild(2).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                f.transform.GetChild(3).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                f.transform.GetChild(4).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
                 break;
 
             case "r"://si è cliccato faccia r
-                f.transform.GetChild(1).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                f.transform.GetChild(2).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 1f);
-                f.transform.GetChild(3).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                f.transform.GetChild(4).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
+                f.transform.GetChild(1).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                f.transform.GetChild(2).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 1f);
+                f.transform.GetChild(3).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                f.transform.GetChild(4).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
                 break;
 
             case "s"://si è cliccato faccia s
-                f.transform.GetChild(1).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                f.transform.GetChild(2).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                f.transform.GetChild(3).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 1f);
-                f.transform.GetChild(4).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
+                f.transform.GetChild(1).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                f.transform.GetChild(2).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                f.transform.GetChild(3).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 1f);
+                f.transform.GetChild(4).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
                 break;
 
             case "t"://si è cliccato faccia t
-                f.transform.GetChild(1).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                f.transform.GetChild(2).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                f.transform.GetChild(3).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 0.5f);
-                f.transform.GetChild(4).gameObject.GetComponent<Image>().color = new Color(0.13f, 0.13f, 0.19f, 1f);
+                f.transform.GetChild(1).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                f.transform.GetChild(2).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                f.transform.GetChild(3).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 0.5f);
+                f.transform.GetChild(4).gameObject.GetComponent<Image>().color = new Color(0.16f, 0.16f, 0.35f, 1f);
                 break;
         }
     }
