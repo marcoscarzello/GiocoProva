@@ -92,6 +92,20 @@ public class VirusFSM : MonoBehaviour
 
     void Update()
     {
+
+        //roba debug Marco
+        if (Input.GetKeyDown(KeyCode.V)) {
+            if (PartitoAttacco != null)
+            {
+                PartitoAttacco();
+                Debug.Log("L'evento attacco virus parte dal client...");
+
+            }
+        }
+        //fine roba debug marco
+
+
+
         _stateMachine.Tik();
 
         //NuovoMovimento
@@ -120,6 +134,10 @@ public class VirusFSM : MonoBehaviour
         //NuovoMovimento
     }
     public void StopAgent(bool stop) => agent.isStopped = stop;
+
+
+
+
 
     public void nextPosition()
     {

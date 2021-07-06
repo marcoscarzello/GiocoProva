@@ -11,7 +11,11 @@ public class VirusAttack : MonoBehaviour
 
     void Start()
     {
-        AttaccoVirus(false);
+        //AttaccoVirus(false);
+
+
+        gameObject.SetActive(false);
+        spawnAllowed = false;
 
 
         for (int i = 0; i < 3; i++) {
@@ -46,18 +50,12 @@ public class VirusAttack : MonoBehaviour
         }
     }
 
-    public void AttaccoVirus(bool attacco)
+    public void AttaccoVirus()
     {
-            gameObject.SetActive(attacco);
-            spawnAllowed = attacco;
-    }
-
-
-    public void MarcoAttaccoVirus()
-    {
-        bool attacco = true;
-        gameObject.SetActive(attacco);
-        spawnAllowed = attacco;
+        
+            Debug.Log("SOno virus attack, questo è attacco virus, non art attack");
+            gameObject.SetActive(true);
+            spawnAllowed = true;
     }
 
 }

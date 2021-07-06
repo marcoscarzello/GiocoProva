@@ -8,6 +8,7 @@ public class virusHelper : MonoBehaviour
     public GameObject virusattack;
 
     public void startVirusAttack() {
-        virusattack.GetComponent<VirusAttack>().AttaccoVirus(true);
+        Debug.Log("Sono il virus helper, ora faccio partire l'attacco.");
+        virusattack.GetComponent<VirusAttack>().AttaccoVirus();
     }
 }
