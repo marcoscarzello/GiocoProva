@@ -16,6 +16,7 @@ TagManager:
   - panel
   - Ammo
   - DataBase
+  - Wall
   layers:
   - Default
   - TransparentFX

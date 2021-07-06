@@ -56,8 +56,8 @@ public class GuardFSM : MonoBehaviour
     public float RaggioMovimento;
     public float TempoAlProssimoPunto;
     private float timer;
-
-
+    private int rayLengthMeters = 3;
+    private Vector3 rayDirection;
 
     void Start()
     {
@@ -105,18 +105,34 @@ public class GuardFSM : MonoBehaviour
 
         //NuovoMovimento
         timer += Time.deltaTime;
+        rayDirection = transform.forward;
+        RaycastHit hitInfo;
 
-        if (timer >= RaggioMovimento || agent.remainingDistance <= 10.0f || agent.velocity.sqrMagnitude == 0f)
+        if (Physics.Raycast(transform.position, rayDirection, out hitInfo, rayLengthMeters))
         {
-            Debug.Log("ARRIVATO IN POS");
-            Vector3 walkpoint = RandomNavSphere(transform.position, RaggioMovimento, -1);
-            agent.SetDestination(walkpoint);
-            timer = 0;
+            if (hitInfo.collider.gameObject.tag == "Wall")
+            {
+                Debug.Log("Founded Wall");
+                nextPosition();
+            }
         }
+
+        if (timer >= RaggioMovimento || agent.remainingDistance <= 10.0f || agent.velocity.sqrMagnitude == 0f  )
+        {
+            nextPosition();
+        }
+
         //NuovoMovimento
     }
     public void StopAgent(bool stop) => agent.isStopped = stop;
 
+    public void nextPosition()
+    {
+        Debug.Log("ARRIVATO IN POS");
+        Vector3 walkpoint = RandomNavSphere(transform.position, RaggioMovimento, -1);
+        agent.SetDestination(walkpoint);
+        timer = 0;
+    }
 
     public void PointTarget()
     {
