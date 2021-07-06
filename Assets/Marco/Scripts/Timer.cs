@@ -43,6 +43,7 @@ public class Timer : MonoBehaviour
             timeOut = true;
             testo.text = "TIMEOUT";
             myscript2.FineLabirinto();
+            myscript.persoLabirinto();
 
 
         }

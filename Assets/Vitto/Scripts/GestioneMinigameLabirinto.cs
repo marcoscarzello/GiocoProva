@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class GestioneMinigameLabirinto : MonoBehaviour
 {
+
+    public GameObject pallina;
    public void AvvioLabirinto() {
 
+        pallina.GetComponent<MovimentoSferetta>().spawn();
         gameObject.SetActive(true);
         if (GameObject.Find("Simon") != null)
         GameObject.Find("Simon").SetActive(false);

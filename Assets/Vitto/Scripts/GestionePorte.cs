@@ -55,6 +55,11 @@ public class GestionePorte : MonoBehaviour
         apriPorta();
     }
 
+    public void persoLabirinto() {
+
+        console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> <color=red>Door hacking failed. Try again.</color>");
+    }
+
     public void apriPortaDaSimon()
     {
 
