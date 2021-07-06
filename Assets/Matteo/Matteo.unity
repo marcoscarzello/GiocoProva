@@ -5345,6 +5345,7 @@ MonoBehaviour:
   ammo: {fileID: 5006606518159426686, guid: 48d40b0137ffcc64ea2de1063bcccd77, type: 3}
   ExplosionParticle: {fileID: 3863740036971351737, guid: c7898e7d8bb63524c86ef4bf00d4dcfc,
     type: 3}
+  aggiungi: {fileID: 0}
   M1Distrutti:
   - {fileID: 2100000, guid: 613a12066e21dcc45bcc8cb3a14a1cd9, type: 2}
   - {fileID: 2100000, guid: 2ab056f95d937cb408a24f55d4862288, type: 2}
@@ -30249,19 +30250,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Robot_LV1: {fileID: 579279571}
   vitaModuloSigla: 10
-  M1Distrutto:
-  - {fileID: 2100000, guid: 36f4a85d30b02864a936b4f4404234ad, type: 2}
-  - {fileID: 2100000, guid: 7ab6363f1ba73094caf4f6ed97ec67fd, type: 2}
-  - {fileID: 2100000, guid: 9abbf9b867aa9fb4591cc1ba68d8e503, type: 2}
-  - {fileID: 2100000, guid: d45272c62a0795f428383b4169dfa3c8, type: 2}
-  - {fileID: 2100000, guid: 13ed9220066c4234bb3ff572a4ca6ae5, type: 2}
-  - {fileID: 2100000, guid: 2bbd47f6b3e4612429f1a0c90f112bcf, type: 2}
-  - {fileID: 2100000, guid: 8081a63a956afa241810346976bb3b4d, type: 2}
-  - {fileID: 2100000, guid: 28daa7a7724d0e4409156121cc0ebc21, type: 2}
   DBScriptStarter: {fileID: 1237153522}
   ammo: {fileID: 5006606518159426686, guid: 48d40b0137ffcc64ea2de1063bcccd77, type: 3}
   ExplosionParticle: {fileID: 3863740036971351737, guid: c7898e7d8bb63524c86ef4bf00d4dcfc,
     type: 3}
+  aggiungi: {fileID: 0}
 --- !u!1 &1752468840
 GameObject:
   m_ObjectHideFlags: 0
@@ -35506,6 +35499,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 1c38e6da126f304448b10c3ef00123bc, type: 2}
   - {fileID: 2100000, guid: 76f884f8efcc0a94782d59fa4c31dee8, type: 2}
   - {fileID: 2100000, guid: 14e20de21315cd34f82d6f1cee1d0482, type: 2}
+  aggiungi: {fileID: 0}
 --- !u!1001 &5927038511110945631
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35767,6 +35761,7 @@ MonoBehaviour:
   ammo: {fileID: 5006606518159426686, guid: 48d40b0137ffcc64ea2de1063bcccd77, type: 3}
   ExplosionParticle: {fileID: 3863740036971351737, guid: c7898e7d8bb63524c86ef4bf00d4dcfc,
     type: 3}
+  aggiungi: {fileID: 0}
   M1Distrutti:
   - {fileID: 2100000, guid: f8e10129799d90f4b932c251995bf2e1, type: 2}
   - {fileID: 2100000, guid: 3d0939e3a10bff6478f022e53d427a98, type: 2}
