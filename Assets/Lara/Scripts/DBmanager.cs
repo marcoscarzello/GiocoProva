@@ -21,15 +21,16 @@ public class DBmanager : MonoBehaviour
 
     void Update()
     {
-        if (DBtrovato && flag)
+        /*if (DBtrovato && flag)
         {
             Trovato();
         }
+        */
     }
 
     public void Trovato()
     {
-        //DBtrovato = true;
+        DBtrovato = true;
         waitingText.SetActive(false);
 
         flag = false;

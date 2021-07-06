@@ -99,7 +99,7 @@ public class Player : NetworkBehaviour
             GestionePorte.ApertaPorta += MandaAlClientPorta;
 
         //iscrizione evento attaccovirus: solo se sono il server
-        if (isServer)
+        //if (isServer)
             VirusFSM.PartitoAttacco += MandaAlServerAttaccoVirus;
 
         //iscrizione evento ricerca nuova soluzione
