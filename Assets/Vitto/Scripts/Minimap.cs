@@ -83,7 +83,10 @@ public class Minimap : MonoBehaviour
         {
             case 1:
                 if (dbm.DBtrovato)
+                {
                     cm.setState(2);
+                    db.SetActive(false);
+                }
                 break;
             case 2:
                 lv1.transform.position = inverti(mirror.posizionelv1);
