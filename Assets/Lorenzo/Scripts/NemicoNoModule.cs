@@ -18,6 +18,8 @@ public class NemicoNoModule : MonoBehaviour
     {
         vitaEnemy = 40f;
 
+        aggiungi = GameObject.Find("Shooter").GetComponent<VitaEnergia>();
+
     }
     public void Colpito(float damage)
     {
