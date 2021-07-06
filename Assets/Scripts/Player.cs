@@ -76,11 +76,19 @@ public class Player : NetworkBehaviour
 
         //iscrizione a evento di ricarica Salute. Viene mandato dal server, quindi mi iscrivo se non sono il server
         if (!isServer)
+        {
+            GestioneParamsInRete.SaluteRicaricata -= MandaAlClientCura;
+
             GestioneParamsInRete.SaluteRicaricata += MandaAlClientCura;
+        }
 
         //iscrizione evento potenza
         if (!isServer)
+        {
+            GestioneParamsInRete.PotenzaAumentata -= MandaAlClientForza;
             GestioneParamsInRete.PotenzaAumentata += MandaAlClientForza;
+
+        }
 
         //iscrizione evento munizioni
         if (!isServer)

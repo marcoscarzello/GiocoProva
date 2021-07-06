@@ -8,6 +8,8 @@ public class LittleEnergyBar : MonoBehaviour
 {
     public Slider slider;
 
+    public Slider sliderGrande;
+
     private void Start()
     {
         switch (name)
@@ -27,17 +29,22 @@ public class LittleEnergyBar : MonoBehaviour
             default:
                 break;
         }
-        SetEnergy((int)slider.maxValue);
     }
 
-    public void SetMaxEnergy(int health)
+    public void Update()
     {
-        slider.maxValue = health;
+        SetEnergy((int)sliderGrande.value);
+
     }
 
-    public void SetEnergy(int health)
+    public void SetMaxEnergy(int n)
     {
-        slider.value = health;
+        slider.maxValue = n;
+    }
+
+    public void SetEnergy(int n)
+    {
+        slider.value = n;
     }
 
 }
