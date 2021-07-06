@@ -24,12 +24,20 @@ public class CanvaPuntatoreManager : MonoBehaviour
         potenza.SetActive(false);
     }
 
-    public void subisciDanno() { 
+    public void subisciDanno() {
+
+        danno.SetActive(true);
+        StartCoroutine(coroutineGlitch());
 
     }
 
-    void Update()
+    IEnumerator coroutineGlitch()
     {
-        
+        yield return new WaitForSeconds(0.3f);
+        danno.SetActive(false);
+
+
+
+
     }
 }

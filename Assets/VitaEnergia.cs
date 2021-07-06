@@ -9,6 +9,7 @@ public class VitaEnergia : MonoBehaviour
     public float _perHitLossBulletBlu;
     public GameObject weaponHolder;
 
+    public GameObject canvapuntatore;
 
     public float timer;
     public float waitingTime;
@@ -16,7 +17,7 @@ public class VitaEnergia : MonoBehaviour
     void Start()
     {
         salute = 100f;
-        energia = 50f;
+        energia = 90f;
         _perHitLossBulletBlu = 5f;
 
 
@@ -31,8 +32,8 @@ public class VitaEnergia : MonoBehaviour
 
         if (timer > waitingTime)
         {
-            if (energia <=99)
-            energia += 1;
+            if (energia <= 99)
+                energia += 1;
 
             timer = 0f;
         }
@@ -44,13 +45,13 @@ public class VitaEnergia : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        
+
         if (collision.gameObject.GetComponent<Bullet>() != null)
         {
             salute -= _perHitLossBulletBlu;//gameObject.GetComponent<Bullet>()._perHitLoss;
             //Debug.Log("Health: " + salute);
         }
-            
+
 
     }
 
@@ -83,4 +84,11 @@ public class VitaEnergia : MonoBehaviour
         //questo toglie solo l'energia. Il power up scatta in munizionimanager
         energia = 0f;
     }
+
+    public void glitch() {
+
+        canvapuntatore.GetComponent<CanvaPuntatoreManager>().subisciDanno();
+
+    }
+
 }
