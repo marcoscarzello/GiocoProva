@@ -63,7 +63,7 @@ public class GestioneParamsInRete : MonoBehaviour
         //fare evento ricarica salute: mandare al client l'info e sarà esso a riaggiornare il server con la nuova salute e la nuova energia
         //controllare prima di avere energia a sufficienza. 
 
-        if (salute < 100f && energia >= 30f)
+        if (energia >= 30f)
         {
             if (SaluteRicaricata != null)
             {

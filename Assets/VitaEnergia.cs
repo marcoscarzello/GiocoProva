@@ -9,15 +9,36 @@ public class VitaEnergia : MonoBehaviour
     public float _perHitLossBulletBlu;
     public GameObject weaponHolder;
 
+
+    public float timer;
+    public float waitingTime;
+
     void Start()
     {
         salute = 100f;
-        energia = 10f;
+        energia = 90f;
         _perHitLossBulletBlu = 10f;
+
+
+        waitingTime = 2f;
+        timer = 0f;
     }
 
     void Update()
     {
+        //aumento periodico energia
+        timer += Time.deltaTime;
+
+        if (timer > waitingTime)
+        {
+            if (energia <=99)
+            energia += 1;
+
+            timer = 0f;
+        }
+
+
+
         Debug.Log("Health: " + salute);
     }
 

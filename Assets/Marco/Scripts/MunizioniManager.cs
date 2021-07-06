@@ -61,12 +61,16 @@ public class MunizioniManager : MonoBehaviour
         moltiplicatore = 3f;
         Debug.Log("Sono il client, potenza aumentata. Inizio coroutine");
         StartCoroutine(coroutinePotenza());
-        Debug.Log("Fine Coroutine potenza. moltiplicatore riportato a 1");
-        moltiplicatore = 1f;
+       
 
     }
 
     IEnumerator coroutinePotenza() {
-        yield return new WaitForSeconds(120);
+        yield return new WaitForSeconds(60);
+
+        Debug.Log("Fine Coroutine potenza. moltiplicatore riportato a 1");
+        moltiplicatore = 1f;
+
+
     }
 }
