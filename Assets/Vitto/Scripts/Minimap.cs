@@ -87,17 +87,18 @@ public class Minimap : MonoBehaviour
         {
             gunsIcons(-1);
         }
+        Debug.Log(state);
         switch (state)
         {
             case 1:
                 if (dbm.DBtrovato)
                 {
-                    timer2 += Time.deltaTime;
-                    if (timer2 > waitingTime)
-                    {
+                    //timer2 += Time.deltaTime;
+                    //if (timer2 > waitingTime)
+                    //{
                         cm.setState(2);
                         db.SetActive(false);
-                    }
+                    //}
                 }
                 break;
             case 2:

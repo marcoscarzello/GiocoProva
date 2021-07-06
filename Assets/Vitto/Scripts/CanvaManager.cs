@@ -9,7 +9,7 @@ public class CanvaManager : MonoBehaviour
     private bool gameHasEnded = false;
     private bool gameStarted = false;
     private float restartDelay = 1f;
-    public int state = 1; /*1- db     2- mappa armi e nemico lv1      3- lv2 , lv3      4 timer torna all'ascensore */
+    private int state = 1; /*1- db     2- mappa armi e nemico lv1      3- lv2 , lv3      4 timer torna all'ascensore */
 
     private float timer = 0f;
     private float waitingTime = 5.0f;
