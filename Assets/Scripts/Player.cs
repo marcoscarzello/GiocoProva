@@ -443,7 +443,7 @@ public class Player : NetworkBehaviour
         {
             if (GameObject.Find("VirusAttack") != null)
             {
-                GameObject.Find("VirusAttack").GetComponent<VirusAttack>().AttaccoVirus(true);
+                GameObject.Find("Canvas").GetComponent<virusHelper>().startVirusAttack();
                 Debug.Log("Player: attacco virus inoltrato al server");
             }
         }
