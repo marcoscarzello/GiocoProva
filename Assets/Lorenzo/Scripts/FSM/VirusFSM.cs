@@ -52,7 +52,7 @@ public class VirusFSM : MonoBehaviour
     private float timer;
     private int rayLengthMeters = 1;
     private Vector3 rayDirection;
-
+    private Vector3 portalToAttack;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -226,7 +226,7 @@ public class VirusFSM : MonoBehaviour
                 distanceToClosestPortal = distanceToAttackPortal;
                 closestAttackablePortal = currentPortal;
                 agent.SetDestination(closestAttackablePortal.transform.position);
-                
+                portalToAttack = closestAttackablePortal.transform.position;
             }
         }
         
@@ -235,10 +235,11 @@ public class VirusFSM : MonoBehaviour
 
     public void ArrivedInAttackPosition()
     {
-        if (agent.remainingDistance <= agent.stoppingDistance)
+        if (Vector3.Distance(portalToAttack, transform.position) <= agent.stoppingDistance  /*agent.remainingDistance <= agent.stoppingDistance*/)
         {
-
+            Debug.Log("Arrivato Attacco");
             //invocazione evento di partito attacco virus
+        
             if (PartitoAttacco != null)
             {
                 PartitoAttacco();
@@ -246,6 +247,7 @@ public class VirusFSM : MonoBehaviour
                 Instantiate(ElectricParticle, transform.position /*new Vector3(spawnPos.position.x, 0.0f, spawnPos.position.y)*/, Quaternion.identity);
                 Destroy(gameObject);
             }
+            
 
         }
 
@@ -262,7 +264,7 @@ public class VirusFSM : MonoBehaviour
     }
 
     //TRANSITION FUNCTIONS
-    private float ArrivedInPortal() => Vector3.Distance(findClosestAttackPortal().transform.position, transform.position);
+    private float ArrivedInPortal() => Vector3.Distance(portalToAttack, transform.position);
 
 
 
@@ -311,7 +313,7 @@ public class StopVirusState : State
         _virus.StartCoroutine(_virus.goAttackHacker());
         _virus.StopAgent(true);
         _virus.Animator.SetBool("patrol", false);
-     
+        
     }
 
     public override void Tik()

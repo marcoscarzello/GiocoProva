@@ -237,6 +237,7 @@ GameObject:
   - component: {fileID: 9011638573291021295}
   - component: {fileID: 9011638573291021292}
   - component: {fileID: 9011638573291021293}
+  - component: {fileID: 3673403663720600658}
   m_Layer: 5
   m_Name: CanvasPuntatore
   m_TagString: Untagged
@@ -327,3 +328,15 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &3673403663720600658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9011638573291021266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae3588ca18064f943bf10fb190c4240b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MunizioniManager : MonoBehaviour
 {
+
+    public GameObject canvaspuntatore;
+
     public int scortaPistola;
     public int scortaAssalto;
     public int scortaPompa;
@@ -57,6 +60,7 @@ public class MunizioniManager : MonoBehaviour
 
     public void PowerUpPotenza()
     {
+        canvaspuntatore.GetComponent<CanvaPuntatoreManager>().inizioPotenza();
         //l'energia viene tolta in vitaenergia
         moltiplicatore = 3f;
         Debug.Log("Sono il client, potenza aumentata. Inizio coroutine");
@@ -70,6 +74,8 @@ public class MunizioniManager : MonoBehaviour
 
         Debug.Log("Fine Coroutine potenza. moltiplicatore riportato a 1");
         moltiplicatore = 1f;
+        canvaspuntatore.GetComponent<CanvaPuntatoreManager>().finePotenza();
+
 
 
     }
