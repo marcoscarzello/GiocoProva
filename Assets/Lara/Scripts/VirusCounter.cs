@@ -14,7 +14,7 @@ public class VirusCounter : MonoBehaviour
 
      void Update()
      {
-        testo.text =(30 - killed).ToString();
+        testo.text =(15 - killed).ToString();
         Debug.Log("Update");
      }
 
