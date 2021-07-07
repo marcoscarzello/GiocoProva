@@ -8,6 +8,8 @@ using UnityEngine;
 
 public class NemicoManagerLV2b : MonoBehaviour
 {
+    private AudioSource[] audios;
+
     public float vitaModuloSigla;
     public float vitaModuloLinea;
     private bool primoSchermoDistrutto;
@@ -29,6 +31,10 @@ public class NemicoManagerLV2b : MonoBehaviour
 
     void Start()
     {
+
+        audios = GetComponents<AudioSource>();
+
+
         vitaModuloSigla = 40f;
         vitaModuloLinea = 40f;
         primoSchermoDistrutto = false;
@@ -205,6 +211,8 @@ public class NemicoManagerLV2b : MonoBehaviour
 
     void Die()
     {
+        audios[0].Play();
+
         updateEnergy();
         Debug.Log("ENERGIA: " + aggiungi.energia);
         DBScriptStarter.GetComponent<Enemy_Spawner>().defeatedLV2_LV3 = true;

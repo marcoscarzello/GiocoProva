@@ -7,6 +7,9 @@ using UnityEngine.AI;
 
 public class GuardFSM : MonoBehaviour
 {
+
+    private AudioSource[] audios;
+
     //[SerializeField] private List<Hide> _hide;
     //[SerializeField] private float _hidingDistance = 1f;
 
@@ -61,6 +64,9 @@ public class GuardFSM : MonoBehaviour
 
     void Start()
     {
+        audios = GetComponents<AudioSource>();
+
+
         timer = TempoAlProssimoPunto;
         agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
@@ -268,6 +274,9 @@ public class GuardFSM : MonoBehaviour
 
     private void FirstShoot()
     {
+        audios[1].Play();
+
+
         Vector3 targetHead = _target.transform.position;
         Vector3 shootingDirection = (targetHead - _gunPivot2.position).normalized;
         Bullet bullet = Instantiate(_bullet, _gunPivot2.position, Quaternion.identity);
@@ -281,6 +290,9 @@ public class GuardFSM : MonoBehaviour
     }
     private void SecondShoot()
     {
+        audios[1].Play();
+
+
         Vector3 targetShoot = _target.transform.position;
         Vector3 secondShootingDirection = (targetShoot - _gunPivot.position).normalized;
         Bullet bullet2 = Instantiate(_bullet, _gunPivot.position, Quaternion.identity);

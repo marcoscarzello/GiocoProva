@@ -8,6 +8,9 @@ using UnityEngine;
 
 public class NemicoManager : MonoBehaviour
 {
+    private AudioSource[] audios;
+
+
     public GameObject Robot_LV1;
     public float vitaModuloSigla;
 
@@ -27,6 +30,9 @@ public class NemicoManager : MonoBehaviour
  
     void Start()
     {
+        audios = GetComponents<AudioSource>();
+
+
         vitaModuloSigla = 40f;
         attivati = false;
         //prendo database
@@ -130,6 +136,8 @@ public class NemicoManager : MonoBehaviour
 
     void Die()
     {
+        audios[0].Play();
+
         updateEnergy();
         Debug.Log("ENERGIA: " + aggiungi.energia);
         DBScriptStarter.GetComponent<Enemy_Spawner>().defeatedLV1 = true;
