@@ -7,11 +7,23 @@ public class CanvaPuntatoreManager : MonoBehaviour
 
     public GameObject danno;
     public GameObject potenza;
+    public GameObject menuHUD;
 
     void Start()
     {
-        
+        OpenMenuHUD();
     }
+
+    public void OpenMenuHUD()
+    {
+        //menuHUD.SetActive(true);
+    }
+
+    public void CloseMenuHUD()
+    {
+        menuHUD.SetActive(false);
+    }
+
 
     public void inizioPotenza() {
         Debug.Log("inizio canva puntatore potenza");
@@ -36,9 +48,6 @@ public class CanvaPuntatoreManager : MonoBehaviour
     {
         yield return new WaitForSeconds(0.15f);
         danno.SetActive(false);
-
-
-
 
     }
 }
