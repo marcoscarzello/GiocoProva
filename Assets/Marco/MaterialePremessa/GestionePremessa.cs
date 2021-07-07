@@ -10,10 +10,15 @@ public class GestionePremessa : MonoBehaviour
     public GameObject bloccoIstruzioni;
 
 
-
+    private AudioSource[] audios;
 
     void Start()
     {
+        audios = GetComponents<AudioSource>();
+
+        audios[0].Play();
+
+
         blocco1.SetActive(true);
         blocco2.SetActive(false);
         blocco3.SetActive(false);
@@ -28,18 +33,27 @@ public class GestionePremessa : MonoBehaviour
         {
             if (blocco1.active)
             {
+                audios[0].Stop();
+
+                audios[1].Play();
+
                 blocco1.SetActive(false);
                 blocco2.SetActive(true);
             }
 
             else if (blocco2.active)
             {
+                audios[1].Stop();
+
+                audios[2].Play();
+
                 blocco2.SetActive(false);
                 blocco3.SetActive(true);
             }
 
             else if (blocco3.active)
             {
+
                 blocco3.SetActive(false);
                 bloccoIstruzioni.SetActive(true);
             }
