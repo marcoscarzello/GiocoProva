@@ -201,8 +201,7 @@ public class NemicoManagerLV3 : MonoBehaviour
                         vitaModuloFaccia -= damage;
                 }
 
-
-                if (vitaModuloLinea <= 0 && qualeIlPrimoDistrutto != "1")
+                if (vitaModuloSigla <= 0 && qualeIlPrimoDistrutto != "1")
                 {
                     secondoSchermoDistrutto = true;
                     Debug.Log("LV3 - schermo 2 - distrutto");
@@ -214,8 +213,9 @@ public class NemicoManagerLV3 : MonoBehaviour
                     materials1[1] = M1Distrutti[materialmodulo1];
                     rend1.materials = materials1;
                     //distrutto schermo sinistro
+
                 }
-                if (vitaModuloSigla <= 0 && qualeIlPrimoDistrutto != "2")
+                if (vitaModuloLinea <= 0 && qualeIlPrimoDistrutto != "2")
                 {
                     secondoSchermoDistrutto = true;
                     Debug.Log("LV3 - schermo 2 - distrutto");
@@ -227,7 +227,6 @@ public class NemicoManagerLV3 : MonoBehaviour
                     materials5[1] = M2Distrutti[materialmodulo2];
                     rend5.materials = materials5;
                     //distrutto schermo destra
-
                 }
                 if (vitaModuloFaccia <= 0 && qualeIlPrimoDistrutto != "3")
                 {
