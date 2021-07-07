@@ -14,12 +14,13 @@ public class CanvaPuntatoreManager : MonoBehaviour
     }
 
     public void inizioPotenza() {
-
+        Debug.Log("inizio canva puntatore potenza");
         potenza.SetActive(true);
     }
 
     public void finePotenza()
     {
+        Debug.Log("fine canva puntatore potenza");
 
         potenza.SetActive(false);
     }
@@ -33,7 +34,7 @@ public class CanvaPuntatoreManager : MonoBehaviour
 
     IEnumerator coroutineGlitch()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.15f);
         danno.SetActive(false);
 
 
