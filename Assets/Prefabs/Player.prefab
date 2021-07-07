@@ -49,7 +49,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3130666208790547728}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -114,3 +114,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  posizioneShooter: {x: 0, y: 0, z: 0}
+  posizionelv1: {x: 0, y: 0, z: 0}
+  posizionelv2_1: {x: 0, y: 0, z: 0}
+  posizionelv2_2: {x: 0, y: 0, z: 0}
+  posizionelv3: {x: 0, y: 0, z: 0}
+  munizioniPistola: 0
+  munizioniPompa: 0
+  munizioniMitra: 0
+  ultimaSoluzione: 
+  posizioniArmi: []
+  salute: 0
+  energia: 0
+  valoreProva: 0
+  gamestatus: 0

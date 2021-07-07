@@ -56,12 +56,19 @@ public class Player : NetworkBehaviour
 
 
         if (isServer)
+        {
             if (GameObject.Find("Shooter") != null)
             {
                 GameObject.Find("Shooter").SetActive(false);
 
                 GameObject.Find("CanvaPuntatore").GetComponent<CanvaPuntatoreManager>().CloseMenuHUD();
             }
+
+            if (GameObject.Find("NanoBotContainer") != null)
+            {
+                GameObject.Find("NanoBotContainer").SetActive(false);
+            }
+        }
 
         if (!isServer) {
             if (GameObject.Find("Shooter") != null)
@@ -70,6 +77,10 @@ public class Player : NetworkBehaviour
 
                 GameObject.Find("CanvaPuntatore").GetComponent<CanvaPuntatoreManager>().CloseMenuHUD();
 
+            }
+            if (GameObject.Find("FirstPersonCharacter") != null)
+            {
+                GameObject.Find("FirstPersonCharacter").GetComponent<AudioListener>().enabled = true;
             }
 
         }
