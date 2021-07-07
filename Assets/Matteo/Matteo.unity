@@ -5345,6 +5345,7 @@ MonoBehaviour:
   ammo: {fileID: 5006606518159426686, guid: 48d40b0137ffcc64ea2de1063bcccd77, type: 3}
   ExplosionParticle: {fileID: 3863740036971351737, guid: c7898e7d8bb63524c86ef4bf00d4dcfc,
     type: 3}
+  AT_Field: {fileID: 0}
   aggiungi: {fileID: 0}
   M1Distrutti:
   - {fileID: 2100000, guid: 613a12066e21dcc45bcc8cb3a14a1cd9, type: 2}
@@ -15270,7 +15271,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &702982123
 Transform:
   m_ObjectHideFlags: 0
@@ -30254,6 +30255,7 @@ MonoBehaviour:
   ammo: {fileID: 5006606518159426686, guid: 48d40b0137ffcc64ea2de1063bcccd77, type: 3}
   ExplosionParticle: {fileID: 3863740036971351737, guid: c7898e7d8bb63524c86ef4bf00d4dcfc,
     type: 3}
+  AT_Field: {fileID: 0}
   aggiungi: {fileID: 0}
 --- !u!1 &1752468840
 GameObject:
@@ -30322,6 +30324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ed4b7b301c9c4345881ff972c582306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvaspuntatore: {fileID: 0}
   scortaPistola: 500
   scortaAssalto: 500
   scortaPompa: 500
@@ -35483,6 +35486,7 @@ MonoBehaviour:
   ammo: {fileID: 5006606518159426686, guid: 48d40b0137ffcc64ea2de1063bcccd77, type: 3}
   ExplosionParticle: {fileID: 3863740036971351737, guid: c7898e7d8bb63524c86ef4bf00d4dcfc,
     type: 3}
+  AT_Field: {fileID: 0}
   M1Distrutti:
   - {fileID: 2100000, guid: 613a12066e21dcc45bcc8cb3a14a1cd9, type: 2}
   - {fileID: 2100000, guid: 2ab056f95d937cb408a24f55d4862288, type: 2}
@@ -35587,6 +35591,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6369554383111704647, guid: 66b70750411fd594b9c52f3ffff6c600,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 694774c4eb77148469d9671325207a12, type: 2}
     - target: {fileID: 6571237404412088691, guid: 66b70750411fd594b9c52f3ffff6c600,
         type: 3}
       propertyPath: m_Name
@@ -35762,6 +35771,7 @@ MonoBehaviour:
   ExplosionParticle: {fileID: 3863740036971351737, guid: c7898e7d8bb63524c86ef4bf00d4dcfc,
     type: 3}
   aggiungi: {fileID: 0}
+  AT_Field: {fileID: 0}
   M1Distrutti:
   - {fileID: 2100000, guid: f8e10129799d90f4b932c251995bf2e1, type: 2}
   - {fileID: 2100000, guid: 3d0939e3a10bff6478f022e53d427a98, type: 2}

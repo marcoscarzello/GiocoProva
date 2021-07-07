@@ -63,6 +63,11 @@ public class LV3_Enemy_Generator : MonoBehaviour
         materials4[0] = MColors[enemycolor];
         rend4.materials = materials4;
 
+        var rend7 = this.gameObject.transform.Find("Corpo").gameObject.transform.Find("SchermoCentrale").gameObject.GetComponent<Renderer>();
+        var materials7 = rend6.materials;
+        materials6[2] = MColors[enemycolor];
+        rend6.materials = materials6;
+
         //Debug
         //Debug.Log("Spawnato EnemyCode LV.2 - " + EnemyCode);
     }
