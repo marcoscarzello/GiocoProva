@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2107560436742522763}
   - component: {fileID: 2107560436742522757}
   - component: {fileID: 2107560436742522756}
-  - component: {fileID: 2107560436742522762}
+  - component: {fileID: 837561686789098775}
   m_Layer: 5
   m_Name: Door
   m_TagString: Untagged
@@ -29,15 +29,15 @@ RectTransform:
   m_GameObject: {fileID: 2107560436742522753}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.0001529863}
-  m_LocalScale: {x: 0.3537281, y: 0.58005327, z: 0.58005327}
+  m_LocalScale: {x: 0.29253802, y: 0.47971204, z: 0.47971204}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -158, y: 298.87762}
-  m_SizeDelta: {x: 80.13391, y: -20.320496}
+  m_AnchoredPosition: {x: -91.13623, y: 263.21698}
+  m_SizeDelta: {x: -376.9949, y: -168.9958}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2107560436742522763
 CanvasRenderer:
@@ -87,7 +87,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 2107560436742522762}
+  m_TargetGraphic: {fileID: 0}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   panel: {fileID: 0}
---- !u!114 &2107560436742522762
+--- !u!114 &837561686789098775
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2107560436742522753}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -136,10 +136,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 9750fae3977397b41b18ab8fdfc8adc4, type: 3}
-  m_UVRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
+  m_Sprite: {fileID: 21300000, guid: 76b1f41e4b219b14e8e1a48806ac3569, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
