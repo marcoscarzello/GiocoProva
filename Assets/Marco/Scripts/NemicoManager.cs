@@ -15,16 +15,19 @@ public class NemicoManager : MonoBehaviour
     private string enemycode;
 
     private float energiaVal;
+    private bool attivati;
+    private int count = 0;
 
     public GameObject DBScriptStarter;
     [SerializeField] private Munizioni ammo;
     [SerializeField] private Particle ExplosionParticle;
+    [SerializeField] private Particle AT_Field;
     [SerializeField] private VitaEnergia aggiungi;
  
     void Start()
     {
         vitaModuloSigla = 40f;
-
+        attivati = false;
         //prendo database
         var DataBase = DBScriptStarter.GetComponent<DB_Generator>().DataBase;
 
@@ -45,8 +48,22 @@ public class NemicoManager : MonoBehaviour
             Die();
         }
 
+      
     }
 
+    private IEnumerator disattiva()
+    {
+       
+        if (attivati == true && count == 1)
+        {
+            yield return new WaitForSeconds(4);
+            attivati = false;
+            AT_Field.gameObject.SetActive(false);
+            count = 0;
+            Debug.Log("BOH VEDIAMO");
+        }
+
+    }
     public void Colpito(float damage, string tagArma)   //riceve danno e tag con colore arma
     {
         //mappo tag arma -> lettera soluzione
@@ -65,13 +82,18 @@ public class NemicoManager : MonoBehaviour
         }
 
         //subisce danno se l'arma è giusta rispetto alla soluzione
-        if (tagArma == soluzione.Substring(0, 1))
+        if (tagArma == soluzione.Substring(0, 1) && attivati == false)
         {
             vitaModuloSigla -= damage;
         }
         else
         {
-            //penalità per lo shooter
+            Debug.Log("PENALITA'");
+            AT_Field.gameObject.SetActive(true);
+            attivati = true;
+            count++;
+            StartCoroutine(disattiva());
+            //Instantiate(AT_Field, AT_Field.transform.position, Quaternion.identity);
         }
 
         //muore se arriva a zero

@@ -14,20 +14,26 @@ public class NemicoManagerLV2a : MonoBehaviour
 
     private string soluzione;
     private string enemycode;
+    private bool attivati;
+    private int count = 0;
 
     public GameObject DBScriptStarter;
     [SerializeField] private Munizioni ammo;
     [SerializeField] private Particle ExplosionParticle;
+    [SerializeField] private Particle AT_Field;
+
 
     public Material[] M1Distrutti = new Material[8];
     public Material[] M2Distrutti = new Material[6];
     [SerializeField] private VitaEnergia aggiungi;
+
     private float energiaVal;
     void Start()
     {
         vitaModuloSigla = 40f;
         vitaModuloLinea = 40f;
         primoSchermoDistrutto = false;
+        attivati = false;
         //prendo database
         var DataBase = DBScriptStarter.GetComponent<DB_Generator>().DataBase;
 
@@ -38,6 +44,20 @@ public class NemicoManagerLV2a : MonoBehaviour
         //prendo soluzione
         soluzione = Convert.ToString(DataBase.Rows.Find(enemycode)[2]);
         Debug.Log("Soluzione nemico livello 2a " + soluzione);
+
+    }
+
+    private IEnumerator disattiva()
+    {
+
+        if (attivati == true && count == 1)
+        {
+            yield return new WaitForSeconds(4);
+            attivati = false;
+            AT_Field.gameObject.SetActive(false);
+            count = 0;
+            Debug.Log("BOH VEDIAMO");
+        }
 
     }
 
@@ -74,7 +94,7 @@ public class NemicoManagerLV2a : MonoBehaviour
 
         if (soluzione.Substring(1, 1) == schermoColpito)
         {
-            if (tagArma == soluzione.Substring(0, 1))
+            if (tagArma == soluzione.Substring(0, 1) && attivati == false)
             {
                 if (schermoColpito == "1")
                 {
@@ -115,12 +135,17 @@ public class NemicoManagerLV2a : MonoBehaviour
             else
             {
                 //penalità per lo shooter
+                Debug.Log("PENALITA'");
+                AT_Field.gameObject.SetActive(true);
+                attivati = true;
+                count++;
+                StartCoroutine(disattiva());
             }
         }
 
         if (soluzione.Substring(3, 1) == schermoColpito)
         {
-            if (tagArma == soluzione.Substring(2, 1) && primoSchermoDistrutto)
+            if (tagArma == soluzione.Substring(2, 1) && primoSchermoDistrutto && attivati == false)
             {
 
                 if (schermoColpito == "1")
@@ -142,6 +167,11 @@ public class NemicoManagerLV2a : MonoBehaviour
             else
             {
                 //penalità per lo shooter
+                Debug.Log("PENALITA'");
+                AT_Field.gameObject.SetActive(true);
+                attivati = true;
+                count++;
+                StartCoroutine(disattiva());
             }
         }
 

@@ -18,10 +18,15 @@ public class NemicoManagerLV3 : MonoBehaviour
     private string soluzione;
     private string enemycode;
 
+    private bool attivati;
+    private int count = 0;
+
     public GameObject DBScriptStarter;
     [SerializeField] private Munizioni ammo;
     [SerializeField] private Particle ExplosionParticle;
     [SerializeField] private VitaEnergia aggiungi;
+    [SerializeField] private Particle AT_Field;
+
     private float energiaVal;
 
 
@@ -34,6 +39,8 @@ public class NemicoManagerLV3 : MonoBehaviour
         vitaModuloSigla = 40f;
         vitaModuloLinea = 40f;
         vitaModuloFaccia = 40f;
+        attivati = false;
+
 
         primoSchermoDistrutto = false;
         secondoSchermoDistrutto = false;
@@ -47,6 +54,19 @@ public class NemicoManagerLV3 : MonoBehaviour
         //prendo soluzione
         soluzione = Convert.ToString(DataBase.Rows.Find(enemycode)[2]);
         Debug.Log("Soluzione nemico livello 3 " + soluzione);
+
+    }
+    private IEnumerator disattiva()
+    {
+
+        if (attivati == true && count == 1)
+        {
+            yield return new WaitForSeconds(4);
+            attivati = false;
+            AT_Field.gameObject.SetActive(false);
+            count = 0;
+            Debug.Log("BOH VEDIAMO");
+        }
 
     }
 
@@ -86,7 +106,7 @@ public class NemicoManagerLV3 : MonoBehaviour
 
         if (soluzione.Substring(1, 1) == schermoColpito)
         {
-            if (tagArma == soluzione.Substring(0, 1))
+            if (tagArma == soluzione.Substring(0, 1) && attivati == false)
             {
                 if (schermoColpito == "1")
                 {
@@ -151,6 +171,11 @@ public class NemicoManagerLV3 : MonoBehaviour
             else
             {
                 //penalità per lo shooter
+                Debug.Log("PENALITA'");
+                AT_Field.gameObject.SetActive(true);
+                attivati = true;
+                count++;
+                StartCoroutine(disattiva());
             }
         }
 
@@ -158,7 +183,7 @@ public class NemicoManagerLV3 : MonoBehaviour
 
         if (soluzione.Substring(3, 1) == schermoColpito)
         {
-            if (tagArma == soluzione.Substring(2, 1) && primoSchermoDistrutto)
+            if (tagArma == soluzione.Substring(2, 1) && primoSchermoDistrutto && attivati == false)
             {
                 if (schermoColpito == "1")
                 {
@@ -222,13 +247,18 @@ public class NemicoManagerLV3 : MonoBehaviour
             else
             {
                 //penalità per lo shooter
+                Debug.Log("PENALITA'");
+                AT_Field.gameObject.SetActive(true);
+                attivati = true;
+                count++;
+                StartCoroutine(disattiva());
             }
         }
 
 
         if (soluzione.Substring(5, 1) == schermoColpito)
         {
-            if (tagArma == soluzione.Substring(4, 1) && primoSchermoDistrutto && secondoSchermoDistrutto)
+            if (tagArma == soluzione.Substring(4, 1) && primoSchermoDistrutto && secondoSchermoDistrutto && attivati == false)
             {
 
                 if (schermoColpito == "1")
@@ -250,6 +280,11 @@ public class NemicoManagerLV3 : MonoBehaviour
             else
             {
                 //penalità per lo shooter
+                Debug.Log("PENALITA'");
+                AT_Field.gameObject.SetActive(true);
+                attivati = true;
+                count++;
+                StartCoroutine(disattiva());
             }
         }
 
