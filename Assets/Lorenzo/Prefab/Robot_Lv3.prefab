@@ -1127,7 +1127,7 @@ MonoBehaviour:
   _targetFoundRotationSpeed: 20
   _visibilityRaLayerMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 63
   RaggioMovimento: 50
   TempoAlProssimoPunto: 3
 --- !u!195 &7513651176797577941

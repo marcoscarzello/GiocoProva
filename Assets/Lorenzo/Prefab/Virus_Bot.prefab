@@ -215,7 +215,7 @@ MonoBehaviour:
   _targetFoundRotationSpeed: 30
   _visibilityRaLayerMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 63
   ElectricParticle: {fileID: 8313743595527057561, guid: 9ce4142b18056ab4b813713b878856ca,
     type: 3}
   wanderRadius: 100
