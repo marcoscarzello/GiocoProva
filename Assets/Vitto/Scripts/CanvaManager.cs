@@ -19,6 +19,9 @@ public class CanvaManager : MonoBehaviour
     private Slider energy = null;
     private Slider integrity = null;
 
+    private int gamestatus;
+    
+
     //public GameObject barH = null;
     //public GameObject barE = null;
     //private Color fill;
@@ -39,6 +42,9 @@ public class CanvaManager : MonoBehaviour
         health.value = mirror.salute;
         energy.value = mirror.energia;
         state = 1;
+
+
+        gamestatus = 0;
     }
 
     public void Update()
@@ -83,7 +89,10 @@ public class CanvaManager : MonoBehaviour
         {
             gameHasEnded = true;
             Debug.Log("GAME OVER");
+            gamestatus = 2;
             //Invoke("Restart",restartDelay);
+
+
         }
     }
     public void setState(int s) { state = s; }

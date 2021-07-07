@@ -14,6 +14,8 @@ public class VitaEnergia : MonoBehaviour
     public float timer;
     public float waitingTime;
 
+    public int gamestatus; //ricevitore di status game 0 = in game, 1 = vittoria, 2 = sconfitta
+
     void Start()
     {
         salute = 100f;
@@ -23,6 +25,9 @@ public class VitaEnergia : MonoBehaviour
 
         waitingTime = 2f;
         timer = 0f;
+
+        gamestatus = 0;
+
     }
 
     void Update()
@@ -69,7 +74,8 @@ public class VitaEnergia : MonoBehaviour
     public void Curato() {
 
         salute = 100f;
-        energia -= 30f;
+        //dimezzata
+        energia -= 15f;
         Debug.Log("Sono il client. Salute ricaricata! Grazie");
     }
 
@@ -77,7 +83,8 @@ public class VitaEnergia : MonoBehaviour
     {
         Debug.Log("energia tolta per power up potenza");
         //questo toglie solo l'energia. Il power up scatta in munizionimanager
-        energia -= 60f;
+        //dimezzata
+        energia -= 30f;
     }
     public void Munizze()
     {
