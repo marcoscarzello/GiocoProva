@@ -15,7 +15,7 @@ public class Weapons_Trigger : MonoBehaviour
     {
         if (trigger)
         {
-            if (Input.GetKey(KeyCode.F))
+            if (Input.GetKey(KeyCode.E))
             {
                 for (int i = 0; i < WeaponHolder.transform.childCount; i++)
                 {
