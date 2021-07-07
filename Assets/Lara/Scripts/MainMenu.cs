@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour
     public void PlayGame()
     {
         Cursor.visible = false;
-        SceneManager.LoadScene("ScenaProva");
+        SceneManager.LoadScene("Do You Copy");
     }
 
     public void QuitGame()
