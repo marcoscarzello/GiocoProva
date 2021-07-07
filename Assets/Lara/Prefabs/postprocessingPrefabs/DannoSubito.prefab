@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7720044420528102240}
   - component: {fileID: 6832969607470107999}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DannoSubito
   m_TagString: Untagged
   m_Icon: {fileID: 0}
