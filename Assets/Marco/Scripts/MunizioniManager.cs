@@ -5,6 +5,8 @@ using UnityEngine;
 public class MunizioniManager : MonoBehaviour
 {
 
+    private AudioSource[] audios;
+
     public GameObject canvaspuntatore;
 
     public int scortaPistola;
@@ -21,6 +23,8 @@ public class MunizioniManager : MonoBehaviour
         scortaPompa = 10;
         moltiplicatore = 1f;
 
+        audios = GetComponents<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -31,6 +35,9 @@ public class MunizioniManager : MonoBehaviour
 
     public void raccoltaMunizioni()
     {
+
+        audios[0].Play();
+
         int rnd = Random.Range(0, 99);
         if (rnd <= 32)
         {

@@ -6,6 +6,7 @@ using DG.Tweening;
 
 public class FucileAPompa : MonoBehaviour
 {
+    public AudioSource[] sparo;
 
     public float damage;
     public float range;
@@ -31,6 +32,8 @@ public class FucileAPompa : MonoBehaviour
 
     void Start()
     {
+        sparo = GetComponents<AudioSource>();
+
         currentAmmo = 0;
         muzzleFlash = GetComponent<ParticleSystem>();
         if (GameObject.Find("WeaponHolder") != null)
@@ -79,6 +82,8 @@ public class FucileAPompa : MonoBehaviour
                 if (currentAmmo > 0)
                 {
                     Shoot();
+                    sparo[0].Play();
+
                     gameObject.transform.DOLocalMoveZ(-30f, 0.5f);
                     gameObject.transform.DOLocalMoveZ(0.743f, 0.5f);
                 }
@@ -88,6 +93,7 @@ public class FucileAPompa : MonoBehaviour
 
     IEnumerator Reload()
     {
+        sparo[1].Play();
         isReloading = true;
 
         animator.SetBool("isReloading", true);

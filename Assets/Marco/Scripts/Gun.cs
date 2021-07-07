@@ -5,6 +5,7 @@ using DG.Tweening;
 
 public class Gun : MonoBehaviour
 {
+    public AudioSource[] sparo;
 
     public float damage;
     public float range;
@@ -29,6 +30,8 @@ public class Gun : MonoBehaviour
 
     void Start() 
     {
+        sparo = GetComponents<AudioSource>();
+
         currentAmmo = 0;
         muzzleFlash = GetComponent<ParticleSystem>();
 
@@ -79,6 +82,7 @@ public class Gun : MonoBehaviour
                 {
 
                     Shoot();
+                    sparo[0].Play();
                     gameObject.transform.DOLocalMoveZ(-15f, 0.5f);
                     gameObject.transform.DOLocalMoveZ(1.263f, 0.5f);
                 }
@@ -88,6 +92,8 @@ public class Gun : MonoBehaviour
 
     IEnumerator Reload() 
     {
+        sparo[1].Play();
+
         isReloading = true;
 
         animator.SetBool("isReloading", true);

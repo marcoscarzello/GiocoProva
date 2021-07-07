@@ -5,6 +5,7 @@ using DG.Tweening;
 
 public class Mitra : MonoBehaviour
 {
+    public AudioSource[] sparo;
 
     public float damage;
     public float range;
@@ -30,6 +31,8 @@ public class Mitra : MonoBehaviour
 
     void Start()
     {
+        sparo = GetComponents<AudioSource>();
+
         currentAmmo = 0;
         muzzleFlash = GetComponent<ParticleSystem>();
 
@@ -79,6 +82,8 @@ public class Mitra : MonoBehaviour
                 nextTimeToFire = Time.time + 1f / fireRate;
 
                 if (currentAmmo > 0) { Shoot();
+                    sparo[0].Play();
+
 
                     gameObject.transform.DOLocalMoveZ(-15f, 0.5f);
                     gameObject.transform.DOLocalMoveZ(2.46539f, 0.5f);
@@ -89,6 +94,8 @@ public class Mitra : MonoBehaviour
 
     IEnumerator Reload()
     {
+        sparo[1].Play();
+
         isReloading = true;
 
         animator.SetBool("isReloading", true);
