@@ -40,18 +40,18 @@ public class LV1_Enemy_Generator : MonoBehaviour
 
         var rend3 = this.gameObject.transform.Find("PistolaDestra").gameObject.GetComponent<Renderer>();
         var materials3 = rend3.materials;
-        materials3[1] = MColors[enemycolor];
+        materials3[0] = MColors[enemycolor];
         rend3.materials = materials3;
 
         var rend4 = this.gameObject.transform.Find("PistolaSinistra").gameObject.GetComponent<Renderer>();
         var materials4 = rend4.materials;
-        materials4[1] = MColors[enemycolor];
+        materials4[0] = MColors[enemycolor];
         rend4.materials = materials4;
 
         var rend5 = this.gameObject.transform.Find("Schermo").gameObject.GetComponent<Renderer>();
-        var materials5 = rend1.materials;
-        materials1[2] = MColors[enemycolor];
-        rend1.materials = materials1;
+        var materials5 = rend5.materials;
+        materials5[2] = MColors[enemycolor];
+        rend5.materials = materials5;
 
         //Debug
         //Debug.Log("Spawnato EnemyCode LV.1 - " + EnemyCode);
