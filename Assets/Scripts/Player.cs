@@ -60,12 +60,15 @@ public class Player : NetworkBehaviour
             {
                 GameObject.Find("Shooter").SetActive(false);
 
+                GameObject.Find("CanvaPuntatore").GetComponent<CanvaPuntatoreManager>().CloseMenuHUD();
             }
 
         if (!isServer) {
             if (GameObject.Find("Shooter") != null)
             {
                 GameObject.Find("Shooter").GetComponent<FirstPersonController>().enabled = true;
+
+                GameObject.Find("CanvaPuntatore").GetComponent<CanvaPuntatoreManager>().CloseMenuHUD();
 
             }
 

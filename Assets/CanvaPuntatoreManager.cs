@@ -16,7 +16,7 @@ public class CanvaPuntatoreManager : MonoBehaviour
 
     public void OpenMenuHUD()
     {
-        //menuHUD.SetActive(true);
+        menuHUD.SetActive(true);
     }
 
     public void CloseMenuHUD()
