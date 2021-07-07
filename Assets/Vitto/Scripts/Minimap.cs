@@ -41,7 +41,7 @@ public class Minimap : MonoBehaviour
     private float waitingTime = 5.0f; //tempo di refresh mappa
     private Vector3 random;
     private Vector3 inv; //vettore con y e z invertiti
-    const uint randomRange = 30; //di quanto si sposta
+    const uint randomRange = 15; //di quanto si sposta
     private int kill = 1;
     //private bool[] uccisi= { false, false, false, false };
 
@@ -160,6 +160,7 @@ public class Minimap : MonoBehaviour
                 gun = guns.GetComponentsInChildren<RectTransform>();
                 foreach (RectTransform g in gun)
                 {
+                    Debug.Log("Gun POSITIONNNNNN" + g.anchoredPosition.x);
                     g.gameObject.SetActive(true);
                 }
                 gunsIcons(-1); //place guns
@@ -196,11 +197,18 @@ public class Minimap : MonoBehaviour
         //else
         //{
         int j = 0;
+        bool skip = true; ;
+
         foreach (RectTransform g in gun)
         {
-            if (g.gameObject.active)
+            //Debug.Log("Gun lenght" + gun.Length);
+            //Debug.Log("Mirror lenght" + mirror.posizioniArmi.Count);
+            if (skip)
+                skip = false;
+            else if (g.gameObject.active)
             {
                 //Debug.Log("Gun" + g.anchoredPosition);
+
                 if (mirror.posizioniArmi[j].y > -5F)
                 {
                     g.gameObject.SetActive(false);
@@ -211,9 +219,10 @@ public class Minimap : MonoBehaviour
                     g.anchoredPosition = inverti(mirror.posizioniArmi[j]);
                     j++;
                 }
+
             }
+            //}
         }
-        //}
     }
 
     private Vector3 inverti(Vector3 vec)
