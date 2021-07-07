@@ -67,7 +67,7 @@ public class VAControl : MonoBehaviour
 
     public void Distruggiti()
     {
-        if (_counter.GetKilledNum() != 30)  //se non ne ha ancora uccisi 30 allora aggiorna il counter 
+        if (_counter.GetKilledNum() != 29)  //se non ne ha ancora uccisi 30 allora aggiorna il counter 
         {
             _counter.OneMoreKilled();
         }
