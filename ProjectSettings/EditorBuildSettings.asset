@@ -14,19 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/FINALE/Scenes/Credits.unity
     guid: cae9a167f4ff3204bb3a69e4dec57ae3
-  - enabled: 0
-    path: Assets/Scenes/ScenaProva.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 0
-    path: Assets/Lara/ProvaMain.unity
-    guid: c7f09fe3ceb0a5a41bcec0d056e2a92b
-  - enabled: 0
-    path: Assets/Lara/ProvaHUD.unity
-    guid: c38e52b40981e084bb2190224ae479f2
-  - enabled: 0
-    path: Assets/Marco/FINALEMARCOPROVA.unity
-    guid: 3599eb56bf1020242ac0210d8a74ead9
   - enabled: 1
     path: Assets/FINALE/Scenes/Do You Copy.unity
     guid: 373a1fdd4a6c34a0e85f02d235a270ef
+  - enabled: 1
+    path: Assets/FINALE/Scenes/GameOver.unity
+    guid: fb0e169cedcf3cf49a759d3c41ed7e6e
+  - enabled: 1
+    path: Assets/FINALE/Scenes/Victory.unity
+    guid: 2f8d1617e72bb654c92acc0801f274bf
   m_configObjects: {}
