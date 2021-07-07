@@ -67,7 +67,7 @@ public class DB_Generator : MonoBehaviour
 //Debug
         for (int i =0; i< DataBase.Rows.Count; i++)
         {
-            Debug.Log(DataBase.Rows[i][0] + " - " + DataBase.Rows[i][1] + " - " + DataBase.Rows[i][2]);
+            //Debug.Log(DataBase.Rows[i][0] + " - " + DataBase.Rows[i][1] + " - " + DataBase.Rows[i][2]);
         }
     }
 

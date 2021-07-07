@@ -41,7 +41,7 @@ public class Minimap : MonoBehaviour
     private float waitingTime = 5.0f; //tempo di refresh mappa
     private Vector3 random;
     private Vector3 inv; //vettore con y e z invertiti
-    const uint randomRange = 15; //di quanto si sposta
+    const uint randomRange = 30; //di quanto si sposta
     private int kill = 1;
     //private bool[] uccisi= { false, false, false, false };
 
@@ -207,9 +207,9 @@ public class Minimap : MonoBehaviour
                 skip = false;
             else if (g.gameObject.active)
             {
-                //Debug.Log("Gun" + g.anchoredPosition);
+                Debug.Log("Gun POSITION" + g.anchoredPosition);
 
-                if (mirror.posizioniArmi[j].y > -5F)
+                if (mirror.posizioniArmi[j].y < -0.1F)
                 {
                     g.gameObject.SetActive(false);
                     j++;

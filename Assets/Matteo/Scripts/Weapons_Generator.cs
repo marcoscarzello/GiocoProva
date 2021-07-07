@@ -131,9 +131,9 @@ public class Weapons_Generator : MonoBehaviour
 //Debug
         for (int i = 0; i < DataBaseArmi.Rows.Count; i++)
         {
-            Debug.Log(DataBaseArmi.Rows[i][0] + " - " + DataBaseArmi.Rows[i][1] + " - " + DataBaseArmi.Rows[i][2]);
+            //Debug.Log(DataBaseArmi.Rows[i][0] + " - " + DataBaseArmi.Rows[i][1] + " - " + DataBaseArmi.Rows[i][2]);
         }
-        Debug.Log(spawnedPosition[0]);
+        //Debug.Log(spawnedPosition[0]);
     }
 
     private void GenerateStartPistol()

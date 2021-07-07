@@ -56,19 +56,12 @@ public class Player : NetworkBehaviour
 
 
         if (isServer)
-        {
             if (GameObject.Find("Shooter") != null)
             {
                 GameObject.Find("Shooter").SetActive(false);
 
                 GameObject.Find("CanvaPuntatore").GetComponent<CanvaPuntatoreManager>().CloseMenuHUD();
             }
-
-            if (GameObject.Find("NanoBotContainer") != null)
-            {
-                GameObject.Find("NanoBotContainer").SetActive(false);
-            }
-        }
 
         if (!isServer) {
             if (GameObject.Find("Shooter") != null)
@@ -77,10 +70,6 @@ public class Player : NetworkBehaviour
 
                 GameObject.Find("CanvaPuntatore").GetComponent<CanvaPuntatoreManager>().CloseMenuHUD();
 
-            }
-            if (GameObject.Find("FirstPersonCharacter") != null)
-            {
-                GameObject.Find("FirstPersonCharacter").GetComponent<AudioListener>().enabled = true;
             }
 
         }
@@ -163,7 +152,7 @@ public class Player : NetworkBehaviour
     void Update()
     {
 
-        Debug.Log("va");
+        //Debug.Log("va");
 
         
         //Cose che deve fare il player se è il client
@@ -259,7 +248,7 @@ public class Player : NetworkBehaviour
             GestioneParamsInRete MyScriptReference = GameObject.Find("GestoreParamsInRete").GetComponent<GestioneParamsInRete>();
             MyScriptReference.posizioneShooter = posizioneShooter;
 
-            Debug.Log("posizione shooter = " + posizioneShooter);
+            //Debug.Log("posizione shooter = " + posizioneShooter);
             MyScriptReference.salute = salute;
             MyScriptReference.energia = energia;
         }
