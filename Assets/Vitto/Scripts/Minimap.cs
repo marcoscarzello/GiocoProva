@@ -197,7 +197,7 @@ public class Minimap : MonoBehaviour
         //else
         //{
         int j = 0;
-        bool skip = true; ;
+        bool skip = true; 
 
         foreach (RectTransform g in gun)
         {
@@ -209,8 +209,9 @@ public class Minimap : MonoBehaviour
             {
                 Debug.Log("Gun POSITION" + g.anchoredPosition);
 
-                if (mirror.posizioniArmi[j].y < -0.1F)
+                if (mirror.posizioniArmi[j].y > -5.65f)
                 {
+                    Debug.Log("mirror.posizioniArmi[j].y" + mirror.posizioniArmi[j].y);
                     g.gameObject.SetActive(false);
                     j++;
                 }
