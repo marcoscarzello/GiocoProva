@@ -48,9 +48,9 @@ public class VitaEnergia : MonoBehaviour
         //Debug.Log("Health: " + salute);
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
 
+    void OnTriggerEnter(Collider collision)
+    {
         if (collision.gameObject.GetComponent<Bullet>() != null)
         {
             salute -= _perHitLossBulletBlu;//gameObject.GetComponent<Bullet>()._perHitLoss;
@@ -58,16 +58,11 @@ public class VitaEnergia : MonoBehaviour
             glitch();
         }
 
-
-    }
-
-    void OnTriggerEnter(Collider collisionAmmo)
-    {
         Debug.Log("Collisione con ammo");
-        if (collisionAmmo.gameObject.GetComponent<Munizioni>() != null)
+        if (collision.gameObject.GetComponent<Munizioni>() != null)
         {
             weaponHolder.GetComponent<MunizioniManager>().raccoltaMunizioni();
-            Destroy(collisionAmmo.gameObject);
+            Destroy(collision.gameObject);
         }
     }
 

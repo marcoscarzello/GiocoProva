@@ -10,6 +10,7 @@ public class NemicoNoModule : MonoBehaviour
     //[SerializeField] private Transform spawnPos;
     [SerializeField] private Particle ExplosionParticle;
     [SerializeField] private VitaEnergia aggiungi;
+    [SerializeField] private GameObject spawn_point;
     private float energiaVal;
 
 
@@ -50,7 +51,7 @@ public class NemicoNoModule : MonoBehaviour
         if (rnd <= 45)
         {
             Debug.Log("Spawna");
-            Instantiate(ammo, transform.position/*new Vector3(spawnPos.position.x, -1.3f , spawnPos.position.y )*/, Quaternion.Euler(-90.0f, 0.0f, 0.0f));
+            Instantiate(ammo, spawn_point.transform.position/*new Vector3(spawnPos.position.x, -1.3f , spawnPos.position.y )*/, Quaternion.Euler(-90.0f, 0.0f, 0.0f));
         }
         else Debug.Log("NonSpawna");
     }
@@ -72,10 +73,7 @@ public class NemicoNoModule : MonoBehaviour
     {
 
         //SOLO PER I TEST ANDRA' ELIMINATO
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Colpito(10f);
-        }
+
         //
     }
 }

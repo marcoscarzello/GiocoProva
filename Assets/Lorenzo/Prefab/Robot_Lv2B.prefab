@@ -509,7 +509,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
   _minSightDistance: 30
-  _stoppingDistance: 15
+  _stoppingDistance: 20
   _gunPivot: {fileID: 6732872040148616406}
   _gunPivot2: {fileID: 6732872041217221727}
   _bullet: {fileID: 8073282145310856822, guid: b5275330d0a1c444a8281354126e664c, type: 3}

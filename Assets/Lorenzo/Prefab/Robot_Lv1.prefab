@@ -747,8 +747,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
-  _minSightDistance: 30
-  _stoppingDistance: 15
+  _minSightDistance: 40
+  _stoppingDistance: 20
   _gunPivot: {fileID: 3319729055857320838}
   _gunPivot2: {fileID: 3319729056479158489}
   _bullet: {fileID: 8073282145310856822, guid: b5275330d0a1c444a8281354126e664c, type: 3}
@@ -782,7 +782,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 4.92
-  m_BaseOffset: 0
+  m_BaseOffset: 0.45
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!136 &-3240743099866838544
