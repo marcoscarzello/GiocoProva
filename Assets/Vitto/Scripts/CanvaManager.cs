@@ -19,7 +19,7 @@ public class CanvaManager : MonoBehaviour
     private Slider energy = null;
     private Slider integrity = null;
 
-    private int gamestatus;
+    public int gamestatus;
     
 
     //public GameObject barH = null;
