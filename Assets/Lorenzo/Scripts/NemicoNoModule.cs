@@ -17,7 +17,7 @@ public class NemicoNoModule : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        vitaEnemy = 40f;
+        vitaEnemy = 20f;
 
         aggiungi = GameObject.Find("Shooter").GetComponent<VitaEnergia>();
 

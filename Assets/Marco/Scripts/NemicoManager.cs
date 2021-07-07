@@ -23,6 +23,7 @@ public class NemicoManager : MonoBehaviour
     [SerializeField] private Particle ExplosionParticle;
     [SerializeField] private Particle AT_Field;
     [SerializeField] private VitaEnergia aggiungi;
+    [SerializeField] private GameObject spawn_Point;
  
     void Start()
     {
@@ -109,10 +110,10 @@ public class NemicoManager : MonoBehaviour
     public void SpawnAmmo()
     {
         int rnd = UnityEngine.Random.Range(0, 99);
-        if (rnd <= 45)
+        if (rnd <= 99)
         {
             Debug.Log("Spawna");
-            Instantiate(ammo, transform.position/*new Vector3(spawnPos.position.x, -1.3f , spawnPos.position.y )*/, Quaternion.Euler(-90.0f, 0.0f, 0.0f));
+            Instantiate(ammo, spawn_Point.transform.position/*new Vector3(spawnPos.position.x, -1.3f , spawnPos.position.y )*/, Quaternion.Euler(-90.0f, 0.0f, 0.0f));
         }
         else Debug.Log("NonSpawna");
     }
