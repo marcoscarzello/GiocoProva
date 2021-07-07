@@ -10,6 +10,8 @@ public class DB_Trigger : MonoBehaviour
     private Collider other;
     private bool trigger = false;
 
+    public GameObject schermoDB;
+
 
     //evento trovato DB
     public delegate void TrovareDB();
@@ -23,6 +25,9 @@ public class DB_Trigger : MonoBehaviour
             {
                 Debug.Log("DataBase raccolto. Invio evento.");
                 ScriptStarter.GetComponent<Enemy_Spawner>().collectedDB = true;
+
+                //cambia monitor db
+                schermoDB.GetComponent<ChangeMaterialRef>().DbFound();
 
                 //lancio evento
                 if (DBTrovato != null)
