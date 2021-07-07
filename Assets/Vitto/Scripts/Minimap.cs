@@ -200,6 +200,7 @@ public class Minimap : MonoBehaviour
         {
             if (g.gameObject.active)
             {
+                Debug.Log("GUNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN" + g.anchoredPosition);
                 if (mirror.posizioniArmi[j].y > -5F)
                     g.gameObject.SetActive(false);
                 else
