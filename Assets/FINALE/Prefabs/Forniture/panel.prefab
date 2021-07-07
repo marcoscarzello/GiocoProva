@@ -24,14 +24,59 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1336041078321417352}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.09780049, y: -1.3434238, z: 54.57841}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalPosition: {x: 0.09780049, y: -0.55, z: 54.57841}
+  m_LocalScale: {x: 0.25, y: 0.75, z: 0.4}
   m_Children:
   - {fileID: 5342630357157007535}
   - {fileID: 2774166563974175759}
+  - {fileID: 1372850017885087279}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &2645142494795801281
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1372850017885087279}
+  - component: {fileID: 7710016723400602932}
+  m_Layer: 0
+  m_Name: PuntatoreVirus
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1372850017885087279
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2645142494795801281}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0.48, y: -0.621, z: -0}
+  m_LocalScale: {x: 0.25, y: 0.75, z: 0.4}
+  m_Children: []
+  m_Father: {fileID: 1855838071360968242}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &7710016723400602932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2645142494795801281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13615e8ab01f2ae4181dc4f2fe3d68e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portalPosition: {fileID: 0}
 --- !u!1 &4358116179197587782
 GameObject:
   m_ObjectHideFlags: 0
