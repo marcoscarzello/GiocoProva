@@ -16,11 +16,15 @@ public class CanvaPuntatoreManager : MonoBehaviour
 
     public void OpenMenuHUD()
     {
+        Cursor.visible = true;
+
         menuHUD.SetActive(true);
     }
 
     public void CloseMenuHUD()
     {
+        Cursor.visible = false;
+
         menuHUD.SetActive(false);
     }
 
