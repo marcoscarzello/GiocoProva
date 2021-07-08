@@ -33,6 +33,7 @@ public class ElevatorManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
             _toOpen = true;
 
+
         if (_toOpen)
         {
             var _openedPos = new Vector3(
