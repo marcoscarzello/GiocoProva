@@ -61,12 +61,18 @@ public class CanvaManager : MonoBehaviour
             EndGame();
         }
             timer += Time.deltaTime;
+
         if (timer > waitingTime)
         {
 
             timer = 0f;
         }
-        //Invoke("barsFill", waitingTime);
+
+        if (gamestatus == 2)
+            EndGame();
+
+        if (gamestatus == 1)
+            //Victory();
     }
 
     private void barsFill()
