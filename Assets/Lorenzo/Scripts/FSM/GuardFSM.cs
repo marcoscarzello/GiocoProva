@@ -89,11 +89,11 @@ public class GuardFSM : MonoBehaviour
 
         //TRANSITIONS definite dai parametri da soddisfare
         
-        _stateMachine.AddTransition(patrolState, stopState, () => DistanceFromTarget() <= _stoppingDistance);
+        _stateMachine.AddTransition(patrolState, stopState, () => DistanceFromTarget() <= _stoppingDistance && IsTargetInSight());
         _stateMachine.AddTransition(patrolState, chaseState, () => IsTargetInSight());
 
         _stateMachine.AddTransition(chaseState, patrolState, () => stopChaseBool);
-        _stateMachine.AddTransition(chaseState, stopState, () => DistanceFromTarget() <= _stoppingDistance );
+        _stateMachine.AddTransition(chaseState, stopState, () => DistanceFromTarget() <= _stoppingDistance);
 
         //_stateMachine.AddTransition(stopState, hideState, () => goHideBool==false);
         _stateMachine.AddTransition(stopState, chaseState, () => DistanceFromTarget() > _stoppingDistance);
