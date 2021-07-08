@@ -83,6 +83,16 @@ public class CanvaManager : MonoBehaviour
         //Invoke("nextScene", restartDelay); //fine livello torna al menu o schermata finale
     }
 
+    IEnumerator coroutineFineGioco()
+    {
+        yield return new WaitForSeconds(5);
+
+        Debug.Log("cambio scena");
+
+
+    }
+
+
     public void EndGame ()
     {
         if (!gameHasEnded)
@@ -91,6 +101,9 @@ public class CanvaManager : MonoBehaviour
             Debug.Log("GAME OVER");
             gamestatus = 2;
             //Invoke("Restart",restartDelay);
+
+            StartCoroutine(coroutineFineGioco());
+
 
 
         }
