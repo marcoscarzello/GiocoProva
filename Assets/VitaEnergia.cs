@@ -42,6 +42,13 @@ public class VitaEnergia : MonoBehaviour
             SceneManager.LoadScene("GameOver");
 
         }
+        if (gamestatus == 1)
+        {
+
+            Debug.Log("vado alla scena game over");
+            SceneManager.LoadScene("Victory");
+
+        }
 
 
         //aumento periodico energia

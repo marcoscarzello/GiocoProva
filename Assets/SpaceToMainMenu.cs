@@ -16,7 +16,7 @@ public class SpaceToMainMenu : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown("space"))
-            SceneManager.LoadScene("Menu");
+            Application.Quit();
 
     }
 }

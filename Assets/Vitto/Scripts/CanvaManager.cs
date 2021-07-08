@@ -90,7 +90,7 @@ public class CanvaManager : MonoBehaviour
 
     IEnumerator coroutineFineGioco()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(1);
 
         Debug.Log("cambio scena");
         SceneManager.LoadScene("GameOver");
