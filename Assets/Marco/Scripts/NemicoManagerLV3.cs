@@ -30,6 +30,10 @@ public class NemicoManagerLV3 : MonoBehaviour
     [SerializeField] private Particle ExplosionParticle;
     [SerializeField] private VitaEnergia aggiungi;
     [SerializeField] private Particle AT_Field;
+    [SerializeField] private Particle SmokeSinistra;
+    [SerializeField] private Particle SmokeDestra;
+    [SerializeField] private Particle SmokeCentro;
+
 
     private float energiaVal;
 
@@ -73,9 +77,16 @@ public class NemicoManagerLV3 : MonoBehaviour
             attivati = false;
             AT_Field.gameObject.SetActive(false);
             count = 0;
-            Debug.Log("BOH VEDIAMO");
         }
 
+    }
+
+    private IEnumerator disattivaSmoke()
+    {
+        yield return new WaitForSeconds(1);
+        SmokeSinistra.gameObject.SetActive(false);
+        SmokeDestra.gameObject.SetActive(false);
+        SmokeCentro.gameObject.SetActive(false);
     }
 
     public void Colpito(float damage, string tagArma, string schermoColpito)   //riceve danno e tag con colore arma e tag schermo 
@@ -143,6 +154,8 @@ public class NemicoManagerLV3 : MonoBehaviour
                     var materials1 = rend1.materials;
                     materials1[1] = M1Distrutti[materialmodulo1];
                     rend1.materials = materials1;
+                    SmokeSinistra.gameObject.SetActive(true);
+                    StartCoroutine(disattivaSmoke());
                     //distrutto schermo sinistro
 
                 }
@@ -158,6 +171,8 @@ public class NemicoManagerLV3 : MonoBehaviour
                     var materials5 = rend5.materials;
                     materials5[1] = M2Distrutti[materialmodulo2];
                     rend5.materials = materials5;
+                    SmokeDestra.gameObject.SetActive(true);
+                    StartCoroutine(disattivaSmoke());
                     //distrutto schermo destra
                 }
                 if (vitaModuloFaccia <= 0)
@@ -172,6 +187,8 @@ public class NemicoManagerLV3 : MonoBehaviour
                     var materials6 = rend6.materials;
                     materials6[1] = M3Distrutti[materialmodulo3];
                     rend6.materials = materials6;
+                    SmokeCentro.gameObject.SetActive(true);
+                    StartCoroutine(disattivaSmoke());
                     //distrutto schermo centrale
 
                 }
@@ -220,6 +237,8 @@ public class NemicoManagerLV3 : MonoBehaviour
                     var materials1 = rend1.materials;
                     materials1[1] = M1Distrutti[materialmodulo1];
                     rend1.materials = materials1;
+                    SmokeSinistra.gameObject.SetActive(true);
+                    StartCoroutine(disattivaSmoke());
                     //distrutto schermo sinistro
 
                 }
@@ -234,6 +253,8 @@ public class NemicoManagerLV3 : MonoBehaviour
                     var materials5 = rend5.materials;
                     materials5[1] = M2Distrutti[materialmodulo2];
                     rend5.materials = materials5;
+                    SmokeDestra.gameObject.SetActive(true);
+                    StartCoroutine(disattivaSmoke());
                     //distrutto schermo destra
                 }
                 if (vitaModuloFaccia <= 0 && qualeIlPrimoDistrutto != "3")
@@ -247,6 +268,8 @@ public class NemicoManagerLV3 : MonoBehaviour
                     var materials6 = rend6.materials;
                     materials6[1] = M3Distrutti[materialmodulo3];
                     rend6.materials = materials6;
+                    SmokeCentro.gameObject.SetActive(true);
+                    StartCoroutine(disattivaSmoke());
                     //distrutto schermo centrale
 
                 }

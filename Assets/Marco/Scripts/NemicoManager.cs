@@ -67,7 +67,6 @@ public class NemicoManager : MonoBehaviour
             attivati = false;
             AT_Field.gameObject.SetActive(false);
             count = 0;
-            Debug.Log("BOH VEDIAMO");
         }
 
     }

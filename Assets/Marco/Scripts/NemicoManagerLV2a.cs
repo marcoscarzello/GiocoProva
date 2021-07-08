@@ -24,6 +24,8 @@ public class NemicoManagerLV2a : MonoBehaviour
     [SerializeField] private Munizioni ammo;
     [SerializeField] private Particle ExplosionParticle;
     [SerializeField] private Particle AT_Field;
+    [SerializeField] private Particle SmokeSinistra;
+    [SerializeField] private Particle SmokeDestra;
 
 
     public Material[] M1Distrutti = new Material[8];
@@ -63,11 +65,15 @@ public class NemicoManagerLV2a : MonoBehaviour
             attivati = false;
             AT_Field.gameObject.SetActive(false);
             count = 0;
-            Debug.Log("BOH VEDIAMO");
         }
 
     }
-
+    private IEnumerator disattivaSmoke()
+    {
+        yield return new WaitForSeconds(1);
+        SmokeSinistra.gameObject.SetActive(false);
+        SmokeDestra.gameObject.SetActive(false);
+    }
     public void Colpito(float damage, string tagArma, string schermoColpito)   //riceve danno e tag con colore arma e tag schermo 
     {
         //mappo tag arma -> lettera soluzione
@@ -126,6 +132,8 @@ public class NemicoManagerLV2a : MonoBehaviour
                     var materials1 = rend1.materials;
                     materials1[2] = M1Distrutti[materialmodulo1];
                     rend1.materials = materials1;
+                    SmokeSinistra.gameObject.SetActive(true);
+                    StartCoroutine(disattivaSmoke());
                     Debug.Log("LV2 - schermo 1 - distrutto");
                 }
                 if (vitaModuloLinea <= 0)
@@ -138,6 +146,8 @@ public class NemicoManagerLV2a : MonoBehaviour
                     var materials1 = rend2.materials;
                     materials1[2] = M2Distrutti[materialmodulo2];
                     rend2.materials = materials1;
+                    SmokeDestra.gameObject.SetActive(true);
+                    StartCoroutine(disattivaSmoke());
                     Debug.Log("LV2 - schermo 1 - distrutto");
                 }
             }
