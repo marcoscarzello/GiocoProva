@@ -14,7 +14,7 @@ public class LightPlacer : MonoBehaviour
 		{
 			GameObject prefab = Instantiate(LightToPlace, this.transform, true);
 			prefab.transform.position = kids[i].transform.position;
-			prefab.name = $"light_model {i}" ;
+			prefab.name = $"spot_light {i}" ;
 		}
 	}
 }
