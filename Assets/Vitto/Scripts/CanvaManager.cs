@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+
 public class CanvaManager : MonoBehaviour
 {
     private bool gameHasEnded = false;
@@ -54,8 +55,11 @@ public class CanvaManager : MonoBehaviour
 
 
         if (integrity.value <= 0 || health.value <= 0)
+        {
             EndGame();
-        timer += Time.deltaTime;
+            gamestatus = 2;
+        }
+            timer += Time.deltaTime;
         if (timer > waitingTime)
         {
 
