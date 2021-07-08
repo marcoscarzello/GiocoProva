@@ -18,7 +18,7 @@ public class UIntegrityBar : MonoBehaviour
     }
     public void SetDamage(int damage)
     {
-        audio.Play();
+        if (damage != 0) audio.Play();
         slider.value -= damage;
     }
 
