@@ -56,8 +56,9 @@ public class CanvaManager : MonoBehaviour
 
         if (integrity.value <= 0 || health.value <= 0)
         {
-            EndGame();
             gamestatus = 2;
+
+            EndGame();
         }
             timer += Time.deltaTime;
         if (timer > waitingTime)
@@ -92,6 +93,7 @@ public class CanvaManager : MonoBehaviour
         yield return new WaitForSeconds(5);
 
         Debug.Log("cambio scena");
+        SceneManager.LoadScene("GameOver");
 
 
     }
@@ -103,7 +105,6 @@ public class CanvaManager : MonoBehaviour
         {
             gameHasEnded = true;
             Debug.Log("GAME OVER");
-            gamestatus = 2;
             //Invoke("Restart",restartDelay);
 
             StartCoroutine(coroutineFineGioco());

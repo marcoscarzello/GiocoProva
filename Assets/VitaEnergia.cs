@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class VitaEnergia : MonoBehaviour
 {
@@ -32,6 +34,16 @@ public class VitaEnergia : MonoBehaviour
 
     void Update()
     {
+
+        if (gamestatus == 2)
+        {
+
+            Debug.Log("vado alla scena game over");
+            SceneManager.LoadScene("GameOver");
+
+        }
+
+
         //aumento periodico energia
         timer += Time.deltaTime;
 

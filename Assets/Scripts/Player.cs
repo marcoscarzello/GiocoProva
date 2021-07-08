@@ -41,7 +41,7 @@ public class Player : NetworkBehaviour
 
     public int valoreProva;
 
-    public int gamestatus; // 0 = in-game, 1 = victory, 2 = gameover
+    public int gs; // 0 = in-game, 1 = victory, 2 = gameover
 
     void Start()
     {
@@ -49,7 +49,7 @@ public class Player : NetworkBehaviour
         salute = 100f;
         energia = 10f;
 
-        gamestatus = 0;
+        gs = 0;
 
 
         //solo il client attiva lo shooter, che parte disattivo 
@@ -224,7 +224,7 @@ public class Player : NetworkBehaviour
 
 
         //Cose che deve fare il player se è il server
-        if (isLocalPlayer && isServer) {
+        if (isServer) {
 
             //cosa di prova
             //valoreProva = GameObject.Find("oggettoProvaServer").GetComponent<scriptProva2>().valoreProva;
@@ -234,10 +234,10 @@ public class Player : NetworkBehaviour
             //inviare continuamente il game status al client
             if (GameObject.Find("CanvaManager") != null)
             {
-                gamestatus = GameObject.Find("CanvaManager").GetComponent<CanvaManager>().gamestatus;
+                gs = GameObject.Find("CanvaManager").GetComponent<CanvaManager>().gamestatus;
 
             }
-            AggiornaClientGameStatus();
+            AggiornaClientGameStatus(gs);
         }
 
 
@@ -334,12 +334,13 @@ public class Player : NetworkBehaviour
     }
 
     [ClientRpc]
-    public void AggiornaClientGameStatus()
+    public void AggiornaClientGameStatus(int gs)
     {
         if (!isServer)
         {
             if (GameObject.Find("Shooter") != null)
-                GameObject.Find("Shooter").GetComponent<VitaEnergia>().gamestatus = gamestatus;
+                GameObject.Find("Shooter").GetComponent<VitaEnergia>().gamestatus = gs;
+            Debug.Log("game status = " + gs);
         }
     }
 
