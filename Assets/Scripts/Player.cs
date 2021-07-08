@@ -61,12 +61,17 @@ public class Player : NetworkBehaviour
                 GameObject.Find("Shooter").SetActive(false);
 
                 GameObject.Find("CanvaPuntatore").GetComponent<CanvaPuntatoreManager>().CloseMenuHUD();
+
+                GameObject.Find("NanoBotContainer").SetActive(false);
+
             }
 
         if (!isServer) {
             if (GameObject.Find("Shooter") != null)
             {
                 GameObject.Find("Shooter").GetComponent<FirstPersonController>().enabled = true;
+
+                GameObject.Find("FirstPersonCharacter").GetComponent<AudioListener>().enabled = true;
 
                 GameObject.Find("CanvaPuntatore").GetComponent<CanvaPuntatoreManager>().CloseMenuHUD();
 

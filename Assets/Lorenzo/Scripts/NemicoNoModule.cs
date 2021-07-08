@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class NemicoNoModule : MonoBehaviour
 {
+    private AudioSource[] audios;
+
 
     public float vitaEnemy;
     [SerializeField] private Munizioni ammo;
@@ -17,6 +19,9 @@ public class NemicoNoModule : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audios = GetComponents<AudioSource>();
+
+
         vitaEnemy = 20f;
 
         aggiungi = GameObject.Find("Shooter").GetComponent<VitaEnergia>();
@@ -58,6 +63,9 @@ public class NemicoNoModule : MonoBehaviour
     
     void Die()
     {
+        audios[0].Play();
+
+
         updateEnergy();
         Debug.Log("ENERGIA: " + aggiungi.energia);
 
