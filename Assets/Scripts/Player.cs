@@ -43,6 +43,11 @@ public class Player : NetworkBehaviour
 
     public int gs; // 0 = in-game, 1 = victory, 2 = gameover
 
+    private GameObject lv1 = null;
+    private GameObject lv2_1 = null;
+    private GameObject lv2_2 = null;
+    private GameObject lv3 = null;
+
     void Start()
     {
         posizioneShooter = new Vector3(0f, 0f, 0f);
@@ -178,17 +183,22 @@ public class Player : NetworkBehaviour
             AggiornaServerSuParamsShooter(posizioneShooter, salute, energia);
 
             //inviare al server posizioni dei robot nemici
-            if (GameObject.Find("Robot_Lv1") != null)
-                posizionelv1 = GameObject.Find("Robot_Lv1").gameObject.transform.position;
+            lv1 = GameObject.Find("Robot_Lv1");
+            lv2_1 = GameObject.Find("Robot_Lv2A");
+            lv2_2 = GameObject.Find("Robot_Lv2B");
+            lv3 = GameObject.Find("Robot_Lv3");
+
+            if (lv1)
+                posizionelv1 = lv1.gameObject.transform.position;
             else posizionelv1 = new Vector3(-1000f, 0, 0);
-            if (GameObject.Find("Robot_Lv2_1") != null)
-                posizionelv2_1 = GameObject.Find("Robot_Lv2_1").gameObject.transform.position;
+            if (lv2_1)
+                posizionelv2_1 = lv2_1.gameObject.transform.position;
             else posizionelv2_1 = new Vector3(-1000f, 0f, 0f);
-            if (GameObject.Find("Robot_Lv2_2") != null)
-                posizionelv2_2 = GameObject.Find("Robot_Lv2_2").gameObject.transform.position;
+            if (lv2_2)
+                posizionelv2_2 = lv2_2.gameObject.transform.position;
             else posizionelv2_2 = new Vector3(-1000f, 0f, 0f);
-            if (GameObject.Find("Robot_Lv3") != null)
-                posizionelv3 = GameObject.Find("Robot_Lv3").gameObject.transform.position;
+            if (lv3)
+                posizionelv3 = lv3.gameObject.transform.position;
             else posizionelv3 = new Vector3(-1000f, 0f, 0f);
             AggiornaServerSuPosizioneNemici(posizionelv1, posizionelv2_1, posizionelv2_2, posizionelv3);
 

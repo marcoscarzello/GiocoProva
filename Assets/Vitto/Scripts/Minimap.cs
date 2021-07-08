@@ -115,23 +115,42 @@ public class Minimap : MonoBehaviour
                 r2_1.anchoredPosition = inverti(mirror.posizionelv2_1);
                 r2_2.anchoredPosition = inverti(mirror.posizionelv2_2);
                 r3.anchoredPosition = inverti(mirror.posizionelv3);
-                if (lv2_1.active && r2_1.anchoredPosition.x < -900f)
+                if (r2_1.anchoredPosition.x < -900f)
                 {
                     //uccisi[1] = true;
                     kill++;
                     lv2_1.SetActive(false);
                 }
-                if (lv2_2.active && r2_2.anchoredPosition.x < -900f)
+                else
+                {
+                    //uccisi[1] = true;
+                    kill--;
+                    lv2_1.SetActive(true);
+                }
+                if (r2_2.anchoredPosition.x < -900f)
                 {
                     //uccisi[2] = true;
                     kill++;
                     lv2_2.SetActive(false);
                 }
-                if (lv3.active && r3.anchoredPosition.x < -900f)
+                else
+                {
+                    //uccisi[2] = true;
+                    kill--;
+                    lv2_2.SetActive(true);
+                }
+                if (r3.anchoredPosition.x < -900f)
                 {
                     //uccisi[3] = true;
                     kill++;
                     lv3.SetActive(false);
+                }
+                else
+                if (r3.anchoredPosition.x < -900f)
+                {
+                    //uccisi[3] = true;
+                    kill--;
+                    lv3.SetActive(true);
                 }
                 if (kill == 4)
                     cm.setState(4);
