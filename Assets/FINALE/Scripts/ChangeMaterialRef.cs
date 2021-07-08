@@ -18,7 +18,6 @@ public class ChangeMaterialRef : MonoBehaviour
 
     public void DbFound()
     {
-
         _prepareToChange = true;
 
     }
@@ -26,7 +25,7 @@ public class ChangeMaterialRef : MonoBehaviour
 
     void Start()
     {
-
+        _thisEnum = 1;
         _actualMaterial = GetComponent<Renderer>().material;
 
     }
