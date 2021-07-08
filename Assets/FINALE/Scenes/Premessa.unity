@@ -319,12 +319,13 @@ MonoBehaviour:
     your friend.
 
 
-    One player must select Host (Client + Server) and the other
-    one must connect as Client typing the ip address of the Host.
+    After hitting PLAY in the next menu, one player must select
+    Host (Client + Server) and the other one must connect as Client typing the ip
+    address of the Host (you can find ipv4 typing "ipconfig" in the command prompt).
 
 
-    You can play
-    in the same room or connect via Discord  for a better experience.'
+    You
+    can play in the same room or connect via Discord for a better experience.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 11acacf5aacf46948bc349bb39595c03, type: 2}
   m_sharedMaterial: {fileID: -6485098153879217122, guid: 11acacf5aacf46948bc349bb39595c03,
@@ -2052,7 +2053,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1481680195
 Transform:
   m_ObjectHideFlags: 0
@@ -2086,7 +2087,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1527309182
 Transform:
   m_ObjectHideFlags: 0
