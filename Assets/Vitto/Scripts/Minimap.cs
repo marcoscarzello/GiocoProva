@@ -62,6 +62,8 @@ public class Minimap : MonoBehaviour
         r2_1 = lv2_1.GetComponent<RectTransform>();
         r2_2 = lv2_2.GetComponent<RectTransform>();
         r3 = lv3.GetComponent<RectTransform>();
+
+        gun = guns.GetComponentsInChildren<RectTransform>();
     }
 
     void Update()
@@ -83,12 +85,11 @@ public class Minimap : MonoBehaviour
         random.x = Random.Range(-randomRange, randomRange);
         random.y = Random.Range(-randomRange, randomRange);
         pg.anchoredPosition = inverti(mirror.posizioneShooter) + random; //posizione shooter randomica
-        if (state > 1)
-        {
-            gunsIcons(-1);
-        }
-        Debug.Log(state);
-        switch (state)
+        
+        gunsIcons();
+
+        Debug.Log("state: " + cm.getState());
+        switch (cm.getState())
         {
             case 1:
                 if (dbm.DBtrovato)
@@ -105,17 +106,12 @@ public class Minimap : MonoBehaviour
                 r1.anchoredPosition = inverti(mirror.posizionelv1);
                 if (r1.anchoredPosition.x < -900f)
                 {
-                    //uccisi[0] = true;
-
-                    timer2 += Time.deltaTime;
-                    if (timer2 > waitingTime)
-                    {
-                        cm.setState(3);
-                        lv1.SetActive(false);
-                    }
+                    cm.setState(3);
+                    lv1.SetActive(false);
                 }
                 break;
             case 3:
+                Debug.Log("mirror.posizionelv2_1" + mirror.posizionelv2_1);
                 r2_1.anchoredPosition = inverti(mirror.posizionelv2_1);
                 r2_2.anchoredPosition = inverti(mirror.posizionelv2_2);
                 r3.anchoredPosition = inverti(mirror.posizionelv3);
@@ -157,16 +153,12 @@ public class Minimap : MonoBehaviour
                 db.SetActive(false);
                 lv1.SetActive(true);
 
-                gun = guns.GetComponentsInChildren<RectTransform>();
-                foreach (RectTransform g in gun)
-                {
-                    Debug.Log("Gun POSITIONNNNNN" + g.anchoredPosition.x);
-                    g.gameObject.SetActive(true);
-                }
-                gunsIcons(-1); //place guns
+                guns.SetActive(true);
+                refreshMap();
                 break;
 
             case 3:
+                doors.SetActive(true);
                 lv1.SetActive(false);
                 lv2_1.SetActive(true);
                 lv2_2.SetActive(true);
@@ -177,11 +169,12 @@ public class Minimap : MonoBehaviour
                 {
                     d.gameObject.SetActive(true);
                 }
-                doorsIcons(-1); //place doors
+                refreshMap();
                 break;
 
             case 4:
                 countdown.SetActive(true); //torna all'ascensore
+                refreshMap();
                 break;
 
             default:
@@ -190,7 +183,7 @@ public class Minimap : MonoBehaviour
         state = cmstate;
     }
 
-    private void gunsIcons(int i) //place and destroy
+    private void gunsIcons() //place and destroy
     {
         //if (i > -1)
         //    Destroy(gun[i].gameObject, .5f);
@@ -207,7 +200,7 @@ public class Minimap : MonoBehaviour
                 skip = false;
             else if (g.gameObject.active)
             {
-                Debug.Log("Gun POSITION" + g.anchoredPosition);
+                Debug.Log("Gun POSITION" + mirror.posizioniArmi[j]);
 
                 if (mirror.posizioniArmi[j].y > -5.65f)
                 {
@@ -222,7 +215,6 @@ public class Minimap : MonoBehaviour
                 }
 
             }
-            //}
         }
     }
 
