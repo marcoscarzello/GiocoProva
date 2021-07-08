@@ -13,31 +13,16 @@ public class Bullet : MonoBehaviour
 
     public bool IsBulletPiece = false;
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider collision)
     {
-        if (IsBulletPiece)
+       
+
+        if(collision.gameObject.tag == "Wall" || collision.gameObject.tag== "Player")
         {
-            DestroyBullet();
-            return;
+            Debug.Log("DISTRUTTA PALLOTTOLA");
+            Destroy(gameObject);
         }
-
-        Rigidbody[] bulletPiecesRb = new Rigidbody[_destroyIntoPieces];
-
-        for (int i = 0; i < _destroyIntoPieces; i++)
-        {
-            Vector3 randomPos = transform.position + Random.insideUnitSphere * 0.8f;
-            Bullet bullet = Instantiate(this, randomPos, Quaternion.identity);
-            bullet.IsBulletPiece = true;
-            bullet.transform.localScale *= 0.5f;
-            bulletPiecesRb[i] = bullet.GetComponent<Rigidbody>();
-        }
-
-        for (int i = 0; i < bulletPiecesRb.Length; i++)
-        {
-            bulletPiecesRb[i].AddExplosionForce(_explosionForce, transform.position, _explosionRadius);
-        }
-
-        Destroy(gameObject);
+        
     }
 
     private void DestroyBullet()
