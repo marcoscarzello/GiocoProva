@@ -96,7 +96,7 @@ public class GuardFSM : MonoBehaviour
         _stateMachine.AddTransition(chaseState, stopState, () => DistanceFromTarget() <= _stoppingDistance);
 
         //_stateMachine.AddTransition(stopState, hideState, () => goHideBool==false);
-        _stateMachine.AddTransition(stopState, chaseState, () => DistanceFromTarget() > _stoppingDistance);
+        _stateMachine.AddTransition(stopState, chaseState, () => DistanceFromTarget() > _stoppingDistance || foundedWall());
 
         //_stateMachine.AddTransition(hideState, chaseState, () => ArrivedInHide() <= _hidingDistance );
 
@@ -111,9 +111,10 @@ public class GuardFSM : MonoBehaviour
 
         //NuovoMovimento
         timer += Time.deltaTime;
-        rayDirection = transform.forward;
-        RaycastHit hitInfo;
 
+        /*rayDirection = transform.forward;
+        RaycastHit hitInfo;
+        
         if (Physics.Raycast(_rayOrigin.transform.position, rayDirection, out hitInfo, rayLengthMeters))
         {
             if (hitInfo.collider.gameObject.tag == "Wall")
@@ -121,7 +122,8 @@ public class GuardFSM : MonoBehaviour
                 Debug.Log("Founded Wall");
                 nextPosition();
             }
-        }
+        }*/
+        foundedWall();
 
         if (timer >= RaggioMovimento || agent.remainingDistance <= 10.0f || agent.velocity.sqrMagnitude == 0f  )
         {
@@ -131,6 +133,23 @@ public class GuardFSM : MonoBehaviour
         //NuovoMovimento
     }
     public void StopAgent(bool stop) => agent.isStopped = stop;
+
+    public bool foundedWall()
+    {
+        rayDirection = transform.forward;
+        RaycastHit hitInfo;
+
+        if (Physics.Raycast(_rayOrigin.transform.position, rayDirection, out hitInfo, rayLengthMeters))
+        {
+            if (hitInfo.collider.gameObject.tag == "Wall")
+            {
+                //Debug.Log("Founded Wall");
+                nextPosition();
+                return true;
+            }
+        }
+        return false;
+    }
 
     public void nextPosition()
     {
@@ -286,7 +305,7 @@ public class GuardFSM : MonoBehaviour
         Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
         bulletRb.AddForce(shootingDirection * _shootForce, ForceMode.Impulse);
 
-        Debug.Log("Sparo1");
+        //Debug.Log("Sparo1");
     }
     private void SecondShoot()
     {
@@ -301,7 +320,7 @@ public class GuardFSM : MonoBehaviour
         Rigidbody bulletRb2 = bullet2.GetComponent<Rigidbody>();
         bulletRb2.AddForce(secondShootingDirection * _shootForce, ForceMode.Impulse);
 
-        Debug.Log("Sparo2");
+        //Debug.Log("Sparo2");
     }
 
     //Coroutines
@@ -384,8 +403,9 @@ public class ChaseState : State
         if (_guard.IsTargetInSight())
         {
             _guard.Animator.SetBool("Attack", true);
-            //_guard.AttackPlayer();
+            _guard.foundedWall();
         }
+
       
     }
 
@@ -417,7 +437,7 @@ public class StopState : State
         if (_guard.IsTargetInSight())
         {
             _guard.Animator.SetBool("Attack", true);
-            //_guard.AttackPlayer();
+            
         }
 
     }
