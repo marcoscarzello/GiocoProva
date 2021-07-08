@@ -71,7 +71,7 @@ public class CanvaManager : MonoBehaviour
         if (gamestatus == 2)
             EndGame();
 
-        if (gamestatus == 1)
+        if (gamestatus == 1) { }
             //Victory();
     }
 
