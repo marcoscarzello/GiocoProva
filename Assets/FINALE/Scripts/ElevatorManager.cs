@@ -24,12 +24,14 @@ public class ElevatorManager : MonoBehaviour
 
     void Start()
     {
-        _toOpen = true;
+        //_toOpen = true;
     }
 
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.E))
+            _toOpen = true;
 
         if (_toOpen)
         {
