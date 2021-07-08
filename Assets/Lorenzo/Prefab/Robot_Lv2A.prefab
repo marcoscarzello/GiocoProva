@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 6591176418371821208}
   m_Layer: 0
   m_Name: BraccioDestro
-  m_TagString: Untagged
+  m_TagString: Schermo2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -965,7 +965,7 @@ GameObject:
   - component: {fileID: 6088851376548317760}
   m_Layer: 0
   m_Name: BraccioSinistro
-  m_TagString: Untagged
+  m_TagString: Schermo1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

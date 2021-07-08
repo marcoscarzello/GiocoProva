@@ -101,6 +101,8 @@ public class NemicoManagerLV2a : MonoBehaviour
 
         if (soluzione.Substring(1, 1) == schermoColpito)
         {
+
+            Debug.Log("FINALMENTW");
             if (tagArma == soluzione.Substring(0, 1) && attivati == false)
             {
                 if (schermoColpito == "1")

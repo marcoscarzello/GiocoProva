@@ -263,7 +263,7 @@ GameObject:
   - component: {fileID: 7771978594478078398}
   m_Layer: 0
   m_Name: SchermoSinistro
-  m_TagString: Untagged
+  m_TagString: Schermo1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -430,7 +430,7 @@ GameObject:
   - component: {fileID: 5195930846658483612}
   m_Layer: 0
   m_Name: SchermoDestra
-  m_TagString: Untagged
+  m_TagString: Schermo2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -745,9 +745,10 @@ GameObject:
   m_Component:
   - component: {fileID: 316276768592812259}
   - component: {fileID: 7480543107584993236}
+  - component: {fileID: 1836830600322852280}
   m_Layer: 0
   m_Name: Corpo
-  m_TagString: Untagged
+  m_TagString: Schermo3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -832,6 +833,19 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.000004157424, y: 0.029963896, z: -0.00012793206}
     m_Extent: {x: 0.026201548, y: 0.02780915, z: 0.019422287}
   m_DirtyAABB: 0
+--- !u!65 &1836830600322852280
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6329068234458199543}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.016027536, y: 0.0031061848, z: 0.010055697}
+  m_Center: {x: -0.000064841406, y: -0.019713314, z: 0.039767183}
 --- !u!1 &6652848961675237032
 GameObject:
   m_ObjectHideFlags: 0
@@ -1457,7 +1471,7 @@ GameObject:
   - component: {fileID: 2921169781511426299}
   m_Layer: 0
   m_Name: SchermoCentrale
-  m_TagString: Untagged
+  m_TagString: Schermo3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

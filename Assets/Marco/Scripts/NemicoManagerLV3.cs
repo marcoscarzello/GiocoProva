@@ -111,7 +111,7 @@ public class NemicoManagerLV3 : MonoBehaviour
                 break;
         }
 
-
+        Debug.Log(schermoColpito);
         if (soluzione.Substring(1, 1) == schermoColpito)
         {
             if (tagArma == soluzione.Substring(0, 1) && attivati == false)
@@ -295,7 +295,7 @@ public class NemicoManagerLV3 : MonoBehaviour
             }
         }
 
-
+        
         //muore
         if (vitaModuloSigla <= 0f && vitaModuloLinea <= 0f && vitaModuloFaccia <= 0f)
         {
