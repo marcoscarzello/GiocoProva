@@ -39,9 +39,16 @@ public class GestioneParamsInRete : MonoBehaviour
     //parametri aggiornati continuamente dal client
     public float salute;
     public float energia;
-    
+
+    private AudioSource[] audios;
+
+
     void Start()
     {
+
+        audios = GetComponents<AudioSource>();
+
+
         salute = 100f;
         energia = 10f;
 
@@ -75,9 +82,15 @@ public class GestioneParamsInRete : MonoBehaviour
 
                 //aggiornamento console:
                 console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> <color=yellow>Health charged.</color>");
+                audios[0].Play();
             }
         }
-        else console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> <color=red>You don't have enough energy to restore health.</color>");
+        else
+        {
+            console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> <color=red>You don't have enough energy to restore health.</color>");
+            audios[1].Play();
+
+        }
 
 
     }
@@ -90,9 +103,18 @@ public class GestioneParamsInRete : MonoBehaviour
             if (PotenzaAumentata != null)
             {
                 PotenzaAumentata();
+                console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> <color=yellow>Power up activated!</color>");
+                audios[0].Play();
 
             }
         }
+        else
+        {
+            console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> <color=red>You don't have enough energy.</color>");
+            audios[1].Play();
+
+        }
+
     }
 
     public void RicaricaMunizioni()
@@ -106,9 +128,16 @@ public class GestioneParamsInRete : MonoBehaviour
                 MunizioniRicaricate();
 
                 console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> <color=yellow>Ammo charged.</color>");
+                audios[0].Play();
+
             }
         }
-        else console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> <color=red>You don't have enough energy to charge ammos.</color>");
+        else
+        {
+            console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> <color=red>You don't have enough energy to charge ammos.</color>");
+            audios[1].Play();
+
+        }
 
     }
 }

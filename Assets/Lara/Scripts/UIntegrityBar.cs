@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class UIntegrityBar : MonoBehaviour
 {
+    private AudioSource audio;
+
     public Slider slider;
     public static int currentValue;
 
@@ -16,11 +18,14 @@ public class UIntegrityBar : MonoBehaviour
     }
     public void SetDamage(int damage)
     {
+        audio.Play();
         slider.value -= damage;
     }
 
     private void Start()
     {
+        audio = GetComponent<AudioSource>();
+
         slider.value = 100;
         SetMaxIntegrity(100);
         SetDamage(0);

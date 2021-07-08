@@ -15,12 +15,17 @@ public class GestionePorte : MonoBehaviour
     public GameObject console;
     private Transform[] doors = null;
 
+
+    private AudioSource[] audios;
+
     //evento porta
     public delegate void AperturaPorta(int a);
     public static event AperturaPorta ApertaPorta;
 
     private void Start()
     {
+        audios = GetComponents<AudioSource>();
+
         doors = GetComponentsInChildren<Transform>();
     }
 
@@ -31,6 +36,8 @@ public class GestionePorte : MonoBehaviour
     }
 
     public void apriPorta() {
+
+        audios[1].Play();
 
         Debug.Log("Aperta la " + ultimaPortaSelezionata);
         console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> <color=yellow>Door " + ultimaPortaSelezionata + " opened!</color>");
@@ -77,7 +84,11 @@ public class GestionePorte : MonoBehaviour
                 {
                     apriPorta();
                 }
-                else console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> <color=red>Wrong password.</color>");
+                else
+                {
+                    console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> <color=red>Wrong password.</color>");
+                    error();
+                }
 
                 break;
             case 2:
@@ -85,60 +96,84 @@ public class GestionePorte : MonoBehaviour
                 {
                     apriPorta();
                 }
-                else console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> <color=red>Wrong password.</color>");
-
+                else
+                {
+                    console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> <color=red>Wrong password.</color>");
+                    error();
+                }
                 break;
             case 4:
                 if (password == "capibara")
                 {
                     apriPorta();
                 }
-                else console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> <color=red>Wrong password.</color>");
-
+                else
+                {
+                    console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> <color=red>Wrong password.</color>");
+                    error();
+                }
                 break;
             case 5:
                 if (password == "yolo")
                 {
                     apriPorta();
                 }
-                else console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> <color=red>Wrong password.</color>");
-
+                else
+                {
+                    console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> <color=red>Wrong password.</color>");
+                    error();
+                }
                 break;
             case 7:
                 if (password == "open")
                 {
                     apriPorta();
                 }
-                else console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> <color=red>Wrong password.</color>");
-
+                else
+                {
+                    console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> <color=red>Wrong password.</color>");
+                    error();
+                }
                 break;
             case 8:
                 if (password == "please")
                 {
                     apriPorta();
                 }
-                else console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> <color=red>Wrong password.</color>");
-
+                else
+                {
+                    console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> <color=red>Wrong password.</color>");
+                    error();
+                }
                 break;
             case 9:
                 if (password == "knock")
                 {
                     apriPorta();
                 }
-                else console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> <color=red>Wrong password.</color>");
-
+                else
+                {
+                    console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> <color=red>Wrong password.</color>");
+                    error();
+                }
                 break;
             case 11:
                 if (password == "close")
                 {
                     apriPorta();
                 }
-                else console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> <color=red>Wrong password.</color>");
-
+                else
+                {
+                    console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> <color=red>Wrong password.</color>");
+                    error();
+                }
                 break;
             default:
                 Debug.Log("nessuna porta selezionata");
-                console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> You must first select a door.");
+                { console.GetComponent<ConsoleManager>().aggiornaConsole("\n\n> You must first select a door.");
+
+                    error();
+                }
 
                 break;
 
@@ -146,7 +181,10 @@ public class GestionePorte : MonoBehaviour
         //riporta al vuoto il campo di inserimento pw:
         inputField.text = "";
     }
- 
 
+    public void error() {
+
+        audios[0].Play();
+    }
 
 }

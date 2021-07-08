@@ -4,12 +4,24 @@ using UnityEngine;
 
 public class GestioneMinigameLabirinto : MonoBehaviour
 {
+    private AudioSource audio;
 
     public GameObject pallina;
+
+    void Start() {
+
+    }
+
    public void AvvioLabirinto() {
+
 
         pallina.GetComponent<MovimentoSferetta>().spawn();
         gameObject.SetActive(true);
+
+        audio = GetComponent<AudioSource>();
+
+        audio.Play();
+
         if (GameObject.Find("Simon") != null)
         GameObject.Find("Simon").SetActive(false);
         if (GameObject.Find("Simon2") != null)
@@ -18,6 +30,7 @@ public class GestioneMinigameLabirinto : MonoBehaviour
     }
     public void FineLabirinto()
     {
+        audio.Stop();
 
         gameObject.SetActive(false);
 
