@@ -20,6 +20,7 @@ public class CanvaManager : MonoBehaviour
     private Slider energy = null;
     private Slider integrity = null;
 
+    private AudioSource[] music = null;
     public int gamestatus;
     
 
@@ -43,7 +44,7 @@ public class CanvaManager : MonoBehaviour
         health.value = mirror.salute;
         energy.value = mirror.energia;
         state = 1;
-
+        music = GetComponents<AudioSource>();
 
         gamestatus = 0;
     }
@@ -52,7 +53,14 @@ public class CanvaManager : MonoBehaviour
     {
         Cursor.visible = true;
         barsFill();
-
+        if (state == 3)
+        {
+            StartCoroutine(StartFade(music[0], 4f, 0f));
+        }
+        else if (state == 4)
+        {
+            StartCoroutine(StartFade(music[1], 4f, 0f));
+        }
 
         if (integrity.value <= 0 || health.value <= 0)
         {
@@ -74,6 +82,21 @@ public class CanvaManager : MonoBehaviour
         if (gamestatus == 1) 
             SceneManager.LoadScene("Victory");
     }
+
+    public static IEnumerator StartFade(AudioSource audioSource, float duration, float targetVolume)
+    {
+        float currentTime = 0;
+        float start = audioSource.volume;
+
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            audioSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
+            yield return null;
+        }
+        yield break;
+    }
+
 
     private void barsFill()
     {
