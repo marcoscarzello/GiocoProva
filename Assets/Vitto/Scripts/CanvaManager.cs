@@ -14,8 +14,8 @@ public class CanvaManager : MonoBehaviour
 
     private float timer = 0f;
     private float waitingTime = 5.0f;
-    public GameObject completeLevelUI;
-    public GameObject gameOverUI;
+    private GameObject completeLevelUI;
+    private GameObject gameOverUI;
     private Slider health = null;
     private Slider energy = null;
     private Slider integrity = null;
