@@ -210,6 +210,7 @@ MonoBehaviour:
   _minSightDistance: 50
   _portalDistance: 1
   _stoppingDistance: 1
+  audios: []
   _viewAngle: 360
   _rayOrigin: {fileID: 876010319512116517}
   _rotatingBase: {fileID: 876010319512116517}
@@ -252,7 +253,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a150a519ac314ef48a04dc4af1e9bbe8, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -347,8 +348,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 2bee669340910c343a1143a053b5fdca, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_PlayOnAwake: 0
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0

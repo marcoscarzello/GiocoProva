@@ -11,6 +11,7 @@ public class VirusFSM : MonoBehaviour
     [SerializeField] private float _minSightDistance = 3f;
     [SerializeField] private float _portalDistance = 5f;
     [SerializeField] private float _stoppingDistance = 5f;
+    public AudioSource[] audios;
 
     //evento partito attacco
     public delegate void AttaccoVirus();
@@ -66,6 +67,7 @@ public class VirusFSM : MonoBehaviour
         goPortalBool = true;
         stopToPatrol = false;
 
+        audios = GetComponents<AudioSource>();
 
         if (GameObject.Find("Shooter") != null)
         {
@@ -350,7 +352,8 @@ public class StopVirusState : State
         _virus.StartCoroutine(_virus.goAttackHacker());
         _virus.StopAgent(true);
         _virus.Animator.SetBool("patrol", false);
-        
+        _virus.audios[1].Play();
+
     }
 
     public override void Tik()
@@ -377,7 +380,7 @@ public class AttackHackerState: State
         _virus.StopAgent(false);
         _virus.Animator.SetBool("patrol", false);
         _virus.findClosestAttackPortal();
-        
+
     }
 
     public override void Tik()
