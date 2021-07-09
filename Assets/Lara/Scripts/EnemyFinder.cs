@@ -86,7 +86,7 @@ public class EnemyFinder : MonoBehaviour
             case "CP-3":
                 sigla = "f";
                 break;
-            case "SM-1":
+            case "SH-1":
                 sigla = "g";
                 break;
             case "LS-2":
