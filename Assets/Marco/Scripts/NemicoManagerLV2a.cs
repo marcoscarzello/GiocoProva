@@ -56,6 +56,16 @@ public class NemicoManagerLV2a : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            Die();
+        }
+
+
+    }
+
     private IEnumerator disattiva()
     {
 

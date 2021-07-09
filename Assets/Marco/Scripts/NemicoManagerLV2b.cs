@@ -55,6 +55,16 @@ public class NemicoManagerLV2b : MonoBehaviour
         Debug.Log("Soluzione nemico livello 2b " + soluzione);
 
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            Die();
+        }
+
+
+    }
     private IEnumerator disattiva()
     {
 

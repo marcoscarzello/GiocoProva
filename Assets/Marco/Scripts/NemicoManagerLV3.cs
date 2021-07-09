@@ -68,6 +68,16 @@ public class NemicoManagerLV3 : MonoBehaviour
         Debug.Log("Soluzione nemico livello 3 " + soluzione);
 
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            Die();
+        }
+
+
+    }
     private IEnumerator disattiva()
     {
 
