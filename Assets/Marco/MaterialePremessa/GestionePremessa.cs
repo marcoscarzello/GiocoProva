@@ -33,9 +33,9 @@ public class GestionePremessa : MonoBehaviour
         {
             if (blocco1.active)
             {
-                audios[0].Stop();
+                //audios[0].Stop();
 
-                audios[1].Play();
+                //audios[1].Play();
 
                 blocco1.SetActive(false);
                 blocco2.SetActive(true);
@@ -43,9 +43,9 @@ public class GestionePremessa : MonoBehaviour
 
             else if (blocco2.active)
             {
-                audios[1].Stop();
+                //audios[1].Stop();
 
-                audios[2].Play();
+                //audios[2].Play();
 
                 blocco2.SetActive(false);
                 blocco3.SetActive(true);
@@ -61,9 +61,23 @@ public class GestionePremessa : MonoBehaviour
             else if (bloccoIstruzioni.active)
             {
                 //cambioscena
+                StartCoroutine(StartFade(audios[0], 1f, 0f, 0));
                 gameObject.GetComponent<MainMenu>().ToMenu(); 
             }
 
         }
+    }
+    public static IEnumerator StartFade(AudioSource[] music, float duration, float targetVolume, int i)
+    {
+        float currentTime = 0;
+        float start = music[i].volume;
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            music[i].volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
+            yield return null;
+        }
+        //music[i + 1].Play();
+        yield break;
     }
 }
