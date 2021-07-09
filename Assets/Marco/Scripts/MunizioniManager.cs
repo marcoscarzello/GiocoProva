@@ -60,13 +60,15 @@ public class MunizioniManager : MonoBehaviour
 
     public void PiuMunizioniGrazie() {
 
-        scortaPistola += 40;
-        scortaAssalto += 100;
-        scortaPompa += 20;
+        scortaPistola += 25;
+        scortaAssalto += 50;
+        scortaPompa += 10;
     }
 
     public void PowerUpPotenza()
     {
+        audios[1].Play();
+
         canvaspuntatore.GetComponent<CanvaPuntatoreManager>().inizioPotenza();
         //l'energia viene tolta in vitaenergia
         moltiplicatore = 3f;
