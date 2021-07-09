@@ -11,12 +11,16 @@ public class WeaponSwitching : MonoBehaviour
     private float a;
     public Animator anim;
 
+    bool aiuto;
+
     public bool staCambiando;
 
     int previousSW;
 
     void Start()
     {
+        aiuto = false;
+
         SelectWeapon();
         staCambiando = false;
         anim = GetComponent<Animator>();
@@ -27,17 +31,19 @@ public class WeaponSwitching : MonoBehaviour
         yield return new WaitForSeconds(0.42f);
 
         anim.SetBool("alzata", true);
-        if (a > 0f)
+        if (a > 0f && !aiuto)
         {
+            aiuto = true;
+
             Debug.Log("entra?: " + selectedWeapon);
             if (selectedWeapon >= transform.childCount - 1)
                 selectedWeapon = 0;
             else
                 selectedWeapon++;
         }
-        if (a < 0f)
+        if (a < 0f && !aiuto)
         {
-
+            aiuto = true;
             if (selectedWeapon <= 0)
                 selectedWeapon = transform.childCount - 1;
             else
@@ -59,7 +65,7 @@ public class WeaponSwitching : MonoBehaviour
         yield return new WaitForSeconds(0.42f);
 
         staCambiando = false;
-
+        aiuto = false;
         anim.SetBool("alzata", false);
         anim.SetBool("isChanging", false);
 
@@ -83,7 +89,7 @@ public class WeaponSwitching : MonoBehaviour
 
         //cambio arma con rotellina
 
-        if (Input.GetAxis("Mouse ScrollWheel") > 0f)
+        if (Input.GetAxis("Mouse ScrollWheel") > 0f && !staCambiando)
         {
             staCambiando = true;
 
@@ -94,7 +100,7 @@ public class WeaponSwitching : MonoBehaviour
 
             
         }
-        if (Input.GetAxis("Mouse ScrollWheel") < 0f)
+        if (Input.GetAxis("Mouse ScrollWheel") < 0f && !staCambiando)
         {
             staCambiando = true;
 
@@ -133,13 +139,15 @@ public class WeaponSwitching : MonoBehaviour
     void SelectWeapon() 
     {
         int i = 0;
-        foreach (Transform weapon in transform)
-        {
-            if (i == selectedWeapon)
-                weapon.gameObject.SetActive(true);
-            else
-                weapon.gameObject.SetActive(false);
-            i++;
-        }
+       
+            foreach (Transform weapon in transform)
+            {
+                if (i == selectedWeapon)
+                    weapon.gameObject.SetActive(true);
+                else
+                    weapon.gameObject.SetActive(false);
+                i++;
+            }
+        
     }
 }
