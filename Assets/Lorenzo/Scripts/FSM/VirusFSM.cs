@@ -33,6 +33,7 @@ public class VirusFSM : MonoBehaviour
 
     bool goPortalBool;
     bool attackingHacker;
+    bool stopToPatrol;
 
     private FiniteStateMachine<VirusFSM> _stateMachine;
 
@@ -63,6 +64,8 @@ public class VirusFSM : MonoBehaviour
         _stateMachine = new FiniteStateMachine<VirusFSM>(this); //instanzia una macchina a stati finiti
         attackingHacker = false;
         goPortalBool = true;
+        stopToPatrol = false;
+
 
         if (GameObject.Find("Shooter") != null)
         {
@@ -81,9 +84,12 @@ public class VirusFSM : MonoBehaviour
 
         _stateMachine.AddTransition(stopState, attackHackerState, () => goPortalBool == false);
 
+
+
         _stateMachine.AddTransition(attackHackerState, stopState, () => ArrivedInPortal()<= _stoppingDistance);
 
-
+        _stateMachine.AddTransition(attackHackerState, patrolState, () => foundedWall());
+        _stateMachine.AddTransition(stopState, patrolState, () => foundedWall());
 
         //START STATE
         Vector3 walkpoint = RandomNavSphere(transform.position, wanderRadius, -1);
@@ -94,14 +100,14 @@ public class VirusFSM : MonoBehaviour
     {
 
         //roba debug Marco
-        if (Input.GetKeyDown(KeyCode.V)) {
+        /*if (Input.GetKeyDown(KeyCode.V)) {
             if (PartitoAttacco != null)
             {
                 PartitoAttacco();
                 Debug.Log("L'evento attacco virus parte dal client...");
 
             }
-        }
+        }*/
         //fine roba debug marco
 
 
@@ -110,19 +116,11 @@ public class VirusFSM : MonoBehaviour
 
         //NuovoMovimento
         timer += Time.deltaTime;
-        rayDirection = transform.forward;
-        RaycastHit hitInfo;
+;
 
         if (goPortalBool == true) {
 
-            if (Physics.Raycast(_rayOrigin.transform.position, rayDirection, out hitInfo, rayLengthMeters))
-            {
-                if (hitInfo.collider.gameObject.tag == "Wall")
-                {
-                    Debug.Log("Founded Wall");
-                    nextPosition();
-                }
-            }
+            foundedWall();
 
             if (timer >= wanderTimer || agent.remainingDistance <= 10.0f || agent.velocity.sqrMagnitude == 0f  )
             {
@@ -135,13 +133,33 @@ public class VirusFSM : MonoBehaviour
     }
     public void StopAgent(bool stop) => agent.isStopped = stop;
 
+    public IEnumerator esciStoptoPatrol()
+    {
+        yield return new WaitForSeconds(3);
+        stopToPatrol = true;
+    }
 
+    public bool foundedWall()
+    {
+        rayDirection = transform.forward;
+        RaycastHit hitInfo;
 
+        if (Physics.Raycast(_rayOrigin.transform.position, rayDirection, out hitInfo, rayLengthMeters))
+        {
+            if (hitInfo.collider.gameObject.tag == "Wall")
+            {
+                //Debug.Log("Founded Wall");
+                nextPosition();
+                return true;
+            }
+        }
+        return false;
+    }
 
 
     public void nextPosition()
     {
-        Debug.Log("ARRIVATO IN POS");
+        //Debug.Log("ARRIVATO IN POS");
         Vector3 walkpoint = RandomNavSphere(transform.position, wanderRadius, -1);
         agent.SetDestination(walkpoint);
         timer = 0;
@@ -365,6 +383,7 @@ public class AttackHackerState: State
     public override void Tik()
     {
         _virus.ArrivedInAttackPosition();
+        
     }
 
     public override void Exit()
