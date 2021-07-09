@@ -53,14 +53,7 @@ public class CanvaManager : MonoBehaviour
     {
         Cursor.visible = true;
         barsFill();
-        if (state == 3)
-        {
-            StartCoroutine(StartFade(music[0], 4f, 0f));
-        }
-        else if (state == 4)
-        {
-            StartCoroutine(StartFade(music[1], 4f, 0f));
-        }
+        
 
         if (integrity.value <= 0 || health.value <= 0)
         {
@@ -83,17 +76,17 @@ public class CanvaManager : MonoBehaviour
             SceneManager.LoadScene("Victory");
     }
 
-    public static IEnumerator StartFade(AudioSource audioSource, float duration, float targetVolume)
+    public static IEnumerator StartFade(AudioSource[] music, float duration, float targetVolume, int i)
     {
         float currentTime = 0;
-        float start = audioSource.volume;
-
+        float start = music[i].volume;
         while (currentTime < duration)
         {
             currentTime += Time.deltaTime;
-            audioSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
+            music[i].volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
             yield return null;
         }
+        music[i+1].Play();
         yield break;
     }
 
@@ -142,7 +135,18 @@ public class CanvaManager : MonoBehaviour
 
         }
     }
-    public void setState(int s) { state = s; }
+    public void setState(int s)
+    {
+        state = s;
+        if (state == 3)
+        {
+            StartCoroutine(StartFade(music, 4f, 0f, 0));
+        }
+        else if (state == 4)
+        {
+            StartCoroutine(StartFade(music, 4f, 0f, 1));
+        }
+    }
     public void accState() { state++; }
     public int getState() { return state; }
 
