@@ -71,8 +71,8 @@ public class CanvaManager : MonoBehaviour
         if (gamestatus == 2)
             EndGame();
 
-        if (gamestatus == 1) { }
-            //Victory();
+        if (gamestatus == 1) 
+            SceneManager.LoadScene("Victory");
     }
 
     private void barsFill()
