@@ -49,6 +49,13 @@ public class SimonSaysGameBoard : MonoBehaviour
         playerInputController.setCanType(true);
     }
 
+    public void restart()
+    {
+        currentSequenceLength = 2;
+        StopAllCoroutines();
+        StartNewGame();
+    }
+
     private void SetupGameBoard()
     {
         if (StartScreenGO == null)
@@ -146,6 +153,8 @@ public class SimonSaysGameBoard : MonoBehaviour
         repeat.enabled = true;
         StartCoroutine(WaitForAnswerRoutine());
     }
+
+    
 
     private IEnumerator WaitForAnswerRoutine()
     {
