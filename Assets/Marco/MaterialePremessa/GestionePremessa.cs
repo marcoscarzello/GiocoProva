@@ -61,7 +61,7 @@ public class GestionePremessa : MonoBehaviour
             else if (bloccoIstruzioni.active)
             {
                 //cambioscena
-                StartCoroutine(StartFade(audios[0], 1f, 0f, 0));
+                StartCoroutine(StartFade(audios, 1f, 0f, 0));
                 gameObject.GetComponent<MainMenu>().ToMenu(); 
             }
 
