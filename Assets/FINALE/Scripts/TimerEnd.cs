@@ -38,7 +38,7 @@ public class TimerEnd : MonoBehaviour
             }
         }
 
-        if (posizioneShooter.z > 228)
+        if (posizioneShooter.z > 225)
         {
             stopTimer = true;
             Win(); //WIN
