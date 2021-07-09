@@ -32,7 +32,7 @@ public class GestioneParamsInRete : MonoBehaviour
     public int munizioniPompa;
     public int munizioniMitra;
 
-    public List<Vector3> posizioniArmi;
+    public int[] posizioniArmi;
 
     public GameObject console;
 
@@ -60,6 +60,7 @@ public class GestioneParamsInRete : MonoBehaviour
         posizionelv2_1 = new Vector3(1023f, 1023f, 1023f);
         posizionelv2_2 = new Vector3(1023f, 1023f, 1023f);
         posizionelv3 = new Vector3(1023f, 1023f, 1023f);
+        posizioniArmi = new int[6] { 0, 1, 2, 3, 4, 5 }; ;
     }
 
     void Update()

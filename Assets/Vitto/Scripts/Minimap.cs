@@ -64,6 +64,8 @@ public class Minimap : MonoBehaviour
         r3 = lv3.GetComponent<RectTransform>();
 
         gun = guns.GetComponentsInChildren<RectTransform>();
+        foreach (RectTransform g in gun)
+            g.gameObject.SetActive(false);
     }
 
     void Update()
@@ -86,7 +88,7 @@ public class Minimap : MonoBehaviour
         random.y = Random.Range(-randomRange, randomRange);
         pg.anchoredPosition = inverti(mirror.posizioneShooter) + random; //posizione shooter randomica
         
-        gunsIcons();
+        //gunsIcons();
 
         Debug.Log("state: " + cm.getState());
         switch (cm.getState())
@@ -171,8 +173,8 @@ public class Minimap : MonoBehaviour
             case 2:
                 db.SetActive(false);
                 lv1.SetActive(true);
-
                 guns.SetActive(true);
+                gunsIcons();
                 refreshMap();
                 break;
 
@@ -204,37 +206,42 @@ public class Minimap : MonoBehaviour
 
     private void gunsIcons() //place and destroy
     {
+        Debug.Log("gunnnnnnnnnnnnnnnnnnnnnnnnnnnn " + gun.Length);
+        foreach (int i in mirror.posizioniArmi)
+        {
+            gun[i +1].gameObject.SetActive(true);
+        }
+
         //if (i > -1)
         //    Destroy(gun[i].gameObject, .5f);
         //else
         //{
-        int j = 0;
-        bool skip = true; 
+        //int j = 0;
+        //bool skip = true; 
+        //foreach (RectTransform g in gun)
+        //{
+        //    //Debug.Log("Gun lenght" + gun.Length);
+        //    //Debug.Log("Mirror lenght" + mirror.posizioniArmi.Count);
+        //    if (skip)
+        //        skip = false;
+        //    else if (g.gameObject.active)
+        //    {
+        //        Debug.Log("Gun POSITION" + mirror.posizioniArmi[j]);
 
-        foreach (RectTransform g in gun)
-        {
-            //Debug.Log("Gun lenght" + gun.Length);
-            //Debug.Log("Mirror lenght" + mirror.posizioniArmi.Count);
-            if (skip)
-                skip = false;
-            else if (g.gameObject.active)
-            {
-                Debug.Log("Gun POSITION" + mirror.posizioniArmi[j]);
+            //        if (mirror.posizioniArmi[j].y > -5.65f)
+            //        {
+            //            Debug.Log("mirror.posizioniArmi[j].y" + mirror.posizioniArmi[j].y);
+            //            g.gameObject.SetActive(false);
+            //            j++;
+            //        }
+            //        else
+            //        {
+            //            g.anchoredPosition = inverti(mirror.posizioniArmi[j]);
+            //            j++;
+            //        }
 
-                if (mirror.posizioniArmi[j].y > -5.65f)
-                {
-                    Debug.Log("mirror.posizioniArmi[j].y" + mirror.posizioniArmi[j].y);
-                    g.gameObject.SetActive(false);
-                    j++;
-                }
-                else
-                {
-                    g.anchoredPosition = inverti(mirror.posizioniArmi[j]);
-                    j++;
-                }
-
-            }
-        }
+            //    }
+            //}
     }
 
     private Vector3 inverti(Vector3 vec)

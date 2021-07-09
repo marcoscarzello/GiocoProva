@@ -34,7 +34,7 @@ public class Player : NetworkBehaviour
 
     //public DataTable DataBase;
 
-    public List<Vector3> posizioniArmi;
+    public int[] posizioniArmi;
 
     public float salute;
     public float energia;
@@ -47,6 +47,7 @@ public class Player : NetworkBehaviour
     private GameObject lv2_1 = null;
     private GameObject lv2_2 = null;
     private GameObject lv3 = null;
+    private Weapons_Generator weapons = null;
 
     void Start()
     {
@@ -79,7 +80,8 @@ public class Player : NetworkBehaviour
                 GameObject.Find("FirstPersonCharacter").GetComponent<AudioListener>().enabled = true;
 
                 GameObject.Find("CanvaPuntatore").GetComponent<CanvaPuntatoreManager>().CloseMenuHUD();
-
+                weapons = GameObject.Find("Script_Starter").GetComponent<Weapons_Generator>();
+                posizioniArmi = new int[6];
             }
 
         }
@@ -204,7 +206,8 @@ public class Player : NetworkBehaviour
 
             //inviare al server posizione armi
             if (GameObject.Find("Script_Starter") != null)
-                posizioniArmi = GameObject.Find("Script_Starter").GetComponent<Weapons_Generator>().WeaponPositions();
+                //posizioniArmi = GameObject.Find("Script_Starter").GetComponent<Weapons_Generator>().WeaponPositions();
+                posizioniArmi = weapons.WeaponSpots();
             AggiornaServerSuPosizioneArmi(posizioniArmi);
 
             //inviare al server il database: non funziona
@@ -286,7 +289,7 @@ public class Player : NetworkBehaviour
     }
 
     [Command]
-    public void AggiornaServerSuPosizioneArmi(List<Vector3> posizioniArmi) {
+    public void AggiornaServerSuPosizioneArmi(int[] posizioniArmi) {
         if (GameObject.Find("GestoreParamsInRete") != null)
         {
             GestioneParamsInRete MyScriptReference = GameObject.Find("GestoreParamsInRete").GetComponent<GestioneParamsInRete>();
