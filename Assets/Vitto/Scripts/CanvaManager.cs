@@ -13,7 +13,7 @@ public class CanvaManager : MonoBehaviour
     public int state = 1; /*1- db     2- mappa armi e nemico lv1      3- lv2 , lv3      4 timer torna all'ascensore */
 
     private float timer = 0f;
-    private float waitingTime = 5.0f;
+    private float waitingTime = 2.0f;
     private GameObject completeLevelUI;
     private GameObject gameOverUI;
     private Slider health = null;
