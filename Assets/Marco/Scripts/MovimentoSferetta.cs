@@ -15,15 +15,21 @@ public class MovimentoSferetta : MonoBehaviour
     void Start()            //non sarà la start ma la startMinigameX
     {
         spawn();
+        xpos = 8f;
+        zpos = 8f;
+        speed = 3f;
     }
 
     void Update()
     {
+
+        if (Input.GetKeyDown(KeyCode.G)) spawn();
+
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
 
-        gameObject.transform.position = new Vector3(transform.position.x - (h * speed), transform.position.y,
-           transform.position.z - (v * speed));
+        gameObject.transform.position = new Vector3(transform.position.x - (h * speed * Time.deltaTime), transform.position.y,
+           transform.position.z - (v * speed * Time.deltaTime));
     }
 
     void OnCollisionEnter(Collision collision)
@@ -38,15 +44,19 @@ public class MovimentoSferetta : MonoBehaviour
 
     public void spawn() {
 
+        speed = 3f;
         Random rnd = new Random();
-        xpos = rnd.Next(40);
+
+        while (xpos < 20f)
+            xpos = rnd.Next(80);
         xpos /= 10f;
-        zpos = rnd.Next(40);
+        while (zpos < 20f)
+            zpos = rnd.Next(80);
         zpos /= 10f;
 
         Debug.Log(zpos + ", " + xpos);
 
-        gameObject.transform.position = new Vector3(transform.position.x + xpos, transform.position.y, transform.position.z + zpos);
+        gameObject.transform.localPosition = new Vector3(xpos, 1.35f,  zpos);
 
     }
 
