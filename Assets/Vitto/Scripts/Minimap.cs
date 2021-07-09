@@ -41,7 +41,7 @@ public class Minimap : MonoBehaviour
     private float waitingTime = 2.0f; //tempo di refresh mappa
     private Vector3 random;
     private Vector3 inv; //vettore con y e z invertiti
-    const uint randomRange = 30; //di quanto si sposta
+    const uint randomRange = 25; //di quanto si sposta
     private int kill = 1;
     //private bool[] uccisi= { false, false, false, false };
 

@@ -37,15 +37,16 @@ public class OpenDoor : MonoBehaviour
 
         if (_open)
         {
+            
+            var _endPos = new Vector3(
+                        transform.position.x,
+                        _end,
+                        transform.position.z);
             if (flag)
             {
                 audios.Play();
                 flag = false;
             }
-            var _endPos = new Vector3(
-                        transform.position.x,
-                        _end,
-                        transform.position.z);
 
             if (transform.position == _endPos)
                 _open = false;

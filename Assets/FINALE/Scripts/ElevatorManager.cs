@@ -39,15 +39,15 @@ public class ElevatorManager : MonoBehaviour
 
         if (_toOpen)
         {
+            var _openedPos = new Vector3(
+                   transform.position.x,
+                   _opened,
+                   transform.position.z);
             if (flag)
             {
                 opens.Play();
                 flag = false;
             }
-            var _openedPos = new Vector3(
-                   transform.position.x,
-                   _opened,
-                   transform.position.z);
 
             transform.position = Vector3.MoveTowards(transform.position, _openedPos, _velocity * Time.deltaTime);
             
