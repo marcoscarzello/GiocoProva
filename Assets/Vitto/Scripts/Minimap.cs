@@ -209,7 +209,7 @@ public class Minimap : MonoBehaviour
         Debug.Log("gunnnnnnnnnnnnnnnnnnnnnnnnnnnn " + gun.Length);
         foreach (int i in mirror.posizioniArmi)
         {
-            gun[i +1].gameObject.SetActive(true);
+            gun[i].gameObject.SetActive(true);
         }
 
         //if (i > -1)
