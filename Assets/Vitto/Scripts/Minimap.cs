@@ -38,7 +38,7 @@ public class Minimap : MonoBehaviour
 
     private float timer = 0f;
     private float timer2 = 0f;
-    private float waitingTime = 5.0f; //tempo di refresh mappa
+    private float waitingTime = 2.0f; //tempo di refresh mappa
     private Vector3 random;
     private Vector3 inv; //vettore con y e z invertiti
     const uint randomRange = 30; //di quanto si sposta
@@ -155,8 +155,11 @@ public class Minimap : MonoBehaviour
                     lv3.SetActive(true);
                 }
                 if (kill == 4)
+                {
                     cm.setState(4);
-                break;
+                    countdown.SetActive(true);
+                }
+                    break;
         }
     }
 
