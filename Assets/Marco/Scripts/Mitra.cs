@@ -81,7 +81,7 @@ public class Mitra : MonoBehaviour
             {
                 nextTimeToFire = Time.time + 1f / fireRate;
 
-                if (currentAmmo > 0 ) { Shoot();
+                if (currentAmmo > 0 && GameObject.Find("WeaponHolder").GetComponent<WeaponSwitching>().staCambiando == false ) { Shoot();
                     sparo[0].Play();
 
 

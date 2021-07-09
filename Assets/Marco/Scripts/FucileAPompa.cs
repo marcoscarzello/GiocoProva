@@ -79,7 +79,7 @@ public class FucileAPompa : MonoBehaviour
             {
                 nextTimeToFire = Time.time + 1f / fireRate;         //inutile per la pistola
 
-                if (currentAmmo > 0)
+                if (currentAmmo > 0 && GameObject.Find("WeaponHolder").GetComponent<WeaponSwitching>().staCambiando == false)
                 {
                     Shoot();
                     sparo[0].Play();

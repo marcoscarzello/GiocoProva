@@ -78,7 +78,7 @@ public class Gun : MonoBehaviour
 
                 nextTimeToFire = Time.time + 1f / fireRate;         //inutile per la pistola
 
-                if (currentAmmo > 0 && GameObject.Find("menuHUD") == null)
+                if (currentAmmo > 0 && GameObject.Find("menuHUD") == null && GameObject.Find("WeaponHolder").GetComponent<WeaponSwitching>().staCambiando == false)
                 {
 
                     Shoot();
