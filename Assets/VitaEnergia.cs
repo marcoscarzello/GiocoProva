@@ -8,7 +8,11 @@ public class VitaEnergia : MonoBehaviour
 {
     public float salute;
     public float energia;
-    public float _perHitLossBulletBlu;
+    float _perHitLossBulletBlu;
+    float _perHitLossBulletRosso;
+    float _perHitLossBulletVerde;
+    float _perHitLossBulletGiallo;
+
     public GameObject weaponHolder;
 
     public GameObject canvapuntatore;
@@ -23,6 +27,9 @@ public class VitaEnergia : MonoBehaviour
         salute = 100f;
         energia = 90f;
         _perHitLossBulletBlu = 5f;
+        _perHitLossBulletRosso = 8f;
+        _perHitLossBulletVerde = 5f;
+        _perHitLossBulletGiallo = 7f;
 
 
         waitingTime = 2f;
@@ -70,11 +77,32 @@ public class VitaEnergia : MonoBehaviour
 
     void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.GetComponent<Bullet>() != null)
+        if (collision.gameObject.GetComponent<Bullet>()!= null)
         {
-            salute -= _perHitLossBulletBlu;//gameObject.GetComponent<Bullet>()._perHitLoss;
-            //Debug.Log("Health: " + salute);
-            glitch();
+            if(collision.tag == "Bullet")
+            {
+                salute -= _perHitLossBulletBlu;//gameObject.GetComponent<Bullet>()._perHitLoss;
+                                               //Debug.Log("Health: " + salute);
+                glitch();
+            }
+            if (collision.tag == "Bullet1")
+            {
+                salute -= _perHitLossBulletVerde;//gameObject.GetComponent<Bullet>()._perHitLoss;
+                                               //Debug.Log("Health: " + salute);
+                glitch();
+            }
+            if (collision.tag == "Bullet2")
+            {
+                salute -= _perHitLossBulletGiallo;//gameObject.GetComponent<Bullet>()._perHitLoss;
+                                               //Debug.Log("Health: " + salute);
+                glitch();
+            }
+            if (collision.tag == "Bullet3")
+            {
+                salute -= _perHitLossBulletRosso;//gameObject.GetComponent<Bullet>()._perHitLoss;
+                                               //Debug.Log("Health: " + salute);
+                glitch();
+            }
         }
 
         Debug.Log("Collisione con ammo");

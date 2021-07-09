@@ -1,21 +1,20 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
-public class Bullet : MonoBehaviour
+public class BulletLv1 : MonoBehaviour
 {
+
     void OnTriggerEnter(Collider collision)
     {
-       
 
-        if(collision.gameObject.tag == "Wall" || collision.gameObject.tag== "Player")
+
+        if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Player")
         {
             Debug.Log("DISTRUTTA PALLOTTOLA");
             Destroy(gameObject);
         }
-        
+
     }
 
     private void DestroyBullet()
@@ -23,3 +22,4 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject);
     }
 }
+
