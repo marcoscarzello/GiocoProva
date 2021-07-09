@@ -79,25 +79,28 @@ public class VitaEnergia : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Bullet>()!= null)
         {
-            if(collision.tag == "Bullet")
+
+            if (collision.tag == "Bullet")
             {
                 salute -= _perHitLossBulletBlu;//gameObject.GetComponent<Bullet>()._perHitLoss;
                                                //Debug.Log("Health: " + salute);
                 glitch();
             }
-            if (collision.tag == "Bullet1")
+
+            if (collision.tag == "BulletLv1")
             {
                 salute -= _perHitLossBulletVerde;//gameObject.GetComponent<Bullet>()._perHitLoss;
                 Debug.Log("DANNO LV1");                          //Debug.Log("Health: " + salute);
                 glitch();
             }
-            if (collision.tag == "Bullet2")
+            
+            if (collision.tag == "BulletLv2")
             {
                 salute -= _perHitLossBulletGiallo;//gameObject.GetComponent<Bullet>()._perHitLoss;
                 Debug.Log("DANNO LV2");                          //Debug.Log("Health: " + salute);
                 glitch();
             }
-            if (collision.tag == "Bullet3")
+            if (collision.tag == "BulletLv3")
             {
                 salute -= _perHitLossBulletRosso;//gameObject.GetComponent<Bullet>()._perHitLoss;
                 Debug.Log("DANNO LV3");                          //Debug.Log("Health: " + salute);
