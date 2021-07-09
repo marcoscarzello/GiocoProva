@@ -78,9 +78,7 @@ public class Minimap : MonoBehaviour
         {
             timer = 0f;
             refreshMap();
-            Debug.Log("dentro" + cm.getState());
         }
-        Debug.Log("fuori" + cm.getState());
         //Debug.Log(pg.rectra);
     }
 
