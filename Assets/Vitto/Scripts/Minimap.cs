@@ -41,7 +41,7 @@ public class Minimap : MonoBehaviour
     private float waitingTime = 2.0f; //tempo di refresh mappa
     private Vector3 random;
     private Vector3 inv; //vettore con y e z invertiti
-    const uint randomRange = 25; //di quanto si sposta
+    private uint randomRange = 25; //di quanto si sposta
     private int kill = 1;
     //private bool[] uccisi= { false, false, false, false };
 
@@ -166,7 +166,15 @@ public class Minimap : MonoBehaviour
                 }
                     break;
             case 4:
-                if (!countdown.activeSelf) countdown.SetActive(true);
+                if (!countdown.activeSelf)
+                {
+                    countdown.SetActive(true);
+                    randomRange = 0;
+                }
+                if (pg.anchoredPosition.y > 225)
+                {
+                    cm.gamestatus = 1;
+                }
                 break;
             default:
                 break;

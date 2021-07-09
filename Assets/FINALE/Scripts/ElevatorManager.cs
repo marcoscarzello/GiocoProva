@@ -39,6 +39,7 @@ public class ElevatorManager : MonoBehaviour
 
         if (_toOpen)
         {
+            Debug.Log("PEFFORZA");
             var _openedPos = new Vector3(
                    transform.position.x,
                    _opened,
