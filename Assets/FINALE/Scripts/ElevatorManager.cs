@@ -15,6 +15,8 @@ public class ElevatorManager : MonoBehaviour
     private bool _toOpen = false;
     private bool _toClose = false;
     private bool _prepareToClose = false;
+    private AudioSource opens = null;
+    private bool flag = true;
 
     public void CloseDoor()
     {
@@ -25,6 +27,7 @@ public class ElevatorManager : MonoBehaviour
     void Start()
     {
         //_toOpen = true;
+        opens = GetComponent<AudioSource>();
     }
 
 
@@ -36,12 +39,18 @@ public class ElevatorManager : MonoBehaviour
 
         if (_toOpen)
         {
+            if (flag)
+            {
+                opens.Play();
+                flag = false;
+            }
             var _openedPos = new Vector3(
                    transform.position.x,
                    _opened,
                    transform.position.z);
 
             transform.position = Vector3.MoveTowards(transform.position, _openedPos, _velocity * Time.deltaTime);
+            
 
             if (transform.position == _openedPos)
                 _toOpen = false;

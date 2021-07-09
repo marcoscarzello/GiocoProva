@@ -8,14 +8,15 @@ public class OpenDoor : MonoBehaviour
     [SerializeField] private float _velocity = 2f;
     [SerializeField] private float _end = 8f;
     private BoxCollider colliderPorta;
-    private AudioSource[] audios;
+    private AudioSource audios;
 
     private bool _open = false;
+    private bool flag = true;
 
 
     private void Start()
     {
-        audios = GetComponents<AudioSource>();
+        audios = GetComponent<AudioSource>();
         colliderPorta = GetComponent<BoxCollider>();
     }
 
@@ -36,7 +37,11 @@ public class OpenDoor : MonoBehaviour
 
         if (_open)
         {
-            audios[0].Play();
+            if (flag)
+            {
+                audios.Play();
+                flag = false;
+            }
             var _endPos = new Vector3(
                         transform.position.x,
                         _end,
