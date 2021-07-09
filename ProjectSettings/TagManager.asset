@@ -17,6 +17,9 @@ TagManager:
   - Ammo
   - DataBase
   - Wall
+  - BulletLv1
+  - BulletLv2
+  - BulletLv3
   layers:
   - Default
   - TransparentFX
