@@ -7,7 +7,7 @@ public class NemicoNoModule : MonoBehaviour
     private AudioSource[] audios;
 
 
-    public float vitaEnemy;
+    [SerializeField] private float vitaEnemy;
     [SerializeField] private Munizioni ammo;
     //[SerializeField] private Transform spawnPos;
     [SerializeField] private Particle ExplosionParticle;
@@ -22,7 +22,7 @@ public class NemicoNoModule : MonoBehaviour
         audios = GetComponents<AudioSource>();
 
 
-        vitaEnemy = 20f;
+        //vitaEnemy = 20f;
 
         aggiungi = GameObject.Find("Shooter").GetComponent<VitaEnergia>();
 

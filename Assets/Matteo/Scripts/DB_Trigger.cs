@@ -19,7 +19,7 @@ public class DB_Trigger : MonoBehaviour
 
     void Update()
     {
-        if (trigger)
+        if (trigger && other != null)
         {
             if (Input.GetKey(KeyCode.E) && !ScriptStarter.GetComponent<Enemy_Spawner>().collectedDB && other.tag == "DataBase")
             {

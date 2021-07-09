@@ -13,7 +13,7 @@ public class Weapons_Trigger : MonoBehaviour
 
     private void Update()
     {
-        if (trigger)
+        if (trigger && other != null)
         {
             if (Input.GetKey(KeyCode.E))
             {
@@ -73,8 +73,11 @@ public class Weapons_Trigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        other = collider;
-        trigger = true;
+        if (collider.tag == "ArmaRossa" || collider.tag == "ArmaVerde" || collider.tag == "ArmaBlu")
+        {
+            other = collider;
+            trigger = true;
+        }
     }
 
     private void OnTriggerExit(Collider collider)

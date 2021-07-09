@@ -233,7 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60e9782b380f30c49837235d88cf5200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vitaEnemy: 0
+  vitaEnemy: 30
   ammo: {fileID: 5006606518159426686, guid: 48d40b0137ffcc64ea2de1063bcccd77, type: 3}
   ExplosionParticle: {fileID: 3863740036971351737, guid: c7898e7d8bb63524c86ef4bf00d4dcfc,
     type: 3}
