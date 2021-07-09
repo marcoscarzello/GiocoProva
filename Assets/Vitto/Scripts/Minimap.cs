@@ -78,7 +78,9 @@ public class Minimap : MonoBehaviour
         {
             timer = 0f;
             refreshMap();
+            Debug.Log("dentro" + cm.getState());
         }
+        Debug.Log("fuori" + cm.getState());
         //Debug.Log(pg.rectra);
     }
 
@@ -122,44 +124,54 @@ public class Minimap : MonoBehaviour
                     //uccisi[1] = true;
                     kill++;
                     lv2_1.SetActive(false);
-                }
+                    Debug.Log("KILL " + kill);
+                } /*
                 else
                 {
                     //uccisi[1] = true;
                     kill--;
                     lv2_1.SetActive(true);
-                }
+                } */
                 if (r2_2.anchoredPosition.x < -900f)
                 {
                     //uccisi[2] = true;
                     kill++;
                     lv2_2.SetActive(false);
-                }
+
+                    Debug.Log("KILL " + kill);
+                } /*
                 else
                 {
                     //uccisi[2] = true;
                     kill--;
                     lv2_2.SetActive(true);
-                }
+                } */
                 if (r3.anchoredPosition.x < -900f)
                 {
                     //uccisi[3] = true;
                     kill++;
                     lv3.SetActive(false);
-                }
+                    Debug.Log("KILL " + kill);
+                } /*
                 else
                 if (r3.anchoredPosition.x < -900f)
                 {
                     //uccisi[3] = true;
                     kill--;
                     lv3.SetActive(true);
-                }
+                } */
                 if (kill == 4)
                 {
                     cm.setState(4);
                     countdown.SetActive(true);
+                    Debug.Log("KILL " + kill);
                 }
                     break;
+            case 4:
+                if (!countdown.activeSelf) countdown.SetActive(true);
+                break;
+            default:
+                break;
         }
     }
 
