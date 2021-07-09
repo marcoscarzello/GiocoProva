@@ -12,9 +12,12 @@ public class TimerEnd : MonoBehaviour
     private Vector3 posizioneShooter;
     private bool stopTimer = false;
 
+    public GameObject testoConsole; 
+
     private void OnEnable()
     {
         timeRemaining = ComputeTimeRemaining();
+        testoConsole.GetComponent<ConsoleManager>().aggiornaConsole("\n\n>All enemies destroyed! Go back to the elevator before some bad assault!");
     }
 
     void Update()
