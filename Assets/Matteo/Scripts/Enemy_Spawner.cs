@@ -25,7 +25,13 @@ public class Enemy_Spawner : MonoBehaviour
     private int countDefeated = 0;
 
     public Random rnd = new Random();
+    public GameObject shooter = null;
     private AudioSource[] music = null;
+
+    private void Start()
+    {
+        music = shooter.GetComponents<AudioSource>();
+    }
 
     void Update()
     {
