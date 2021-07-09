@@ -25,6 +25,7 @@ public class Enemy_Spawner : MonoBehaviour
     private int countDefeated = 0;
 
     public Random rnd = new Random();
+    private AudioSource[] music = null;
 
     void Update()
     {
@@ -43,6 +44,7 @@ public class Enemy_Spawner : MonoBehaviour
             Enemy_LV3.SetActive(true);
             control2 = false;
             countDefeated++;
+            StartCoroutine(StartFade(music, 1f, 0f, 0));
         }
 
         if (defeatedLV2_LV3)
@@ -51,6 +53,7 @@ public class Enemy_Spawner : MonoBehaviour
             SpawnVirusBots(WhichQuadrant());
             defeatedLV2_LV3 = false;
             countDefeated++;
+            StartCoroutine(StartFade(music, 1f, 0f, 1));
         }
 
         if (countDefeated == 4)
@@ -231,5 +234,19 @@ public class Enemy_Spawner : MonoBehaviour
                 Debug.Log("VirusBot spawnato da 4");
             }
         }
+    }
+
+    public static IEnumerator StartFade(AudioSource[] music, float duration, float targetVolume, int i)
+    {
+        float currentTime = 0;
+        float start = music[i].volume;
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+            music[i].volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
+            yield return null;
+        }
+        music[i + 1].Play();
+        yield break;
     }
 }
