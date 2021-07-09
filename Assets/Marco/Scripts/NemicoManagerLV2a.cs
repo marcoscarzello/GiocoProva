@@ -39,8 +39,8 @@ public class NemicoManagerLV2a : MonoBehaviour
         audios = GetComponents<AudioSource>();
 
 
-        vitaModuloSigla = 40f;
-        vitaModuloLinea = 40f;
+        vitaModuloSigla = 80f;
+        vitaModuloLinea = 80f;
         primoSchermoDistrutto = false;
         attivati = false;
         //prendo database

@@ -33,7 +33,7 @@ public class NemicoManager : MonoBehaviour
         audios = GetComponents<AudioSource>();
 
 
-        vitaModuloSigla = 40f;
+        vitaModuloSigla = 80f;
         attivati = false;
         //prendo database
         var DataBase = DBScriptStarter.GetComponent<DB_Generator>().DataBase;

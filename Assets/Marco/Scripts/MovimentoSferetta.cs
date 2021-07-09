@@ -17,7 +17,7 @@ public class MovimentoSferetta : MonoBehaviour
         spawn();
         xpos = 8f;
         zpos = 8f;
-        speed = 3f;
+        speed = 1f;
     }
 
     void Update()
@@ -44,7 +44,7 @@ public class MovimentoSferetta : MonoBehaviour
 
     public void spawn() {
 
-        speed = 3f;
+        speed = 1f;
         Random rnd = new Random();
 
         while (xpos < 20f)
